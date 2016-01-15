@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6973FC8E-EA29-4AC5-BBCE-97882C43AF12}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SIGEEA_App</RootNamespace>
+    <AssemblyName>SIGEEA_App</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MahApps.Metro, Version=1.1.2.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Classic" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Paginas\Pag_Clientes.xaml.cs">
+      <DependentUpon>Pag_Clientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pag_Empleados.xaml.cs">
+      <DependentUpon>Pag_Empleados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pag_Fincas.xaml.cs">
+      <DependentUpon>Pag_Fincas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pag_General.xaml.cs">
+      <DependentUpon>Pag_General.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pag_Insumos.xaml.cs">
+      <DependentUpon>Pag_Insumos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pag_Productos.xaml.cs">
+      <DependentUpon>Pag_Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\uControl_Numerico.xaml.cs">
+      <DependentUpon>uControl_Numerico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\uc_Contacto.xaml.cs">
+      <DependentUpon>uc_Contacto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
+      <DependentUpon>wnwIdentificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Contactos\wnwAgregarContacto.xaml.cs">
+      <DependentUpon>wnwAgregarContacto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Contactos\wnwContactos.xaml.cs">
+      <DependentUpon>wnwContactos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Direcciones\wnwDirecciones.xaml.cs">
+      <DependentUpon>wnwDirecciones.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Empleados\wnwIdentificarEmpleado.xaml.cs">
+      <DependentUpon>wnwIdentificarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Personas\wnwIdentificarPersona.xaml.cs">
+      <DependentUpon>wnwIdentificarPersona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Personas\wnwRegistrarPersona.xaml.cs">
+      <DependentUpon>wnwRegistrarPersona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Productos\wnwPreciosProducto.xaml.cs">
+      <DependentUpon>wnwPreciosProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Productos\wnwRegistrarProducto.xaml.cs">
+      <DependentUpon>wnwRegistrarProducto.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Paginas\Pag_Asociados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_Clientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_Empleados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_Fincas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_General.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_Insumos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Paginas\Pag_Productos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pantallas\Login_Pag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Recursos\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="User_Controls\uControl_Numerico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\uc_Contacto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Contactos\wnwAgregarContacto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Contactos\wnwContactos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Direcciones\wnwDirecciones.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Empleados\wnwIdentificarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Personas\wnwIdentificarPersona.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Personas\wnwRegistrarPersona.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Productos\wnwPreciosProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Productos\wnwRegistrarProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Paginas\Pag_Asociados.xaml.cs">
+      <DependentUpon>Pag_Asociados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pantallas\Login_Pag.xaml.cs">
+      <DependentUpon>Login_Pag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Recursos\Entypo.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SIGEEA_BL\SIGEEA_BL.csproj">
+      <Project>{dc8e1066-0220-45db-b1ff-7641682668e7}</Project>
+      <Name>SIGEEA_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SIGEEA_BO\SIGEEA_BO.csproj">
+      <Project>{d58ab7f3-e14f-4f83-b447-23a57a7023f6}</Project>
+      <Name>SIGEEA_BO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Custom_Controls\" />
+    <Folder Include="Ventanas_Modales\Clientes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Recursos\Entypo-license.txt" />
+    <Resource Include="Recursos\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\CostaFresh.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

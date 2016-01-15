@@ -1,0 +1,27 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Contactos.wnwContactos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Contactos"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Contacto" Height="359.575" Width="565.957" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel x:Name="stpContactos" HorizontalAlignment="Left" Height="311" Margin="10,10,0,0" VerticalAlignment="Top" Width="399" ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+        </StackPanel>
+        <TextBlock x:Name="txbVacio" HorizontalAlignment="Left" Margin="10,99,0,169" TextWrapping="Wrap" Text="No tiene ningún contacto añadido. 
+                   
+                   Si desea, puede agregarlo con el botón de la derecha." Width="381" FontSize="16" FontWeight="Bold" TextAlignment="Center" Visibility="Hidden"/>
+
+        <Button x:Name="btnAgregar" Margin="429,116,39,143" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click">
+            <Rectangle Width="38" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_add}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

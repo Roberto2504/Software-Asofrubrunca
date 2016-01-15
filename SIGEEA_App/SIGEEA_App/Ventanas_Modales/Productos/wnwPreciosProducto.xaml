@@ -1,0 +1,26 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Productos.wnwPreciosProducto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Productos"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Precios del producto" Height="334.962" Width="435.338">
+    <Grid>
+        <TextBox x:Name="txbPreNacional" HorizontalAlignment="Left" Height="35" Margin="202,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" FontWeight="Bold" FontSize="18.667"/>
+        <TextBox x:Name="txbPreExtranjero" HorizontalAlignment="Left" Height="35" Margin="202,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" FontWeight="Bold" FontSize="18.667"/>
+        <ComboBox x:Name="cmbProducto" HorizontalAlignment="Left" Margin="202,35,0,0" VerticalAlignment="Top" Width="205" Height="35" FontWeight="Bold" FontSize="18.667"/>
+        <Label x:Name="lblPreNacional" Content="Precio Nacional" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18.667"/>
+        <Label x:Name="lblPreExtranjero" Content="Precio Extranjero" HorizontalAlignment="Left" Margin="25,161,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18.667"/>
+        <Label x:Name="lblProducto" Content="Producto" HorizontalAlignment="Left" Margin="25,39,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18.667"/>
+        <Button x:Name="btnRegistrar" Margin="182,231,186,25" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnRegistrar_Click">
+            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_save}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

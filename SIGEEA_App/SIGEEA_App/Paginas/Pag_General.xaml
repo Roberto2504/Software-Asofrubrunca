@@ -1,0 +1,16 @@
+﻿<Page x:Class="SIGEEA_App.Paginas.Pag_General"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIGEEA_App.Paginas"
+      mc:Ignorable="d" 
+      d:DesignHeight="332.979" d:DesignWidth="492.553"
+      Title="Pag_General">
+
+    <Grid>
+        <Button x:Name="btnDirecciones" Content="Direcciones" HorizontalAlignment="Left" Height="47" Margin="24,46,0,0" VerticalAlignment="Top" Width="132" Click="btnDirecciones_Click"/>
+        <Button x:Name="btnContactos" Content="Contactos" HorizontalAlignment="Left" Height="47" Margin="24,128,0,0" VerticalAlignment="Top" Width="132" Click="btnContactos_Click"/>
+
+    </Grid>
+</Page>

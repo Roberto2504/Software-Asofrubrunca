@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.uControl_Numerico"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="29.323" d:DesignWidth="38.346">
+    <Grid Margin="26,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="13" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14" />
+            <RowDefinition Height="15" />
+        </Grid.RowDefinitions>
+        <TextBox Name="NUDTextBox" Grid.Column="0" TextAlignment="Center" PreviewKeyDown="NUDTextBox_PreviewKeyDown" PreviewKeyUp="NUDTextBox_PreviewKeyUp" TextChanged="NUDTextBox_TextChanged" FontSize="14.667" FontWeight="Bold" Margin="-28,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="28"/>
+        <RepeatButton Name="NUDButtonUP"  Grid.Column="1" Grid.Row="0" FontSize="8" FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="NUDButtonUP_Click" Margin="0,0,0,1">5</RepeatButton>
+        <RepeatButton Name="NUDButtonDown" Grid.Row="1" FontSize="8"  FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="13" VerticalAlignment="Bottom" Click="NUDButtonDown_Click" RenderTransformOrigin="-19.474,0.408" Grid.Column="1">6</RepeatButton>
+    </Grid>
+</UserControl>

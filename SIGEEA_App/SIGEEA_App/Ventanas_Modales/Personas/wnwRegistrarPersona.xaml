@@ -1,0 +1,100 @@
+﻿<Controls:MetroWindow x:Name="wnwRegistro" x:Class="SIGEEA_App.Ventanas_Modales.Personas.wnwRegistrarPersona"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Personas"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Registro" Height="410.282" Width="764.305" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid x:Name="grdPersona" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="682" Visibility="Visible">
+            <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="23" Margin="177,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <TextBox x:Name="txbPriNombre" HorizontalAlignment="Left" Height="23" Margin="177,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <TextBox x:Name="txbSegNombre" HorizontalAlignment="Left" Height="23" Margin="177,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <TextBox x:Name="txbPriApellido" HorizontalAlignment="Left" Height="23" Margin="177,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <TextBox x:Name="txbSegApellido" HorizontalAlignment="Left" Height="23" Margin="177,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <Label x:Name="lblCedula" Content="Cédula" HorizontalAlignment="Left" Margin="5,56,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblPriNombre" Content="Primer nombre" HorizontalAlignment="Left" Margin="5,103,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblSegNombre" Content="Segundo nombre" HorizontalAlignment="Left" Margin="5,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.538,0.788" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblPriApellido" Content="Primer apellido" HorizontalAlignment="Left" Margin="5,214,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblSegApellido" Content="Segundo apellido" HorizontalAlignment="Left" Margin="5,269,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblGenero" Content="Género" HorizontalAlignment="Left" Margin="374,94,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <ComboBox x:Name="cbxGenero" HorizontalAlignment="Left" Margin="521,94,0,0" VerticalAlignment="Top" Width="120" FontWeight="Bold" FontSize="13.333">
+                <ComboBoxItem x:Name="cbiMasculino" Content="M"/>
+                <ComboBoxItem x:Name="cbiFemenino" Content="F"/>
+            </ComboBox>
+            <ComboBox x:Name="cbxNacionalidad" HorizontalAlignment="Left" Margin="521,155,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+            <Label x:Name="lblGenero_Copy" Content="Nacionalidad" HorizontalAlignment="Left" Margin="374,155,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <Label x:Name="lblGenero_Copy1" Content="Fec. Nacimiento" HorizontalAlignment="Left" Margin="374,214,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+            <DatePicker x:Name="dtpFecNacimiento" HorizontalAlignment="Left" Margin="521,222,0,0" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="btnSiguiente" Margin="474,261,140,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_navigate_next}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="5,0,0,0" TextWrapping="Wrap" Text="Información personal" VerticalAlignment="Top" TextDecorations="Underline" FontWeight="Bold" FontSize="26.667"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" Name="grdEmpleado" Visibility="Collapsed">
+            <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Escolaridad" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>
+            <ComboBox x:Name="cmbGradoAcad" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico">
+                <ComboBoxItem Content="Primaria incompleta"></ComboBoxItem>
+                <ComboBoxItem Content="Primaria completa"></ComboBoxItem>
+                <ComboBoxItem Content="Secundaria incompleta"></ComboBoxItem>
+                <ComboBoxItem Content="Secundaria completa"></ComboBoxItem>
+                <ComboBoxItem Content="Universidad incompleta"></ComboBoxItem>
+                <ComboBoxItem Content="Universidad completa"></ComboBoxItem>
+            </ComboBox>
+            <Label x:Name="label" Content="Observaciones adicionales" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <TextBox x:Name="txbAdicional" HorizontalAlignment="Left" Height="67" Margin="10,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" MaxLength="300" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
+            <Button x:Name="btnRegistrar" Margin="480,123,144,137" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <CheckBox x:Name="chkLeer" Content="Sabe leer" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <CheckBox x:Name="chkEscribir" Content="Sabe escribir" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+        </Grid>
+        <Grid Name="grdCliente" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" Visibility="Collapsed">
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Tipo y Credito del cliente" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>
+            <Label x:Name="label1" Content="Tipo de cliente" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <ComboBox x:Name="cmbTipCliente" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico">
+                <ComboBoxItem Content="Excelente"></ComboBoxItem>
+                <ComboBoxItem Content="Bueno"></ComboBoxItem>
+                <ComboBoxItem Content="Regular"></ComboBoxItem>
+            </ComboBox>
+            <Label x:Name="label2" Content="Credito Máximo" HorizontalAlignment="Left" Margin="305,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <TextBox x:Name="txbCreMaximo" HorizontalAlignment="Left" Height="23" Margin="305,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" FontSize="13.333" FontWeight="Bold"/>
+            <Label x:Name="label3" Content="Rango entre pagos" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <ComboBox x:Name="cmbRagCredito" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico">
+                <ComboBoxItem Content="Semanal"/>
+                <ComboBoxItem Content="Quincenal"/>
+                <ComboBoxItem Content="Mensual"/>
+            </ComboBox>
+            <Label x:Name="label3_Copy" Content="Tiempo máximo para pagar" HorizontalAlignment="Left" Margin="305,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <ComboBox x:Name="cmbTieMaximo" HorizontalAlignment="Left" Margin="305,193,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico" RenderTransformOrigin="0.945,0.476">
+                <ComboBoxItem Content="Un mes"/>
+                <ComboBoxItem Content="Dos meses"/>
+                <ComboBoxItem Content="Tres meses"/>
+            </ComboBox>
+            <Button x:Name="btnRegistrarCliente" Click="btnRegistrarCliente_Click" Margin="474,250,150,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+        </Grid>
+              
+              
+           
+    </Grid>
+</Controls:MetroWindow>
