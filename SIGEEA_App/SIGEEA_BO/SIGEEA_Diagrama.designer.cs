@@ -66,6 +66,9 @@ namespace SIGEEA_BO
     partial void InsertSIGEEA_CodPostal(SIGEEA_CodPostal instance);
     partial void UpdateSIGEEA_CodPostal(SIGEEA_CodPostal instance);
     partial void DeleteSIGEEA_CodPostal(SIGEEA_CodPostal instance);
+    partial void InsertSIGEEA_Contacto(SIGEEA_Contacto instance);
+    partial void UpdateSIGEEA_Contacto(SIGEEA_Contacto instance);
+    partial void DeleteSIGEEA_Contacto(SIGEEA_Contacto instance);
     partial void InsertSIGEEA_CreCliente(SIGEEA_CreCliente instance);
     partial void UpdateSIGEEA_CreCliente(SIGEEA_CreCliente instance);
     partial void DeleteSIGEEA_CreCliente(SIGEEA_CreCliente instance);
@@ -135,9 +138,6 @@ namespace SIGEEA_BO
     partial void InsertSIGEEA_HorLaborada(SIGEEA_HorLaborada instance);
     partial void UpdateSIGEEA_HorLaborada(SIGEEA_HorLaborada instance);
     partial void DeleteSIGEEA_HorLaborada(SIGEEA_HorLaborada instance);
-    partial void InsertSIGEEA_Insumo(SIGEEA_Insumo instance);
-    partial void UpdateSIGEEA_Insumo(SIGEEA_Insumo instance);
-    partial void DeleteSIGEEA_Insumo(SIGEEA_Insumo instance);
     partial void InsertSIGEEA_InvInsumo(SIGEEA_InvInsumo instance);
     partial void UpdateSIGEEA_InvInsumo(SIGEEA_InvInsumo instance);
     partial void DeleteSIGEEA_InvInsumo(SIGEEA_InvInsumo instance);
@@ -213,13 +213,13 @@ namespace SIGEEA_BO
     partial void InsertSIGEEA_Usuario(SIGEEA_Usuario instance);
     partial void UpdateSIGEEA_Usuario(SIGEEA_Usuario instance);
     partial void DeleteSIGEEA_Usuario(SIGEEA_Usuario instance);
-    partial void InsertSIGEEA_Contacto(SIGEEA_Contacto instance);
-    partial void UpdateSIGEEA_Contacto(SIGEEA_Contacto instance);
-    partial void DeleteSIGEEA_Contacto(SIGEEA_Contacto instance);
+    partial void InsertSIGEEA_Insumo(SIGEEA_Insumo instance);
+    partial void UpdateSIGEEA_Insumo(SIGEEA_Insumo instance);
+    partial void DeleteSIGEEA_Insumo(SIGEEA_Insumo instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::SIGEEA_BO.Properties.Settings.Default.SIGEEA_BDConnectionString2, mappingSource)
+				base(global::SIGEEA_BO.Properties.Settings.Default.SIGEEA_BDConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -349,6 +349,14 @@ namespace SIGEEA_BO
 			get
 			{
 				return this.GetTable<SIGEEA_CodPostal>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SIGEEA_Contacto> SIGEEA_Contactos
+		{
+			get
+			{
+				return this.GetTable<SIGEEA_Contacto>();
 			}
 		}
 		
@@ -533,14 +541,6 @@ namespace SIGEEA_BO
 			get
 			{
 				return this.GetTable<SIGEEA_HorLaborada>();
-			}
-		}
-		
-		public System.Data.Linq.Table<SIGEEA_Insumo> SIGEEA_Insumos
-		{
-			get
-			{
-				return this.GetTable<SIGEEA_Insumo>();
 			}
 		}
 		
@@ -760,75 +760,12 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		public System.Data.Linq.Table<SIGEEA_Contacto> SIGEEA_Contactos
+		public System.Data.Linq.Table<SIGEEA_Insumo> SIGEEA_Insumos
 		{
 			get
 			{
-				return this.GetTable<SIGEEA_Contacto>();
+				return this.GetTable<SIGEEA_Insumo>();
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerAsociado")]
-		public ISingleResult<SIGEEA_spObtenerAsociadoResult> SIGEEA_spObtenerAsociado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(30)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CodigoAsociado", DbType="VarChar(10)")] string codigoAsociado)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, codigoAsociado);
-			return ((ISingleResult<SIGEEA_spObtenerAsociadoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerCliente")]
-		public ISingleResult<SIGEEA_spObtenerClienteResult> SIGEEA_spObtenerCliente([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(30)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(10)")] string nombre)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, nombre);
-			return ((ISingleResult<SIGEEA_spObtenerClienteResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerInsumo")]
-		public ISingleResult<SIGEEA_spObtenerInsumoResult> SIGEEA_spObtenerInsumo([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(20)")] string nombre)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre);
-			return ((ISingleResult<SIGEEA_spObtenerInsumoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDireccionAsociado")]
-		public ISingleResult<SIGEEA_spObtenerDireccionAsociadoResult> SIGEEA_spObtenerDireccionAsociado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(30)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Codigo", DbType="VarChar(10)")] string codigo)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, codigo);
-			return ((ISingleResult<SIGEEA_spObtenerDireccionAsociadoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerCantones")]
-		public ISingleResult<SIGEEA_spObtenerCantonesResult> SIGEEA_spObtenerCantones([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Provincia", DbType="VarChar(30)")] string provincia)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), provincia);
-			return ((ISingleResult<SIGEEA_spObtenerCantonesResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDistritos")]
-		public ISingleResult<SIGEEA_spObtenerDistritosResult> SIGEEA_spObtenerDistritos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Canton", DbType="VarChar(30)")] string canton)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), canton);
-			return ((ISingleResult<SIGEEA_spObtenerDistritosResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spEditarDireccion")]
-		public int SIGEEA_spEditarDireccion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Persona", DbType="Int")] System.Nullable<int> persona, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Detalles", DbType="VarChar(100)")] string detalles, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Distrito", DbType="Int")] System.Nullable<int> distrito)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), persona, detalles, distrito);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerEmpleado")]
-		public ISingleResult<SIGEEA_spObtenerEmpleadoResult> SIGEEA_spObtenerEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(15)")] string cedula)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
-			return ((ISingleResult<SIGEEA_spObtenerEmpleadoResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDireccionEmpleado")]
-		public ISingleResult<SIGEEA_spObtenerDireccionEmpleadoResult> SIGEEA_spObtenerDireccionEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(15)")] string cedula)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
-			return ((ISingleResult<SIGEEA_spObtenerDireccionEmpleadoResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spAutenticaPersona")]
@@ -838,11 +775,95 @@ namespace SIGEEA_BO
 			return ((ISingleResult<SIGEEA_spAutenticaPersonaResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spEditarDireccion")]
+		public int SIGEEA_spEditarDireccion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Persona", DbType="Int")] System.Nullable<int> persona, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Detalles", DbType="VarChar(100)")] string detalles, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Distrito", DbType="Int")] System.Nullable<int> distrito)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), persona, detalles, distrito);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerAsociado")]
+		public ISingleResult<SIGEEA_spObtenerAsociadoResult> SIGEEA_spObtenerAsociado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(30)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CodigoAsociado", DbType="VarChar(10)")] string codigoAsociado)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, codigoAsociado);
+			return ((ISingleResult<SIGEEA_spObtenerAsociadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerCantones")]
+		public ISingleResult<SIGEEA_spObtenerCantonesResult> SIGEEA_spObtenerCantones([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Provincia", DbType="VarChar(30)")] string provincia)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), provincia);
+			return ((ISingleResult<SIGEEA_spObtenerCantonesResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerContacto")]
 		public ISingleResult<SIGEEA_spObtenerContactoResult> SIGEEA_spObtenerContacto([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Persona", DbType="Int")] System.Nullable<int> persona)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), persona);
 			return ((ISingleResult<SIGEEA_spObtenerContactoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDireccionAsociado")]
+		public ISingleResult<SIGEEA_spObtenerDireccionAsociadoResult> SIGEEA_spObtenerDireccionAsociado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(30)")] string cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Codigo", DbType="VarChar(10)")] string codigo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, codigo);
+			return ((ISingleResult<SIGEEA_spObtenerDireccionAsociadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDireccionEmpleado")]
+		public ISingleResult<SIGEEA_spObtenerDireccionEmpleadoResult> SIGEEA_spObtenerDireccionEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(15)")] string cedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
+			return ((ISingleResult<SIGEEA_spObtenerDireccionEmpleadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDistritos")]
+		public ISingleResult<SIGEEA_spObtenerDistritosResult> SIGEEA_spObtenerDistritos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Canton", DbType="VarChar(30)")] string canton)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), canton);
+			return ((ISingleResult<SIGEEA_spObtenerDistritosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerInsumo")]
+		public ISingleResult<SIGEEA_spObtenerInsumoResult> SIGEEA_spObtenerInsumo([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Nombre", DbType="VarChar(20)")] string nombre)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre);
+			return ((ISingleResult<SIGEEA_spObtenerInsumoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerCliente")]
+		public ISingleResult<SIGEEA_spObtenerClienteResult> SIGEEA_spObtenerCliente([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CedNombre", DbType="VarChar(30)")] string cedNombre)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedNombre);
+			return ((ISingleResult<SIGEEA_spObtenerClienteResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerEmpleado")]
+		public ISingleResult<SIGEEA_spObtenerEmpleadoResult> SIGEEA_spObtenerEmpleado([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cedula", DbType="VarChar(15)")] string cedula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula);
+			return ((ISingleResult<SIGEEA_spObtenerEmpleadoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spListarInsumos")]
+		public ISingleResult<SIGEEA_spListarInsumosResult> SIGEEA_spListarInsumos([global::System.Data.Linq.Mapping.ParameterAttribute(Name="NomInsumo", DbType="VarChar(20)")] string nomInsumo)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nomInsumo);
+			return ((ISingleResult<SIGEEA_spListarInsumosResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerUnidadesMedida")]
+		public ISingleResult<SIGEEA_spObtenerUnidadesMedidaResult> SIGEEA_spObtenerUnidadesMedida()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<SIGEEA_spObtenerUnidadesMedidaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spListarCliente")]
+		public ISingleResult<SIGEEA_spListarClienteResult> SIGEEA_spListarCliente([global::System.Data.Linq.Mapping.ParameterAttribute(Name="CedNombre", DbType="VarChar(30)")] string cedNombre)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedNombre);
+			return ((ISingleResult<SIGEEA_spListarClienteResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3906,6 +3927,222 @@ namespace SIGEEA_BO
 		{
 			this.SendPropertyChanging();
 			entity.SIGEEA_CodPostal = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIGEEA_Contacto")]
+	public partial class SIGEEA_Contacto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PK_Id_Contacto;
+		
+		private string _Dato_Contacto;
+		
+		private int _FK_Id_TipContacto;
+		
+		private int _FK_Id_Persona;
+		
+		private EntityRef<SIGEEA_Persona> _SIGEEA_Persona;
+		
+		private EntityRef<SIGEEA_TipContacto> _SIGEEA_TipContacto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPK_Id_ContactoChanging(int value);
+    partial void OnPK_Id_ContactoChanged();
+    partial void OnDato_ContactoChanging(string value);
+    partial void OnDato_ContactoChanged();
+    partial void OnFK_Id_TipContactoChanging(int value);
+    partial void OnFK_Id_TipContactoChanged();
+    partial void OnFK_Id_PersonaChanging(int value);
+    partial void OnFK_Id_PersonaChanged();
+    #endregion
+		
+		public SIGEEA_Contacto()
+		{
+			this._SIGEEA_Persona = default(EntityRef<SIGEEA_Persona>);
+			this._SIGEEA_TipContacto = default(EntityRef<SIGEEA_TipContacto>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Contacto", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PK_Id_Contacto
+		{
+			get
+			{
+				return this._PK_Id_Contacto;
+			}
+			set
+			{
+				if ((this._PK_Id_Contacto != value))
+				{
+					this.OnPK_Id_ContactoChanging(value);
+					this.SendPropertyChanging();
+					this._PK_Id_Contacto = value;
+					this.SendPropertyChanged("PK_Id_Contacto");
+					this.OnPK_Id_ContactoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dato_Contacto", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Dato_Contacto
+		{
+			get
+			{
+				return this._Dato_Contacto;
+			}
+			set
+			{
+				if ((this._Dato_Contacto != value))
+				{
+					this.OnDato_ContactoChanging(value);
+					this.SendPropertyChanging();
+					this._Dato_Contacto = value;
+					this.SendPropertyChanged("Dato_Contacto");
+					this.OnDato_ContactoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_Id_TipContacto", DbType="Int NOT NULL")]
+		public int FK_Id_TipContacto
+		{
+			get
+			{
+				return this._FK_Id_TipContacto;
+			}
+			set
+			{
+				if ((this._FK_Id_TipContacto != value))
+				{
+					if (this._SIGEEA_TipContacto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFK_Id_TipContactoChanging(value);
+					this.SendPropertyChanging();
+					this._FK_Id_TipContacto = value;
+					this.SendPropertyChanged("FK_Id_TipContacto");
+					this.OnFK_Id_TipContactoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_Id_Persona", DbType="Int NOT NULL")]
+		public int FK_Id_Persona
+		{
+			get
+			{
+				return this._FK_Id_Persona;
+			}
+			set
+			{
+				if ((this._FK_Id_Persona != value))
+				{
+					if (this._SIGEEA_Persona.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnFK_Id_PersonaChanging(value);
+					this.SendPropertyChanging();
+					this._FK_Id_Persona = value;
+					this.SendPropertyChanged("FK_Id_Persona");
+					this.OnFK_Id_PersonaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Persona_SIGEEA_Contacto", Storage="_SIGEEA_Persona", ThisKey="FK_Id_Persona", OtherKey="PK_Id_Persona", IsForeignKey=true)]
+		public SIGEEA_Persona SIGEEA_Persona
+		{
+			get
+			{
+				return this._SIGEEA_Persona.Entity;
+			}
+			set
+			{
+				SIGEEA_Persona previousValue = this._SIGEEA_Persona.Entity;
+				if (((previousValue != value) 
+							|| (this._SIGEEA_Persona.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SIGEEA_Persona.Entity = null;
+						previousValue.SIGEEA_Contactos.Remove(this);
+					}
+					this._SIGEEA_Persona.Entity = value;
+					if ((value != null))
+					{
+						value.SIGEEA_Contactos.Add(this);
+						this._FK_Id_Persona = value.PK_Id_Persona;
+					}
+					else
+					{
+						this._FK_Id_Persona = default(int);
+					}
+					this.SendPropertyChanged("SIGEEA_Persona");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_TipContacto_SIGEEA_Contacto", Storage="_SIGEEA_TipContacto", ThisKey="FK_Id_TipContacto", OtherKey="PK_Id_TipContacto", IsForeignKey=true)]
+		public SIGEEA_TipContacto SIGEEA_TipContacto
+		{
+			get
+			{
+				return this._SIGEEA_TipContacto.Entity;
+			}
+			set
+			{
+				SIGEEA_TipContacto previousValue = this._SIGEEA_TipContacto.Entity;
+				if (((previousValue != value) 
+							|| (this._SIGEEA_TipContacto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SIGEEA_TipContacto.Entity = null;
+						previousValue.SIGEEA_Contactos.Remove(this);
+					}
+					this._SIGEEA_TipContacto.Entity = value;
+					if ((value != null))
+					{
+						value.SIGEEA_Contactos.Add(this);
+						this._FK_Id_TipContacto = value.PK_Id_TipContacto;
+					}
+					else
+					{
+						this._FK_Id_TipContacto = default(int);
+					}
+					this.SendPropertyChanged("SIGEEA_TipContacto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -8818,9 +9055,9 @@ namespace SIGEEA_BO
 		
 		private EntityRef<SIGEEA_Empleado> _SIGEEA_Empleado;
 		
-		private EntityRef<SIGEEA_Insumo> _SIGEEA_Insumo;
-		
 		private EntityRef<SIGEEA_Proveedor> _SIGEEA_Proveedor;
+		
+		private EntityRef<SIGEEA_Insumo> _SIGEEA_Insumo;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -8848,8 +9085,8 @@ namespace SIGEEA_BO
 		{
 			this._SIGEEA_DetFacInsumos = new EntitySet<SIGEEA_DetFacInsumo>(new Action<SIGEEA_DetFacInsumo>(this.attach_SIGEEA_DetFacInsumos), new Action<SIGEEA_DetFacInsumo>(this.detach_SIGEEA_DetFacInsumos));
 			this._SIGEEA_Empleado = default(EntityRef<SIGEEA_Empleado>);
-			this._SIGEEA_Insumo = default(EntityRef<SIGEEA_Insumo>);
 			this._SIGEEA_Proveedor = default(EntityRef<SIGEEA_Proveedor>);
+			this._SIGEEA_Insumo = default(EntityRef<SIGEEA_Insumo>);
 			OnCreated();
 		}
 		
@@ -9072,40 +9309,6 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_FacInsumo", Storage="_SIGEEA_Insumo", ThisKey="FK_Id_Insumo", OtherKey="PK_Id_Insumo", IsForeignKey=true)]
-		public SIGEEA_Insumo SIGEEA_Insumo
-		{
-			get
-			{
-				return this._SIGEEA_Insumo.Entity;
-			}
-			set
-			{
-				SIGEEA_Insumo previousValue = this._SIGEEA_Insumo.Entity;
-				if (((previousValue != value) 
-							|| (this._SIGEEA_Insumo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SIGEEA_Insumo.Entity = null;
-						previousValue.SIGEEA_FacInsumos.Remove(this);
-					}
-					this._SIGEEA_Insumo.Entity = value;
-					if ((value != null))
-					{
-						value.SIGEEA_FacInsumos.Add(this);
-						this._FK_Id_Insumo = value.PK_Id_Insumo;
-					}
-					else
-					{
-						this._FK_Id_Insumo = default(int);
-					}
-					this.SendPropertyChanged("SIGEEA_Insumo");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Proveedor_SIGEEA_FacInsumo", Storage="_SIGEEA_Proveedor", ThisKey="FK_Id_Proveedor", OtherKey="PK_Id_Proveedor", IsForeignKey=true)]
 		public SIGEEA_Proveedor SIGEEA_Proveedor
 		{
@@ -9136,6 +9339,40 @@ namespace SIGEEA_BO
 						this._FK_Id_Proveedor = default(int);
 					}
 					this.SendPropertyChanged("SIGEEA_Proveedor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_FacInsumo", Storage="_SIGEEA_Insumo", ThisKey="FK_Id_Insumo", OtherKey="PK_Id_Insumo", IsForeignKey=true)]
+		public SIGEEA_Insumo SIGEEA_Insumo
+		{
+			get
+			{
+				return this._SIGEEA_Insumo.Entity;
+			}
+			set
+			{
+				SIGEEA_Insumo previousValue = this._SIGEEA_Insumo.Entity;
+				if (((previousValue != value) 
+							|| (this._SIGEEA_Insumo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SIGEEA_Insumo.Entity = null;
+						previousValue.SIGEEA_FacInsumos.Remove(this);
+					}
+					this._SIGEEA_Insumo.Entity = value;
+					if ((value != null))
+					{
+						value.SIGEEA_FacInsumos.Add(this);
+						this._FK_Id_Insumo = value.PK_Id_Insumo;
+					}
+					else
+					{
+						this._FK_Id_Insumo = default(int);
+					}
+					this.SendPropertyChanged("SIGEEA_Insumo");
 				}
 			}
 		}
@@ -10261,276 +10498,6 @@ namespace SIGEEA_BO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIGEEA_Insumo")]
-	public partial class SIGEEA_Insumo : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PK_Id_Insumo;
-		
-		private string _Nombre_Insumo;
-		
-		private string _Descripcion_Insumo;
-		
-		private double _MonTotal_Insumo;
-		
-		private bool _Estado_Insumo;
-		
-		private EntitySet<SIGEEA_FacInsumo> _SIGEEA_FacInsumos;
-		
-		private EntitySet<SIGEEA_InvInsumo> _SIGEEA_InvInsumos;
-		
-		private EntitySet<SIGEEA_PedInsumo> _SIGEEA_PedInsumos;
-		
-		private EntitySet<SIGEEA_Proveedor> _SIGEEA_Proveedors;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPK_Id_InsumoChanging(int value);
-    partial void OnPK_Id_InsumoChanged();
-    partial void OnNombre_InsumoChanging(string value);
-    partial void OnNombre_InsumoChanged();
-    partial void OnDescripcion_InsumoChanging(string value);
-    partial void OnDescripcion_InsumoChanged();
-    partial void OnMonTotal_InsumoChanging(double value);
-    partial void OnMonTotal_InsumoChanged();
-    partial void OnEstado_InsumoChanging(bool value);
-    partial void OnEstado_InsumoChanged();
-    #endregion
-		
-		public SIGEEA_Insumo()
-		{
-			this._SIGEEA_FacInsumos = new EntitySet<SIGEEA_FacInsumo>(new Action<SIGEEA_FacInsumo>(this.attach_SIGEEA_FacInsumos), new Action<SIGEEA_FacInsumo>(this.detach_SIGEEA_FacInsumos));
-			this._SIGEEA_InvInsumos = new EntitySet<SIGEEA_InvInsumo>(new Action<SIGEEA_InvInsumo>(this.attach_SIGEEA_InvInsumos), new Action<SIGEEA_InvInsumo>(this.detach_SIGEEA_InvInsumos));
-			this._SIGEEA_PedInsumos = new EntitySet<SIGEEA_PedInsumo>(new Action<SIGEEA_PedInsumo>(this.attach_SIGEEA_PedInsumos), new Action<SIGEEA_PedInsumo>(this.detach_SIGEEA_PedInsumos));
-			this._SIGEEA_Proveedors = new EntitySet<SIGEEA_Proveedor>(new Action<SIGEEA_Proveedor>(this.attach_SIGEEA_Proveedors), new Action<SIGEEA_Proveedor>(this.detach_SIGEEA_Proveedors));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Insumo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PK_Id_Insumo
-		{
-			get
-			{
-				return this._PK_Id_Insumo;
-			}
-			set
-			{
-				if ((this._PK_Id_Insumo != value))
-				{
-					this.OnPK_Id_InsumoChanging(value);
-					this.SendPropertyChanging();
-					this._PK_Id_Insumo = value;
-					this.SendPropertyChanged("PK_Id_Insumo");
-					this.OnPK_Id_InsumoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Insumo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Nombre_Insumo
-		{
-			get
-			{
-				return this._Nombre_Insumo;
-			}
-			set
-			{
-				if ((this._Nombre_Insumo != value))
-				{
-					this.OnNombre_InsumoChanging(value);
-					this.SendPropertyChanging();
-					this._Nombre_Insumo = value;
-					this.SendPropertyChanged("Nombre_Insumo");
-					this.OnNombre_InsumoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Insumo", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Descripcion_Insumo
-		{
-			get
-			{
-				return this._Descripcion_Insumo;
-			}
-			set
-			{
-				if ((this._Descripcion_Insumo != value))
-				{
-					this.OnDescripcion_InsumoChanging(value);
-					this.SendPropertyChanging();
-					this._Descripcion_Insumo = value;
-					this.SendPropertyChanged("Descripcion_Insumo");
-					this.OnDescripcion_InsumoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonTotal_Insumo", DbType="Float NOT NULL")]
-		public double MonTotal_Insumo
-		{
-			get
-			{
-				return this._MonTotal_Insumo;
-			}
-			set
-			{
-				if ((this._MonTotal_Insumo != value))
-				{
-					this.OnMonTotal_InsumoChanging(value);
-					this.SendPropertyChanging();
-					this._MonTotal_Insumo = value;
-					this.SendPropertyChanged("MonTotal_Insumo");
-					this.OnMonTotal_InsumoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Insumo", DbType="Bit NOT NULL")]
-		public bool Estado_Insumo
-		{
-			get
-			{
-				return this._Estado_Insumo;
-			}
-			set
-			{
-				if ((this._Estado_Insumo != value))
-				{
-					this.OnEstado_InsumoChanging(value);
-					this.SendPropertyChanging();
-					this._Estado_Insumo = value;
-					this.SendPropertyChanged("Estado_Insumo");
-					this.OnEstado_InsumoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_FacInsumo", Storage="_SIGEEA_FacInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
-		public EntitySet<SIGEEA_FacInsumo> SIGEEA_FacInsumos
-		{
-			get
-			{
-				return this._SIGEEA_FacInsumos;
-			}
-			set
-			{
-				this._SIGEEA_FacInsumos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_InvInsumo", Storage="_SIGEEA_InvInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
-		public EntitySet<SIGEEA_InvInsumo> SIGEEA_InvInsumos
-		{
-			get
-			{
-				return this._SIGEEA_InvInsumos;
-			}
-			set
-			{
-				this._SIGEEA_InvInsumos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_PedInsumo", Storage="_SIGEEA_PedInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
-		public EntitySet<SIGEEA_PedInsumo> SIGEEA_PedInsumos
-		{
-			get
-			{
-				return this._SIGEEA_PedInsumos;
-			}
-			set
-			{
-				this._SIGEEA_PedInsumos.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_Proveedor", Storage="_SIGEEA_Proveedors", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
-		public EntitySet<SIGEEA_Proveedor> SIGEEA_Proveedors
-		{
-			get
-			{
-				return this._SIGEEA_Proveedors;
-			}
-			set
-			{
-				this._SIGEEA_Proveedors.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SIGEEA_FacInsumos(SIGEEA_FacInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = this;
-		}
-		
-		private void detach_SIGEEA_FacInsumos(SIGEEA_FacInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = null;
-		}
-		
-		private void attach_SIGEEA_InvInsumos(SIGEEA_InvInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = this;
-		}
-		
-		private void detach_SIGEEA_InvInsumos(SIGEEA_InvInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = null;
-		}
-		
-		private void attach_SIGEEA_PedInsumos(SIGEEA_PedInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = this;
-		}
-		
-		private void detach_SIGEEA_PedInsumos(SIGEEA_PedInsumo entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = null;
-		}
-		
-		private void attach_SIGEEA_Proveedors(SIGEEA_Proveedor entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = this;
-		}
-		
-		private void detach_SIGEEA_Proveedors(SIGEEA_Proveedor entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Insumo = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIGEEA_InvInsumo")]
 	public partial class SIGEEA_InvInsumo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -10545,9 +10512,9 @@ namespace SIGEEA_BO
 		
 		private int _FK_UniMedida;
 		
-		private EntityRef<SIGEEA_Insumo> _SIGEEA_Insumo;
-		
 		private EntityRef<SIGEEA_UniMedida> _SIGEEA_UniMedida;
+		
+		private EntityRef<SIGEEA_Insumo> _SIGEEA_Insumo;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -10565,8 +10532,8 @@ namespace SIGEEA_BO
 		
 		public SIGEEA_InvInsumo()
 		{
-			this._SIGEEA_Insumo = default(EntityRef<SIGEEA_Insumo>);
 			this._SIGEEA_UniMedida = default(EntityRef<SIGEEA_UniMedida>);
+			this._SIGEEA_Insumo = default(EntityRef<SIGEEA_Insumo>);
 			OnCreated();
 		}
 		
@@ -10658,40 +10625,6 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_InvInsumo", Storage="_SIGEEA_Insumo", ThisKey="FK_Id_Insumo", OtherKey="PK_Id_Insumo", IsForeignKey=true)]
-		public SIGEEA_Insumo SIGEEA_Insumo
-		{
-			get
-			{
-				return this._SIGEEA_Insumo.Entity;
-			}
-			set
-			{
-				SIGEEA_Insumo previousValue = this._SIGEEA_Insumo.Entity;
-				if (((previousValue != value) 
-							|| (this._SIGEEA_Insumo.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SIGEEA_Insumo.Entity = null;
-						previousValue.SIGEEA_InvInsumos.Remove(this);
-					}
-					this._SIGEEA_Insumo.Entity = value;
-					if ((value != null))
-					{
-						value.SIGEEA_InvInsumos.Add(this);
-						this._FK_Id_Insumo = value.PK_Id_Insumo;
-					}
-					else
-					{
-						this._FK_Id_Insumo = default(int);
-					}
-					this.SendPropertyChanged("SIGEEA_Insumo");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_UniMedida_SIGEEA_InvInsumo", Storage="_SIGEEA_UniMedida", ThisKey="FK_UniMedida", OtherKey="PK_Id_UniMedida", IsForeignKey=true)]
 		public SIGEEA_UniMedida SIGEEA_UniMedida
 		{
@@ -10722,6 +10655,40 @@ namespace SIGEEA_BO
 						this._FK_UniMedida = default(int);
 					}
 					this.SendPropertyChanged("SIGEEA_UniMedida");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_InvInsumo", Storage="_SIGEEA_Insumo", ThisKey="FK_Id_Insumo", OtherKey="PK_Id_Insumo", IsForeignKey=true)]
+		public SIGEEA_Insumo SIGEEA_Insumo
+		{
+			get
+			{
+				return this._SIGEEA_Insumo.Entity;
+			}
+			set
+			{
+				SIGEEA_Insumo previousValue = this._SIGEEA_Insumo.Entity;
+				if (((previousValue != value) 
+							|| (this._SIGEEA_Insumo.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SIGEEA_Insumo.Entity = null;
+						previousValue.SIGEEA_InvInsumos.Remove(this);
+					}
+					this._SIGEEA_Insumo.Entity = value;
+					if ((value != null))
+					{
+						value.SIGEEA_InvInsumos.Add(this);
+						this._FK_Id_Insumo = value.PK_Id_Insumo;
+					}
+					else
+					{
+						this._FK_Id_Insumo = default(int);
+					}
+					this.SendPropertyChanged("SIGEEA_Insumo");
 				}
 			}
 		}
@@ -12867,6 +12834,8 @@ namespace SIGEEA_BO
 		
 		private EntitySet<SIGEEA_Cliente> _SIGEEA_Clientes;
 		
+		private EntitySet<SIGEEA_Contacto> _SIGEEA_Contactos;
+		
 		private EntitySet<SIGEEA_Cuenta> _SIGEEA_Cuentas;
 		
 		private EntitySet<SIGEEA_Empleado> _SIGEEA_Empleados;
@@ -12878,8 +12847,6 @@ namespace SIGEEA_BO
 		private EntitySet<SIGEEA_Proveedor> _SIGEEA_Proveedors1;
 		
 		private EntitySet<SIGEEA_Representante> _SIGEEA_Representantes;
-		
-		private EntitySet<SIGEEA_Contacto> _SIGEEA_Contactos;
 		
 		private EntityRef<SIGEEA_Direccion> _SIGEEA_Direccion;
 		
@@ -12919,13 +12886,13 @@ namespace SIGEEA_BO
 		{
 			this._SIGEEA_Asociados = new EntitySet<SIGEEA_Asociado>(new Action<SIGEEA_Asociado>(this.attach_SIGEEA_Asociados), new Action<SIGEEA_Asociado>(this.detach_SIGEEA_Asociados));
 			this._SIGEEA_Clientes = new EntitySet<SIGEEA_Cliente>(new Action<SIGEEA_Cliente>(this.attach_SIGEEA_Clientes), new Action<SIGEEA_Cliente>(this.detach_SIGEEA_Clientes));
+			this._SIGEEA_Contactos = new EntitySet<SIGEEA_Contacto>(new Action<SIGEEA_Contacto>(this.attach_SIGEEA_Contactos), new Action<SIGEEA_Contacto>(this.detach_SIGEEA_Contactos));
 			this._SIGEEA_Cuentas = new EntitySet<SIGEEA_Cuenta>(new Action<SIGEEA_Cuenta>(this.attach_SIGEEA_Cuentas), new Action<SIGEEA_Cuenta>(this.detach_SIGEEA_Cuentas));
 			this._SIGEEA_Empleados = new EntitySet<SIGEEA_Empleado>(new Action<SIGEEA_Empleado>(this.attach_SIGEEA_Empleados), new Action<SIGEEA_Empleado>(this.detach_SIGEEA_Empleados));
 			this._SIGEEA_Familiars = new EntitySet<SIGEEA_Familiar>(new Action<SIGEEA_Familiar>(this.attach_SIGEEA_Familiars), new Action<SIGEEA_Familiar>(this.detach_SIGEEA_Familiars));
 			this._SIGEEA_Proveedors = new EntitySet<SIGEEA_Proveedor>(new Action<SIGEEA_Proveedor>(this.attach_SIGEEA_Proveedors), new Action<SIGEEA_Proveedor>(this.detach_SIGEEA_Proveedors));
 			this._SIGEEA_Proveedors1 = new EntitySet<SIGEEA_Proveedor>(new Action<SIGEEA_Proveedor>(this.attach_SIGEEA_Proveedors1), new Action<SIGEEA_Proveedor>(this.detach_SIGEEA_Proveedors1));
 			this._SIGEEA_Representantes = new EntitySet<SIGEEA_Representante>(new Action<SIGEEA_Representante>(this.attach_SIGEEA_Representantes), new Action<SIGEEA_Representante>(this.detach_SIGEEA_Representantes));
-			this._SIGEEA_Contactos = new EntitySet<SIGEEA_Contacto>(new Action<SIGEEA_Contacto>(this.attach_SIGEEA_Contactos), new Action<SIGEEA_Contacto>(this.detach_SIGEEA_Contactos));
 			this._SIGEEA_Direccion = default(EntityRef<SIGEEA_Direccion>);
 			this._SIGEEA_Nacionalidad = default(EntityRef<SIGEEA_Nacionalidad>);
 			OnCreated();
@@ -13205,6 +13172,19 @@ namespace SIGEEA_BO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Persona_SIGEEA_Contacto", Storage="_SIGEEA_Contactos", ThisKey="PK_Id_Persona", OtherKey="FK_Id_Persona")]
+		public EntitySet<SIGEEA_Contacto> SIGEEA_Contactos
+		{
+			get
+			{
+				return this._SIGEEA_Contactos;
+			}
+			set
+			{
+				this._SIGEEA_Contactos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Persona_SIGEEA_Cuenta", Storage="_SIGEEA_Cuentas", ThisKey="PK_Id_Persona", OtherKey="FK_Id_Persona")]
 		public EntitySet<SIGEEA_Cuenta> SIGEEA_Cuentas
 		{
@@ -13280,19 +13260,6 @@ namespace SIGEEA_BO
 			set
 			{
 				this._SIGEEA_Representantes.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Persona_SIGEEA_Contacto", Storage="_SIGEEA_Contactos", ThisKey="PK_Id_Persona", OtherKey="FK_Id_Persona")]
-		public EntitySet<SIGEEA_Contacto> SIGEEA_Contactos
-		{
-			get
-			{
-				return this._SIGEEA_Contactos;
-			}
-			set
-			{
-				this._SIGEEA_Contactos.Assign(value);
 			}
 		}
 		
@@ -13408,6 +13375,18 @@ namespace SIGEEA_BO
 			entity.SIGEEA_Persona = null;
 		}
 		
+		private void attach_SIGEEA_Contactos(SIGEEA_Contacto entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Persona = this;
+		}
+		
+		private void detach_SIGEEA_Contactos(SIGEEA_Contacto entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Persona = null;
+		}
+		
 		private void attach_SIGEEA_Cuentas(SIGEEA_Cuenta entity)
 		{
 			this.SendPropertyChanging();
@@ -13475,18 +13454,6 @@ namespace SIGEEA_BO
 		}
 		
 		private void detach_SIGEEA_Representantes(SIGEEA_Representante entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Persona = null;
-		}
-		
-		private void attach_SIGEEA_Contactos(SIGEEA_Contacto entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Persona = this;
-		}
-		
-		private void detach_SIGEEA_Contactos(SIGEEA_Contacto entity)
 		{
 			this.SendPropertyChanging();
 			entity.SIGEEA_Persona = null;
@@ -15786,198 +15753,180 @@ namespace SIGEEA_BO
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIGEEA_Contacto")]
-	public partial class SIGEEA_Contacto : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SIGEEA_Insumo")]
+	public partial class SIGEEA_Insumo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _PK_Id_Contacto;
+		private int _PK_Id_Insumo;
 		
-		private string _Dato_Contacto;
+		private string _Nombre_Insumo;
 		
-		private int _FK_Id_TipContacto;
+		private string _Descripcion_Insumo;
 		
-		private int _FK_Id_Persona;
+		private bool _Estado_Insumo;
 		
-		private EntityRef<SIGEEA_Persona> _SIGEEA_Persona;
+		private EntitySet<SIGEEA_FacInsumo> _SIGEEA_FacInsumos;
 		
-		private EntityRef<SIGEEA_TipContacto> _SIGEEA_TipContacto;
+		private EntitySet<SIGEEA_InvInsumo> _SIGEEA_InvInsumos;
+		
+		private EntitySet<SIGEEA_PedInsumo> _SIGEEA_PedInsumos;
+		
+		private EntitySet<SIGEEA_Proveedor> _SIGEEA_Proveedors;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnPK_Id_ContactoChanging(int value);
-    partial void OnPK_Id_ContactoChanged();
-    partial void OnDato_ContactoChanging(string value);
-    partial void OnDato_ContactoChanged();
-    partial void OnFK_Id_TipContactoChanging(int value);
-    partial void OnFK_Id_TipContactoChanged();
-    partial void OnFK_Id_PersonaChanging(int value);
-    partial void OnFK_Id_PersonaChanged();
+    partial void OnPK_Id_InsumoChanging(int value);
+    partial void OnPK_Id_InsumoChanged();
+    partial void OnNombre_InsumoChanging(string value);
+    partial void OnNombre_InsumoChanged();
+    partial void OnDescripcion_InsumoChanging(string value);
+    partial void OnDescripcion_InsumoChanged();
+    partial void OnEstado_InsumoChanging(bool value);
+    partial void OnEstado_InsumoChanged();
     #endregion
 		
-		public SIGEEA_Contacto()
+		public SIGEEA_Insumo()
 		{
-			this._SIGEEA_Persona = default(EntityRef<SIGEEA_Persona>);
-			this._SIGEEA_TipContacto = default(EntityRef<SIGEEA_TipContacto>);
+			this._SIGEEA_FacInsumos = new EntitySet<SIGEEA_FacInsumo>(new Action<SIGEEA_FacInsumo>(this.attach_SIGEEA_FacInsumos), new Action<SIGEEA_FacInsumo>(this.detach_SIGEEA_FacInsumos));
+			this._SIGEEA_InvInsumos = new EntitySet<SIGEEA_InvInsumo>(new Action<SIGEEA_InvInsumo>(this.attach_SIGEEA_InvInsumos), new Action<SIGEEA_InvInsumo>(this.detach_SIGEEA_InvInsumos));
+			this._SIGEEA_PedInsumos = new EntitySet<SIGEEA_PedInsumo>(new Action<SIGEEA_PedInsumo>(this.attach_SIGEEA_PedInsumos), new Action<SIGEEA_PedInsumo>(this.detach_SIGEEA_PedInsumos));
+			this._SIGEEA_Proveedors = new EntitySet<SIGEEA_Proveedor>(new Action<SIGEEA_Proveedor>(this.attach_SIGEEA_Proveedors), new Action<SIGEEA_Proveedor>(this.detach_SIGEEA_Proveedors));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Contacto", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PK_Id_Contacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Insumo", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PK_Id_Insumo
 		{
 			get
 			{
-				return this._PK_Id_Contacto;
+				return this._PK_Id_Insumo;
 			}
 			set
 			{
-				if ((this._PK_Id_Contacto != value))
+				if ((this._PK_Id_Insumo != value))
 				{
-					this.OnPK_Id_ContactoChanging(value);
+					this.OnPK_Id_InsumoChanging(value);
 					this.SendPropertyChanging();
-					this._PK_Id_Contacto = value;
-					this.SendPropertyChanged("PK_Id_Contacto");
-					this.OnPK_Id_ContactoChanged();
+					this._PK_Id_Insumo = value;
+					this.SendPropertyChanged("PK_Id_Insumo");
+					this.OnPK_Id_InsumoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dato_Contacto", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Dato_Contacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Insumo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Nombre_Insumo
 		{
 			get
 			{
-				return this._Dato_Contacto;
+				return this._Nombre_Insumo;
 			}
 			set
 			{
-				if ((this._Dato_Contacto != value))
+				if ((this._Nombre_Insumo != value))
 				{
-					this.OnDato_ContactoChanging(value);
+					this.OnNombre_InsumoChanging(value);
 					this.SendPropertyChanging();
-					this._Dato_Contacto = value;
-					this.SendPropertyChanged("Dato_Contacto");
-					this.OnDato_ContactoChanged();
+					this._Nombre_Insumo = value;
+					this.SendPropertyChanged("Nombre_Insumo");
+					this.OnNombre_InsumoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_Id_TipContacto", DbType="Int NOT NULL")]
-		public int FK_Id_TipContacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Insumo", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Descripcion_Insumo
 		{
 			get
 			{
-				return this._FK_Id_TipContacto;
+				return this._Descripcion_Insumo;
 			}
 			set
 			{
-				if ((this._FK_Id_TipContacto != value))
+				if ((this._Descripcion_Insumo != value))
 				{
-					if (this._SIGEEA_TipContacto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFK_Id_TipContactoChanging(value);
+					this.OnDescripcion_InsumoChanging(value);
 					this.SendPropertyChanging();
-					this._FK_Id_TipContacto = value;
-					this.SendPropertyChanged("FK_Id_TipContacto");
-					this.OnFK_Id_TipContactoChanged();
+					this._Descripcion_Insumo = value;
+					this.SendPropertyChanged("Descripcion_Insumo");
+					this.OnDescripcion_InsumoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FK_Id_Persona", DbType="Int NOT NULL")]
-		public int FK_Id_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Insumo", DbType="Bit NOT NULL")]
+		public bool Estado_Insumo
 		{
 			get
 			{
-				return this._FK_Id_Persona;
+				return this._Estado_Insumo;
 			}
 			set
 			{
-				if ((this._FK_Id_Persona != value))
+				if ((this._Estado_Insumo != value))
 				{
-					if (this._SIGEEA_Persona.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnFK_Id_PersonaChanging(value);
+					this.OnEstado_InsumoChanging(value);
 					this.SendPropertyChanging();
-					this._FK_Id_Persona = value;
-					this.SendPropertyChanged("FK_Id_Persona");
-					this.OnFK_Id_PersonaChanged();
+					this._Estado_Insumo = value;
+					this.SendPropertyChanged("Estado_Insumo");
+					this.OnEstado_InsumoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Persona_SIGEEA_Contacto", Storage="_SIGEEA_Persona", ThisKey="FK_Id_Persona", OtherKey="PK_Id_Persona", IsForeignKey=true)]
-		public SIGEEA_Persona SIGEEA_Persona
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_FacInsumo", Storage="_SIGEEA_FacInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
+		public EntitySet<SIGEEA_FacInsumo> SIGEEA_FacInsumos
 		{
 			get
 			{
-				return this._SIGEEA_Persona.Entity;
+				return this._SIGEEA_FacInsumos;
 			}
 			set
 			{
-				SIGEEA_Persona previousValue = this._SIGEEA_Persona.Entity;
-				if (((previousValue != value) 
-							|| (this._SIGEEA_Persona.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SIGEEA_Persona.Entity = null;
-						previousValue.SIGEEA_Contactos.Remove(this);
-					}
-					this._SIGEEA_Persona.Entity = value;
-					if ((value != null))
-					{
-						value.SIGEEA_Contactos.Add(this);
-						this._FK_Id_Persona = value.PK_Id_Persona;
-					}
-					else
-					{
-						this._FK_Id_Persona = default(int);
-					}
-					this.SendPropertyChanged("SIGEEA_Persona");
-				}
+				this._SIGEEA_FacInsumos.Assign(value);
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_TipContacto_SIGEEA_Contacto", Storage="_SIGEEA_TipContacto", ThisKey="FK_Id_TipContacto", OtherKey="PK_Id_TipContacto", IsForeignKey=true)]
-		public SIGEEA_TipContacto SIGEEA_TipContacto
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_InvInsumo", Storage="_SIGEEA_InvInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
+		public EntitySet<SIGEEA_InvInsumo> SIGEEA_InvInsumos
 		{
 			get
 			{
-				return this._SIGEEA_TipContacto.Entity;
+				return this._SIGEEA_InvInsumos;
 			}
 			set
 			{
-				SIGEEA_TipContacto previousValue = this._SIGEEA_TipContacto.Entity;
-				if (((previousValue != value) 
-							|| (this._SIGEEA_TipContacto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SIGEEA_TipContacto.Entity = null;
-						previousValue.SIGEEA_Contactos.Remove(this);
-					}
-					this._SIGEEA_TipContacto.Entity = value;
-					if ((value != null))
-					{
-						value.SIGEEA_Contactos.Add(this);
-						this._FK_Id_TipContacto = value.PK_Id_TipContacto;
-					}
-					else
-					{
-						this._FK_Id_TipContacto = default(int);
-					}
-					this.SendPropertyChanged("SIGEEA_TipContacto");
-				}
+				this._SIGEEA_InvInsumos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_PedInsumo", Storage="_SIGEEA_PedInsumos", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
+		public EntitySet<SIGEEA_PedInsumo> SIGEEA_PedInsumos
+		{
+			get
+			{
+				return this._SIGEEA_PedInsumos;
+			}
+			set
+			{
+				this._SIGEEA_PedInsumos.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Insumo_SIGEEA_Proveedor", Storage="_SIGEEA_Proveedors", ThisKey="PK_Id_Insumo", OtherKey="FK_Id_Insumo")]
+		public EntitySet<SIGEEA_Proveedor> SIGEEA_Proveedors
+		{
+			get
+			{
+				return this._SIGEEA_Proveedors;
+			}
+			set
+			{
+				this._SIGEEA_Proveedors.Assign(value);
 			}
 		}
 		
@@ -16000,20 +15949,88 @@ namespace SIGEEA_BO
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_SIGEEA_FacInsumos(SIGEEA_FacInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = this;
+		}
+		
+		private void detach_SIGEEA_FacInsumos(SIGEEA_FacInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = null;
+		}
+		
+		private void attach_SIGEEA_InvInsumos(SIGEEA_InvInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = this;
+		}
+		
+		private void detach_SIGEEA_InvInsumos(SIGEEA_InvInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = null;
+		}
+		
+		private void attach_SIGEEA_PedInsumos(SIGEEA_PedInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = this;
+		}
+		
+		private void detach_SIGEEA_PedInsumos(SIGEEA_PedInsumo entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = null;
+		}
+		
+		private void attach_SIGEEA_Proveedors(SIGEEA_Proveedor entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = this;
+		}
+		
+		private void detach_SIGEEA_Proveedors(SIGEEA_Proveedor entity)
+		{
+			this.SendPropertyChanging();
+			entity.SIGEEA_Insumo = null;
+		}
+	}
+	
+	public partial class SIGEEA_spAutenticaPersonaResult
+	{
+		
+		private int _PK_Id_Persona;
+		
+		public SIGEEA_spAutenticaPersonaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
+		public int PK_Id_Persona
+		{
+			get
+			{
+				return this._PK_Id_Persona;
+			}
+			set
+			{
+				if ((this._PK_Id_Persona != value))
+				{
+					this._PK_Id_Persona = value;
+				}
+			}
+		}
 	}
 	
 	public partial class SIGEEA_spObtenerAsociadoResult
 	{
 		
-		private string _PriNombre_Persona;
+		private string _CedJuridica_Persona;
 		
-		private string _SegNombre_Persona;
-		
-		private string _PriApellido_Persona;
-		
-		private string _SegApellido_Persona;
-		
-		private string _Genero_Persona;
+		private string _CedParticular_Persona;
 		
 		private System.DateTime _FecNacimiento_Persona;
 		
@@ -16021,94 +16038,52 @@ namespace SIGEEA_BO
 		
 		private int _FK_Id_Nacionalidad;
 		
+		private string _Genero_Persona;
+		
 		private int _PK_Id_Persona;
 		
+		private string _PriApellido_Persona;
+		
+		private string _PriNombre_Persona;
+		
+		private string _SegApellido_Persona;
+		
+		private string _SegNombre_Persona;
+		
 		private bool _Tipo_Persona;
-		
-		private string _CedJuridica_Persona;
-		
-		private string _CedParticular_Persona;
 		
 		public SIGEEA_spObtenerAsociadoResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriNombre_Persona", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string PriNombre_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CedJuridica_Persona", DbType="VarChar(30)")]
+		public string CedJuridica_Persona
 		{
 			get
 			{
-				return this._PriNombre_Persona;
+				return this._CedJuridica_Persona;
 			}
 			set
 			{
-				if ((this._PriNombre_Persona != value))
+				if ((this._CedJuridica_Persona != value))
 				{
-					this._PriNombre_Persona = value;
+					this._CedJuridica_Persona = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegNombre_Persona", DbType="VarChar(30)")]
-		public string SegNombre_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CedParticular_Persona", DbType="VarChar(15)")]
+		public string CedParticular_Persona
 		{
 			get
 			{
-				return this._SegNombre_Persona;
+				return this._CedParticular_Persona;
 			}
 			set
 			{
-				if ((this._SegNombre_Persona != value))
+				if ((this._CedParticular_Persona != value))
 				{
-					this._SegNombre_Persona = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriApellido_Persona", DbType="VarChar(30)")]
-		public string PriApellido_Persona
-		{
-			get
-			{
-				return this._PriApellido_Persona;
-			}
-			set
-			{
-				if ((this._PriApellido_Persona != value))
-				{
-					this._PriApellido_Persona = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegApellido_Persona", DbType="VarChar(30)")]
-		public string SegApellido_Persona
-		{
-			get
-			{
-				return this._SegApellido_Persona;
-			}
-			set
-			{
-				if ((this._SegApellido_Persona != value))
-				{
-					this._SegApellido_Persona = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero_Persona", DbType="VarChar(30)")]
-		public string Genero_Persona
-		{
-			get
-			{
-				return this._Genero_Persona;
-			}
-			set
-			{
-				if ((this._Genero_Persona != value))
-				{
-					this._Genero_Persona = value;
+					this._CedParticular_Persona = value;
 				}
 			}
 		}
@@ -16161,6 +16136,22 @@ namespace SIGEEA_BO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero_Persona", DbType="VarChar(30)")]
+		public string Genero_Persona
+		{
+			get
+			{
+				return this._Genero_Persona;
+			}
+			set
+			{
+				if ((this._Genero_Persona != value))
+				{
+					this._Genero_Persona = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
 		public int PK_Id_Persona
 		{
@@ -16173,6 +16164,70 @@ namespace SIGEEA_BO
 				if ((this._PK_Id_Persona != value))
 				{
 					this._PK_Id_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriApellido_Persona", DbType="VarChar(30)")]
+		public string PriApellido_Persona
+		{
+			get
+			{
+				return this._PriApellido_Persona;
+			}
+			set
+			{
+				if ((this._PriApellido_Persona != value))
+				{
+					this._PriApellido_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriNombre_Persona", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string PriNombre_Persona
+		{
+			get
+			{
+				return this._PriNombre_Persona;
+			}
+			set
+			{
+				if ((this._PriNombre_Persona != value))
+				{
+					this._PriNombre_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegApellido_Persona", DbType="VarChar(30)")]
+		public string SegApellido_Persona
+		{
+			get
+			{
+				return this._SegApellido_Persona;
+			}
+			set
+			{
+				if ((this._SegApellido_Persona != value))
+				{
+					this._SegApellido_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegNombre_Persona", DbType="VarChar(30)")]
+		public string SegNombre_Persona
+		{
+			get
+			{
+				return this._SegNombre_Persona;
+			}
+			set
+			{
+				if ((this._SegNombre_Persona != value))
+				{
+					this._SegNombre_Persona = value;
 				}
 			}
 		}
@@ -16192,35 +16247,501 @@ namespace SIGEEA_BO
 				}
 			}
 		}
+	}
+	
+	public partial class SIGEEA_spObtenerCantonesResult
+	{
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CedJuridica_Persona", DbType="VarChar(30)")]
-		public string CedJuridica_Persona
+		private string _Nombre_Canton;
+		
+		public SIGEEA_spObtenerCantonesResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Canton
 		{
 			get
 			{
-				return this._CedJuridica_Persona;
+				return this._Nombre_Canton;
 			}
 			set
 			{
-				if ((this._CedJuridica_Persona != value))
+				if ((this._Nombre_Canton != value))
 				{
-					this._CedJuridica_Persona = value;
+					this._Nombre_Canton = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerContactoResult
+	{
+		
+		private int _PK_Id_Persona;
+		
+		private int _PK_Id_Contacto;
+		
+		private string _Dato_Contacto;
+		
+		private string _Nombre_TipContacto;
+		
+		public SIGEEA_spObtenerContactoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
+		public int PK_Id_Persona
+		{
+			get
+			{
+				return this._PK_Id_Persona;
+			}
+			set
+			{
+				if ((this._PK_Id_Persona != value))
+				{
+					this._PK_Id_Persona = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CedParticular_Persona", DbType="VarChar(15)")]
-		public string CedParticular_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Contacto", DbType="Int NOT NULL")]
+		public int PK_Id_Contacto
 		{
 			get
 			{
-				return this._CedParticular_Persona;
+				return this._PK_Id_Contacto;
 			}
 			set
 			{
-				if ((this._CedParticular_Persona != value))
+				if ((this._PK_Id_Contacto != value))
 				{
-					this._CedParticular_Persona = value;
+					this._PK_Id_Contacto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dato_Contacto", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Dato_Contacto
+		{
+			get
+			{
+				return this._Dato_Contacto;
+			}
+			set
+			{
+				if ((this._Dato_Contacto != value))
+				{
+					this._Dato_Contacto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_TipContacto", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string Nombre_TipContacto
+		{
+			get
+			{
+				return this._Nombre_TipContacto;
+			}
+			set
+			{
+				if ((this._Nombre_TipContacto != value))
+				{
+					this._Nombre_TipContacto = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerDireccionAsociadoResult
+	{
+		
+		private int _PK_Id_Persona;
+		
+		private int _PK_Id_Asociado;
+		
+		private string _Detalles_Direccion;
+		
+		private string _Nombre_Distrito;
+		
+		private string _Nombre_Canton;
+		
+		private string _Nombre_Provincia;
+		
+		public SIGEEA_spObtenerDireccionAsociadoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
+		public int PK_Id_Persona
+		{
+			get
+			{
+				return this._PK_Id_Persona;
+			}
+			set
+			{
+				if ((this._PK_Id_Persona != value))
+				{
+					this._PK_Id_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Asociado", DbType="Int NOT NULL")]
+		public int PK_Id_Asociado
+		{
+			get
+			{
+				return this._PK_Id_Asociado;
+			}
+			set
+			{
+				if ((this._PK_Id_Asociado != value))
+				{
+					this._PK_Id_Asociado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Detalles_Direccion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Detalles_Direccion
+		{
+			get
+			{
+				return this._Detalles_Direccion;
+			}
+			set
+			{
+				if ((this._Detalles_Direccion != value))
+				{
+					this._Detalles_Direccion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Distrito
+		{
+			get
+			{
+				return this._Nombre_Distrito;
+			}
+			set
+			{
+				if ((this._Nombre_Distrito != value))
+				{
+					this._Nombre_Distrito = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Canton
+		{
+			get
+			{
+				return this._Nombre_Canton;
+			}
+			set
+			{
+				if ((this._Nombre_Canton != value))
+				{
+					this._Nombre_Canton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Provincia", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre_Provincia
+		{
+			get
+			{
+				return this._Nombre_Provincia;
+			}
+			set
+			{
+				if ((this._Nombre_Provincia != value))
+				{
+					this._Nombre_Provincia = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerDireccionEmpleadoResult
+	{
+		
+		private int _PK_Id_Persona;
+		
+		private int _PK_Id_Empleado;
+		
+		private string _Detalles_Direccion;
+		
+		private string _Nombre_Distrito;
+		
+		private string _Nombre_Canton;
+		
+		private string _Nombre_Provincia;
+		
+		public SIGEEA_spObtenerDireccionEmpleadoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
+		public int PK_Id_Persona
+		{
+			get
+			{
+				return this._PK_Id_Persona;
+			}
+			set
+			{
+				if ((this._PK_Id_Persona != value))
+				{
+					this._PK_Id_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Empleado", DbType="Int NOT NULL")]
+		public int PK_Id_Empleado
+		{
+			get
+			{
+				return this._PK_Id_Empleado;
+			}
+			set
+			{
+				if ((this._PK_Id_Empleado != value))
+				{
+					this._PK_Id_Empleado = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Detalles_Direccion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Detalles_Direccion
+		{
+			get
+			{
+				return this._Detalles_Direccion;
+			}
+			set
+			{
+				if ((this._Detalles_Direccion != value))
+				{
+					this._Detalles_Direccion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Distrito
+		{
+			get
+			{
+				return this._Nombre_Distrito;
+			}
+			set
+			{
+				if ((this._Nombre_Distrito != value))
+				{
+					this._Nombre_Distrito = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Canton
+		{
+			get
+			{
+				return this._Nombre_Canton;
+			}
+			set
+			{
+				if ((this._Nombre_Canton != value))
+				{
+					this._Nombre_Canton = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Provincia", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre_Provincia
+		{
+			get
+			{
+				return this._Nombre_Provincia;
+			}
+			set
+			{
+				if ((this._Nombre_Provincia != value))
+				{
+					this._Nombre_Provincia = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerDistritosResult
+	{
+		
+		private string _Nombre_Distrito;
+		
+		public SIGEEA_spObtenerDistritosResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Nombre_Distrito
+		{
+			get
+			{
+				return this._Nombre_Distrito;
+			}
+			set
+			{
+				if ((this._Nombre_Distrito != value))
+				{
+					this._Nombre_Distrito = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerInsumoResult
+	{
+		
+		private int _PK_Id_Insumo;
+		
+		private string _Nombre_Insumo;
+		
+		private double _MonTotal_Insumo;
+		
+		private string _Descripcion_Insumo;
+		
+		private bool _Estado_Insumo;
+		
+		private double _Cantidad_InvInsumo;
+		
+		private string _Nombre_UniMedida;
+		
+		public SIGEEA_spObtenerInsumoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Insumo", DbType="Int NOT NULL")]
+		public int PK_Id_Insumo
+		{
+			get
+			{
+				return this._PK_Id_Insumo;
+			}
+			set
+			{
+				if ((this._PK_Id_Insumo != value))
+				{
+					this._PK_Id_Insumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Insumo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Nombre_Insumo
+		{
+			get
+			{
+				return this._Nombre_Insumo;
+			}
+			set
+			{
+				if ((this._Nombre_Insumo != value))
+				{
+					this._Nombre_Insumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonTotal_Insumo", DbType="Float NOT NULL")]
+		public double MonTotal_Insumo
+		{
+			get
+			{
+				return this._MonTotal_Insumo;
+			}
+			set
+			{
+				if ((this._MonTotal_Insumo != value))
+				{
+					this._MonTotal_Insumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Insumo", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Descripcion_Insumo
+		{
+			get
+			{
+				return this._Descripcion_Insumo;
+			}
+			set
+			{
+				if ((this._Descripcion_Insumo != value))
+				{
+					this._Descripcion_Insumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Insumo", DbType="Bit NOT NULL")]
+		public bool Estado_Insumo
+		{
+			get
+			{
+				return this._Estado_Insumo;
+			}
+			set
+			{
+				if ((this._Estado_Insumo != value))
+				{
+					this._Estado_Insumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad_InvInsumo", DbType="Float NOT NULL")]
+		public double Cantidad_InvInsumo
+		{
+			get
+			{
+				return this._Cantidad_InvInsumo;
+			}
+			set
+			{
+				if ((this._Cantidad_InvInsumo != value))
+				{
+					this._Cantidad_InvInsumo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_UniMedida", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string Nombre_UniMedida
+		{
+			get
+			{
+				return this._Nombre_UniMedida;
+			}
+			set
+			{
+				if ((this._Nombre_UniMedida != value))
+				{
+					this._Nombre_UniMedida = value;
 				}
 			}
 		}
@@ -16522,308 +17043,6 @@ namespace SIGEEA_BO
 		}
 	}
 	
-	public partial class SIGEEA_spObtenerInsumoResult
-	{
-		
-		private int _PK_Id_Insumo;
-		
-		private string _Nombre_Insumo;
-		
-		private double _MonTotal_Insumo;
-		
-		private string _Descripcion_Insumo;
-		
-		private bool _Estado_Insumo;
-		
-		private double _Cantidad_InvInsumo;
-		
-		private string _Nombre_UniMedida;
-		
-		public SIGEEA_spObtenerInsumoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Insumo", DbType="Int NOT NULL")]
-		public int PK_Id_Insumo
-		{
-			get
-			{
-				return this._PK_Id_Insumo;
-			}
-			set
-			{
-				if ((this._PK_Id_Insumo != value))
-				{
-					this._PK_Id_Insumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Insumo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Nombre_Insumo
-		{
-			get
-			{
-				return this._Nombre_Insumo;
-			}
-			set
-			{
-				if ((this._Nombre_Insumo != value))
-				{
-					this._Nombre_Insumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MonTotal_Insumo", DbType="Float NOT NULL")]
-		public double MonTotal_Insumo
-		{
-			get
-			{
-				return this._MonTotal_Insumo;
-			}
-			set
-			{
-				if ((this._MonTotal_Insumo != value))
-				{
-					this._MonTotal_Insumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Insumo", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Descripcion_Insumo
-		{
-			get
-			{
-				return this._Descripcion_Insumo;
-			}
-			set
-			{
-				if ((this._Descripcion_Insumo != value))
-				{
-					this._Descripcion_Insumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Insumo", DbType="Bit NOT NULL")]
-		public bool Estado_Insumo
-		{
-			get
-			{
-				return this._Estado_Insumo;
-			}
-			set
-			{
-				if ((this._Estado_Insumo != value))
-				{
-					this._Estado_Insumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad_InvInsumo", DbType="Float NOT NULL")]
-		public double Cantidad_InvInsumo
-		{
-			get
-			{
-				return this._Cantidad_InvInsumo;
-			}
-			set
-			{
-				if ((this._Cantidad_InvInsumo != value))
-				{
-					this._Cantidad_InvInsumo = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_UniMedida", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
-		public string Nombre_UniMedida
-		{
-			get
-			{
-				return this._Nombre_UniMedida;
-			}
-			set
-			{
-				if ((this._Nombre_UniMedida != value))
-				{
-					this._Nombre_UniMedida = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SIGEEA_spObtenerDireccionAsociadoResult
-	{
-		
-		private int _PK_Id_Persona;
-		
-		private int _PK_Id_Asociado;
-		
-		private string _Detalles_Direccion;
-		
-		private string _Nombre_Distrito;
-		
-		private string _Nombre_Canton;
-		
-		private string _Nombre_Provincia;
-		
-		public SIGEEA_spObtenerDireccionAsociadoResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
-		public int PK_Id_Persona
-		{
-			get
-			{
-				return this._PK_Id_Persona;
-			}
-			set
-			{
-				if ((this._PK_Id_Persona != value))
-				{
-					this._PK_Id_Persona = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Asociado", DbType="Int NOT NULL")]
-		public int PK_Id_Asociado
-		{
-			get
-			{
-				return this._PK_Id_Asociado;
-			}
-			set
-			{
-				if ((this._PK_Id_Asociado != value))
-				{
-					this._PK_Id_Asociado = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Detalles_Direccion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Detalles_Direccion
-		{
-			get
-			{
-				return this._Detalles_Direccion;
-			}
-			set
-			{
-				if ((this._Detalles_Direccion != value))
-				{
-					this._Detalles_Direccion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Distrito
-		{
-			get
-			{
-				return this._Nombre_Distrito;
-			}
-			set
-			{
-				if ((this._Nombre_Distrito != value))
-				{
-					this._Nombre_Distrito = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Canton
-		{
-			get
-			{
-				return this._Nombre_Canton;
-			}
-			set
-			{
-				if ((this._Nombre_Canton != value))
-				{
-					this._Nombre_Canton = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Provincia", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nombre_Provincia
-		{
-			get
-			{
-				return this._Nombre_Provincia;
-			}
-			set
-			{
-				if ((this._Nombre_Provincia != value))
-				{
-					this._Nombre_Provincia = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SIGEEA_spObtenerCantonesResult
-	{
-		
-		private string _Nombre_Canton;
-		
-		public SIGEEA_spObtenerCantonesResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Canton
-		{
-			get
-			{
-				return this._Nombre_Canton;
-			}
-			set
-			{
-				if ((this._Nombre_Canton != value))
-				{
-					this._Nombre_Canton = value;
-				}
-			}
-		}
-	}
-	
-	public partial class SIGEEA_spObtenerDistritosResult
-	{
-		
-		private string _Nombre_Distrito;
-		
-		public SIGEEA_spObtenerDistritosResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Distrito
-		{
-			get
-			{
-				return this._Nombre_Distrito;
-			}
-			set
-			{
-				if ((this._Nombre_Distrito != value))
-				{
-					this._Nombre_Distrito = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SIGEEA_spObtenerEmpleadoResult
 	{
 		
@@ -17084,161 +17303,171 @@ namespace SIGEEA_BO
 		}
 	}
 	
-	public partial class SIGEEA_spObtenerDireccionEmpleadoResult
+	public partial class SIGEEA_spListarInsumosResult
 	{
 		
-		private int _PK_Id_Persona;
+		private string _Nombre_Insumo;
 		
-		private int _PK_Id_Empleado;
+		private bool _Estado_Insumo;
 		
-		private string _Detalles_Direccion;
+		private string _Descripcion_Insumo;
 		
-		private string _Nombre_Distrito;
+		private double _Cantidad_InvInsumo;
 		
-		private string _Nombre_Canton;
+		private string _Nombre_UniMedida;
 		
-		private string _Nombre_Provincia;
-		
-		public SIGEEA_spObtenerDireccionEmpleadoResult()
+		public SIGEEA_spListarInsumosResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
-		public int PK_Id_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Insumo", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Nombre_Insumo
 		{
 			get
 			{
-				return this._PK_Id_Persona;
+				return this._Nombre_Insumo;
 			}
 			set
 			{
-				if ((this._PK_Id_Persona != value))
+				if ((this._Nombre_Insumo != value))
 				{
-					this._PK_Id_Persona = value;
+					this._Nombre_Insumo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Empleado", DbType="Int NOT NULL")]
-		public int PK_Id_Empleado
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Insumo", DbType="Bit NOT NULL")]
+		public bool Estado_Insumo
 		{
 			get
 			{
-				return this._PK_Id_Empleado;
+				return this._Estado_Insumo;
 			}
 			set
 			{
-				if ((this._PK_Id_Empleado != value))
+				if ((this._Estado_Insumo != value))
 				{
-					this._PK_Id_Empleado = value;
+					this._Estado_Insumo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Detalles_Direccion", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Detalles_Direccion
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descripcion_Insumo", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string Descripcion_Insumo
 		{
 			get
 			{
-				return this._Detalles_Direccion;
+				return this._Descripcion_Insumo;
 			}
 			set
 			{
-				if ((this._Detalles_Direccion != value))
+				if ((this._Descripcion_Insumo != value))
 				{
-					this._Detalles_Direccion = value;
+					this._Descripcion_Insumo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Distrito", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Distrito
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cantidad_InvInsumo", DbType="Float NOT NULL")]
+		public double Cantidad_InvInsumo
 		{
 			get
 			{
-				return this._Nombre_Distrito;
+				return this._Cantidad_InvInsumo;
 			}
 			set
 			{
-				if ((this._Nombre_Distrito != value))
+				if ((this._Cantidad_InvInsumo != value))
 				{
-					this._Nombre_Distrito = value;
+					this._Cantidad_InvInsumo = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Canton", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Nombre_Canton
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_UniMedida", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string Nombre_UniMedida
 		{
 			get
 			{
-				return this._Nombre_Canton;
+				return this._Nombre_UniMedida;
 			}
 			set
 			{
-				if ((this._Nombre_Canton != value))
+				if ((this._Nombre_UniMedida != value))
 				{
-					this._Nombre_Canton = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_Provincia", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nombre_Provincia
-		{
-			get
-			{
-				return this._Nombre_Provincia;
-			}
-			set
-			{
-				if ((this._Nombre_Provincia != value))
-				{
-					this._Nombre_Provincia = value;
+					this._Nombre_UniMedida = value;
 				}
 			}
 		}
 	}
 	
-	public partial class SIGEEA_spAutenticaPersonaResult
+	public partial class SIGEEA_spObtenerUnidadesMedidaResult
 	{
 		
-		private int _PK_Id_Persona;
+		private string _Nombre_UniMedida;
 		
-		public SIGEEA_spAutenticaPersonaResult()
+		public SIGEEA_spObtenerUnidadesMedidaResult()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
-		public int PK_Id_Persona
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_UniMedida", DbType="VarChar(25) NOT NULL", CanBeNull=false)]
+		public string Nombre_UniMedida
 		{
 			get
 			{
-				return this._PK_Id_Persona;
+				return this._Nombre_UniMedida;
 			}
 			set
 			{
-				if ((this._PK_Id_Persona != value))
+				if ((this._Nombre_UniMedida != value))
 				{
-					this._PK_Id_Persona = value;
+					this._Nombre_UniMedida = value;
 				}
 			}
 		}
 	}
 	
-	public partial class SIGEEA_spObtenerContactoResult
+	public partial class SIGEEA_spListarClienteResult
 	{
+		
+		private string _CedParticular_Persona;
 		
 		private int _PK_Id_Persona;
 		
-		private int _PK_Id_Contacto;
+		private string _PriApellido_Persona;
 		
-		private string _Dato_Contacto;
+		private string _PriNombre_Persona;
 		
-		private string _Nombre_TipContacto;
+		private string _SegApellido_Persona;
 		
-		public SIGEEA_spObtenerContactoResult()
+		private string _SegNombre_Persona;
+		
+		private int _PK_Id_Cliente;
+		
+		private bool _Estado_Cliente;
+		
+		private double _Limite_CatCliente;
+		
+		private string _nombreCompleto;
+		
+		public SIGEEA_spListarClienteResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CedParticular_Persona", DbType="VarChar(15)")]
+		public string CedParticular_Persona
+		{
+			get
+			{
+				return this._CedParticular_Persona;
+			}
+			set
+			{
+				if ((this._CedParticular_Persona != value))
+				{
+					this._CedParticular_Persona = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Persona", DbType="Int NOT NULL")]
@@ -17257,50 +17486,130 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Contacto", DbType="Int NOT NULL")]
-		public int PK_Id_Contacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriApellido_Persona", DbType="VarChar(30)")]
+		public string PriApellido_Persona
 		{
 			get
 			{
-				return this._PK_Id_Contacto;
+				return this._PriApellido_Persona;
 			}
 			set
 			{
-				if ((this._PK_Id_Contacto != value))
+				if ((this._PriApellido_Persona != value))
 				{
-					this._PK_Id_Contacto = value;
+					this._PriApellido_Persona = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dato_Contacto", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string Dato_Contacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PriNombre_Persona", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string PriNombre_Persona
 		{
 			get
 			{
-				return this._Dato_Contacto;
+				return this._PriNombre_Persona;
 			}
 			set
 			{
-				if ((this._Dato_Contacto != value))
+				if ((this._PriNombre_Persona != value))
 				{
-					this._Dato_Contacto = value;
+					this._PriNombre_Persona = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre_TipContacto", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
-		public string Nombre_TipContacto
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegApellido_Persona", DbType="VarChar(30)")]
+		public string SegApellido_Persona
 		{
 			get
 			{
-				return this._Nombre_TipContacto;
+				return this._SegApellido_Persona;
 			}
 			set
 			{
-				if ((this._Nombre_TipContacto != value))
+				if ((this._SegApellido_Persona != value))
 				{
-					this._Nombre_TipContacto = value;
+					this._SegApellido_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SegNombre_Persona", DbType="VarChar(30)")]
+		public string SegNombre_Persona
+		{
+			get
+			{
+				return this._SegNombre_Persona;
+			}
+			set
+			{
+				if ((this._SegNombre_Persona != value))
+				{
+					this._SegNombre_Persona = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_Cliente", DbType="Int NOT NULL")]
+		public int PK_Id_Cliente
+		{
+			get
+			{
+				return this._PK_Id_Cliente;
+			}
+			set
+			{
+				if ((this._PK_Id_Cliente != value))
+				{
+					this._PK_Id_Cliente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado_Cliente", DbType="Bit NOT NULL")]
+		public bool Estado_Cliente
+		{
+			get
+			{
+				return this._Estado_Cliente;
+			}
+			set
+			{
+				if ((this._Estado_Cliente != value))
+				{
+					this._Estado_Cliente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Limite_CatCliente", DbType="Float NOT NULL")]
+		public double Limite_CatCliente
+		{
+			get
+			{
+				return this._Limite_CatCliente;
+			}
+			set
+			{
+				if ((this._Limite_CatCliente != value))
+				{
+					this._Limite_CatCliente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombreCompleto", DbType="VarChar(123) NOT NULL", CanBeNull=false)]
+		public string nombreCompleto
+		{
+			get
+			{
+				return this._nombreCompleto;
+			}
+			set
+			{
+				if ((this._nombreCompleto != value))
+				{
+					this._nombreCompleto = value;
 				}
 			}
 		}

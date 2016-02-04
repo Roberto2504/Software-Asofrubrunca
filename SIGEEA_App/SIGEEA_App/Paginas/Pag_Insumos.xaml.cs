@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIGEEA_BL;
+using SIGEEA_App.Ventanas_Modales;
 
 namespace SIGEEA_App.Paginas
 {
@@ -23,6 +25,38 @@ namespace SIGEEA_App.Paginas
         public Pag_Insumos()
         {
             InitializeComponent();
+        }
+
+        private void ccPedidoInsumo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ccCompraInsumo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnBuscar_Click(object sender, RoutedEventArgs e)
+        {
+            InsumoMantenimiento mantInsumo = new InsumoMantenimiento();
+            dtgrdInsumo.ItemsSource = mantInsumo.ListarInsumos(txtBuscar.Text);
+        }
+
+        private void ccEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ccEliminar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAgregarInsumo_Click(object sender, RoutedEventArgs e)
+        {
+            Ventanas_Modales.Insumos.wnwRegistrarInsumo ventanaInsumo = new Ventanas_Modales.Insumos.wnwRegistrarInsumo();
+            ventanaInsumo.Show();
         }
     }
 }

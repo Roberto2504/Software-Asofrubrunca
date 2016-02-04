@@ -53,5 +53,15 @@ namespace SIGEEA_BO.Properties {
                 return ((string)(this["SIGEEA_BDConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC-PC\\ROBERTO;Initial Catalog=SIGEEA_BD;Integrated Security=True")]
+        public string SIGEEA_BDConnectionString3 {
+            get {
+                return ((string)(this["SIGEEA_BDConnectionString3"]));
+            }
+        }
     }
 }

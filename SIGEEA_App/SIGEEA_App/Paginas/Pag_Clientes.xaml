@@ -3,13 +3,43 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIGEEA_App.Paginas"
+      xmlns:local="clr-namespace:SIGEEA_App.Paginas" xmlns:CustomControl="clr-namespace:SIGEEA_App.Custom_Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="300"
-      Title="Pag_Clientes" Width="616.917">
+      d:DesignHeight="400"
+      Title="Pag_Clientes" Width="1140">
 
-    <Grid>
-        <Button x:Name="btnRegistrar" Content="Registrar nuevo cliente" HorizontalAlignment="Left" Margin="38,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnRegistrar_Click"/>
+    <Grid Margin="32,0,10,0">
+        <Button x:Name="btnRegistrar" Content="Registrar nuevo cliente" HorizontalAlignment="Left" Margin="853,12,0,0" VerticalAlignment="Top" Width="156" Height="30" Click="btnRegistrar_Click"/>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="30" Margin="270,8,0,0" TextWrapping="Wrap" Text="Nombre/Numero de Cedula" VerticalAlignment="Top" Width="326"/>
+        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="26" Margin="690,14,0,0" VerticalAlignment="Top" Width="78" Click="btnBuscar_Click" />
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="343" Margin="0,47,0,0" VerticalAlignment="Top" Width="1056">
+
+            <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="-1" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="19" Foreground="#FF082942" BorderBrush="#FF082942" Background="#FF7C7777" AlternatingRowBackground="#FFF7F7F7" RowBackground="#FFD1D1D1" SelectionChanged="dataGrid_SelectionChanged" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="PK_Id_Persona" Binding="{Binding PK_Id_Persona}" Header="PK_Id_Persona" Width="SizeToHeader" Visibility="Hidden" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="nombreCompleto" Binding="{Binding nombreCompleto}" Header="Nombre Completo" Width="300" CanUserSort="False"/>
+                    <DataGridTextColumn x:Name="CedParticular_Persona" Binding="{Binding CedParticular_Persona}" Header="Cedula" Width="150" CanUserSort="False"/>
+                    <DataGridCheckBoxColumn x:Name="Estado_Cliente" Binding="{Binding Estado_Cliente}" Header="Estado" Width="120" CanUserReorder="False"/>
+                    <DataGridTemplateColumn  MinWidth="0" Header="Editar" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccEditar Click="ccEditar_Click" Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  MinWidth="0" Header="Eliminar" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccEliminar Click="ccEliminar_Click" Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Border>
 
     </Grid>
 </Page>

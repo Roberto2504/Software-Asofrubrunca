@@ -3,12 +3,59 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIGEEA_App.Paginas"
+      xmlns:local="clr-namespace:SIGEEA_App.Paginas" xmlns:CustomControl="clr-namespace:SIGEEA_App.Custom_Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="Pag_Insumos">
+      d:DesignHeight="300"
+      Title="Pag_Insumos" Width="1140">
 
     <Grid>
-        
+        <Button x:Name="btnAgregarInsumo" Content="Agregar Insumo" HorizontalAlignment="Left" Margin="890,11,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarInsumo_Click" />
+        <Button x:Name="btnBuscar" Content="BUSCAR" HorizontalAlignment="Left" Margin="640,10,0,0" VerticalAlignment="Top" Width="75" Click="btnBuscar_Click"/>
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="25" Margin="424,10,0,0" TextWrapping="Wrap" Text="Nombre Insumo" VerticalAlignment="Top" Width="200"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="249" Margin="10,41,0,0" VerticalAlignment="Top" Width="1120">
+            <DataGrid x:Name="dtgrdInsumo" HorizontalAlignment="Left" Height="248" Margin="-1,-1,-1,0" VerticalAlignment="Top" Width="1120">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="PK_Id_Insumo" Binding="{Binding PK_Id_Insumo}" Header="PK_Id_Insumo" Width="SizeToHeader" Visibility="Hidden" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="Nombre" Binding="{Binding Nombre_Insumo}" Header="Nombre" Width="100" CanUserSort="False"/>
+                    <DataGridTextColumn x:Name="Descripcion" Binding="{Binding Descripcion_Insumo}" Header="Descripcion" Width="170" CanUserSort="False"/>
+                    <DataGridTextColumn x:Name="Cantidad" Binding="{Binding Cantidad_InvInsumo}" Header="Cantidad Disponible" Width="152" CanUserReorder="False"/>
+                    <DataGridTextColumn x:Name="UnidaddeMedida" Binding="{Binding Nombre_UniMedida}" Header="Unidad de medida" Width="135" CanUserReorder="False"/>
+                    <DataGridCheckBoxColumn x:Name="Estado" Binding="{Binding Estado_Insumo}" Header="Estado" Width="66" CanUserReorder="False" />
+                    <DataGridTemplateColumn  MinWidth="0" Header="Editar" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccEditar Click="ccEditar_Click" Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  MinWidth="0" Header="Eliminar" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccEliminar Click="ccEliminar_Click" Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                      <DataGridTemplateColumn  MinWidth="0" Header="Pedido" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccPedidoInsumo Click="ccPedidoInsumo_Click" Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  MinWidth="0" Header="Comprar" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CustomControl:ccCompraInsumo Click="ccCompraInsumo_Click"  Content="View Details"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Border>
+
+
     </Grid>
 </Page>

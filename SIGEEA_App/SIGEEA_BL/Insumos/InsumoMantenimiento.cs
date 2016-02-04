@@ -13,13 +13,22 @@ namespace SIGEEA_BL
         /// Registrar insumo
         /// </summary>
         /// <param name="insumo"></param>
-        public void RegistrarInsumo(SIGEEA_Insumo insumo)
+        public void RegistrarInsumo(SIGEEA_Insumo insumo, string UnidadMedida, string Cantidad)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             insumo.Estado_Insumo = true;
             dc.SIGEEA_Insumos.InsertOnSubmit(insumo);
             dc.SubmitChanges();
-            //me cago en todoooo
+            SIGEEA_UniMedida uniMedida = new SIGEEA_UniMedida();
+            uniMedida = dc.SIGEEA_UniMedidas.First(c => c.Nombre_UniMedida == UnidadMedida);
+            SIGEEA_InvInsumo invInsumo = new SIGEEA_InvInsumo();
+            invInsumo.FK_UniMedida = uniMedida.PK_Id_UniMedida;
+            invInsumo.Cantidad_InvInsumo = Convert.ToDouble(Cantidad);
+            invInsumo.FK_Id_Insumo = insumo.PK_Id_Insumo;
+            
+            dc.SIGEEA_InvInsumos.InsertOnSubmit(invInsumo);
+            dc.SubmitChanges();
+          
         }
         /// <summary>
         /// Modificar insumo
@@ -31,8 +40,9 @@ namespace SIGEEA_BL
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Nombre_Insumo = insumo.Nombre_Insumo;
             modInsumo.Descripcion_Insumo = modInsumo.Descripcion_Insumo;
+            
             dc.SubmitChanges();
-            //me cago en todoooo
+          
         }
         /// <summary>
         /// Eliminar insumo (solo le cambia el estado)
@@ -44,20 +54,27 @@ namespace SIGEEA_BL
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Estado_Insumo = false;
             dc.SubmitChanges();
-            //me cago en todoooo
+           
         }
         /// <summary>
         /// Realizar Pedido
         /// </summary>
-        /// <param name="insumo"></param>
-        public void PedidoInsumo(SIGEEA_Insumo insumo)
+        /// <param name="NuevoPedido"></param>
+        public void PedidoInsumo(SIGEEA_PedInsumo nuevoPedido)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
-            modInsumo.Nombre_Insumo = insumo.Nombre_Insumo;
-            modInsumo.Descripcion_Insumo = modInsumo.Descripcion_Insumo;
+            dc.SIGEEA_PedInsumos.InsertOnSubmit(nuevoPedido);
             dc.SubmitChanges();
-            //me cago en todoooo
+            
+        }
+        /// <summary>
+        /// Listar
+        /// </summary>
+        /// <param name="nomInsumo"></param>
+        public List<SIGEEA_spListarInsumosResult> ListarInsumos(string nomInsumo)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarInsumos(nomInsumo).ToList();
         }
     }
 }

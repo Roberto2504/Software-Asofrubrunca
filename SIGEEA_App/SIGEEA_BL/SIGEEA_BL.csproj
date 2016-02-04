@@ -35,6 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.Services" />
@@ -58,6 +59,7 @@
     <Compile Include="Personas\PersonaMantenimiento.cs" />
     <Compile Include="Productos\ProductoMantenimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unidades de Medida\UnidadMedidaMantenimiento.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SIGEEA_BO\SIGEEA_BO.csproj">
