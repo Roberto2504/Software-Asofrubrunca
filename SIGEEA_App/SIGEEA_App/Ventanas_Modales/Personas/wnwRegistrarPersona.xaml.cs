@@ -28,6 +28,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         SIGEEA_Persona nuevaPersona;
         bool editar;
         int pk_Persona;
+        ClienteMantenimiento mantCliente = new ClienteMantenimiento();
         public wnwRegistrarPersona(string pTipoPersona, SIGEEA_spObtenerAsociadoResult pAsociado, SIGEEA_spObtenerEmpleadoResult pEmpleado, SIGEEA_spObtenerClienteResult pCliente)
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 CargarInformacionEmpleado(pEmpleado);
                 pk_Persona = pEmpleado.PK_Id_Persona;
             }
-            if (pCliente != null)//Si se desea editar un empleado
+            if (pCliente != null)//Si se desea editar un cliente
             {
                 editar = true;
                 CargarInformacionCliente(pCliente);
@@ -110,6 +111,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             dtpFecNacimiento.Text = pCliente.FecNacimiento_Persona.ToString();
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             cbxNacionalidad.SelectedIndex = pCliente.FK_Id_Nacionalidad - 1;
+            ObtenerCategorias(pCliente.PK_Id_CatCliente);
         }
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
         {
@@ -150,6 +152,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     grdPersona.Visibility = Visibility.Collapsed;
                     grdEmpleado.Visibility = Visibility.Collapsed;
                     grdCliente.Visibility = Visibility.Visible;
+                    listarCategorias();
+                   
                 }
             }
             catch
@@ -192,37 +196,53 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
 
         private void btnRegistrarCliente_Click(object sender, RoutedEventArgs e)
         {
-            //    try
-            //    {
-            //        RegistrarPersona();
-            //        nuevaPersona.PK_Id_Persona = pk_Persona;
-            //        SIGEEA_CreCliente nuevoCredito= new SIGEEA_CreCliente();
-            //        nuevoCredito.Limite_CreCliente = Convert.ToDouble(txbCreMaximo.Text);
-            //        nuevoCredito.CreDisponible_CreCliente = Convert.ToDouble(txbCreMaximo.Text);
-            //        nuevoCredito.RanPagos_CreCliente = Convert.ToString(cmbRagCredito.SelectedIndex + 1);
-            //        nuevoCredito.TieMaximo_CreCliente = Convert.ToString(cmbTieMaximo.SelectedIndex + 1);
+            try
+            {
+                RegistrarPersona();
+                nuevaPersona.PK_Id_Persona = pk_Persona;
+                
+                ClienteMantenimiento clienteMant = new ClienteMantenimiento();
 
-            //        ClienteMantenimiento clienteMant = new ClienteMantenimiento();
+                if (editar == false)
+                {
+                    SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
+                    clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content));
+                }
+                else
+                {
+                    SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
+                    
+                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content), nuevaPersona);
+                }
 
-            //        if (editar == false)
-            //        {
-            //            SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-            //            nuevoCliente.Categoria_Cliente = cmbTipCliente.SelectedIndex + 1;
-            //            clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, nuevoCredito);
-            //        }
-            //        else
-            //        {
-            //            SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-            //            nuevoCliente.Categoria_Cliente = cmbTipCliente.SelectedIndex + 1;
-            //            clienteMant.ModificarCliente(nuevoCliente, nuevoCredito, nuevaPersona);
-            //        }
+                MessageBox.Show("La solicitud realizada se finalizó con éxito.");
+            }
+            catch
+            {
+                MessageBox.Show("Error al realizar la solicitud.");
+            }
+        }
+        public void listarCategorias()
+        {
+            ClienteMantenimiento mantCliente = new ClienteMantenimiento();
+            cmbTipCliente.ItemsSource = mantCliente.ListarCategorias();  
+            
+        }
+        public void ObtenerCategorias(int pkCat)
+        {
+            ClienteMantenimiento mantCliente = new ClienteMantenimiento();
+            SIGEEA_spObtenerCategoriaResult cat = mantCliente.ObtenerCategorias(pkCat);
+            lbPkCatCliente.Content = cat.PK_Id_CatCliente.ToString();
+            txbCreMaximo.Text = cat.Limite_CatCliente.ToString();
+            txbRango.Text = cat.RanPagos_CatCliente;
+            txbTiempoMaximo.Text = cat.TieMaximo_CatCliente;
+        }
 
-            //        MessageBox.Show("La solicitud realizada se finalizó con éxito.");
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Error al realizar la solicitud.");
-            //    }
+        private void cmbTipCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+            ObtenerCategorias(mantCliente.ObtenerPkCategoria(Convert.ToString(this.cmbTipCliente.SelectedItem)));
         }
     }
 }

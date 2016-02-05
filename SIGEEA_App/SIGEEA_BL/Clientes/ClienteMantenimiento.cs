@@ -19,17 +19,16 @@ namespace SIGEEA_BL
         /// <param name="persona"></param>
         /// <param name="cliente"></param>
         /// <param name="creCliente"></param>
-        public void RegistrarCliente(SIGEEA_Persona persona, SIGEEA_Cliente cliente, SIGEEA_CatCliente catCliente)
+        public void RegistrarCliente(SIGEEA_Persona persona, SIGEEA_Cliente cliente, int pkCategoria)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
             nuevaPersona.RegistrarPersona(persona);
             dc.SubmitChanges();
-            dc.SIGEEA_CatClientes.InsertOnSubmit(catCliente);
-            dc.SubmitChanges();
             cliente.FK_Id_Persona = persona.PK_Id_Persona;
-            cliente.FK_Id_CatCliente = catCliente.PK_Id_CatCliente;
+            cliente.FK_Id_CatCliente = pkCategoria;
             cliente.Estado_Cliente = true;
+            cliente.FK_Id_Empresa = 1;
             dc.SIGEEA_Clientes.InsertOnSubmit(cliente);
             dc.SubmitChanges();
         }
@@ -50,18 +49,15 @@ namespace SIGEEA_BL
         /// <param name="cliente"></param>
         /// <param name="creCliente"></param>
         /// <param name="persona"></param>
-        public void ModificarCliente(SIGEEA_Cliente cliente, SIGEEA_CatCliente catCliente, SIGEEA_Persona persona)
+        public void ModificarCliente(SIGEEA_Cliente cliente, int pkCategoria, SIGEEA_Persona persona)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_Persona pers = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == cliente.FK_Id_Persona);
             SIGEEA_Cliente client = dc.SIGEEA_Clientes.First(c => c.FK_Id_Persona == pers.PK_Id_Persona);
-            SIGEEA_CatCliente cred = dc.SIGEEA_CatClientes.First(c => c.PK_Id_CatCliente == client.FK_Id_CatCliente);
-            client.FK_Id_CatCliente = cliente.FK_Id_CatCliente;
+            client.FK_Id_CatCliente = pkCategoria;
             PersonaMantenimiento nuevoMant = new PersonaMantenimiento();
             nuevoMant.ModificarPersona(pers);
-            cred.Limite_CatCliente = catCliente.Limite_CatCliente;
-            cred.TieMaximo_CatCliente = catCliente.TieMaximo_CatCliente;
-            cred.RanPagos_CatCliente = catCliente.RanPagos_CatCliente;
+            
             dc.SubmitChanges();
         }
         /// <summary>
@@ -73,7 +69,36 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spListarCliente(CedNombre).ToList();
         }
-        
-
+        /// <summary>
+        /// Obtener Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
+        public SIGEEA_spObtenerCategoriaResult ObtenerCategorias(int pkCatCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerCategoria(pkCatCliente).FirstOrDefault();
         }
+        /// <summary>
+        /// Listar Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
+       
+        public List<string> ListarCategorias()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<string> Categorias = new List<string>();
+            Categorias = (from c in dc.SIGEEA_CatClientes select c.Nombre_CatCliente).ToList();
+            return Categorias;
+        }
+        /// <summary>
+        /// Listar Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
+
+        public int ObtenerPkCategoria(string nombre)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();  
+            return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
+        }
+    }
 }

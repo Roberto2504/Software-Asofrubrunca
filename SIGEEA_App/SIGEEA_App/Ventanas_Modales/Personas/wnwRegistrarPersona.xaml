@@ -61,28 +61,17 @@
             <CheckBox x:Name="chkLeer" Content="Sabe leer" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
             <CheckBox x:Name="chkEscribir" Content="Sabe escribir" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
         </Grid>
-        <Grid Name="grdCliente" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" Visibility="Collapsed">
-            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Tipo y Credito del cliente" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>
-            <Label x:Name="label1" Content="Tipo de cliente" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-            <ComboBox x:Name="cmbTipCliente" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico">
-                <ComboBoxItem Content="Excelente"></ComboBoxItem>
-                <ComboBoxItem Content="Bueno"></ComboBoxItem>
-                <ComboBoxItem Content="Regular"></ComboBoxItem>
-            </ComboBox>
+        <Grid Name="grdCliente" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" Visibility="Hidden">
+            <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Categoria Cliente" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>
+            <Label x:Name="label1" Content="Nombre Categoria" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            <ComboBox x:Name="cmbTipCliente" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="215" FontWeight="Bold" FontSize="18.667" Text="" SelectionChanged="cmbTipCliente_SelectionChanged"/>
+
             <Label x:Name="label2" Content="Credito Máximo" HorizontalAlignment="Left" Margin="305,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-            <TextBox x:Name="txbCreMaximo" HorizontalAlignment="Left" Height="23" Margin="305,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" FontSize="13.333" FontWeight="Bold"/>
-            <Label x:Name="label3" Content="Rango entre pagos" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-            <ComboBox x:Name="cmbRagCredito" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico">
-                <ComboBoxItem Content="Semanal"/>
-                <ComboBoxItem Content="Quincenal"/>
-                <ComboBoxItem Content="Mensual"/>
-            </ComboBox>
-            <Label x:Name="label3_Copy" Content="Tiempo máximo para pagar" HorizontalAlignment="Left" Margin="305,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-            <ComboBox x:Name="cmbTieMaximo" HorizontalAlignment="Left" Margin="305,193,0,0" VerticalAlignment="Top" Width="152" FontWeight="Bold" FontSize="18.667" Text="Grado académico" RenderTransformOrigin="0.945,0.476">
-                <ComboBoxItem Content="Un mes"/>
-                <ComboBoxItem Content="Dos meses"/>
-                <ComboBoxItem Content="Tres meses"/>
-            </ComboBox>
+            <TextBox x:Name="txbCreMaximo" HorizontalAlignment="Left" Height="23" Margin="305,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
+            <Label x:Name="label3" Content="Rango entre pagos (Días)" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            
+            <Label x:Name="label3_Copy" Content="Tiempo máximo para pagar (Dias)" HorizontalAlignment="Left" Margin="305,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
+            
             <Button x:Name="btnRegistrarCliente" Click="btnRegistrarCliente_Click" Margin="474,250,150,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
                 <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
@@ -91,6 +80,9 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
+            <Label x:Name="lbPkCatCliente" Content="" Visibility="Hidden" HorizontalAlignment="Left" Margin="215,52,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txbRango" HorizontalAlignment="Left" Height="23" Margin="10,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
+            <TextBox x:Name="txbTiempoMaximo" HorizontalAlignment="Left" Height="23" Margin="305,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
 
         </Grid>
               

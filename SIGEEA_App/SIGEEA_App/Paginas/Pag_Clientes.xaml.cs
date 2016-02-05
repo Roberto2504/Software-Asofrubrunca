@@ -33,10 +33,7 @@ namespace SIGEEA_App.Paginas
             InitializeComponent();
         }
         #region Variables
-        int Col = 0;
-        int Fi = 0;
-        int idCategoria = 0;
-        int idProducto = 0;
+        
         string nomCed = null;
         ClienteMantenimiento MantCliente = new ClienteMantenimiento();
 
