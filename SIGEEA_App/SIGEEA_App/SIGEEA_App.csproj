@@ -99,6 +99,12 @@
     <Compile Include="User_Controls\uc_Contacto.xaml.cs">
       <DependentUpon>uc_Contacto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_Nacionalidades.xaml.cs">
+      <DependentUpon>uc_Nacionalidades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\uc_Puestos.xaml.cs">
+      <DependentUpon>uc_Puestos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
     </Compile>
@@ -114,8 +120,14 @@
     <Compile Include="Ventanas_Modales\Empleados\wnwIdentificarEmpleado.xaml.cs">
       <DependentUpon>wnwIdentificarEmpleado.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Empleados\wnwRegistrarHorasLaboradas.xaml.cs">
+      <DependentUpon>wnwRegistrarHorasLaboradas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Insumos\wnwRegistrarInsumo.xaml.cs">
       <DependentUpon>wnwRegistrarInsumo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Nacionalidades\wnwRegistrarNacionalidad.xaml.cs">
+      <DependentUpon>wnwRegistrarNacionalidad.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Personas\wnwIdentificarPersona.xaml.cs">
       <DependentUpon>wnwIdentificarPersona.xaml</DependentUpon>
@@ -128,6 +140,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Productos\wnwRegistrarProducto.xaml.cs">
       <DependentUpon>wnwRegistrarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Puestos\wnwPuestos.xaml.cs">
+      <DependentUpon>wnwPuestos.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +204,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_Nacionalidades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\uc_Puestos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,7 +232,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Empleados\wnwRegistrarHorasLaboradas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Insumos\wnwRegistrarInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Nacionalidades\wnwRegistrarNacionalidad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Productos\wnwRegistrarProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Puestos\wnwPuestos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Nacionalidades.wnwRegistrarNacionalidad"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Nacionalidades"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Nacionalidades" Height="229.787" Width="272.34" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,2,-3">
+        <Label x:Name="label" Content="Nacionalidad:" HorizontalAlignment="Left" Margin="21,36,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="txbNacionalidad" HorizontalAlignment="Left" Height="36" Margin="21,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="16" FontWeight="Bold" MaxLength="30" TextAlignment="Center"/>
+        <Button x:Name="btnGuardar" Margin="100,134,100,23" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Rectangle Width="28" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_save}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>

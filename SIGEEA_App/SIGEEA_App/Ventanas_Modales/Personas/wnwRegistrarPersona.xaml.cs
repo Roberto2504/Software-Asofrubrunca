@@ -36,7 +36,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             btnSiguiente.Click += BtnSiguiente_Click;
             btnRegistrar.Click += BtnRegistrar_Click;
             PersonaMantenimiento persona = new PersonaMantenimiento();
-            cbxNacionalidad.ItemsSource = persona.ListarNacionalidades();
+            //cbxNacionalidad.ItemsSource = persona.ListarNacionalidades();
             if (pAsociado != null)//Si se desea editar un asociado
             {
                 editar = true;
@@ -65,7 +65,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             nuevaPersona.FK_Id_Direccion = null;
             nuevaPersona.Tipo_Persona = true;
             nuevaPersona.CedJuridica_Persona = null;
-            nuevaPersona.FK_Id_Nacionalidad = cbxNacionalidad.SelectedIndex + 1;
+            nuevaPersona.FK_Id_Nacionalidad = ucNacionalidad.getNacionalidad();
             ComboBoxItem item = (ComboBoxItem)cbxGenero.SelectedItem;
             nuevaPersona.Genero_Persona = item.Content.ToString();
             nuevaPersona.PriApellido_Persona = txbPriApellido.Text;
@@ -83,7 +83,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegApellido.Text = pAsociado.SegApellido_Persona;
             dtpFecNacimiento.Text = pAsociado.FecNacimiento_Persona.ToString();
             if (pAsociado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            cbxNacionalidad.SelectedIndex = pAsociado.FK_Id_Nacionalidad - 1;
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pAsociado.FK_Id_Nacionalidad).Nombre_Nacionalidad);
         }
 
         public void CargarInformacionEmpleado(SIGEEA_spObtenerEmpleadoResult pEmpleado)
@@ -95,7 +96,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegApellido.Text = pEmpleado.SegApellido_Persona;
             dtpFecNacimiento.Text = pEmpleado.FecNacimiento_Persona.ToString();
             if (pEmpleado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            cbxNacionalidad.SelectedItem = pEmpleado.Nombre_Nacionalidad;
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            ucNacionalidad.setNacionalidad(pEmpleado.Nombre_Nacionalidad);
             txbAdicional.Text = pEmpleado.Observaciones_Escolaridad;
             chkEscribir.IsChecked = pEmpleado.Escribir_Escolaridad;
             chkLeer.IsChecked = pEmpleado.Leer_Escolaridad;
@@ -110,7 +112,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegApellido.Text = pCliente.SegApellido_Persona;
             dtpFecNacimiento.Text = pCliente.FecNacimiento_Persona.ToString();
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            cbxNacionalidad.SelectedIndex = pCliente.FK_Id_Nacionalidad - 1;
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pCliente.FK_Id_Nacionalidad).Nombre_Nacionalidad);
             ObtenerCategorias(pCliente.PK_Id_CatCliente);
         }
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)

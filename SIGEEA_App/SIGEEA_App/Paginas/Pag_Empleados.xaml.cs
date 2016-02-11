@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_App.Ventanas_Modales.Empleados;
+using SIGEEA_App.Ventanas_Modales.Puestos;
 
 namespace SIGEEA_App.Paginas
 {
@@ -43,6 +44,18 @@ namespace SIGEEA_App.Paginas
         private void btnDireccion_Click(object sender, RoutedEventArgs e)
         {
             wnwIdentificarEmpleado ventana = new wnwIdentificarEmpleado("Direccion");
+            ventana.ShowDialog();
+        }
+
+        private void btnPuestos_Click(object sender, RoutedEventArgs e)
+        {
+            wnwPuestos ventana = new wnwPuestos();
+            ventana.ShowDialog();
+        }
+
+        private void btnHoras_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRegistrarHorasLaboradas ventana = new wnwRegistrarHorasLaboradas();
             ventana.ShowDialog();
         }
     }

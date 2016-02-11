@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SIGEEA_BD" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PC-PC\ROBERTO;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=Luis-PC\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.SIGEEA_AboCliente" Member="SIGEEA_AboClientes">
     <Type Name="SIGEEA_AboCliente">
       <Column Name="PK_Id_AboCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -112,6 +112,16 @@
       <Association Name="SIGEEA_CatAsociado_SIGEEA_Asociado" Member="SIGEEA_Asociados" ThisKey="PK_Id_CatAsociado" OtherKey="FK_Id_CatAsociado" Type="SIGEEA_Asociado" />
     </Type>
   </Table>
+  <Table Name="dbo.SIGEEA_CatCliente" Member="SIGEEA_CatClientes">
+    <Type Name="SIGEEA_CatCliente">
+      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Nombre_CatCliente" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="SIGEEA_CatCliente_SIGEEA_Cliente" Member="SIGEEA_Clientes" ThisKey="PK_Id_CatCliente" OtherKey="FK_Id_CatCliente" Type="SIGEEA_Cliente" />
+    </Type>
+  </Table>
   <Table Name="dbo.SIGEEA_Cliente" Member="SIGEEA_Clientes">
     <Type Name="SIGEEA_Cliente">
       <Column Name="PK_Id_Cliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -121,9 +131,9 @@
       <Column Name="FK_Id_Empresa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="SIGEEA_Cliente_SIGEEA_CreCliente" Member="SIGEEA_CreClientes" ThisKey="PK_Id_Cliente" OtherKey="FK_Id_Cliente" Type="SIGEEA_CreCliente" />
       <Association Name="SIGEEA_Cliente_SIGEEA_FacCliente" Member="SIGEEA_FacClientes" ThisKey="PK_Id_Cliente" OtherKey="FK_Id_Cliente" Type="SIGEEA_FacCliente" />
+      <Association Name="SIGEEA_CatCliente_SIGEEA_Cliente" Member="SIGEEA_CatCliente" ThisKey="FK_Id_CatCliente" OtherKey="PK_Id_CatCliente" Type="SIGEEA_CatCliente" IsForeignKey="true" />
       <Association Name="SIGEEA_Empresa_SIGEEA_Cliente" Member="SIGEEA_Empresa" ThisKey="FK_Id_Empresa" OtherKey="PK_Id_Empresa" Type="SIGEEA_Empresa" IsForeignKey="true" />
       <Association Name="SIGEEA_Persona_SIGEEA_Cliente" Member="SIGEEA_Persona" ThisKey="FK_Id_Persona" OtherKey="PK_Id_Persona" Type="SIGEEA_Persona" IsForeignKey="true" />
-      <Association Name="SIGEEA_CatCliente_SIGEEA_Cliente" Member="SIGEEA_CatCliente" ThisKey="FK_Id_CatCliente" OtherKey="PK_Id_CatCliente" Type="SIGEEA_CatCliente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SIGEEA_CodPostal" Member="SIGEEA_CodPostals">
@@ -245,8 +255,8 @@
       <Column Name="Total_DetPagEmpleados" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FK_Id_PagEmpleados" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="FK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="SIGEEA_HorLaborada_SIGEEA_DetPagEmpleado" Member="SIGEEA_HorLaborada" ThisKey="FK_Id_HorLaboradas" OtherKey="PK_Id_HorLaboradas" Type="SIGEEA_HorLaborada" IsForeignKey="true" />
       <Association Name="SIGEEA_PagEmpleado_SIGEEA_DetPagEmpleado" Member="SIGEEA_PagEmpleado" ThisKey="FK_Id_PagEmpleados" OtherKey="PK_Id_PagEmpleados" Type="SIGEEA_PagEmpleado" IsForeignKey="true" />
+      <Association Name="SIGEEA_HorLaborada_SIGEEA_DetPagEmpleado" Member="SIGEEA_HorLaborada" ThisKey="FK_Id_HorLaboradas" OtherKey="PK_Id_HorLaboradas" Type="SIGEEA_HorLaborada" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SIGEEA_Direccion" Member="SIGEEA_Direccions">
@@ -282,10 +292,10 @@
       <Association Name="SIGEEA_Empleado_SIGEEA_Experiencia" Member="SIGEEA_Experiencias" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_Experiencia" />
       <Association Name="SIGEEA_Empleado_SIGEEA_FacInsumo" Member="SIGEEA_FacInsumos" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_FacInsumo" />
       <Association Name="SIGEEA_Empleado_SIGEEA_HisDelictivo" Member="SIGEEA_HisDelictivos" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_HisDelictivo" />
-      <Association Name="SIGEEA_Empleado_SIGEEA_HorLaborada" Member="SIGEEA_HorLaboradas" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_HorLaborada" />
       <Association Name="SIGEEA_Empleado_SIGEEA_PagEmpleado" Member="SIGEEA_PagEmpleados" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_PagEmpleado" />
       <Association Name="SIGEEA_Empleado_SIGEEA_PedInsumo" Member="SIGEEA_PedInsumos" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_PedInsumo" />
       <Association Name="SIGEEA_Empleado_SIGEEA_Usuario" Member="SIGEEA_Usuarios" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_Usuario" />
+      <Association Name="SIGEEA_Empleado_SIGEEA_HorLaborada" Member="SIGEEA_HorLaboradas" ThisKey="PK_Id_Empleado" OtherKey="FK_Id_Empleado" Type="SIGEEA_HorLaborada" />
       <Association Name="SIGEEA_Empresa_SIGEEA_Empleado" Member="SIGEEA_Empresa" ThisKey="FK_Id_Empresa" OtherKey="PK_Id_Empresa" Type="SIGEEA_Empresa" IsForeignKey="true" />
       <Association Name="SIGEEA_Escolaridad_SIGEEA_Empleado" Member="SIGEEA_Escolaridad" ThisKey="FK_Id_Escolaridad" OtherKey="PK_Id_Escolaridad" Type="SIGEEA_Escolaridad" IsForeignKey="true" />
       <Association Name="SIGEEA_Persona_SIGEEA_Empleado" Member="SIGEEA_Persona" ThisKey="FK_Id_Persona" OtherKey="PK_Id_Persona" Type="SIGEEA_Persona" IsForeignKey="true" />
@@ -420,20 +430,6 @@
       <Association Name="SIGEEA_Empleado_SIGEEA_HisDelictivo" Member="SIGEEA_Empleado" ThisKey="FK_Id_Empleado" OtherKey="PK_Id_Empleado" Type="SIGEEA_Empleado" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SIGEEA_HorLaboradas" Member="SIGEEA_HorLaboradas">
-    <Type Name="SIGEEA_HorLaborada">
-      <Column Name="PK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="HoraInicio_HorLaboradas" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="HoraFin_HorLaboradas" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Activo_HorLaboradas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Estado_HorLaboradas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="FK_Id_Empleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FK_Id_Puesto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="SIGEEA_HorLaborada_SIGEEA_DetPagEmpleado" Member="SIGEEA_DetPagEmpleados" ThisKey="PK_Id_HorLaboradas" OtherKey="FK_Id_HorLaboradas" Type="SIGEEA_DetPagEmpleado" />
-      <Association Name="SIGEEA_Empleado_SIGEEA_HorLaborada" Member="SIGEEA_Empleado" ThisKey="FK_Id_Empleado" OtherKey="PK_Id_Empleado" Type="SIGEEA_Empleado" IsForeignKey="true" />
-      <Association Name="SIGEEA_PueTemporal_SIGEEA_HorLaborada" Member="SIGEEA_PueTemporal" ThisKey="FK_Id_Puesto" OtherKey="PK_Id_Puesto" Type="SIGEEA_PueTemporal" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SIGEEA_Insumo" Member="SIGEEA_Insumos">
     <Type Name="SIGEEA_Insumo">
       <Column Name="PK_Id_Insumo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -491,13 +487,6 @@
       <Column Name="FK_Id_Empresa" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="SIGEEA_Moneda_SIGEEA_AboCliente" Member="SIGEEA_AboClientes" ThisKey="PK_Id_Moneda" OtherKey="FK_Id_Moneda" Type="SIGEEA_AboCliente" />
       <Association Name="SIGEEA_Moneda_SIGEEA_DetFacInsumo" Member="SIGEEA_DetFacInsumos" ThisKey="PK_Id_Moneda" OtherKey="FK_Id_Moneda" Type="SIGEEA_DetFacInsumo" />
-    </Type>
-  </Table>
-  <Table Name="dbo.SIGEEA_Nacionalidad" Member="SIGEEA_Nacionalidads">
-    <Type Name="SIGEEA_Nacionalidad">
-      <Column Name="PK_Id_Nacionalidad" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Nombre_Nacionalidad" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="SIGEEA_Nacionalidad_SIGEEA_Persona" Member="SIGEEA_Personas" ThisKey="PK_Id_Nacionalidad" OtherKey="FK_Id_Nacionalidad" Type="SIGEEA_Persona" />
     </Type>
   </Table>
   <Table Name="dbo.SIGEEA_PagAsociado" Member="SIGEEA_PagAsociados">
@@ -649,16 +638,6 @@
       <Association Name="SIGEEA_Pai_SIGEEA_Provincia" Member="SIGEEA_Pai" ThisKey="FK_Id_Pais" OtherKey="PK_Id_Pais" Type="SIGEEA_Pai" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SIGEEA_PueTemporal" Member="SIGEEA_PueTemporals">
-    <Type Name="SIGEEA_PueTemporal">
-      <Column Name="PK_Id_Puesto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Nombre_Puesto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Tarifa_Puesto" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Actualizacion_Puesto" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="SIGEEA_PueTemporal_SIGEEA_Empleado" Member="SIGEEA_Empleados" ThisKey="PK_Id_Puesto" OtherKey="FK_Id_Puesto" Type="SIGEEA_Empleado" />
-      <Association Name="SIGEEA_PueTemporal_SIGEEA_HorLaborada" Member="SIGEEA_HorLaboradas" ThisKey="PK_Id_Puesto" OtherKey="FK_Id_Puesto" Type="SIGEEA_HorLaborada" />
-    </Type>
-  </Table>
   <Table Name="dbo.SIGEEA_Representante" Member="SIGEEA_Representantes">
     <Type Name="SIGEEA_Representante">
       <Column Name="PK_Id_Representante" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -723,14 +702,36 @@
       <Association Name="SIGEEA_Rol_SIGEEA_Usuario" Member="SIGEEA_Rol" ThisKey="FK_Id_Rol" OtherKey="PK_Id_Rol" Type="SIGEEA_Rol" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SIGEEA_CatCliente" Member="SIGEEA_CatClientes">
-    <Type Name="SIGEEA_CatCliente">
-      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="Nombre_CatCliente" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Association Name="SIGEEA_CatCliente_SIGEEA_Cliente" Member="SIGEEA_Clientes" ThisKey="PK_Id_CatCliente" OtherKey="FK_Id_CatCliente" Type="SIGEEA_Cliente" />
+  <Table Name="dbo.SIGEEA_Nacionalidad" Member="SIGEEA_Nacionalidads">
+    <Type Name="SIGEEA_Nacionalidad">
+      <Column Name="PK_Id_Nacionalidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre_Nacionalidad" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="SIGEEA_Nacionalidad_SIGEEA_Persona" Member="SIGEEA_Personas" ThisKey="PK_Id_Nacionalidad" OtherKey="FK_Id_Nacionalidad" Type="SIGEEA_Persona" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIGEEA_PueTemporal" Member="SIGEEA_PueTemporals">
+    <Type Name="SIGEEA_PueTemporal">
+      <Column Name="PK_Id_Puesto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre_Puesto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Tarifa_Puesto" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Actualizacion_Puesto" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Estado_Puesto" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="SIGEEA_PueTemporal_SIGEEA_Empleado" Member="SIGEEA_Empleados" ThisKey="PK_Id_Puesto" OtherKey="FK_Id_Puesto" Type="SIGEEA_Empleado" />
+      <Association Name="SIGEEA_PueTemporal_SIGEEA_HorLaborada" Member="SIGEEA_HorLaboradas" ThisKey="PK_Id_Puesto" OtherKey="FK_Id_Puesto" Type="SIGEEA_HorLaborada" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIGEEA_HorLaboradas" Member="SIGEEA_HorLaboradas">
+    <Type Name="SIGEEA_HorLaborada">
+      <Column Name="PK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoraInicio_HorLaboradas" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin_HorLaboradas" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Activo_HorLaboradas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Estado_HorLaboradas" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_Empleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_Puesto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="SIGEEA_HorLaborada_SIGEEA_DetPagEmpleado" Member="SIGEEA_DetPagEmpleados" ThisKey="PK_Id_HorLaboradas" OtherKey="FK_Id_HorLaboradas" Type="SIGEEA_DetPagEmpleado" />
+      <Association Name="SIGEEA_Empleado_SIGEEA_HorLaborada" Member="SIGEEA_Empleado" ThisKey="FK_Id_Empleado" OtherKey="PK_Id_Empleado" Type="SIGEEA_Empleado" IsForeignKey="true" />
+      <Association Name="SIGEEA_PueTemporal_SIGEEA_HorLaborada" Member="SIGEEA_PueTemporal" ThisKey="FK_Id_Puesto" OtherKey="PK_Id_Puesto" Type="SIGEEA_PueTemporal" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.SIGEEA_spAutenticaPersona" Method="SIGEEA_spAutenticaPersona">
@@ -794,6 +795,37 @@
       <Column Name="Nombre_Canton" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.SIGEEA_spObtenerCategoria" Method="SIGEEA_spObtenerCategoria">
+    <Parameter Name="PkCatCliente" Parameter="pkCatCliente" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SIGEEA_spObtenerCategoriaResult">
+      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spObtenerCliente" Method="SIGEEA_spObtenerCliente">
+    <Parameter Name="CedNombre" Parameter="cedNombre" Type="System.String" DbType="VarChar(30)" />
+    <ElementType Name="SIGEEA_spObtenerClienteResult">
+      <Column Name="CedParticular_Persona" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="FecNacimiento_Persona" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_Nacionalidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Genero_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PK_Id_Persona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PriApellido_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PriNombre_Persona" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="SegApellido_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SegNombre_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PK_Id_Cliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre_CatCliente" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Estado_Cliente" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RanPagos_CatCliente1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.SIGEEA_spObtenerContacto" Method="SIGEEA_spObtenerContacto">
     <Parameter Name="Persona" Parameter="persona" Type="System.Int32" DbType="Int" />
     <ElementType Name="SIGEEA_spObtenerContactoResult">
@@ -851,11 +883,6 @@
       <Column Name="PK_Id_Empleado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerUnidadesMedida" Method="SIGEEA_spObtenerUnidadesMedida">
-    <ElementType Name="SIGEEA_spObtenerUnidadesMedidaResult">
-      <Column Name="Nombre_UniMedida" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SIGEEA_spObtenerInsumo" Method="SIGEEA_spObtenerInsumo">
     <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(20)" />
     <ElementType Name="SIGEEA_spObtenerInsumoResult">
@@ -867,35 +894,32 @@
       <Column Name="Nombre_UniMedida" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerCategoria" Method="SIGEEA_spObtenerCategoria">
-    <Parameter Name="PkCatCliente" Parameter="pkCatCliente" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SIGEEA_spObtenerCategoriaResult">
-      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+  <Function Name="dbo.SIGEEA_spObtenerUnidadesMedida" Method="SIGEEA_spObtenerUnidadesMedida">
+    <ElementType Name="SIGEEA_spObtenerUnidadesMedidaResult">
+      <Column Name="Nombre_UniMedida" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerCliente" Method="SIGEEA_spObtenerCliente">
-    <Parameter Name="CedNombre" Parameter="cedNombre" Type="System.String" DbType="VarChar(30)" />
-    <ElementType Name="SIGEEA_spObtenerClienteResult">
-      <Column Name="CedParticular_Persona" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="FecNacimiento_Persona" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="FK_Id_Nacionalidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Genero_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="PK_Id_Persona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PriApellido_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="PriNombre_Persona" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="SegApellido_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="SegNombre_Persona" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="PK_Id_Cliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Nombre_CatCliente" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
-      <Column Name="Estado_Cliente" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Limite_CatCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="RanPagos_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="RanPagos_CatCliente1" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="TieMaximo_CatCliente" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
-      <Column Name="PK_Id_CatCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Function Name="dbo.SIGEEA_spListarPuestos" Method="SIGEEA_spListarPuestos">
+    <ElementType Name="SIGEEA_spListarPuestosResult">
+      <Column Name="PK_Id_Puesto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre_Puesto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Tarifa_Puesto" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spEditarPuesto" Method="SIGEEA_spEditarPuesto">
+    <Parameter Name="Puesto" Parameter="puesto" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Tarifa" Parameter="tarifa" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SIGEEA_spRegistraHorasLaboradas" Method="SIGEEA_spRegistraHorasLaboradas">
+    <Parameter Name="Empleado" Parameter="empleado" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="Puesto" Parameter="puesto" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SIGEEA_spObtenerDiaLaboral" Method="SIGEEA_spObtenerDiaLaboral">
+    <Parameter Name="Empleado" Parameter="empleado" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SIGEEA_spObtenerDiaLaboralResult">
+      <Column Name="PK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

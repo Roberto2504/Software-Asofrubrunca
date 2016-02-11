@@ -6,12 +6,14 @@
       xmlns:local="clr-namespace:SIGEEA_App.Paginas"
       mc:Ignorable="d" 
       d:DesignHeight="300"
-      Title="Pag_Empleados" Width="557.143">
+      Title="Pag_Empleados" Width="627.068">
 
     <Grid>
         <Button x:Name="btnRegistrarEmpleado" Content="Registrar nuevo empleado" HorizontalAlignment="Left" Margin="20,69,0,0" VerticalAlignment="Top" Width="165" Height="61" Click="btnRegistrarEmpleado_Click"/>
-        <Button x:Name="btnEditarEmpleado" Content="Editar empleado existete" HorizontalAlignment="Left" Margin="281,69,0,0" VerticalAlignment="Top" Width="165" Height="61" Click="btnEditarEmpleado_Click"/>
-        <Button x:Name="btnDireccion" Content="Agregar/Editar dirección" HorizontalAlignment="Left" Height="61" Margin="158,165,0,0" VerticalAlignment="Top" Width="165" Click="btnDireccion_Click"/>
+        <Button x:Name="btnEditarEmpleado" Content="Editar empleado existete" HorizontalAlignment="Left" Margin="205,69,0,0" VerticalAlignment="Top" Width="165" Height="61" Click="btnEditarEmpleado_Click"/>
+        <Button x:Name="btnDireccion" Content="Agregar/Editar dirección" HorizontalAlignment="Left" Height="61" Margin="20,163,0,0" VerticalAlignment="Top" Width="165" Click="btnDireccion_Click"/>
+        <Button x:Name="btnPuestos" Content="Agregar/Editar puestos" HorizontalAlignment="Left" Height="61" Margin="205,163,0,0" VerticalAlignment="Top" Width="165" Click="btnPuestos_Click"/>
+        <Button x:Name="btnHoras" Content="Registro de horas laborales" HorizontalAlignment="Left" Height="61" Margin="417,69,0,0" VerticalAlignment="Top" Width="177" Click="btnHoras_Click"/>
 
     </Grid>
 </Page>

@@ -10,8 +10,7 @@
 
     <Grid Margin="32,0,10,0">
         <Button x:Name="btnRegistrar" Content="Registrar nuevo cliente" HorizontalAlignment="Left" Margin="853,12,0,0" VerticalAlignment="Top" Width="156" Height="30" Click="btnRegistrar_Click"/>
-        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="30" Margin="270,8,0,0" TextWrapping="Wrap" Text="Nombre/Numero de Cedula" VerticalAlignment="Top" Width="326"/>
-        <Button x:Name="btnBuscar" Content="Buscar" HorizontalAlignment="Left" Height="26" Margin="690,14,0,0" VerticalAlignment="Top" Width="78" Click="btnBuscar_Click" />
+        <TextBox x:Name="txtBuscar" HorizontalAlignment="Left" Height="30" Margin="270,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" TextChanged="txtBuscar_TextChanged"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="343" Margin="0,47,0,0" VerticalAlignment="Top" Width="1056">
 
             <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="-1" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="19" Foreground="#FF082942" BorderBrush="#FF082942" Background="#FF7C7777" AlternatingRowBackground="#FFF7F7F7" RowBackground="#FFD1D1D1" SelectionChanged="dataGrid_SelectionChanged" >

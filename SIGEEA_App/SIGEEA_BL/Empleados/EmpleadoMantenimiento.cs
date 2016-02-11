@@ -29,12 +29,22 @@ namespace SIGEEA_BL
             dc.SubmitChanges();
         }
 
+        /// <summary>
+        /// Obtiene la información del empleado a partir de su número de cédula
+        /// </summary>
+        /// <param name="pCedula"></param>
+        /// <returns></returns>
         public SIGEEA_spObtenerEmpleadoResult AutenticaEmpleado(string pCedula)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            return dc.SIGEEA_spObtenerEmpleado(pCedula).First();
+            return dc.SIGEEA_spObtenerEmpleado(pCedula).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Edita la información personal y laboral de un empleado en particular
+        /// </summary>
+        /// <param name="pPersona"></param>
+        /// <param name="pEscolaridad"></param>
         public void EditarEmpleado(SIGEEA_Persona pPersona, SIGEEA_Escolaridad pEscolaridad)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
@@ -54,12 +64,22 @@ namespace SIGEEA_BL
             dc.SubmitChanges();
         }
 
+        /// <summary>
+        /// Obtiene la dirección de un empleado en específico a partir de su número de cédula
+        /// </summary>
+        /// <param name="cedula"></param>
+        /// <returns></returns>
         public SIGEEA_spObtenerDireccionEmpleadoResult ObtenerDireccionEmpleado (string cedula)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spObtenerDireccionEmpleado(cedula).First();
         }
 
+        /// <summary>
+        /// Determina si un empleado ya tiene una dirección registrada
+        /// </summary>
+        /// <param name="cedula"></param>
+        /// <returns></returns>
         public bool DireccionRegistradaEmpleado(string cedula)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
@@ -79,5 +99,44 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_Empleado emp = dc.SIGEEA_Empleados.First(c => c.PK_Id_Empleado == empleado.PK_Id_Empleado);
         }*/
+
+        /// <summary>
+        /// Ejecuta el procedimiento que permite editar un puesto temporal, que en este caso lo que hace es insertarse una nueva tupla con 
+        /// la fecha actual.
+        /// </summary>
+        /// <param name="pPuesto"></param>
+        /// <param name="pTarifa"></param>
+        public void EditarPuesto(string pPuesto, double pTarifa)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_spEditarPuesto(pPuesto, pTarifa);
+            dc.SubmitChanges();
+        }
+
+        /// <summary>
+        /// Verifica si existe una tupla incompleta con respecto a los días laborados
+        /// </summary>
+        /// <param name="pEmpleado"></param>
+        /// <returns></returns>
+        public bool DiaIncompleto(string pEmpleado)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_spObtenerDiaLaboralResult informacion = dc.SIGEEA_spObtenerDiaLaboral(pEmpleado).FirstOrDefault();
+                        
+            if (informacion != null) return true; //Si tiene un día sin completar
+            else return false; //Si no tiene días incompletos
+        }
+
+        /// <summary>
+        /// Registra horas laboradas
+        /// </summary>
+        /// <param name="pEmpleado"></param>
+        /// <param name="pPuesto"></param>
+        public void RegistrarHoras(string pEmpleado, string pPuesto)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_spRegistraHorasLaboradas(pEmpleado, pPuesto);
+            dc.SubmitChanges();
+        }
     }
 }

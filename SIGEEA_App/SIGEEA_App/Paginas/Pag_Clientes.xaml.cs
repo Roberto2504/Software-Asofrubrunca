@@ -46,13 +46,7 @@ namespace SIGEEA_App.Paginas
             ventana.Show();
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-            actualiza();
-           
-        }
-
-        private void FiltrarProductos(string CedNombre)
+        private void FiltrarClientes(string CedNombre)
         {
             try
             {
@@ -62,7 +56,7 @@ namespace SIGEEA_App.Paginas
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al listar" + ex.ToString(), "error", MessageBoxButton.OK);
+                MessageBox.Show("Error al listar: " + ex.ToString(), "error", MessageBoxButton.OK);
 
             }
 
@@ -73,7 +67,7 @@ namespace SIGEEA_App.Paginas
             {
               
                 nomCed = txtBuscar.Text;
-                FiltrarProductos(nomCed);
+                FiltrarClientes(nomCed);
 
             }
            
@@ -93,6 +87,11 @@ namespace SIGEEA_App.Paginas
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cliSeleccionado = dataGrid.SelectedItem as SIGEEA_spListarClienteResult;
+        }
+
+        private void txtBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            actualiza();
         }
     }
 }
