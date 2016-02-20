@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.uc_CantidadPedidoProducto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls"
+             mc:Ignorable="d" Height="300" Width="460">
+    <Grid x:Name="grdPrincipal" >
+        <TextBlock x:Name="txbTipo" Margin="26,10,288,258"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text="{Binding TipPedido, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb1" Margin="26,79,342,189" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
+        <TextBlock x:Name="txbNombre" Margin="232,79,73,189" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="{Binding nomTipProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb2" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txbCantidad" Margin="232,116,73,152"  TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding canInvProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbUniMedida" Margin="392,116,35,152" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding UniMedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb3" Margin="26,153,356,115" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Pedido:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txbPedido" Margin="232,153,110,115" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding PedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbId" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="{Binding IdTipProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}" Visibility="Hidden" RenderTransformOrigin="-1.703,2.062"/>
+                <TextBlock x:Name="txbPreExtProducto" Margin="435,10,83,10" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding preExtProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <Button Margin="328,190,51,29" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
+            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_check}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button Margin="26,190,353,29" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
+            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+        				Visual="{DynamicResource appbar_cancel}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</UserControl>

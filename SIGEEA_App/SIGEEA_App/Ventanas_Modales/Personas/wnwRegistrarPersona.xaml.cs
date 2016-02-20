@@ -28,6 +28,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         SIGEEA_Persona nuevaPersona;
         bool editar;
         int pk_Persona;
+        
         ClienteMantenimiento mantCliente = new ClienteMantenimiento();
         public wnwRegistrarPersona(string pTipoPersona, SIGEEA_spObtenerAsociadoResult pAsociado, SIGEEA_spObtenerEmpleadoResult pEmpleado, SIGEEA_spObtenerClienteResult pCliente)
         {
@@ -111,6 +112,9 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbPriApellido.Text = pCliente.PriApellido_Persona;
             txbSegApellido.Text = pCliente.SegApellido_Persona;
             dtpFecNacimiento.Text = pCliente.FecNacimiento_Persona.ToString();
+            ObtenerCategorias(pCliente.PK_Id_CatCliente);
+            lbPkCatCliente.Content = pCliente.PK_Id_CatCliente;
+            cmbTipCliente.Text = pCliente.Nombre_CatCliente;
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             DataClasses1DataContext dc = new DataClasses1DataContext();
             ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pCliente.FK_Id_Nacionalidad).Nombre_Nacionalidad);
@@ -155,8 +159,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     grdPersona.Visibility = Visibility.Collapsed;
                     grdEmpleado.Visibility = Visibility.Collapsed;
                     grdCliente.Visibility = Visibility.Visible;
-                    listarCategorias();
-                   
+                        listarCategorias();                   
                 }
             }
             catch
@@ -214,8 +217,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 else
                 {
                     SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-                    
-                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content), nuevaPersona);
+                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content),nuevaPersona);
                 }
 
                 MessageBox.Show("La solicitud realizada se finalizó con éxito.");
@@ -243,7 +245,6 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
 
         private void cmbTipCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
 
             ObtenerCategorias(mantCliente.ObtenerPkCategoria(Convert.ToString(this.cmbTipCliente.SelectedItem)));
         }

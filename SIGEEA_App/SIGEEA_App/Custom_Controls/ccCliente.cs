@@ -159,7 +159,27 @@ namespace SIGEEA_App.Custom_Controls
         }
 
         //-------------------------------------------------------------------------------------------------------//
+        public static DependencyProperty dpBtnEditar = DependencyProperty.Register
+                                                                        ("BtnEditar",
+                                                                        typeof(Button),
+                                                                        typeof(ccCliente),
+                                                                        new UIPropertyMetadata(BtnEditarAct));
 
+        [Description("BtnEditar"), Category("Common Properties")]
+        [Bindable(true)]
+
+        public Button BtnEditar
+        {
+            get { return (Button)GetValue(dpBtnEditar); }
+            set { SetValue(dpBtnEditar, value); }
+        }
+        private static void BtnEditarAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ccCliente test = (ccCliente)d;
+            test.BtnEditar = e.NewValue as Button;
+        }
+
+        //-------------------------------------------------------------------------------------------------------//
         #endregion
     }
 }

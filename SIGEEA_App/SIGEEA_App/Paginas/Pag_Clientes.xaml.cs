@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIGEEA_App.Ventanas_Modales.Personas;
+using SIGEEA_App.Ventanas_Modales.Clientes;
 using System.Collections.ObjectModel;
 using System.IO;
 using SIGEEA_BL;
@@ -33,10 +34,9 @@ namespace SIGEEA_App.Paginas
             InitializeComponent();
         }
         #region Variables
-        
+
         string nomCed = null;
         ClienteMantenimiento MantCliente = new ClienteMantenimiento();
-
         SIGEEA_spListarClienteResult cliSeleccionado = new SIGEEA_spListarClienteResult();
         #endregion
 
@@ -50,9 +50,9 @@ namespace SIGEEA_App.Paginas
         {
             try
             {
-             
+
                 ClienteMantenimiento clienMant = new ClienteMantenimiento();
-                dataGrid.ItemsSource = clienMant.ListarClientes(CedNombre);
+                dtgrdClientes.ItemsSource = clienMant.ListarClientes(CedNombre);
             }
             catch (Exception ex)
             {
@@ -65,17 +65,18 @@ namespace SIGEEA_App.Paginas
         {
             if (txtBuscar.Text != null)
             {
-              
+
                 nomCed = txtBuscar.Text;
                 FiltrarClientes(nomCed);
-
             }
-           
+
         }
 
         private void ccEditar_Click(object sender, RoutedEventArgs e)
         {
 
+            wnwRegistrarPersona ventana = new wnwRegistrarPersona("Cliente", pAsociado: null, pEmpleado: null, pCliente: MantCliente.ObtenerCliente(cliSeleccionado.PK_Id_Cliente));
+            ventana.ShowDialog();
         }
 
         private void ccEliminar_Click(object sender, RoutedEventArgs e)
@@ -84,14 +85,26 @@ namespace SIGEEA_App.Paginas
             mant.EliminarCliente(cliSeleccionado.PK_Id_Cliente);
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dtgrdClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cliSeleccionado = dataGrid.SelectedItem as SIGEEA_spListarClienteResult;
+            cliSeleccionado = dtgrdClientes.SelectedItem as SIGEEA_spListarClienteResult;
         }
 
         private void txtBuscar_TextChanged(object sender, TextChangedEventArgs e)
         {
             actualiza();
+           
+        }
+
+        private void ccAbonoCliente_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ccPedidoCliente_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRealizarPedidoCliente nuevoPedido = new wnwRealizarPedidoCliente();
+            nuevoPedido.ShowDialog();
         }
     }
 }

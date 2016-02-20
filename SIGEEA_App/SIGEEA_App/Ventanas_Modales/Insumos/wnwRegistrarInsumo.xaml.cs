@@ -53,5 +53,7 @@ namespace SIGEEA_App.Ventanas_Modales.Insumos
         {
             txtCantidad.Text = cbxUnidadesDeMedida.Text;
         }
+
+        
     }
 }

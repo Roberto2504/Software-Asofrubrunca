@@ -26,7 +26,10 @@ namespace SIGEEA_App.Paginas
         {
             InitializeComponent();
         }
+        #region Variables
 
+        string nomInsumo = null;
+        #endregion
         private void ccPedidoInsumo_Click(object sender, RoutedEventArgs e)
         {
 
@@ -37,12 +40,7 @@ namespace SIGEEA_App.Paginas
 
         }
 
-        private void btnBuscar_Click(object sender, RoutedEventArgs e)
-        {
-            InsumoMantenimiento mantInsumo = new InsumoMantenimiento();
-            dtgrdInsumo.ItemsSource = mantInsumo.ListarInsumos(txtBuscar.Text);
-        }
-
+      
         private void ccEditar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -57,6 +55,38 @@ namespace SIGEEA_App.Paginas
         {
             Ventanas_Modales.Insumos.wnwRegistrarInsumo ventanaInsumo = new Ventanas_Modales.Insumos.wnwRegistrarInsumo();
             ventanaInsumo.Show();
+        }
+
+        
+        private void FiltrarInsumos(string nomInsumo)
+        {
+            try
+            {
+
+                InsumoMantenimiento mantInsumo = new InsumoMantenimiento();
+                dtgrdInsumo.ItemsSource = mantInsumo.ListarInsumos(txbBuscar.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al listar: " + ex.ToString(), "error", MessageBoxButton.OK);
+
+            }
+
+        }
+        public void actualiza()
+        {
+            if (txbBuscar.Text != null)
+            {
+
+                nomInsumo = txbBuscar.Text;
+                FiltrarInsumos(nomInsumo);
+            }
+
+        }
+
+        private void txbBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            actualiza();
         }
     }
 }

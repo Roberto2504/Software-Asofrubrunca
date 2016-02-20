@@ -64,5 +64,10 @@ namespace SIGEEA_BL
             tipos = (from c in dc.SIGEEA_TipProductos select c.Nombre_TipProducto).ToList();
             return tipos;
         }
+        public List<SIGEEA_spListarProductosResult> ListarProductos(string nombre)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarProductos(nombre).ToList();
+        }
     }
 }

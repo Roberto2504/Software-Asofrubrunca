@@ -69,12 +69,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom_Controls\ccAbonoCliente.cs" />
     <Compile Include="Custom_Controls\ccCliente.cs" />
     <Compile Include="Custom_Controls\ccCompraInsumo.cs" />
     <Compile Include="Custom_Controls\ccConsultar.cs" />
     <Compile Include="Custom_Controls\ccEditar.cs" />
     <Compile Include="Custom_Controls\ccEliminar.cs" />
+    <Compile Include="Custom_Controls\ccPedidoCliente.cs" />
     <Compile Include="Custom_Controls\ccPedidoInsumo.cs" />
+    <Compile Include="Custom_Controls\ccProducto.cs" />
     <Compile Include="Paginas\Pag_Clientes.xaml.cs">
       <DependentUpon>Pag_Clientes.xaml</DependentUpon>
     </Compile>
@@ -96,17 +99,29 @@
     <Compile Include="User_Controls\uControl_Numerico.xaml.cs">
       <DependentUpon>uControl_Numerico.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_CantidadPedidoProducto.xaml.cs">
+      <DependentUpon>uc_CantidadPedidoProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uc_Contacto.xaml.cs">
       <DependentUpon>uc_Contacto.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\uc_Nacionalidades.xaml.cs">
       <DependentUpon>uc_Nacionalidades.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_Producto.xaml.cs">
+      <DependentUpon>uc_Producto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uc_Puestos.xaml.cs">
       <DependentUpon>uc_Puestos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwCantidadProductoPedido.xaml.cs">
+      <DependentUpon>wnwCantidadProductoPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwRealizarPedidoCliente.xaml.cs">
+      <DependentUpon>wnwRealizarPedidoCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Contactos\wnwAgregarContacto.xaml.cs">
       <DependentUpon>wnwAgregarContacto.xaml</DependentUpon>
@@ -200,6 +215,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_CantidadPedidoProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uc_Contacto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,11 +227,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_Producto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uc_Puestos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwCantidadProductoPedido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwRealizarPedidoCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,9 +343,7 @@
       <Name>SIGEEA_BO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ventanas_Modales\Clientes\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Recursos\Entypo-license.txt" />
     <Resource Include="Recursos\WindowsIcons-license.txt" />

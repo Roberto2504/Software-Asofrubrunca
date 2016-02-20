@@ -49,15 +49,14 @@ namespace SIGEEA_BL
         /// <param name="cliente"></param>
         /// <param name="creCliente"></param>
         /// <param name="persona"></param>
-        public void ModificarCliente(SIGEEA_Cliente cliente, int pkCategoria, SIGEEA_Persona persona)
+        public void ModificarCliente(SIGEEA_Cliente cliente, int pkCategoria, SIGEEA_Persona pPersona)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_Persona pers = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == cliente.FK_Id_Persona);
-            SIGEEA_Cliente client = dc.SIGEEA_Clientes.First(c => c.FK_Id_Persona == pers.PK_Id_Persona);
+            
+            SIGEEA_Cliente client = dc.SIGEEA_Clientes.First(c => c.FK_Id_Persona == pPersona.PK_Id_Persona);
             client.FK_Id_CatCliente = pkCategoria;
             PersonaMantenimiento nuevoMant = new PersonaMantenimiento();
-            nuevoMant.ModificarPersona(pers);
-            
+            nuevoMant.ModificarPersona(pPersona); 
             dc.SubmitChanges();
         }
         /// <summary>
@@ -68,6 +67,15 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spListarCliente(CedNombre).ToList();
+        }
+        /// <summary>
+        /// Obtener Cliente
+        /// </summary>
+        /// <param name="PK_IdCliente"></param>
+        public SIGEEA_spObtenerClienteResult ObtenerCliente(int pkIdCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerCliente(pkIdCliente).First();
         }
         /// <summary>
         /// Obtener Categorias
@@ -100,5 +108,6 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();  
             return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
         }
+       
     }
 }
