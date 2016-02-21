@@ -36,25 +36,33 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            if (solicitud == "Editar")
+            EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
+            if (empleado.AutenticaEmpleado(txbCedula.Text) != null)
             {
-                EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
-                if (empleado.AutenticaEmpleado(txbCedula.Text) != null)
+                if (solicitud == "Editar")
                 {
+
                     wnwRegistrarPersona ventana = new wnwRegistrarPersona("Empleado", pAsociado: null, pEmpleado: empleado.AutenticaEmpleado(txbCedula.Text), pCliente: null);
                     ventana.ShowDialog();
                     this.Close();
                 }
-                else
+                else if (solicitud == "Direccion")
                 {
-                    MessageBox.Show("Los datos ingresados no coinciden con los registros", "SIGEEA", MessageBoxButton.OK);
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado");
+                    ventana.ShowDialog();
+                    this.Close();
+                }
+                else if (solicitud == "Pagos")
+                {
+                    wnwPagoEmpleados ventana = new wnwPagoEmpleados(txbCedula.Text);
+                    ventana.ShowDialog();
+                    this.Close();
                 }
             }
-            else if(solicitud == "Direccion")
+
+            else
             {
-                wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado");
-                ventana.ShowDialog();
-                this.Close();
+                MessageBox.Show("Los datos ingresados no coinciden con los registros", "SIGEEA", MessageBoxButton.OK);
             }
         }
     }

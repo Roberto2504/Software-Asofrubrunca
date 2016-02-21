@@ -32,13 +32,13 @@ namespace SIGEEA_App.Paginas
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            wnwRegistrarPersona ventanaRegistro = new wnwRegistrarPersona(pTipoPersona:"Asociado", pAsociado:null, pEmpleado:null, pCliente:null);
+            wnwRegistrarPersona ventanaRegistro = new wnwRegistrarPersona(pTipoPersona: "Asociado", pAsociado: null, pEmpleado: null, pCliente: null);
             ventanaRegistro.Show();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            wnwIdentificar ventana = new wnwIdentificar("EditarAsociado");
+            wnwVistaAsociados ventana = new wnwVistaAsociados();
             ventana.ShowDialog();
         }
 

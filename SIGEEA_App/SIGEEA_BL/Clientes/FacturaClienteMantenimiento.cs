@@ -11,10 +11,10 @@ namespace SIGEEA_BL.Clientes
 {
    public class FacturaClienteMantenimiento
     {
-        public int CrearFactura()
-        {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
-        }
+        //public int CrearFactura()
+        //{
+        //    DataClasses1DataContext dc = new DataClasses1DataContext();
+        //    return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
+        //}
     }
 }

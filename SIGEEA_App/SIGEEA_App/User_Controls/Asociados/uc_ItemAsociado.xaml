@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.Asociados.uc_ItemAsociado"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Asociados"
+             mc:Ignorable="d" Height="59.775" Width="884.211">
+    <Grid Name="grdPrincipal">
+        <Label Name="lblIdPersona" Visibility="Hidden" Content="{Binding PersonaId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemAsociado}}}"></Label>
+        <Label Name="lblIdAsociado" Visibility="Hidden" Content="{Binding AsociadoId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemAsociado}}}"></Label>
+        <TextBlock x:Name="txtCodigo" HorizontalAlignment="Left" Height="37" Margin="150,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" FontSize="16" FontWeight="Bold" Text="{Binding CodigoAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemAsociado}}}"/>
+        <TextBlock x:Name="txtNombre" TextAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="278,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="286" FontSize="16" FontWeight="Bold" Text="{Binding NombreAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemAsociado}}}"/>
+        <TextBlock x:Name="txtCedula" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontSize="16" FontWeight="Bold" Text="{Binding CedulaAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemAsociado}}}"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Height="43" Margin="569,4,0,0" VerticalAlignment="Top" Width="92" Click="btnEditar_Click"/>
+        <Button x:Name="btnDireccion" Content="Agregar/Editar &#xD;&#xA;      Dirección" HorizontalAlignment="Left" Height="43" Margin="666,4,0,0" VerticalAlignment="Top" Width="102" Click="btnDireccion_Click"/>
+        <Button x:Name="btnInfoFamiliar" Content="información&#xD;&#xA;   familiar" HorizontalAlignment="Left" Height="43" Margin="773,4,0,0" VerticalAlignment="Top" Width="102" Click="btnInfoFamiliar_Click"/>
+    </Grid>
+</UserControl>
+

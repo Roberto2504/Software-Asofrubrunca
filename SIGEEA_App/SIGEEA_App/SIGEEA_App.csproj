@@ -96,6 +96,15 @@
     <Compile Include="Paginas\Pag_Productos.xaml.cs">
       <DependentUpon>Pag_Productos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Asociados\uc_ContenedorFamiliares.xaml.cs">
+      <DependentUpon>uc_ContenedorFamiliares.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Asociados\uc_ItemAsociado.xaml.cs">
+      <DependentUpon>uc_ItemAsociado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Asociados\uc_ItemFamiliar.xaml.cs">
+      <DependentUpon>uc_ItemFamiliar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uControl_Numerico.xaml.cs">
       <DependentUpon>uControl_Numerico.xaml</DependentUpon>
     </Compile>
@@ -108,6 +117,9 @@
     <Compile Include="User_Controls\uc_Nacionalidades.xaml.cs">
       <DependentUpon>uc_Nacionalidades.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_PagoEmpleado.xaml.cs">
+      <DependentUpon>uc_PagoEmpleado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uc_Producto.xaml.cs">
       <DependentUpon>uc_Producto.xaml</DependentUpon>
     </Compile>
@@ -116,6 +128,12 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwVistaAsociados.xaml.cs">
+      <DependentUpon>wnwVistaAsociados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwVistaFamiliares.xaml.cs">
+      <DependentUpon>wnwVistaFamiliares.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwCantidadProductoPedido.xaml.cs">
       <DependentUpon>wnwCantidadProductoPedido.xaml</DependentUpon>
@@ -132,8 +150,14 @@
     <Compile Include="Ventanas_Modales\Direcciones\wnwDirecciones.xaml.cs">
       <DependentUpon>wnwDirecciones.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Empleados\wnwCancelarPagoEmpleado.xaml.cs">
+      <DependentUpon>wnwCancelarPagoEmpleado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Empleados\wnwIdentificarEmpleado.xaml.cs">
       <DependentUpon>wnwIdentificarEmpleado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Empleados\wnwPagoEmpleados.xaml.cs">
+      <DependentUpon>wnwPagoEmpleados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Empleados\wnwRegistrarHorasLaboradas.xaml.cs">
       <DependentUpon>wnwRegistrarHorasLaboradas.xaml</DependentUpon>
@@ -211,6 +235,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="User_Controls\Asociados\uc_ContenedorFamiliares.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Asociados\uc_ItemAsociado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Asociados\uc_ItemFamiliar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uControl_Numerico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,6 +263,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_PagoEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uc_Producto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +276,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwVistaAsociados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwVistaFamiliares.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,7 +307,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Empleados\wnwCancelarPagoEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Empleados\wnwIdentificarEmpleado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Empleados\wnwPagoEmpleados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -11,7 +11,7 @@
 
     <Grid>
         <Button x:Name="btnRegistrar" Content="Registrar nuevo asociado" HorizontalAlignment="Left" Margin="38,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnRegistrar_Click"/>
-        <Button x:Name="btnEditar" Content="Editar asociado existente" HorizontalAlignment="Left" Margin="38,133,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="button_Click"/>
+        <Button x:Name="btnEditar" Content="Editar asociado existente" HorizontalAlignment="Left" Margin="38,133,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnEditar_Click"/>
         <Button x:Name="btnDireccion" Content="Agregar/editar dirección" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnDireccion_Click"/>
     </Grid>
 </Page>

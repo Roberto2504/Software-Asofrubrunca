@@ -29,56 +29,38 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
         public wnwDirecciones(string pCedula_pCodigo, string tipoPersona)
         {
             InitializeComponent();
-            PersonaMantenimiento persona = new PersonaMantenimiento();            
+            PersonaMantenimiento persona = new PersonaMantenimiento();
             DataClasses1DataContext dc = new DataClasses1DataContext();
             AsociadoMantenimiento asociado = new AsociadoMantenimiento();
             cmbProvincia.ItemsSource = persona.ListarProvinciasNacionales();//Se carga el ComboBox de provincias
 
-            if (pCedula_pCodigo.Length >= 8)//Es una cédula
+            if (tipoPersona == "Asociado")
             {
-                if (tipoPersona == "Asociado")
-                {                    
-                    if (asociado.DireccionRegistradaAsociado(pCedula: pCedula_pCodigo, pCodigo: null) == true)//Si el asociado tiene ya una dirección registrada
-                    {
-                        CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
-                        editar = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Este asociado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
-                        editar = false;
-                        pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
-                    }
-                }
-                else if(tipoPersona == "Empleado")
+                if (asociado.DireccionRegistradaAsociado(pCedula: pCedula_pCodigo, pCodigo: null) == true)//Si el asociado tiene ya una dirección registrada
                 {
-                    EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
-                    if(empleado.DireccionRegistradaEmpleado(pCedula_pCodigo) == true)// Si el empleado ya tiene una dirección registrada
-                    {
-                        CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
-                        editar = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Este empleado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
-                        editar = false;
-                        pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
-                    }
-                }
-            }
-            else//Es código de asociado
-            {
-                if (asociado.DireccionRegistradaAsociado(pCedula: null, pCodigo: pCedula_pCodigo) == true)
-                {
-                    CargaInformacion("Asociado", pCedula: null, pCodigo: pCedula_pCodigo);
+                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
                     editar = true;
                 }
                 else
                 {
                     MessageBox.Show("Este asociado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
                     editar = false;
-                    SIGEEA_Asociado asociadoAuxiliar = dc.SIGEEA_Asociados.First(a => a.Codigo_Asociado == pCedula_pCodigo);
-                    pk_persona = asociadoAuxiliar.FK_Id_Persona;
+                    pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
+                }
+            }
+            else if (tipoPersona == "Empleado")
+            {
+                EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
+                if (empleado.DireccionRegistradaEmpleado(pCedula_pCodigo) == true)// Si el empleado ya tiene una dirección registrada
+                {
+                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
+                    editar = true;
+                }
+                else
+                {
+                    MessageBox.Show("Este empleado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
+                    editar = false;
+                    pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
                 }
             }
         }
@@ -145,7 +127,7 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
             {
                 EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
 
-                if(pCedula != null && pCodigo == null)
+                if (pCedula != null && pCodigo == null)
                 {
                     SIGEEA_spObtenerDireccionEmpleadoResult direccion = empleado.ObtenerDireccionEmpleado(pCedula);
                     CargaCantones(direccion.Nombre_Provincia);
@@ -186,7 +168,7 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             PersonaMantenimiento direccion = new PersonaMantenimiento();
-            if(editar == true)
+            if (editar == true)
             {
                 try
                 {
@@ -209,9 +191,9 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
                 }
                 catch
                 {
-                MessageBox.Show("La operación solicitada falló.", "SIGEEA", MessageBoxButton.OK);
+                    MessageBox.Show("La operación solicitada falló.", "SIGEEA", MessageBoxButton.OK);
                 }
-           }
+            }
         }
     }
 }

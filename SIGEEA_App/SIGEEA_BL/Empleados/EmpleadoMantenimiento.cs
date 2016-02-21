@@ -69,7 +69,7 @@ namespace SIGEEA_BL
         /// </summary>
         /// <param name="cedula"></param>
         /// <returns></returns>
-        public SIGEEA_spObtenerDireccionEmpleadoResult ObtenerDireccionEmpleado (string cedula)
+        public SIGEEA_spObtenerDireccionEmpleadoResult ObtenerDireccionEmpleado(string cedula)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spObtenerDireccionEmpleado(cedula).First();
@@ -122,7 +122,7 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_spObtenerDiaLaboralResult informacion = dc.SIGEEA_spObtenerDiaLaboral(pEmpleado).FirstOrDefault();
-                        
+
             if (informacion != null) return true; //Si tiene un día sin completar
             else return false; //Si no tiene días incompletos
         }
@@ -137,6 +137,51 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             dc.SIGEEA_spRegistraHorasLaboradas(pEmpleado, pPuesto);
             dc.SubmitChanges();
+        }
+
+        /// <summary>
+        /// Realiza un listado de horas pendientes de pago de un empleado en específico
+        /// </summary>
+        /// <param name="pCedula"></param>
+        /// <returns></returns>
+        public List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> ListarPagosEmpleados(string pCedula)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerPagosEmpleadosPendientes(pCedula).ToList();
+        }
+
+        /// <summary>
+        /// Crea y cancela una factura de pago al empleado
+        /// </summary>
+        /// <param name="pLista"></param>
+        /// <param name="pEmpleado"></param>
+
+        public void CancelarPago(List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> pLista, int pEmpleado)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+
+            SIGEEA_PagEmpleado pagoEmpleado = new SIGEEA_PagEmpleado();
+            pagoEmpleado.Fecha_PagEmpleados = DateTime.Now;
+            pagoEmpleado.FK_Id_Cuenta = null;
+            pagoEmpleado.FK_Id_Empleado = pEmpleado;
+
+            dc.SIGEEA_PagEmpleados.InsertOnSubmit(pagoEmpleado);
+            dc.SubmitChanges();
+
+            foreach (SIGEEA_spObtenerPagosEmpleadosPendientesResult p in pLista)
+            {
+                string Total = p.Total.Remove(0, 1);
+
+                dc.SIGEEA_spCancelarPagoEmpleado(p.PK_Id_HorLaboradas, pEmpleado, Convert.ToDouble(Total));
+
+                SIGEEA_DetPagEmpleado detPago = new SIGEEA_DetPagEmpleado();
+
+                detPago.FK_Id_HorLaboradas = p.PK_Id_HorLaboradas;
+                detPago.Total_DetPagEmpleados = Convert.ToDouble(Total);
+                detPago.FK_Id_PagEmpleados = pagoEmpleado.PK_Id_PagEmpleados;
+                dc.SIGEEA_DetPagEmpleados.InsertOnSubmit(detPago);
+                dc.SubmitChanges();
+            }
         }
     }
 }

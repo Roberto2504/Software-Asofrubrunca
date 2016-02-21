@@ -29,13 +29,14 @@ namespace SIGEEA_App.Paginas
 
         private void btnContactos_Click(object sender, RoutedEventArgs e)
         {
-            wnwIdentificarPersona ventana = new wnwIdentificarPersona();
+            wnwIdentificarPersona ventana = new wnwIdentificarPersona("Contacto");
             ventana.ShowDialog();
         }
 
         private void btnDirecciones_Click(object sender, RoutedEventArgs e)
         {
-
+            wnwIdentificarPersona ventana = new wnwIdentificarPersona("Direccion");
+            ventana.ShowDialog();
         }
     }
 }

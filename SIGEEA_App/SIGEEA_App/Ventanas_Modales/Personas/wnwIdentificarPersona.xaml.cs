@@ -18,6 +18,7 @@ using MahApps.Metro.Controls.Dialogs;
 using SIGEEA_BL;
 using SIGEEA_BO;
 using SIGEEA_App.Ventanas_Modales.Contactos;
+using SIGEEA_App.Ventanas_Modales.Direcciones;
 
 namespace SIGEEA_App.Ventanas_Modales.Personas
 {
@@ -26,20 +27,47 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
     /// </summary>
     public partial class wnwIdentificarPersona : MetroWindow
     {
-        public wnwIdentificarPersona()
+        string tipoSolicitud;
+        public wnwIdentificarPersona(string pTipoSolicitud)
         {
             InitializeComponent();
+            tipoSolicitud = pTipoSolicitud;
         }
 
         private void btnValidar_Click(object sender, RoutedEventArgs e)
         {
-            PersonaMantenimiento persona = new PersonaMantenimiento();
-            int pk_persona = persona.AutenticaPersona(txbCedula.Text);
-            if (pk_persona != 0)
+            if (tipoSolicitud == "Contacto")
             {
-                wnwContactos ventana = new wnwContactos(pk_persona);
-                ventana.ShowDialog();
-                this.Close();
+                PersonaMantenimiento persona = new PersonaMantenimiento();
+                int pk_persona = persona.AutenticaPersona(txbCedula.Text);
+                if (pk_persona != 0)
+                {
+                    wnwContactos ventana = new wnwContactos(pk_persona);
+                    ventana.ShowDialog();
+                    this.Close();
+                }
+            }
+            else if (tipoSolicitud == "Direccion")
+            {
+                EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
+                AsociadoMantenimiento asociado = new AsociadoMantenimiento();
+
+                if (empleado.AutenticaEmpleado(txbCedula.Text) != null) //Es un empleado
+                {
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado");
+                    ventana.ShowDialog();
+                    this.Close();
+                }
+                else if (asociado.AutenticaAsociado(txbCedula.Text) != null) //Es un asociado
+                {
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Asociado");
+                    ventana.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Error: el número de cédula digitado no se encuentra registrado.", "SIGEEA", MessageBoxButton.OK);
+                }
             }
         }
     }

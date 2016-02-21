@@ -1,0 +1,35 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Empleados.wnwPagoEmpleados"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Empleados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Pago de Empleados" Height="644.099" Width="1207.893" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/SIGEEA_App;component/Imagenes/Icono FUNDER.jpg">
+    <Grid Margin="0,0,-6,-5">
+        <ScrollViewer Margin="236,141,140,78" Name="svwPanel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Height="auto" CanContentScroll="True" Width="832">
+            <StackPanel Name="stpPagos" HorizontalAlignment="Left" Height="auto" MaxHeight="500" VerticalAlignment="Top" Width="832" Background="#FFD3CECE" />
+        </ScrollViewer>
+        <DataGrid Margin="236,108,140,484">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fecha" Width="150" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Horas laboradas" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Puesto desempeñado" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tarifa" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Total" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cancelar" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <CheckBox x:Name="rbtTodos" HorizontalAlignment="Left" Margin="1068,94,0,0" VerticalAlignment="Top" Height="47" Width="25" Unchecked="rbtTodos_Unchecked" Checked="rbtTodos_Checked"/>
+        <Button x:Name="btnPagar" Margin="1086,236,29,300" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">
+            <Rectangle Width="43" Height="53" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_clipboard_paper_check}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</Controls:MetroWindow>
+
