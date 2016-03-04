@@ -52,6 +52,13 @@ namespace SIGEEA_App.User_Controls
             get { return (string)GetValue(TipoDato); }
             set { SetValue(TipoDato, value); }
         }
+
+        public void Color(bool pColor)
+        {
+            BrushConverter bc = new BrushConverter();
+            if (pColor == true) grdContenedor.Background = (Brush)bc.ConvertFrom("#FFC7DFE6");
+            else grdContenedor.Background = (Brush)bc.ConvertFrom("#FF5A99AC");
+        }
         #endregion
 
         #region Constructor

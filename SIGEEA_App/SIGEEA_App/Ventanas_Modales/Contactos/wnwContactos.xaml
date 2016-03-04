@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Contacto" Height="359.575" Width="565.957" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <StackPanel x:Name="stpContactos" HorizontalAlignment="Left" Height="311" Margin="10,10,0,0" VerticalAlignment="Top" Width="399" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="stpContactos" HorizontalAlignment="Left" Height="275" Margin="10,46,0,0" VerticalAlignment="Top" Width="399" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
         </StackPanel>
         <TextBlock x:Name="txbVacio" HorizontalAlignment="Left" Margin="10,99,0,169" TextWrapping="Wrap" Text="No tiene ningún contacto añadido. 

@@ -27,6 +27,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
     public partial class wnwContactos : MetroWindow
     {
         int pk_persona;
+        bool color = true;
         public wnwContactos(int pPersona)
         {
             InitializeComponent();
@@ -42,9 +43,11 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                 {
                     uc_Contacto contacto = new uc_Contacto();
                     contacto.Info = c.Dato_Contacto;
-                    contacto.TipoInfo = "F:/SIGEEA_App/SIGEEA_App/Imagenes/Contactos/" + c.Nombre_TipContacto + ".ico";
+                    contacto.Color(color);
+                    contacto.TipoInfo = "F:/Software-Asofrubrunca/SIGEEA_App/SIGEEA_App/Imagenes/Contactos/" + c.Nombre_TipContacto + ".ico";
                     contacto.ContactoId = c.PK_Id_Contacto;
                     stpContactos.Children.Add(contacto);
+                    color = !color;
                 }
             }
             else

@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls"
              mc:Ignorable="d" Height="44.814" Width="407.442" Background="#FF444E7E">
-    <Grid>
+    <Grid Name="grdContenedor">
         <Image x:Name="image" HorizontalAlignment="Left" Margin="10,10,0,10" Width="31.419" Stretch="Fill" Source="{Binding TipoInfo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Contacto}}}"/>
-        <TextBlock x:Name="textBlock" Margin="55.419,10,110.628,10" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding Info, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Contacto}}}"/>
-        <Button x:Name="button" Content="Editar" HorizontalAlignment="Right" Margin="0,10,10,10" Width="75.116"/>
-        <TextBlock x:Name="textBlock1" Height="7.019" Margin="0,0,125.877,1.655" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="4" FontWeight="Bold" HorizontalAlignment="Right" Width="71.55" Text="{Binding ContactoId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Contacto}}}" Visibility="Hidden"/>
+        <TextBlock x:Name="txbDato" Margin="55.419,10,110.628,10" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding Info, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Contacto}}}"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Right" Margin="0,10,10,10" Width="75.116"/>
+        <TextBlock x:Name="txbIdContacto" Height="7.019" Margin="0,0,125.877,1.655" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="4" FontWeight="Bold" HorizontalAlignment="Right" Width="71.55" Text="{Binding ContactoId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Contacto}}}" Visibility="Hidden"/>
     </Grid>
 </UserControl>

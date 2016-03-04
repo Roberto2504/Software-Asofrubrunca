@@ -31,7 +31,7 @@ namespace SIGEEA_BL.Validaciones
                     if (Regex.IsMatch(pValor, @"^[a-zA-Z]+$") == true) return true;
                     else return false;                    
                 case 1:
-                    if (Regex.IsMatch(pValor, @"^[a-zA-Z0-9]+$") == true) return true;
+                    if (Regex.IsMatch(pValor, @"^[0-9]+$") == true) return true;
                     else return false;
                 case 3:
                     if (VerificaCorreo(pValor) == true) return true;
@@ -45,7 +45,7 @@ namespace SIGEEA_BL.Validaciones
         #region Correo
         bool invalido = false;
 
-        public bool VerificaCorreo(string pCorreo)
+        private bool VerificaCorreo(string pCorreo)
         {
             invalido = false;
             if (String.IsNullOrEmpty(pCorreo))

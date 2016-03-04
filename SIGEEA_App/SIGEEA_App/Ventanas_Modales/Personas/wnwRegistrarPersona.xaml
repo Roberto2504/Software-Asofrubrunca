@@ -9,12 +9,14 @@
         mc:Ignorable="d"
         Title="Registro" Height="410.282" Width="764.305" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid x:Name="grdPersona" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="682" Visibility="Visible">
-            <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="23" Margin="177,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
-            <TextBox x:Name="txbPriNombre" HorizontalAlignment="Left" Height="23" Margin="177,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
-            <TextBox x:Name="txbSegNombre" HorizontalAlignment="Left" Height="23" Margin="177,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
-            <TextBox x:Name="txbPriApellido" HorizontalAlignment="Left" Height="23" Margin="177,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
-            <TextBox x:Name="txbSegApellido" HorizontalAlignment="Left" Height="23" Margin="177,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>
+        <Grid x:Name="grdPersona" HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="682" Visibility="Visible" Tag="0">
+            <Grid Name="grdValidar" Margin="195,10,357,18">
+                <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="23" Margin="6,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="1"/>
+                <TextBox x:Name="txbPriNombre" HorizontalAlignment="Left" Height="23" Margin="6,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0" Background="White"/>
+                <TextBox x:Name="txbSegNombre" HorizontalAlignment="Left" Height="23" Margin="6,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
+                <TextBox x:Name="txbPriApellido" HorizontalAlignment="Left" Height="23" Margin="6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
+                <TextBox x:Name="txbSegApellido" HorizontalAlignment="Left" Height="23" Margin="6,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
+            </Grid>
             <Label x:Name="lblCedula" Content="Cédula" HorizontalAlignment="Left" Margin="5,56,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
             <Label x:Name="lblPriNombre" Content="Primer nombre" HorizontalAlignment="Left" Margin="5,103,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
             <Label x:Name="lblSegNombre" Content="Segundo nombre" HorizontalAlignment="Left" Margin="5,155,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.538,0.788" FontSize="16" FontWeight="Bold"/>
@@ -25,7 +27,6 @@
                 <ComboBoxItem x:Name="cbiMasculino" Content="M"/>
                 <ComboBoxItem x:Name="cbiFemenino" Content="F"/>
             </ComboBox>
-            <!--..<ComboBox x:Name="cbxNacionalidad" HorizontalAlignment="Left" Margin="521,155,0,0" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold"/>-->
             <Label x:Name="lblGenero_Copy" Content="Nacionalidad" HorizontalAlignment="Left" Margin="341,156,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
             <Label x:Name="lblGenero_Copy1" Content="Fec. Nacimiento" HorizontalAlignment="Left" Margin="341,214,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
             <DatePicker x:Name="dtpFecNacimiento" HorizontalAlignment="Left" Margin="507,214,0,0" VerticalAlignment="Top" Width="134"/>

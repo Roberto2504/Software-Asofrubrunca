@@ -16,6 +16,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using SIGEEA_BL;
 using SIGEEA_BO;
+using SIGEEA_BL.Validaciones;
 
 namespace SIGEEA_App.Ventanas_Modales.Personas
 {
@@ -60,19 +61,41 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
 
         public void RegistrarPersona()
         {
-            nuevaPersona = new SIGEEA_Persona();
-            nuevaPersona.CedParticular_Persona = txbCedula.Text;
-            nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
-            nuevaPersona.FK_Id_Direccion = null;
-            nuevaPersona.Tipo_Persona = true;
-            nuevaPersona.CedJuridica_Persona = null;
-            nuevaPersona.FK_Id_Nacionalidad = ucNacionalidad.getNacionalidad();
-            ComboBoxItem item = (ComboBoxItem)cbxGenero.SelectedItem;
-            nuevaPersona.Genero_Persona = item.Content.ToString();
-            nuevaPersona.PriApellido_Persona = txbPriApellido.Text;
-            nuevaPersona.PriNombre_Persona = txbPriNombre.Text;
-            nuevaPersona.SegApellido_Persona = txbSegApellido.Text;
-            nuevaPersona.SegNombre_Persona = txbSegNombre.Text;
+            try
+            {
+                ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
+                bool valido = true;
+                foreach(TextBox txb in grdValidar.Children)
+                {
+                    BrushConverter bc = new BrushConverter();
+                    txb.Foreground = (Brush)bc.ConvertFrom("#FF000000");
+                    if (validacion.Validar(txb.Text, Convert.ToInt32(txb.Tag)) == false)
+                    {
+                        valido = false;
+                        txb.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
+                    }
+                }
+                if (valido == true)
+                {
+                    nuevaPersona = new SIGEEA_Persona();
+                    nuevaPersona.CedParticular_Persona = txbCedula.Text;
+                    nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
+                    nuevaPersona.FK_Id_Direccion = null;
+                    nuevaPersona.Tipo_Persona = true;
+                    nuevaPersona.CedJuridica_Persona = null;
+                    nuevaPersona.FK_Id_Nacionalidad = ucNacionalidad.getNacionalidad();
+                    ComboBoxItem item = (ComboBoxItem)cbxGenero.SelectedItem;
+                    nuevaPersona.Genero_Persona = item.Content.ToString();
+                    nuevaPersona.PriApellido_Persona = txbPriApellido.Text;
+                    nuevaPersona.PriNombre_Persona = txbPriNombre.Text;
+                    nuevaPersona.SegApellido_Persona = txbSegApellido.Text;
+                    nuevaPersona.SegNombre_Persona = txbSegNombre.Text;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Los datos ingresados no coinciden con los formatos del sistema: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         public void CargarInformacionAsociado(SIGEEA_spObtenerAsociadoResult pAsociado)

@@ -17,6 +17,7 @@ using MahApps.Metro.Controls.Dialogs;
 
 using SIGEEA_BL;
 using SIGEEA_BO;
+using SIGEEA_BL.Validaciones;
 
 namespace SIGEEA_App.Ventanas_Modales.Contactos
 {
@@ -42,18 +43,41 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            BrushConverter bc = new BrushConverter();
+            txbContacto.Foreground = (Brush)bc.ConvertFrom("#FF000000");
             try
             {
                 PersonaMantenimiento persona = new PersonaMantenimiento();
-                persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
-                MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
-                this.Close();
-                wnwContactos ventana = new wnwContactos(pk_persona);
-                ventana.ShowDialog();
+                ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
+                if ((String)cmbTipoContacto.SelectedValue == "Correo" && validacion.Validar(txbContacto.Text, 3) == true)
+                {
+                    persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
+                    MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    this.Close();
+                    wnwContactos ventana = new wnwContactos(pk_persona);
+                    ventana.ShowDialog();
+                }
+                else if (((String)cmbTipoContacto.SelectedValue == "Tel. Movil" ||
+                          (String)cmbTipoContacto.SelectedValue == "Tel. Residencia" ||
+                          (String)cmbTipoContacto.SelectedValue == "Tel. Trabajo" ||
+                          (String)cmbTipoContacto.SelectedValue == "Fax")
+                          && validacion.Validar(txbContacto.Text, 2) == true)
+                {
+                    persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
+                    MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    this.Close();
+                    wnwContactos ventana = new wnwContactos(pk_persona);
+                    ventana.ShowDialog();
+                }
+                else
+                {
+                    txbContacto.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
+                    throw new Exception();
+                }
             }
             catch
             {
-                MessageBox.Show("Error al registrar el contacto. Asegúrese de que la información ingresada es correcta.", "SIGEEA", MessageBoxButton.OK);
+                MessageBox.Show("Error al registrar el contacto: Formatos incompatibles con el sistema.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 }
     }
