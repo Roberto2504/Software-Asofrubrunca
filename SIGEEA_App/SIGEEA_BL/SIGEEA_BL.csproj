@@ -61,6 +61,7 @@
     <Compile Include="Productos\ProductoMantenimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unidades de Medida\UnidadMedidaMantenimiento.cs" />
+    <Compile Include="Validaciones\ValidacionesMantenimiento.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SIGEEA_BO\SIGEEA_BO.csproj">
