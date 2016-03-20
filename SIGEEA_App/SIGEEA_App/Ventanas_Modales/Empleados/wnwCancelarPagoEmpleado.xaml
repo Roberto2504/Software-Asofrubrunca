@@ -16,7 +16,7 @@
             <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
-            				Visual="{DynamicResource appbar_billing}" />
+            				Visual="{DynamicResource appbar_money}" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>

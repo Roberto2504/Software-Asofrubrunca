@@ -1,0 +1,43 @@
+﻿<Controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Asociados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls" x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwRegistrarCuota"
+        mc:Ignorable="d"
+        Title="Cuota nueva" Height="471.428" Width="645.113" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,-8,-3">
+        <Grid Name="grdValidar" Margin="218,90,84,277">
+
+            <TextBox x:Name="txbMonto" HorizontalAlignment="Center" Height="49" Margin="10,10,27,0" TextAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="264" Tag="1" FontWeight="Bold" FontSize="21.333"/>
+        </Grid>
+        <TextBox x:Name="txbNombre" HorizontalAlignment="Center" Height="49" Margin="249,28,132,0" TextAlignment="Center" MaxLength="50" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" Tag="0" FontWeight="Bold" FontSize="21.333"/>
+        <Label Margin="35,28,447,367" FontWeight="Bold" FontSize="24">Nombre</Label>
+        <Label Margin="35,102,447,290" FontWeight="Bold" FontSize="24">Monto</Label>
+        <Label Margin="35,182,477,217" FontWeight="Bold" FontSize="24">Moneda</Label>
+        <User_Controls:uc_Moneda x:Name="ucMoneda" HorizontalAlignment="Left" Margin="238,171,0,0" VerticalAlignment="Top" Height="68"/>
+        <Button x:Name="btnGuardar" Margin="266,342,265,11" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnGuardar_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Rectangle Width="48" Height="40" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_save}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Label Margin="10,284,492,122" FontWeight="Bold" FontSize="18.667">Fecha de inicio</Label>
+        <Label Margin="336,286,191,124" FontWeight="Bold" FontSize="18.667">Fecha de fin</Label>
+        <DatePicker Name="dtpFecInicio" Margin="158,277,336,118" FontWeight="Bold" FontSize="16"></DatePicker>
+        <DatePicker Name="dtpFecFin" Margin="468,277,26,118" FontWeight="Bold" FontSize="16"></DatePicker>
+
+    </Grid>
+</Controls:MetroWindow>

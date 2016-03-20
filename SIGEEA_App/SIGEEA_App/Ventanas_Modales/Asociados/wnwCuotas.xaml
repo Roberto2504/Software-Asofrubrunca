@@ -1,0 +1,112 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwCuotas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Asociados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Administrar Cuotas" Height="571.661" Width="728.572" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid Name="grdPrimaria" Visibility="Visible">
+            <DataGrid Margin="10,57,23,458">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Width="300" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Monto" Width="150" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fec. Inicio - Fec. Fin" Width="150" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,90,10,71">
+                <StackPanel Name="stpCuotas" HorizontalAlignment="Left" Height="276" VerticalAlignment="Top" Width="693"/>
+            </ScrollViewer>
+        </Grid>
+        <Grid Name="grdSecundaria" Visibility="Collapsed">
+            <Button x:Name="btnAtras"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnAtras_Click" Margin="24,8,643,380" ToolTip="Atrás">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Rectangle Width="18" Height="13.721" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_arrow_right}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <DataGrid Margin="20,57,26,351">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Cédula" Width="143" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Nombre" Width="180" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cuota" Width="140" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Total" Width="85" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Saldo" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,90,10,71">
+                <StackPanel Name="stpDeudores" HorizontalAlignment="Left" Height="255" VerticalAlignment="Top" Width="683" Margin="10,10,10,30"/>
+            </ScrollViewer>
+        </Grid>
+        <Grid Name="grdIndicarMonto" Visibility="Collapsed">
+            <Label Margin="249,72,242,423" FontSize="26.667" FontWeight="Bold">Monto a pagar:</Label>
+            <Label Name="lblSimboloMoneda" Content="$" Margin="163,207,529,288" FontWeight="Bold" FontSize="29.333"></Label>
+            <TextBox x:Name="txbMonto" Tag="1" HorizontalAlignment="Left" Height="48" Margin="213,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="293" FontSize="26.667" FontWeight="Bold"/>
+            <Button x:Name="btnPagarCuota" ToolTip="Realizar pago" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnPagarCuota_Click" Margin="217,306,419,155">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Rectangle Width="40" Height="40" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_money}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button x:Name="btnCancelar" ToolTip="Regresar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnCancelar_Click" Margin="381,311,255,150">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Rectangle Width="40" Height="40" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_arrow_right}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+        </Grid>
+        <Grid Name="grdFactura" Visibility="Collapsed">
+            <TextBox x:Name="txbFactura" TextAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="465" Width="435" Margin="38,10,0,-39" Background="White" FontSize="16" FontWeight="Bold" IsEnabled="False" VerticalScrollBarVisibility="Visible"/>
+            <Button x:Name="btnImprimir" ToolTip="Imprimir factura" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnImprimir_Click" Margin="553,220,51,214">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Rectangle Width="59" Height="55" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_printer}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

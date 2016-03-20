@@ -99,6 +99,12 @@
     <Compile Include="User_Controls\Asociados\uc_ContenedorFamiliares.xaml.cs">
       <DependentUpon>uc_ContenedorFamiliares.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Asociados\uc_Cuota.xaml.cs">
+      <DependentUpon>uc_Cuota.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Asociados\uc_DeudorCuota.xaml.cs">
+      <DependentUpon>uc_DeudorCuota.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\Asociados\uc_ItemAsociado.xaml.cs">
       <DependentUpon>uc_ItemAsociado.xaml</DependentUpon>
     </Compile>
@@ -114,6 +120,9 @@
     <Compile Include="User_Controls\uc_Contacto.xaml.cs">
       <DependentUpon>uc_Contacto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_Moneda.xaml.cs">
+      <DependentUpon>uc_Moneda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uc_Nacionalidades.xaml.cs">
       <DependentUpon>uc_Nacionalidades.xaml</DependentUpon>
     </Compile>
@@ -126,8 +135,14 @@
     <Compile Include="User_Controls\uc_Puestos.xaml.cs">
       <DependentUpon>uc_Puestos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwCuotas.xaml.cs">
+      <DependentUpon>wnwCuotas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwRegistrarCuota.xaml.cs">
+      <DependentUpon>wnwRegistrarCuota.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwVistaAsociados.xaml.cs">
       <DependentUpon>wnwVistaAsociados.xaml</DependentUpon>
@@ -239,6 +254,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\Asociados\uc_Cuota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Asociados\uc_DeudorCuota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\Asociados\uc_ItemAsociado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +282,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_Moneda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uc_Nacionalidades.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,7 +302,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwCuotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwRegistrarCuota.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

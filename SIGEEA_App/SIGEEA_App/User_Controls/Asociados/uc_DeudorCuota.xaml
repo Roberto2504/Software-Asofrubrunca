@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.Asociados.uc_DeudorCuota"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Asociados"
+             mc:Ignorable="d" 
+             d:DesignHeight="34.962" d:DesignWidth="692.482">
+    <Grid Name="grdPrincipal">
+        <TextBlock x:Name="lblCuotaAsociadoId" Visibility="Collapsed" HorizontalAlignment="Left" Margin="10,27,0,0" TextWrapping="Wrap" Text="{Binding CuotaAsociadoId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblNombrePersona" TextAlignment="Center" HorizontalAlignment="Left" Margin="110,10,0,0" TextWrapping="Wrap" Text="{Binding NombrePersona, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top" Width="164" Height="18" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="lblCedulaPersona" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding CedulaPersona, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top" Width="95" Height="18" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="lblNombreCuota" TextAlignment="Center" HorizontalAlignment="Left" Margin="279,10,0,0" TextWrapping="Wrap" Text="{Binding NombreCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top" Width="169" Height="18" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="lblSaldoPendiente" TextAlignment="Center" HorizontalAlignment="Left" Margin="542,10,0,0" TextWrapping="Wrap" Text="{Binding SaldoPendiente, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top" Width="67" Height="18" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="lblMontoCuota" TextAlignment="Center" HorizontalAlignment="Left" Margin="453,10,0,0" TextWrapping="Wrap" Text="{Binding MontoCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_DeudorCuota}}}" VerticalAlignment="Top" Width="84" Height="18" FontWeight="Bold" FontStyle="Italic"/>
+        <Button x:Name="btnPagar" ToolTip="Realizar pago" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnPagar_Click" Margin="614,3,24,7" Background="#FF92E441" Foreground="White" Content="Pagar"/>
+    </Grid>
+</UserControl>

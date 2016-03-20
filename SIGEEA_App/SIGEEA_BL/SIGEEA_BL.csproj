@@ -57,6 +57,7 @@
     <Compile Include="Empleados\EmpleadoMantenimiento.cs" />
     <Compile Include="Fincas\FincaMantenimiento.cs" />
     <Compile Include="Insumos\InsumoMantenimiento.cs" />
+    <Compile Include="Monedas\MonedaMantenimiento.cs" />
     <Compile Include="Personas\PersonaMantenimiento.cs" />
     <Compile Include="Productos\ProductoMantenimiento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,9 +70,7 @@
       <Name>SIGEEA_BO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Monedas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

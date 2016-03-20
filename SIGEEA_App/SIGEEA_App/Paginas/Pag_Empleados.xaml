@@ -14,6 +14,7 @@
         <Button x:Name="btnDireccion" Content="Agregar/Editar dirección" HorizontalAlignment="Left" Height="61" Margin="20,163,0,0" VerticalAlignment="Top" Width="165" Click="btnDireccion_Click"/>
         <Button x:Name="btnPuestos" Content="Agregar/Editar puestos" HorizontalAlignment="Left" Height="61" Margin="205,163,0,0" VerticalAlignment="Top" Width="165" Click="btnPuestos_Click"/>
         <Button x:Name="btnHoras" Content="Registro de horas laborales" HorizontalAlignment="Left" Height="61" Margin="417,69,0,0" VerticalAlignment="Top" Width="177" Click="btnHoras_Click"/>
+        <Button x:Name="btnPagos" Content="Realizar pagos" HorizontalAlignment="Left" Height="61" Margin="417,163,0,0" VerticalAlignment="Top" Width="177" Click="btnPagos_Click"/>
 
     </Grid>
 </Page>

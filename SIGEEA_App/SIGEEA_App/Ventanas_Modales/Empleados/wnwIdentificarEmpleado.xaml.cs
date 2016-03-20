@@ -54,9 +54,16 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                 }
                 else if (solicitud == "Pagos")
                 {
-                    wnwPagoEmpleados ventana = new wnwPagoEmpleados(txbCedula.Text);
-                    ventana.ShowDialog();
-                    this.Close();
+                    if (empleado.ListarPagosEmpleados(txbCedula.Text).Count != 0)
+                    {
+                        wnwPagoEmpleados ventana = new wnwPagoEmpleados(txbCedula.Text);
+                        ventana.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este empleado no posee ningún registro pendiente de pago.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
 

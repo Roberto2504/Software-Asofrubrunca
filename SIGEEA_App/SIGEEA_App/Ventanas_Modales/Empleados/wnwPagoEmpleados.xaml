@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Empleados"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Pago de Empleados" Height="644.099" Width="1207.893" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/SIGEEA_App;component/Imagenes/Icono FUNDER.jpg">
+        Title="Pago de Empleados" Height="644.099" Width="1207.893" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
     <Grid Margin="0,0,-6,-5">
         <ScrollViewer Margin="236,141,140,78" Name="svwPanel" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Height="auto" CanContentScroll="True" Width="832">
             <StackPanel Name="stpPagos" HorizontalAlignment="Left" Height="auto" MaxHeight="500" VerticalAlignment="Top" Width="832" Background="#FFD3CECE" />

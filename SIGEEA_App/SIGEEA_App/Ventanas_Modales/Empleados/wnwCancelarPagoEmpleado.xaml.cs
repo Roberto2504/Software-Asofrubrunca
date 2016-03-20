@@ -32,7 +32,12 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
         public wnwCancelarPagoEmpleado(List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> pLista, int pEmpleado)
         {
             InitializeComponent();
-            txbFactura.AppendText("Nombre:");
+            txbFactura.AppendText("Nombre del empleado: ");
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            string NombreEmpleado = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).PriNombre_Persona
+                                    + " " +dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).PriApellido_Persona
+                                    + " " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).SegApellido_Persona;
+            txbFactura.AppendText(NombreEmpleado + ".");
             txbFactura.AppendText(Environment.NewLine);
             Lista = pLista;
             pk_empleado = pEmpleado;
@@ -57,6 +62,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                     EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
                     empleado.CancelarPago(Lista, pk_empleado);
                     MessageBox.Show("Pago realizado exitosamente.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    this.Close();
                 }
             }
             catch (Exception Ex)

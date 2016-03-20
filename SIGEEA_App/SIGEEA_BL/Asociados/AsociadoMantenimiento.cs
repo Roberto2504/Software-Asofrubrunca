@@ -125,6 +125,11 @@ namespace SIGEEA_BL
             return lista;
         }
 
+        /// <summary>
+        /// Agrega y edita familiares de los asociados
+        /// </summary>
+        /// <param name="pAsociado"></param>
+        /// <param name="pLista"></param>
         public void AgregaEditaFamiliares(int pAsociado, List<SIGEEA_Familiar> pLista)
         {
             try
@@ -152,6 +157,60 @@ namespace SIGEEA_BL
             {
                 Console.WriteLine(Ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Registra una nueva cuota a pagar por el asociado, automáticamente se ejecuta
+        /// un trigger en la base de datos que le asigna de manera automática a cada asociado
+        /// activo el pago pendiente de la misma.
+        /// </summary>
+        /// <param name="pCuota"></param>
+        public void RegistrarCuota(SIGEEA_Cuota pCuota)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_Cuotas.InsertOnSubmit(pCuota);
+            dc.SubmitChanges();
+        }
+        
+        /// <summary>
+        /// Lista las cuotas que se encuentran actualmente activas
+        /// </summary>
+        /// <returns></returns>
+        public List<SIGEEA_spObtenerCuotasResult> ListarCuotasActivas()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerCuotas().ToList();
+        }
+
+        public List<SIGEEA_spObtenerDeudoresCuotasResult> ListarDeudoresCuotas(int pCuota)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerDeudoresCuotas(pCuota).ToList();
+        }
+
+        public bool RealizarPagoCuota(int pCuotaAsociado, double pMonto)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_Cuota_Asociado cuota = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado);
+                double saldo = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado).Saldo_Cuota_Asociado;
+                cuota.Saldo_Cuota_Asociado = saldo - pMonto;
+                if(cuota.Saldo_Cuota_Asociado <= 0)
+                    cuota.Estado_Cuota_Asociado = true;
+                dc.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public SIGEEA_spGenerarFacturaCuotaResult GenerarFacturaCuota(int pCuotaAsociado, double pMonto, double pSaldoAnterior)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spGenerarFacturaCuota(pCuotaAsociado, pMonto, pSaldoAnterior).First();
         }
     }
 }

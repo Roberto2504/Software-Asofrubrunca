@@ -58,5 +58,11 @@ namespace SIGEEA_App.Paginas
             wnwRegistrarHorasLaboradas ventana = new wnwRegistrarHorasLaboradas();
             ventana.ShowDialog();
         }
+
+        private void btnPagos_Click(object sender, RoutedEventArgs e)
+        {
+            wnwIdentificarEmpleado ventana = new wnwIdentificarEmpleado("Pagos");
+            ventana.ShowDialog();
+        }
     }
 }

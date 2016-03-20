@@ -17,6 +17,7 @@ using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_App.Ventanas_Modales.Asociados;
 using SIGEEA_App.Ventanas_Modales.Direcciones;
 using SIGEEA_App.User_Controls;
+using SIGEEA_BO;
 
 namespace SIGEEA_App.Paginas
 {
@@ -46,6 +47,22 @@ namespace SIGEEA_App.Paginas
         {
             wnwIdentificar ventana = new wnwIdentificar("Direccion");
             ventana.ShowDialog();
+        }
+
+        private void btnCuota_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRegistrarCuota ventana = new wnwRegistrarCuota();
+            ventana.ShowDialog();
+        }
+
+        private void btnAdministrarCuotas_Click(object sender, RoutedEventArgs e)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            if (dc.SIGEEA_spObtenerCuotas().ToList().Count > 0)
+            {
+                wnwCuotas ventana = new wnwCuotas();
+                ventana.ShowDialog();
+            }
         }
     }
 }
