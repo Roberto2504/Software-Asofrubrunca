@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.Insumos.uc_Insumo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Insumos"
+             mc:Ignorable="d" 
+             d:DesignHeight="38" d:DesignWidth="720">
+
+    <Grid>
+        <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="720" Margin="-2,0,0,0"/>
+        <TextBlock x:Name="txbNomCompleto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding NombreInsumo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Insumo}}}" Height="28" Width="135" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="145,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="262,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <TextBlock x:Name="txbCedula" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Descripcion, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Insumo}}}" Height="28" Width="109" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="148,10,0,0"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="370,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="498,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <TextBlock x:Name="txbCatCliente" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding CanInsumo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Insumo}}}" Height="28" Width="97" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="268,10,0,0"/>
+        <TextBlock x:Name="txbEstCliente" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding UniMedidaInsumo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Insumo}}}" Height="28" Width="21" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="376,10,0,0"/>
+        <Button x:Name="btnOpcion" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="511,5,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
+        <Button x:Name="btnOpcion2" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="614,5,0,0" VerticalAlignment="Top" Width="101"  Background="#FF2E8936" Foreground="White"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="402,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <TextBlock x:Name="txbEstadoInsumo" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding EstadoInsumo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Insumo}}}" Height="28" Width="85" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="408,10,0,0"/>
+    </Grid>
+
+</UserControl>

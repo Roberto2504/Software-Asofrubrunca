@@ -33,12 +33,7 @@ namespace SIGEEA_App.Paginas
         {
             InitializeComponent();
         }
-        #region Variables
 
-        string nomCed = null;
-        ClienteMantenimiento MantCliente = new ClienteMantenimiento();
-        SIGEEA_spListarClienteResult cliSeleccionado = new SIGEEA_spListarClienteResult();
-        #endregion
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
@@ -46,65 +41,36 @@ namespace SIGEEA_App.Paginas
             ventana.Show();
         }
 
-        private void FiltrarClientes(string CedNombre)
+
+
+        private void btnPedido_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-
-                ClienteMantenimiento clienMant = new ClienteMantenimiento();
-                dtgrdClientes.ItemsSource = clienMant.ListarClientes(CedNombre);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al listar: " + ex.ToString(), "error", MessageBoxButton.OK);
-
-            }
-
-        }
-        public void actualiza()
-        {
-            if (txtBuscar.Text != null)
-            {
-
-                nomCed = txtBuscar.Text;
-                FiltrarClientes(nomCed);
-            }
-
+            wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Pedido");
+            nuevo.Show();
         }
 
-        private void ccEditar_Click(object sender, RoutedEventArgs e)
+        private void btnAbono_Click(object sender, RoutedEventArgs e)
         {
-
-            wnwRegistrarPersona ventana = new wnwRegistrarPersona("Cliente", pAsociado: null, pEmpleado: null, pCliente: MantCliente.ObtenerCliente(cliSeleccionado.PK_Id_Cliente));
-            ventana.ShowDialog();
+            wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Abono");
+            nuevo.Show();
         }
 
-        private void ccEliminar_Click(object sender, RoutedEventArgs e)
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            ClienteMantenimiento mant = new ClienteMantenimiento();
-            mant.EliminarCliente(cliSeleccionado.PK_Id_Cliente);
+            wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Editar");
+            nuevo.Show();
         }
 
-        private void dtgrdClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnVer_Click(object sender, RoutedEventArgs e)
         {
-            cliSeleccionado = dtgrdClientes.SelectedItem as SIGEEA_spListarClienteResult;
+            wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Ver");
+            nuevo.Show();
         }
 
-        private void txtBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            actualiza();
-           
-        }
-
-        private void ccAbonoCliente_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ccPedidoCliente_Click(object sender, RoutedEventArgs e)
-        {
-            wnwRealizarPedidoCliente nuevoPedido = new wnwRealizarPedidoCliente();
-            nuevoPedido.ShowDialog();
+            wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Eliminar o Activar");
+            nuevo.Show();
         }
     }
 }

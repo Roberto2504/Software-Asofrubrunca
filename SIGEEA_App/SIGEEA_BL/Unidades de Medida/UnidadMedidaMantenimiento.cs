@@ -16,5 +16,11 @@ namespace SIGEEA_BL
             unidadesDeMedida = (from c in dc.SIGEEA_UniMedidas select c.Nombre_UniMedida).ToList();
             return unidadesDeMedida;
         }
+        public List<int> PkUniMedida(string nombre)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<int> pPkUniMedida = (from c in dc.SIGEEA_UniMedidas where c.Nombre_UniMedida == nombre select c.PK_Id_UniMedida).ToList();
+            return pPkUniMedida;
+        }
     }
 }

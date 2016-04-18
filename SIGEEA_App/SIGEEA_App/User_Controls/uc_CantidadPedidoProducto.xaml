@@ -4,19 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls"
-             mc:Ignorable="d" Height="300" Width="460">
+             mc:Ignorable="d" Height="390.226" Width="462.256">
     <Grid x:Name="grdPrincipal" >
-        <TextBlock x:Name="txbTipo" Margin="26,10,288,258"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text="{Binding TipPedido, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
-        <TextBlock x:Name="txb1" Margin="26,79,342,189" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
-        <TextBlock x:Name="txbNombre" Margin="232,79,73,189" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="{Binding nomTipProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
-        <TextBlock x:Name="txb2" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txbCantidad" Margin="232,116,73,152"  TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding canInvProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
-        <TextBlock x:Name="txbUniMedida" Margin="392,116,35,152" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding UniMedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
-        <TextBlock x:Name="txb3" Margin="26,153,356,115" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Pedido:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txbPedido" Margin="232,153,110,115" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding PedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbTipo" Margin="26,10,288,344"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text="{Binding TipPedido, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb1" Margin="26,79,342,279" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
+        <TextBlock x:Name="txbNombre" Margin="240,79,65,279" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="{Binding nomTipProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb2" Margin="26,116,233,237" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txbCantidad" Margin="240,116,65,242"  TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding canInvProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbUniMedida" Margin="397,116,30,242" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding UniMedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb3" Margin="26,153,356,203" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Pedido:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txbPedido" Margin="237,153,65,203" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding PedProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
         <TextBlock x:Name="txbId" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="{Binding IdTipProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}" Visibility="Hidden" RenderTransformOrigin="-1.703,2.062"/>
-                <TextBlock x:Name="txbPreExtProducto" Margin="435,10,83,10" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="{Binding preExtProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
-        <Button Margin="328,190,51,29" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
+        <Button Margin="354,314,25,0" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
             <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -24,7 +23,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button Margin="26,190,353,29" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
+        <Button Margin="23,314,356,0" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" >
             <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -32,5 +31,14 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
+        <TextBlock x:Name="txb3_Copy" Margin="26,192,356,164" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Precio:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txbPrecio" Margin="234,192,65,164" TextWrapping="Wrap" IsEnabled="True"  FontSize="20" FontWeight="Bold" Text="{Binding PrecioProducto, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txb3_Copy1" Margin="26,231,326,125" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Descuento:" RenderTransformOrigin="-1.703,2.062"/>
+        <TextBlock x:Name="txb3_Copy2" Margin="26,270,300,86" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Nuevo "/><Run Text="Precio:"/></TextBlock>
+        <TextBlock x:Name="txbNuevoPrecio" Margin="240,270,68,86" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding NuevoPrecio, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbMoneda" Margin="209,192,228,164" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding Moneda, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <TextBlock x:Name="txbMoneda1" Margin="210,270,227,86" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="{Binding Moneda, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Producto}}}"/>
+        <local:uControl_Numerico x:Name="ucCanDescuento" HorizontalAlignment="Left" Margin="264,231,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbUniMedida_Copy" Margin="303,233,124,125" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="%"/>
     </Grid>
 </UserControl>

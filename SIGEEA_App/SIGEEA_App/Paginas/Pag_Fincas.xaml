@@ -5,10 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIGEEA_App.Paginas"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="440" d:DesignWidth="1140"
       Title="Pag_Fincas">
 
     <Grid>
+        <Button x:Name="btnAgregarInsumo" Content="Agregar Finca" HorizontalAlignment="Left" Margin="154,114,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarInsumo_Click" />
+        <Button x:Name="btnEditarInsumo" Content="Editar Finca" HorizontalAlignment="Left" Margin="577,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEditarInsumo_Click" />
+        <Button x:Name="btnEliminaroActivarInsumo" Content="Eliminar ó Activar Finca" HorizontalAlignment="Left" Margin="367,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEliminaroActivarInsumo_Click" />
         
     </Grid>
 </Page>

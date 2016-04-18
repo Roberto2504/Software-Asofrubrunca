@@ -145,7 +145,82 @@ namespace SIGEEA_App.User_Controls
             uc_CantidadPedidoProducto test = (uc_CantidadPedidoProducto)d;
             test.UniMedProducto = e.NewValue as string;
         }
-       
+        //////////////////////////////////////////////PRECIO DE MEDIDA DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dpPrecioProducto = DependencyProperty.Register
+                                                                         ("PrecioProducto",
+                                                                         typeof(string),
+                                                                         typeof(uc_CantidadPedidoProducto),
+                                                                         new UIPropertyMetadata(PrecioProductoAct));
+
+        [Description("PrecioProducto"), Category("Common Properties")]
+        [Bindable(true)]
+        public string PrecioProducto
+        {
+            get { return (string)GetValue(dpPrecioProducto); }
+            set { SetValue(dpPrecioProducto, value); }
+        }
+        private static void PrecioProductoAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_CantidadPedidoProducto test = (uc_CantidadPedidoProducto)d;
+            test.PrecioProducto = e.NewValue as string;
+        }
+        //////////////////////////////////////////////MONEDA DE MEDIDA DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dpMoneda = DependencyProperty.Register
+                                                                         ("Moneda",
+                                                                         typeof(string),
+                                                                         typeof(uc_CantidadPedidoProducto),
+                                                                         new UIPropertyMetadata(MonedaAct));
+
+        [Description("Moneda"), Category("Common Properties")]
+        [Bindable(true)]
+        public string Moneda
+        {
+            get { return (string)GetValue(dpMoneda); }
+            set { SetValue(dpMoneda, value); }
+        }
+        private static void MonedaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_CantidadPedidoProducto test = (uc_CantidadPedidoProducto)d;
+            test.Moneda = e.NewValue as string;
+        }
+        //////////////////////////////////////////////DESCUENTO DE MEDIDA DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dpDescuento = DependencyProperty.Register
+                                                                         ("Descuento",
+                                                                         typeof(string),
+                                                                         typeof(uc_CantidadPedidoProducto),
+                                                                         new UIPropertyMetadata(DescuentoAct));
+
+        [Description("Descuento"), Category("Common Properties")]
+        [Bindable(true)]
+        public string Descuento
+        {
+            get { return (string)GetValue(dpDescuento); }
+            set { SetValue(dpDescuento, value); }
+        }
+        private static void DescuentoAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_CantidadPedidoProducto test = (uc_CantidadPedidoProducto)d;
+            test.Descuento = e.NewValue as string;
+        }
+        //////////////////////////////////////////////NUEVO PRECIO DE MEDIDA DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dpNuevoPrecio = DependencyProperty.Register
+                                                                         ("NuevoPrecio",
+                                                                         typeof(string),
+                                                                         typeof(uc_CantidadPedidoProducto),
+                                                                         new UIPropertyMetadata(NuevoPrecioAct));
+
+        [Description("NuevoPrecio"), Category("Common Properties")]
+        [Bindable(true)]
+        public string NuevoPrecio
+        {
+            get { return (string)GetValue(dpNuevoPrecio); }
+            set { SetValue(dpNuevoPrecio, value); }
+        }
+        private static void NuevoPrecioAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_CantidadPedidoProducto test = (uc_CantidadPedidoProducto)d;
+            test.NuevoPrecio = e.NewValue as string;
+        }
         #endregion
     }
 }

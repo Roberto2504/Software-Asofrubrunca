@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.Fincas.uc_ContenedorAsociados"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Fincas"
+             mc:Ignorable="d" 
+             d:DesignHeight="409" d:DesignWidth="835">
+    
+        <Grid>
+            <DataGrid Margin="92,68,104,318" RenderTransformOrigin="0.5,0.5">
+                <DataGrid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.041"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </DataGrid.RenderTransform>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre Completo" Width="222" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Codigo" Width="88" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Estado" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                   
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="91,93,0,0" VerticalAlignment="Top" Width="640">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-1,-1,1,1">
+                    <StackPanel x:Name="stpClientes" Width="640" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                </ScrollViewer>
+            </Border>
+            <Grid HorizontalAlignment="Left" Height="67" Margin="131,0,0,0" VerticalAlignment="Top" Width="600">
+
+                <StackPanel Name="stack_search_text" VerticalAlignment="Center" Margin="83,29,138,0" Height="38" >
+                    <StackPanel x:Name="SearchSubPanel" Orientation="Horizontal">
+                        <StackPanel x:Name="SearchInterenal" Orientation="Horizontal" Width="380" Height="46" >
+                            <TextBox x:Name="searchIn"  TextChanged="searchIn_TextChanged"  MaxLength="200" 
+                                        HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="378" Margin="0,10,0,9" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+                            <Image  Source="/Imagenes/buscar.png" Margin="-30,0,0,0"  Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.25"  />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="83,10,0,0" TextWrapping="Wrap" Text="Nombre o Codigo del Asociado" VerticalAlignment="Top" Width="177"/>
+            </Grid>
+
+
+        </Grid>
+   
+</UserControl>

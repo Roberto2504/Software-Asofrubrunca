@@ -9,10 +9,10 @@ using System.Collections.ObjectModel;
 
 namespace SIGEEA_BL
 {
-    
+
     public class ClienteMantenimiento
     {
-        
+
         /// <summary>
         /// Registrar cliente (se registra primero la persona, y luego el cliente)
         /// </summary>
@@ -44,6 +44,17 @@ namespace SIGEEA_BL
             dc.SubmitChanges();
         }
         /// <summary>
+        /// Activar un cliente, solo cambia de estado
+        /// </summary>
+        /// <param name="cliente"></param>
+        public void ActivarCliente(int pk_id_cliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Cliente nuevo = dc.SIGEEA_Clientes.First(c => c.PK_Id_Cliente == pk_id_cliente);
+            nuevo.Estado_Cliente = true;
+            dc.SubmitChanges();
+        }
+        /// <summary>
         /// Modificar Cliente
         /// </summary>
         /// <param name="cliente"></param>
@@ -52,11 +63,11 @@ namespace SIGEEA_BL
         public void ModificarCliente(SIGEEA_Cliente cliente, int pkCategoria, SIGEEA_Persona pPersona)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            
+
             SIGEEA_Cliente client = dc.SIGEEA_Clientes.First(c => c.FK_Id_Persona == pPersona.PK_Id_Persona);
             client.FK_Id_CatCliente = pkCategoria;
             PersonaMantenimiento nuevoMant = new PersonaMantenimiento();
-            nuevoMant.ModificarPersona(pPersona); 
+            nuevoMant.ModificarPersona(pPersona);
             dc.SubmitChanges();
         }
         /// <summary>
@@ -90,7 +101,7 @@ namespace SIGEEA_BL
         /// Listar Categorias
         /// </summary>
         /// <param name="Nombre"></param>
-       
+
         public List<string> ListarCategorias()
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
@@ -105,9 +116,58 @@ namespace SIGEEA_BL
 
         public int ObtenerPkCategoria(string nombre)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();  
+            DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
         }
-       
+
+        /// <summary>
+        /// Restar Inventario
+        /// </summary>
+        /// <param name="PK_Id_TipProducto, Cantidad"></param>
+        public void RestarInventario(int pIdTipProducto, double Cantidad)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DetInvProducto detInvPro = dc.SIGEEA_DetInvProductos.First(c => c.FK_Id_TipProducto == pIdTipProducto);
+            detInvPro.Cantidad_DetInvProductos = Cantidad;
+            dc.SubmitChanges();
+        }
+        /// <summary>
+        /// SumarInventario
+        /// </summary>
+        /// <param name="PK_Id_TipProducto, Cantidad"></param>
+        public void SumarInventario(int pIdTipProducto, double Cantidad)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DetInvProducto detInvPro = dc.SIGEEA_DetInvProductos.First(c => c.FK_Id_TipProducto == pIdTipProducto);
+            detInvPro.Cantidad_DetInvProductos = Cantidad;
+            dc.SubmitChanges();
+
+        }
+
+        /// <summary>
+        /// ObtenerCreditosCliente
+        /// </summary>
+        /// <param name="PK_Id_Cliente"></param>
+        public List<Double> ListarCreditosCliente(int PK_Id_Cliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<Double> SumarInventario = new List<Double>();
+            SumarInventario = (from c in dc.SIGEEA_CreClientes where c.FK_Id_Cliente == PK_Id_Cliente && c.Estado_CreCliente==true select c.Saldo_CreCliente).ToList();
+            return SumarInventario;
+        }
+
+        /// <summary>
+        /// ObtenerLimiteCredito
+        /// </summary>
+        /// <param name="PK_Id_Cliente"></param>
+        public String LimiteCreditoCliente(int PK_Id_Cliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            String limiteCredito;
+            string fkCategoria = (from c in dc.SIGEEA_Clientes where c.PK_Id_Cliente == PK_Id_Cliente select c.FK_Id_CatCliente).ToString();
+            limiteCredito = (from c in dc.SIGEEA_CatClientes where c.PK_Id_CatCliente == Convert.ToInt32(fkCategoria) select c.Limite_CatCliente).ToString();
+            return limiteCredito;
+        }
+
     }
 }

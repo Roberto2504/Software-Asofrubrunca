@@ -18,7 +18,8 @@ using SIGEEA_BO;
 using SIGEEA_App.Custom_Controls;
 using SIGEEA_App.User_Controls;
 using SIGEEA_App.Ventanas_Modales.Clientes;
-
+using SIGEEA_App.User_Controls.Clientes;
+using SIGEEA_BL;
 namespace SIGEEA_App.Ventanas_Modales.Clientes
 {
     /// <summary>
@@ -26,49 +27,190 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
     /// </summary>
     public partial class wnwCantidadProductoPedido : MetroWindow
     {
-        public wnwCantidadProductoPedido(string pTipoProceso, uc_Producto pProducto)
+        public wnwCantidadProductoPedido(string pTipoProceso, uc_Producto pProducto, uc_DetProducto pDetProducto)
         {
             InitializeComponent();
-            cantidad = pProducto.canInvProducto;
-            cargarDatos(pTipoProceso, pProducto);
-           
+            if (pTipoProceso == "Agregar")
+            {
+                cantidad = pProducto.canInvProducto;
+                precio = pProducto.preProducto;
+                tipoProceso = pTipoProceso;
+                tag = pProducto.Tag.ToString();
+                calidad = pProducto.calTipProducto;
+            }
+            else {
+                cantidad = pDetProducto.canInvProducto;
+                moneda = pDetProducto.Moneda;
+                precio = pDetProducto.preProducto;
+                tipoProceso = pTipoProceso;
+                tag = pDetProducto.Tag.ToString();
+                calidad = pDetProducto.calTipProducto;
+            }
 
+            cargarDatos(pTipoProceso, pProducto, pDetProducto);
+            ucDescuento.NUDTextBox.TextChanged += NUDTextBox_TextChanged;
+            ucPedido.NUDTextBox.TextChanged += NUDTextBox_TextChanged1;
+            
         }
-        uc_Producto proModifica = new uc_Producto();
-        string cantidad;
-        public void cargarDatos(string TipoProceso, uc_Producto Producto)
+
+        private void NUDTextBox_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tipoProceso == "Agregar")
+            {
+                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
+            }
+            preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
+            txbTotal.Text = string.Concat(moneda, preBru);
+            preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
+            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+        }
+
+        private void NUDTextBox_TextChanged1(object sender, TextChangedEventArgs e)
         {
             
-            txbNombre.Text = Producto.nomTipProducto;
-            txbCantidad.Text =  String.Concat(Producto.canInvProducto.ToString(), Producto.UniMedida.ToString());
-            btnGuardar.Tag = Producto.IdTipProducto.ToString();
-            txbTipo.Text = TipoProceso.ToString();
+                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
+                
+            
+            txbCantidad.Text = string.Concat(cantidad, uniMedida);
+            preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
+            txbTotal.Text = string.Concat(moneda, preBru);
+            preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
+            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+        }
+
+        private void NUDTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txbNuevoPrecio.Text = string.Concat(moneda, (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString());
+        }
+
+        uc_Producto proModifica = new uc_Producto();
+        string cantidad;
+        string canAnterior;
+        string moneda;
+        string precio;
+        string preNac;
+        string preExt;
+        string preNet;
+        string preBru;
+        string uniMedida;
+        string tipoProceso;
+        string tag;
+        string calidad;
+        public void cargarDatos(string TipoProceso, uc_Producto Producto, uc_DetProducto DetProdcuto)
+        {
+            if (TipoProceso == "Agregar")
+            {
+                txbCantidad.Text = string.Concat(Producto.canInvProducto, Producto.UniMedida);
+                cantidad = Producto.canInvProducto;
+                canAnterior = Producto.canInvProducto;
+                uniMedida = Producto.UniMedida;
+                txbPrecio.Text = string.Concat(Producto.Moneda, Producto.preProducto);
+                precio = Producto.preProducto;
+                txbNombre.Text = Producto.nomTipProducto;
+                txbTipo.Text = TipoProceso;
+                txbId.Text = Producto.IdTipProducto;
+                moneda = Producto.Moneda;
+                preNac = Producto.preNacProducto;
+                preExt = Producto.preExtProducto;
+                tag = Producto.Tag.ToString();
+            }
+            else
+            {
+
+                txbCantidad.Text = string.Concat(DetProdcuto.canDisProducto, DetProdcuto.UniMedida);
+                txbPrecio.Text = string.Concat(DetProdcuto.Moneda, DetProdcuto.preProducto);
+                txbNombre.Text = DetProdcuto.nomTipProducto;
+                txbTipo.Text = TipoProceso;
+                uniMedida = DetProdcuto.UniMedida;
+                canAnterior = (Convert.ToDouble(DetProdcuto.canDisProducto) + Convert.ToDouble(DetProdcuto.canInvProducto)).ToString();
+                cantidad = DetProdcuto.canDisProducto;
+                precio = DetProdcuto.preProducto;
+                txbId.Text = DetProdcuto.IdTipProducto;
+               // txbCantidad.Text = DetProdcuto.canDisProducto;
+                preBru = DetProdcuto.preBruProducto;
+                preNet = DetProdcuto.preNetProducto;
+                txbTotal.Text = DetProdcuto.preBruProducto;
+                txbNuevoPrecio.Text = DetProdcuto.preNetProducto;
+                ucPedido.NUDTextBox.Text = DetProdcuto.canInvProducto;
+                ucDescuento.NUDTextBox.Text = DetProdcuto.desProducto;
+                moneda = DetProdcuto.Moneda;
+                preNac = DetProdcuto.preNacProducto;
+                preExt = DetProdcuto.preExtProducto;
+                tag = DetProdcuto.Tag.ToString();
+            }
+
+        }
+
+
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            ClienteMantenimiento clientMant = new ClienteMantenimiento();
+            clientMant.SumarInventario(Convert.ToInt32(txbId.Text), (Convert.ToDouble(cantidad) + Convert.ToDouble(ucPedido.NUDTextBox.Text)));
+            this.Close();
         }
 
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            
-            if(Convert.ToInt32(cantidad) < Convert.ToInt32(txbPedido.Text))
-            { MessageBox.Show("El pedido exede la cantidad Disponible"); }
-            else if (Convert.ToInt32(txbPedido.Text) <= 0 )
-            { MessageBox.Show("El pedido es menor o igual a 0"); }
-            else { 
-                MessageBoxResult m = MessageBox.Show("Es la cantidad correcta? "+txbPedido.Text, "Mensaje de Confirmación", MessageBoxButton.YesNo);
-            if (m == MessageBoxResult.Yes)
+
+            if (txbCantidad.Text != "")
             {
-                proModifica.canInvProducto = txbPedido.Text;
-                ((wnwRealizarPedidoCliente)this.Owner).CargarPedido(btnGuardar.Tag.ToString(), txbPedido.Text );
-                this.Close();
+                if (Convert.ToDouble(ucPedido.NUDTextBox.Text) > Convert.ToDouble(canAnterior))
+                { MessageBox.Show("El pedido exede la cantidad Disponible"); }
+                else if (Convert.ToDouble(ucPedido.NUDTextBox.Text) <= 0)
+                { MessageBox.Show("El pedido es menor o igual a 0"); }
+                else {
+                    MessageBoxResult m = MessageBox.Show("Es la cantidad correcta? " + ucPedido.NUDTextBox.Text, "Mensaje de Confirmación", MessageBoxButton.YesNo);
+                    if (m == MessageBoxResult.Yes)
+                    {
+
+                        uc_DetProducto nuevoDet = new uc_DetProducto();
+
+                        nuevoDet.preBruProducto = preBru;
+                        nuevoDet.nomTipProducto = txbNombre.Text;
+                        nuevoDet.IdTipProducto = txbId.Text;
+                        nuevoDet.Moneda = moneda;
+                        nuevoDet.canInvProducto = ucPedido.NUDTextBox.Text;
+                        nuevoDet.desProducto = ucDescuento.NUDTextBox.Text;
+
+                        nuevoDet.preNetProducto = preNet;
+                        nuevoDet.preNacProducto = preNac;
+                        nuevoDet.preExtProducto = preExt;
+                        nuevoDet.Tag = tag;
+                        nuevoDet.UniMedida = uniMedida;
+                        nuevoDet.preProducto = precio;
+                        nuevoDet.calTipProducto = calidad;
+                        nuevoDet.canDisProducto = cantidad;
+                        ((wnwRealizarPedidoCliente)this.Owner).CargarPedido(nuevoDet);
+                        this.Close();
+                    }
+
+                }
             }
-            
-            }
+            else MessageBox.Show("No ha ingresado la cantidad");
         }
 
-        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+
+
+        private void uc_ControlNumericoGrande_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
+            
+                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
+            
+            
+            txbCantidad.Text = string.Concat(cantidad, uniMedida);
+            preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
+            txbTotal.Text = string.Concat(moneda, preBru);
+            preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
+            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+
         }
 
-        
+        private void ucDescuento_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
+            preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
+            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+        }
     }
 }

@@ -66,26 +66,8 @@ namespace SIGEEA_App.User_Controls
             uc_Producto test = (uc_Producto)d;
             test.nomTipProducto = e.NewValue as string;
         }
-        //////////////////////////////////////////////DESCRIPCIÓN TIPO DE PRODUCTO//////////////////////////////////////////////////////////
-        public static DependencyProperty dpdesTipProducto = DependencyProperty.Register
-                                                                         ("desTipProducto",
-                                                                         typeof(string),
-                                                                         typeof(uc_Producto),
-                                                                         new UIPropertyMetadata(desTipProductoAct));
 
-        [Description("desTipProducto"), Category("Common Properties")]
-        [Bindable(true)]
 
-        public string desTipProducto
-        {
-            get { return (string)GetValue(dpdesTipProducto); }
-            set { SetValue(dpdesTipProducto, value); }
-        }
-        private static void desTipProductoAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            uc_Producto test = (uc_Producto)d;
-            test.desTipProducto = e.NewValue as string;
-        }
         //////////////////////////////////////////////CALIDAD TIPO DE PRODUCTO//////////////////////////////////////////////////////////
         public static DependencyProperty dpcalTipProducto = DependencyProperty.Register
                                                                          ("calTipProducto",
@@ -126,9 +108,28 @@ namespace SIGEEA_App.User_Controls
             test.canInvProducto = e.NewValue as string;
         }
 
+        //////////////////////////////////////////////PRECIO DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dppreProducto = DependencyProperty.Register
+                                                                         ("preProducto",
+                                                                         typeof(string),
+                                                                         typeof(uc_Producto),
+                                                                         new UIPropertyMetadata(preProductoAct));
+
+        [Description("preProducto"), Category("Common Properties")]
+        [Bindable(true)]
+        public string preProducto
+        {
+            get { return (string)GetValue(dppreProducto); }
+            set { SetValue(dppreProducto, value); }
+        }
+        private static void preProductoAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_Producto test = (uc_Producto)d;
+            test.preProducto = e.NewValue as string;
+        }
         //////////////////////////////////////////////PRECIO NACIONAL DE PRODUCTO//////////////////////////////////////////////////////////
         public static DependencyProperty dppreNacProducto = DependencyProperty.Register
-                                                                         ("preNacProducto",
+                                                                         ("preNacProducto ",
                                                                          typeof(string),
                                                                          typeof(uc_Producto),
                                                                          new UIPropertyMetadata(preNacProductoAct));
@@ -145,15 +146,15 @@ namespace SIGEEA_App.User_Controls
             uc_Producto test = (uc_Producto)d;
             test.preNacProducto = e.NewValue as string;
         }
-        //////////////////////////////////////////////PRECIO EXTRAJERO DE PRODUCTO//////////////////////////////////////////////////////////
+        //////////////////////////////////////////////PRECIO EXTRANJERO DE PRODUCTO//////////////////////////////////////////////////////////
         public static DependencyProperty dppreExtProducto = DependencyProperty.Register
-                                                                         ("preExtProducto",
+                                                                         ("preExtProducto ",
                                                                          typeof(string),
                                                                          typeof(uc_Producto),
                                                                          new UIPropertyMetadata(preExtProductoAct));
+
         [Description("preExtProducto"), Category("Common Properties")]
         [Bindable(true)]
-
         public string preExtProducto
         {
             get { return (string)GetValue(dppreExtProducto); }
@@ -167,7 +168,6 @@ namespace SIGEEA_App.User_Controls
 
 
 
-        
 
         //////////////////////////////////////////////IDMONEDA DE PRODUCTO//////////////////////////////////////////////////////////
         public static DependencyProperty dpIdMoneda = DependencyProperty.Register
@@ -188,7 +188,7 @@ namespace SIGEEA_App.User_Controls
             uc_Producto test = (uc_Producto)d;
             test.IdMoneda = e.NewValue as string;
         }
-        //////////////////////////////////////////////IDMONEDA DE PRODUCTO//////////////////////////////////////////////////////////
+        //////////////////////////////////////////////Uni Medida  DE PRODUCTO//////////////////////////////////////////////////////////
         public static DependencyProperty dpUniMedida = DependencyProperty.Register
                                                                          ("UniMedida",
                                                                          typeof(string),
@@ -207,6 +207,25 @@ namespace SIGEEA_App.User_Controls
             uc_Producto test = (uc_Producto)d;
             test.UniMedida = e.NewValue as string;
         }
+        //////////////////////////////////////////////MONEDA DE PRODUCTO//////////////////////////////////////////////////////////
+        public static DependencyProperty dpMoneda = DependencyProperty.Register
+                                                                         ("Moneda",
+                                                                         typeof(string),
+                                                                         typeof(uc_Producto),
+                                                                         new UIPropertyMetadata(MonedaAct));
+
+        [Description("Moneda"), Category("Common Properties")]
+        [Bindable(true)]
+        public string Moneda
+        {
+            get { return (string)GetValue(dpMoneda); }
+            set { SetValue(dpMoneda, value); }
+        }
+        private static void MonedaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_Producto test = (uc_Producto)d;
+            test.Moneda = e.NewValue as string;
+        }
         //////////////////////////////////////////////COLOR DE PRODUCTO//////////////////////////////////////////////////////////
         public void Color(bool pColor)
         {
@@ -216,6 +235,6 @@ namespace SIGEEA_App.User_Controls
         }
         #endregion
 
-        
+
     }
 }

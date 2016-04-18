@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIGEEA_BL;
 using SIGEEA_App.Ventanas_Modales;
-
+using SIGEEA_App.Custom_Controls;
+using SIGEEA_App.Ventanas_Modales.Insumos;
 namespace SIGEEA_App.Paginas
 {
     /// <summary>
@@ -30,26 +31,6 @@ namespace SIGEEA_App.Paginas
 
         string nomInsumo = null;
         #endregion
-        private void ccPedidoInsumo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ccCompraInsumo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-      
-        private void ccEditar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ccEliminar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnAgregarInsumo_Click(object sender, RoutedEventArgs e)
         {
@@ -57,36 +38,33 @@ namespace SIGEEA_App.Paginas
             ventanaInsumo.Show();
         }
 
+       
+       
         
-        private void FiltrarInsumos(string nomInsumo)
+       
+
+        private void btnEditarInsumo_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-
-                InsumoMantenimiento mantInsumo = new InsumoMantenimiento();
-                dtgrdInsumo.ItemsSource = mantInsumo.ListarInsumos(txbBuscar.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al listar: " + ex.ToString(), "error", MessageBoxButton.OK);
-
-            }
-
-        }
-        public void actualiza()
-        {
-            if (txbBuscar.Text != null)
-            {
-
-                nomInsumo = txbBuscar.Text;
-                FiltrarInsumos(nomInsumo);
-            }
-
+            wnwBuscadorInsumo nuevo = new wnwBuscadorInsumo("Editar");
+            nuevo.Show();
         }
 
-        private void txbBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        private void btnEliminaroActivarInsumo_Click(object sender, RoutedEventArgs e)
         {
-            actualiza();
+            wnwBuscadorInsumo nuevo = new wnwBuscadorInsumo("Eliminar o Activar");
+            nuevo.Show();
+        }
+
+        private void btnComrarInsumo_Click(object sender, RoutedEventArgs e)
+        {
+            wnwBuscadorInsumo nuevo = new wnwBuscadorInsumo("Comprar");
+            nuevo.Show();
+        }
+
+        private void btnPedidoInsumo_Click(object sender, RoutedEventArgs e)
+        {
+            wnwBuscadorInsumo nuevo = new wnwBuscadorInsumo("Pedido");
+            nuevo.Show();
         }
     }
 }

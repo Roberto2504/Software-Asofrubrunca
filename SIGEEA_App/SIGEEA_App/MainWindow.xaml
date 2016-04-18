@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Pantalla principal" Width="1353.901" Height="758.865"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" >
+        Title="Pantalla principal" Width="1353.901" Height="758.865"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" >
     <Grid>
         <Image x:Name="image" HorizontalAlignment="Left" Height="116" Margin="10,31,0,0" VerticalAlignment="Top" Width="220" Source="Imagenes/CostaFresh.jpg"/>
         <Button x:Name="btnSalir" Margin="1248,10,10,612" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">

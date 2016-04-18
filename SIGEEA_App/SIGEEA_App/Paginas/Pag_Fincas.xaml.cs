@@ -12,7 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using SIGEEA_App.Ventanas_Modales.Personas;
+using SIGEEA_App.Ventanas_Modales.Fincas;
+using System.Collections.ObjectModel;
+using System.IO;
+using SIGEEA_BL;
+using SIGEEA_BO;
+using SIGEEA_App.Custom_Controls;
 namespace SIGEEA_App.Paginas
 {
     /// <summary>
@@ -23,6 +29,22 @@ namespace SIGEEA_App.Paginas
         public Pag_Fincas()
         {
             InitializeComponent();
+        }
+
+        private void btnAgregarInsumo_Click(object sender, RoutedEventArgs e)
+        {
+            wnwBuscadorAsociados nuevo = new wnwBuscadorAsociados("Registrar");
+            nuevo.Show();
+        }
+
+        private void btnEditarInsumo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnEliminaroActivarInsumo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

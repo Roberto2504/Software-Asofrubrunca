@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SIGEEA_BL.Monedas;
+using SIGEEA_BL;
 using SIGEEA_BO;
 
 namespace SIGEEA_App.User_Controls

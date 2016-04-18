@@ -8,53 +8,10 @@
       Title="Pag_Insumos" Width="1140" Height="439.85">
 
     <Grid>
-        <Button x:Name="btnAgregarInsumo" Content="Agregar Insumo" HorizontalAlignment="Left" Margin="890,11,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarInsumo_Click" />
-
-        <TextBox x:Name="txbBuscar" HorizontalAlignment="Left" Height="25" Margin="424,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" TextChanged="txbBuscar_TextChanged" Background="White"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="380" Margin="10,41,0,0" VerticalAlignment="Top" Width="1120">
-            <DataGrid x:Name="dtgrdInsumo" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="-1" RowDetailsVisibilityMode="VisibleWhenSelected" FontSize="19" Foreground="#FF082942" BorderBrush="#FF082942" Background="#FF7C7777" AlternatingRowBackground="#FFF7F7F7" RowBackground="#FFD1D1D1">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="PK_Id_Insumo" Binding="{Binding PK_Id_Insumo}" Header="PK_Id_Insumo" Width="SizeToHeader" Visibility="Hidden" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="Nombre" Binding="{Binding Nombre_Insumo}" Header="Nombre" Width="100" CanUserSort="False"/>
-                    <DataGridTextColumn x:Name="Descripcion" Binding="{Binding Descripcion_Insumo}" Header="Descripcion" Width="150" CanUserSort="False"/>
-                    <DataGridTextColumn x:Name="Cantidad" Binding="{Binding Cantidad_InvInsumo}" Header="Cantidad" Width="120" CanUserReorder="False"/>
-                    <DataGridTextColumn x:Name="UnidaddeMedida" Binding="{Binding Nombre_UniMedida}" Header="Uni.Medida" Width="135" CanUserReorder="False"/>
-                    <DataGridCheckBoxColumn x:Name="Estado" Binding="{Binding Estado_Insumo}" Header="Estado" Width="93" CanUserReorder="False" />
-                    <DataGridTemplateColumn  MinWidth="0" Header="Editar" CanUserResize="False">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CustomControl:ccEditar Click="ccEditar_Click" Content="View Details"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  MinWidth="0" Header="Eliminar" CanUserResize="False">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CustomControl:ccEliminar Click="ccEliminar_Click" Content="View Details"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  MinWidth="0" Header="Pedido" CanUserResize="False">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CustomControl:ccPedidoInsumo Click="ccPedidoInsumo_Click" Content="View Details"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  MinWidth="0" Header="Comprar" CanUserResize="False">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <CustomControl:ccCompraInsumo Click="ccCompraInsumo_Click"  Content="View Details"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-
-
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </Border>
-
-
+        <Button x:Name="btnAgregarInsumo" Content="Agregar Insumo" HorizontalAlignment="Left" Margin="154,114,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarInsumo_Click" />
+        <Button x:Name="btnEditarInsumo" Content="Editar Insumo" HorizontalAlignment="Left" Margin="577,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEditarInsumo_Click" />
+        <Button x:Name="btnEliminaroActivarInsumo" Content="Eliminar ó Activar Insumo" HorizontalAlignment="Left" Margin="359,223,0,0" VerticalAlignment="Top" Width="124" Click="btnEliminaroActivarInsumo_Click" />
+        <Button x:Name="btnComrarInsumo" Content="Comprar Insumo" HorizontalAlignment="Left" Margin="359,114,0,0" VerticalAlignment="Top" Width="124" Click="btnComrarInsumo_Click" />
+        <Button x:Name="btnPedidoInsumo" Content="Pedir Insumo" HorizontalAlignment="Left" Margin="154,215,0,0" VerticalAlignment="Top" Width="124" Click="btnPedidoInsumo_Click" />
     </Grid>
 </Page>
