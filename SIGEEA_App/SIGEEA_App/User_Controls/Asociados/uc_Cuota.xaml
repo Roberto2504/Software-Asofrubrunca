@@ -11,9 +11,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Visibility="Collapsed" x:Name="lblIdCuota" Content="{Binding CuotaId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Height="24" Margin="19,23,0,0" VerticalAlignment="Top" Width="85"/>
-        <TextBlock x:Name="lblNombre" Text="{Binding NombreCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Height="16" Margin="10,7,0,0" VerticalAlignment="Top" Width="225" FontWeight="Bold"/>
-        <TextBlock x:Name="lblMonto" Text="{Binding MontoCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Margin="240,7,0,0" VerticalAlignment="Top" Width="173" Height="16" FontWeight="Bold" TextAlignment="Center"/>
-        <TextBlock x:Name="lblRango" Text="{Binding Rango, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Margin="418,7,0,0" VerticalAlignment="Top" Height="16" Width="198" FontWeight="Bold" TextAlignment="Center"/>
-        <Button x:Name="btnSeleccionar" Content="Detalles" HorizontalAlignment="Left" Height="23" Margin="621,5,0,0" VerticalAlignment="Top" Width="61" FontSize="9.333" FontWeight="Bold" Background="#FF569B4B" ToolTip="Ver deudores" Click="btnSeleccionar_Click" Cursor="Hand" Foreground="White"/>
+        <TextBlock x:Name="lblNombre" Text="{Binding NombreCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Height="16" Margin="10,7,0,0" VerticalAlignment="Top" Width="186" FontWeight="Bold"/>
+        <TextBlock x:Name="lblMonto" Text="{Binding MontoCuota, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top" Width="152" Height="16" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBlock x:Name="lblRango" Text="{Binding Rango, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Cuota}}}" HorizontalAlignment="Left" Margin="358,7,0,0" VerticalAlignment="Top" Height="16" Width="198" FontWeight="Bold" TextAlignment="Center"/>
+        <Button x:Name="btnSeleccionar" Content="Detalles" HorizontalAlignment="Left" Height="23" Margin="627,7,0,0" VerticalAlignment="Top" Width="61" FontSize="9.333" FontWeight="Bold" Background="#FF569B4B" ToolTip="Ver deudores" Click="btnSeleccionar_Click" Cursor="Hand" Foreground="White"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Height="23" Margin="561,7,0,0" VerticalAlignment="Top" Width="61" FontSize="9.333" FontWeight="Bold" Background="#FF1C58DA" ToolTip="Editar la información de la cuota" Click="btnEditar_Click" Cursor="Hand" Foreground="White"/>
     </Grid>
 </UserControl>

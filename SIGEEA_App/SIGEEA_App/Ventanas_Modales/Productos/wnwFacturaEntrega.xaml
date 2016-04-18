@@ -1,0 +1,28 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Productos.wnwFacturaEntrega"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Empleados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="wnwCancelarPagoEmpleado" Height="514.285" Width="712.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFB0C1C0">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnImprimir" Margin="510,197,50,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnImprimir_Click" ToolTip="Imprimir factura">
+            <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_printer_text}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <RichTextBox x:Name="txbFactura" HorizontalAlignment="Left" Height="465" Margin="10,10,0,0" VerticalAlignment="Top" Width="448" Foreground="Black" IsEnabled="False">
+            <FlowDocument>
+
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</Controls:MetroWindow>

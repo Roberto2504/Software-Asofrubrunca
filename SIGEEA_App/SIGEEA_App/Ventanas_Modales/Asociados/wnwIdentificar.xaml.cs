@@ -18,6 +18,7 @@ using SIGEEA_BL;
 using SIGEEA_BO;
 using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_App.Ventanas_Modales.Direcciones;
+using SIGEEA_App.Ventanas_Modales.Productos;
 
 namespace SIGEEA_App.Ventanas_Modales.Asociados
 {
@@ -61,6 +62,18 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 else
                 {
                     MessageBox.Show("Los datos ingresados no coinciden con ningún registro.", "SIGEEA", MessageBoxButton.OK);
+                }
+            }
+            else if (solicitud == "Entrega")
+            {
+                AsociadoMantenimiento Asociado = new AsociadoMantenimiento();
+                Asociado = new AsociadoMantenimiento();
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                if (Asociado.AutenticaAsociado(txbInformacion.Text) != null)
+                {
+                    wnwEntregaProducto ventana = new wnwEntregaProducto(dc.SIGEEA_spObtenerAsociado(txbInformacion.Text).First());
+                    ventana.ShowDialog();
+                    this.Close();
                 }
             }
         }

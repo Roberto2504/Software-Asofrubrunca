@@ -44,7 +44,8 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                     uc_Contacto contacto = new uc_Contacto();
                     contacto.Info = c.Dato_Contacto;
                     contacto.Color(color);
-                    contacto.TipoInfo = "F:/Software-Asofrubrunca/SIGEEA_App/SIGEEA_App/Imagenes/Contactos/" + c.Nombre_TipContacto + ".ico";
+                    contacto.TipoInfo = @"/Imagenes/Contactos/" + c.Nombre_TipContacto + ".ico";
+                    contacto.btnEditar.Click += BtnEditar_Click;
                     contacto.ContactoId = c.PK_Id_Contacto;
                     stpContactos.Children.Add(contacto);
                     color = !color;
@@ -57,11 +58,17 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
             }
         }
 
+        private void BtnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            wnwAgregarContacto ventana = new wnwAgregarContacto(pk_persona);
+            wnwAgregarContacto ventana = new wnwAgregarContacto(pk_persona, "Insertar", 0);
             ventana.ShowDialog();
             this.Close();
         }
     }
 }
+

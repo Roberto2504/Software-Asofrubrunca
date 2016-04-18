@@ -21,18 +21,30 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 {
     /// <summary>
     /// Interaction logic for wnwRegistrarCuota.xaml
-    /// </summary>
+    /// </summary>   
     public partial class wnwRegistrarCuota : MetroWindow
     {
-        public wnwRegistrarCuota()
+        int pk_cuota;
+        public wnwRegistrarCuota(int pIdCuota)
         {
             InitializeComponent();
+            if (pIdCuota != 0)
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_Cuota cuota = dc.SIGEEA_Cuotas.First(c => c.PK_Id_Cuota == pIdCuota);
+                txbNombre.Text = cuota.Nombre_Cuota;
+                txbMonto.Text = cuota.Monto_Cuota.ToString();
+                dtpFecInicio.Text = cuota.FecInicio_Cuota.ToString();
+                dtpFecFin.Text = cuota.FecFin_Cuota.ToString();
+                ucMoneda.setMoneda(cuota.FK_Id_Moneda);
+                pk_cuota = pIdCuota;
+            }
         }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             try
-            {                
+            {
                 ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
                 bool valido = true;
                 foreach (TextBox txb in grdValidar.Children)
@@ -46,7 +58,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     }
                 }
 
-                if(valido == true)
+                if (valido == true)
                 {
                     SIGEEA_Cuota cuota = new SIGEEA_Cuota();
                     AsociadoMantenimiento asociado = new AsociadoMantenimiento();
@@ -55,22 +67,26 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     cuota.FecInicio_Cuota = dtpFecInicio.SelectedDate.Value;
                     cuota.FecFin_Cuota = dtpFecFin.SelectedDate.Value;
                     cuota.FK_Id_Moneda = ucMoneda.getMoneda();
-                    asociado.RegistrarCuota(cuota);
+                    if (pk_cuota == 0) asociado.RegistrarCuota(cuota);
+                    else
+                    {
+                        cuota.PK_Id_Cuota = pk_cuota;
+                        asociado.EditarCuota(cuota);
+                    }
                     MessageBox.Show("La cuota se ha registrado con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
                     this.Close();
                 }
                 else
                 {
-                    Exception ex = new Exception();
                     throw new System.ArgumentException("Los datos ingresados no coinciden con los formatos requeridos.");
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+
         }
     }
 }

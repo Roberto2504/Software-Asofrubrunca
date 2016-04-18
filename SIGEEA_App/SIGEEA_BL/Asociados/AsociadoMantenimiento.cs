@@ -171,7 +171,23 @@ namespace SIGEEA_BL
             dc.SIGEEA_Cuotas.InsertOnSubmit(pCuota);
             dc.SubmitChanges();
         }
-        
+
+        /// <summary>
+        /// Edita la información de una cuota existente
+        /// </summary>
+        /// <param name="pCuota"></param>
+        public void EditarCuota(SIGEEA_Cuota pCuota)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Cuota cuota = dc.SIGEEA_Cuotas.First(c => c.PK_Id_Cuota == pCuota.PK_Id_Cuota);
+            cuota.Monto_Cuota = pCuota.Monto_Cuota;
+            cuota.FecFin_Cuota = pCuota.FecFin_Cuota;
+            cuota.FecInicio_Cuota = pCuota.FecInicio_Cuota;
+            cuota.FK_Id_Moneda = pCuota.FK_Id_Moneda;
+            cuota.Nombre_Cuota = pCuota.Nombre_Cuota;
+            dc.SubmitChanges();
+        }
+
         /// <summary>
         /// Lista las cuotas que se encuentran actualmente activas
         /// </summary>
@@ -182,12 +198,23 @@ namespace SIGEEA_BL
             return dc.SIGEEA_spObtenerCuotas().ToList();
         }
 
+        /// <summary>
+        /// Lista los asociados deudores de las cuotas
+        /// </summary>
+        /// <param name="pCuota"></param>
+        /// <returns></returns>
         public List<SIGEEA_spObtenerDeudoresCuotasResult> ListarDeudoresCuotas(int pCuota)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spObtenerDeudoresCuotas(pCuota).ToList();
         }
 
+        /// <summary>
+        /// Se realiza el pago de una cuota de asociado
+        /// </summary>
+        /// <param name="pCuotaAsociado"></param>
+        /// <param name="pMonto"></param>
+        /// <returns></returns>
         public bool RealizarPagoCuota(int pCuotaAsociado, double pMonto)
         {
             try
@@ -196,7 +223,7 @@ namespace SIGEEA_BL
                 SIGEEA_Cuota_Asociado cuota = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado);
                 double saldo = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado).Saldo_Cuota_Asociado;
                 cuota.Saldo_Cuota_Asociado = saldo - pMonto;
-                if(cuota.Saldo_Cuota_Asociado <= 0)
+                if (cuota.Saldo_Cuota_Asociado <= 0)
                     cuota.Estado_Cuota_Asociado = true;
                 dc.SubmitChanges();
                 return true;
@@ -207,10 +234,110 @@ namespace SIGEEA_BL
             }
         }
 
+        /// <summary>
+        /// Genera la factura de la cuota de los asociados
+        /// </summary>
+        /// <param name="pCuotaAsociado"></param>
+        /// <param name="pMonto"></param>
+        /// <param name="pSaldoAnterior"></param>
+        /// <returns></returns>
         public SIGEEA_spGenerarFacturaCuotaResult GenerarFacturaCuota(int pCuotaAsociado, double pMonto, double pSaldoAnterior)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spGenerarFacturaCuota(pCuotaAsociado, pMonto, pSaldoAnterior).First();
+        }
+
+        /// <summary>
+        /// Registra la entrega del producto, a partir de los datos de una factura y una lista de detalles.
+        /// </summary>
+        /// <param name="pFactura"></param>
+        /// <param name="pDetalles"></param>
+        public void RegistraEntrega(SIGEEA_FacAsociado pFactura, List<SIGEEA_DetFacAsociado> pDetalles)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+
+                pFactura.FecEntrega_FacAsociado = DateTime.Now;
+                pFactura.CanNeta_FacAsociado = 0;
+                double total = 0;
+                foreach (SIGEEA_DetFacAsociado d in pDetalles) total += d.CanTotal_DetFacAsociado;
+                pFactura.CanTotal_FacAsociado = total;
+                pFactura.Incompleta_FacAsociado = true;
+                pFactura.CanNeta_FacAsociado = -1;
+                dc.SIGEEA_FacAsociados.InsertOnSubmit(pFactura);
+                dc.SubmitChanges();
+
+                foreach (SIGEEA_DetFacAsociado d in pDetalles)
+                {
+                    d.FK_Id_PreProCompra = dc.SIGEEA_spObtenerPrecioCompra(d.FK_Id_PreProCompra).First().PK_Id_PreProCompra;
+                    d.FK_Id_FacAsociado = pFactura.PK_Id_FacAsociado;
+                    d.CanNeta_DetFacAsociado = 0;
+                    dc.SIGEEA_DetFacAsociados.InsertOnSubmit(d);
+                }
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al registrar: " + ex.Message);
+            }
+
+        }
+
+        /// <summary>
+        /// Completa la entrega de un detalle en la factura
+        /// </summary>
+        /// <param name="pkDetalle"></param>
+        /// <param name="CantidadNeta"></param>
+        public void CompletarEntrega(int pkDetalle, double CantidadNeta)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
+                detalle.CanNeta_DetFacAsociado = CantidadNeta;
+                detalle.CanTotal_DetFacAsociado = detalle.CanTotal_DetFacAsociado;
+                detalle.FK_Id_FacAsociado = detalle.FK_Id_FacAsociado;
+                detalle.FK_Id_Lote = detalle.FK_Id_Lote;
+                detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
+                detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Revisa y cambia el estado de las facturas, para que cuando se listen las facturas, puedan ser editables.
+        /// </summary>
+        /// <param name="pkFactura"></param>
+        public void RevisaFactura(int pkFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pkFactura).ToList();
+            bool validador = true;
+
+            foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult d in listaDetalles)
+            {
+                if (d.CanNeta_DetFacAsociado < 0) validador = false; //Existe al menos un detalle incompleto
+            }
+
+            if (validador == true)
+            {
+                SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pkFactura);
+                factura.CanNeta_FacAsociado = factura.CanNeta_FacAsociado;
+                factura.CanTotal_FacAsociado = factura.CanTotal_FacAsociado;
+                factura.Estado_FacAsociado = factura.Estado_FacAsociado;
+                factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
+                factura.FecPago_FacAsociado = factura.FecPago_FacAsociado;
+                factura.FK_Id_Asociado = factura.FK_Id_Asociado;
+                factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
+                factura.Incompleta_FacAsociado = false;
+                factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
+                dc.SubmitChanges();
+            }
         }
     }
 }

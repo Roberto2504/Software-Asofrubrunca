@@ -51,7 +51,7 @@ namespace SIGEEA_App.Paginas
 
         private void btnCuota_Click(object sender, RoutedEventArgs e)
         {
-            wnwRegistrarCuota ventana = new wnwRegistrarCuota();
+            wnwRegistrarCuota ventana = new wnwRegistrarCuota(0);
             ventana.ShowDialog();
         }
 
@@ -63,6 +63,18 @@ namespace SIGEEA_App.Paginas
                 wnwCuotas ventana = new wnwCuotas();
                 ventana.ShowDialog();
             }
+        }
+
+        private void btnEntrega_Click(object sender, RoutedEventArgs e)
+        {
+            wnwIdentificar ventana = new wnwIdentificar("Entrega");
+            ventana.ShowDialog();
+        }
+
+        private void btnPendientes_Click(object sender, RoutedEventArgs e)
+        {
+            wnwOpcionesFacturaProducto ventana = new wnwOpcionesFacturaProducto();
+            ventana.ShowDialog();
         }
     }
 }

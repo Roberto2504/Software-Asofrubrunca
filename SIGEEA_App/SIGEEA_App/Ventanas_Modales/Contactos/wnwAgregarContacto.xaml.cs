@@ -27,17 +27,28 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
     public partial class wnwAgregarContacto : MetroWindow
     {
         int pk_persona;
-        public wnwAgregarContacto(int pPersona)
+        string Accion;
+        int pk_contacto;
+        public wnwAgregarContacto(int pPersona, string pAccion, int pIdContacto)
         {
             InitializeComponent();
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<SIGEEA_TipContacto> lista = new List<SIGEEA_TipContacto>();
             lista = dc.SIGEEA_TipContactos.ToList();
             pk_persona = pPersona;
+            Accion = pAccion;
 
-            foreach(SIGEEA_TipContacto tc in lista)
+            foreach (SIGEEA_TipContacto tc in lista)
             {
                 cmbTipoContacto.Items.Add(tc.Nombre_TipContacto);
+            }
+
+            if (pAccion == "Editar" && pIdContacto != 0)
+            {
+                pk_contacto = pIdContacto;
+                txbContacto.Text = dc.SIGEEA_Contactos.First(c => c.PK_Id_Contacto == pIdContacto).Dato_Contacto;
+                SIGEEA_Contacto contacto = dc.SIGEEA_Contactos.First(c => c.PK_Id_Contacto == pIdContacto);
+                cmbTipoContacto.SelectedItem = dc.SIGEEA_TipContactos.First(c => c.PK_Id_TipContacto == contacto.FK_Id_TipContacto).Nombre_TipContacto;
             }
         }
 
@@ -51,8 +62,22 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                 ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
                 if ((String)cmbTipoContacto.SelectedValue == "Correo" && validacion.Validar(txbContacto.Text, 3) == true)
                 {
-                    persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
-                    MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    if (Accion == "Insertar")
+                    {
+                        persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
+                        MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    }
+                    else if (Accion == "Editar")
+                    {
+                        SIGEEA_Contacto editarContacto = new SIGEEA_Contacto();
+                        editarContacto.PK_Id_Contacto = pk_contacto;
+                        editarContacto.Dato_Contacto = txbContacto.Text;
+                        editarContacto.FK_Id_Persona = pk_persona;
+                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        editarContacto.FK_Id_TipContacto = dc.SIGEEA_TipContactos.First(c => c.Nombre_TipContacto == (String)cmbTipoContacto.SelectedValue).PK_Id_TipContacto;
+                        persona.EditarContacto(editarContacto);
+                        MessageBox.Show("Los cambios se realizaron con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
                     this.Close();
                     wnwContactos ventana = new wnwContactos(pk_persona);
                     ventana.ShowDialog();
@@ -61,10 +86,24 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                           (String)cmbTipoContacto.SelectedValue == "Tel. Residencia" ||
                           (String)cmbTipoContacto.SelectedValue == "Tel. Trabajo" ||
                           (String)cmbTipoContacto.SelectedValue == "Fax")
-                          && validacion.Validar(txbContacto.Text, 2) == true)
+                          && validacion.Validar(txbContacto.Text, 1) == true)
                 {
-                    persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
-                    MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    if (Accion == "Insertar")
+                    {
+                        persona.AgregarContacto(pPersona: pk_persona, pDato: txbContacto.Text, pTipoContacto: cmbTipoContacto.SelectedValue.ToString());
+                        MessageBox.Show("Contacto añadido con éxito.", "SIGEEA", MessageBoxButton.OK);
+                    }
+                    else if (Accion == "Editar")
+                    {
+                        SIGEEA_Contacto editarContacto = new SIGEEA_Contacto();
+                        editarContacto.PK_Id_Contacto = pk_contacto;
+                        editarContacto.Dato_Contacto = txbContacto.Text;
+                        editarContacto.FK_Id_Persona = pk_persona;
+                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        editarContacto.FK_Id_TipContacto = dc.SIGEEA_TipContactos.First(c => c.Nombre_TipContacto == cmbTipoContacto.SelectedItem.ToString()).PK_Id_TipContacto;
+                        persona.EditarContacto(editarContacto);
+                        MessageBox.Show("Los cambios se realizaron con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
                     this.Close();
                     wnwContactos ventana = new wnwContactos(pk_persona);
                     ventana.ShowDialog();
@@ -72,13 +111,13 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                 else
                 {
                     txbContacto.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
-                    throw new Exception();
+                    throw new ArgumentException("Error al registrar: Formatos incompatibles con el sistema");
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el contacto: Formatos incompatibles con el sistema.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-}
+        }
     }
 }

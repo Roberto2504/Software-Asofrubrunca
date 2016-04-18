@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SIGEEA_App.Paginas"
       xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls" xmlns:SIGEEA_App="clr-namespace:SIGEEA_App" x:Class="SIGEEA_App.Paginas.Pag_Asociados"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="587.594"
+      d:DesignHeight="300" d:DesignWidth="765.254"
       Title="Pag_Asociados">
 
     <Grid>
@@ -15,5 +15,7 @@
         <Button x:Name="btnDireccion" Content="Agregar/editar dirección" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnDireccion_Click"/>
         <Button x:Name="btnCuota" Content="registrar cuota" HorizontalAlignment="Left" Margin="300,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnCuota_Click"/>
         <Button x:Name="btnAdministrarCuotas" Content="Administrar pagos de cuotas" HorizontalAlignment="Left" Margin="300,133,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnAdministrarCuotas_Click"/>
+        <Button x:Name="btnEntrega" Content="Entrega de producto" HorizontalAlignment="Left" Margin="300,202,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnEntrega_Click"/>
+        <Button x:Name="btnPendientes" Content="Facturas incompletas" HorizontalAlignment="Left" Margin="541,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnPendientes_Click"/>
     </Grid>
 </Page>

@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.Productos.uc_ItemEntrega"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Productos"
+             mc:Ignorable="d" 
+             d:DesignHeight="69.925" d:DesignWidth="680.075">
+    <Grid Name="grdContenedor">
+        <TextBlock x:Name="lblInformacion" HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="379" FontSize="18.667" FontFamily="Agency FB"/>
+        <TextBox x:Name="txbCantidadNeta" TextAlignment="Center" HorizontalAlignment="Left" Height="31" Margin="435,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14.667" FontFamily="Agency FB"/>
+
+    </Grid>
+</UserControl>

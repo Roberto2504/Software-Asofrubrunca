@@ -128,5 +128,15 @@ namespace SIGEEA_BL
             dc.SIGEEA_Contactos.InsertOnSubmit(nuevoContacto);
             dc.SubmitChanges();
         }
+
+        public void EditarContacto(SIGEEA_Contacto pContacto)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Contacto contacto = dc.SIGEEA_Contactos.First(c => c.PK_Id_Contacto == pContacto.PK_Id_Contacto);
+            contacto.Dato_Contacto = pContacto.Dato_Contacto;
+            contacto.FK_Id_Persona = pContacto.FK_Id_Persona;
+            contacto.FK_Id_TipContacto = pContacto.FK_Id_TipContacto;
+            dc.SubmitChanges();
+        }
     }
 }

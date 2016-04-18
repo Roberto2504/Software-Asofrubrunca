@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SIGEEA_App.Ventanas_Modales.Asociados;
 
 namespace SIGEEA_App.User_Controls.Asociados
 {
@@ -115,5 +116,10 @@ namespace SIGEEA_App.User_Controls.Asociados
             else grdPrincipal.Background = (Brush)bc.ConvertFrom("#FF5A99AC");
         }
 
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRegistrarCuota ventana = new wnwRegistrarCuota(this.CuotaId);
+            ventana.ShowDialog();
+        }
     }
 }

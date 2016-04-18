@@ -135,6 +135,15 @@
     <Compile Include="User_Controls\Insumos\uc_Insumo.xaml.cs">
       <DependentUpon>uc_Insumo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Productos\uc_FacturaEntrega.xaml.cs">
+      <DependentUpon>uc_FacturaEntrega.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Productos\uc_IngresoProducto.xaml.cs">
+      <DependentUpon>uc_IngresoProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Productos\uc_ItemEntrega.xaml.cs">
+      <DependentUpon>uc_ItemEntrega.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\uControl_Numerico.xaml.cs">
       <DependentUpon>uControl_Numerico.xaml</DependentUpon>
     </Compile>
@@ -162,11 +171,23 @@
     <Compile Include="User_Controls\uc_Puestos.xaml.cs">
       <DependentUpon>uc_Puestos.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\uc_FincaLote.xaml.cs">
+      <DependentUpon>uc_FincaLote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwCompletaEntrega.xaml.cs">
+      <DependentUpon>wnwCompletaEntrega.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwCuotas.xaml.cs">
       <DependentUpon>wnwCuotas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwFacturasIncompletas.xaml.cs">
+      <DependentUpon>wnwFacturasIncompletas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwOpcionesFacturaProducto.xaml.cs">
+      <DependentUpon>wnwOpcionesFacturaProducto.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwRegistrarCuota.xaml.cs">
       <DependentUpon>wnwRegistrarCuota.xaml</DependentUpon>
@@ -230,6 +251,12 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Personas\wnwRegistrarPersona.xaml.cs">
       <DependentUpon>wnwRegistrarPersona.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Productos\wnwEntregaProducto.xaml.cs">
+      <DependentUpon>wnwEntregaProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Productos\wnwFacturaEntrega.xaml.cs">
+      <DependentUpon>wnwFacturaEntrega.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Productos\wnwPreciosProducto.xaml.cs">
       <DependentUpon>wnwPreciosProducto.xaml</DependentUpon>
@@ -344,6 +371,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\Productos\uc_FacturaEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Productos\uc_IngresoProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Productos\uc_ItemEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\uControl_Numerico.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -380,11 +419,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Asociados\uc_FincaLote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwCompletaEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwCuotas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwFacturasIncompletas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwOpcionesFacturaProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -469,6 +524,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Personas\wnwRegistrarPersona.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Productos\wnwEntregaProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Productos\wnwFacturaEntrega.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
