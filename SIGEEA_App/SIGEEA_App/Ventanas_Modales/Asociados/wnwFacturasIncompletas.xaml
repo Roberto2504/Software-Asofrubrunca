@@ -7,16 +7,18 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Facturas incompletas" Height="321.429" Width="580.826" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <DataGrid Margin="63,33,85,238">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Factura N°" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Fecha de entrega" Width="130" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cantidad" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="30,59,29,57" Width="450">
-            <StackPanel Name="stpContenedor"></StackPanel>
-        </ScrollViewer>
-    </Grid>
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <DataGrid Margin="63,33,85,238">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Factura N°" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fecha de entrega" Width="130" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cantidad" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="30,59,29,57" Width="450">
+                <StackPanel Name="stpContenedor"></StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

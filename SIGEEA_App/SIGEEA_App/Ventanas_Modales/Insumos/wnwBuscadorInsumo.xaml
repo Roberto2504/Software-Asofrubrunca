@@ -8,7 +8,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Buscador Insumo" Height="475" Width="835" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="grdBuscardorInsumo">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid x:Name="grdBuscardorInsumo">
 
-    </Grid>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

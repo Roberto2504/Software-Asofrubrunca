@@ -7,22 +7,24 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="wnwCancelarPagoEmpleado" Height="514.285" Width="712.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFB0C1C0">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button x:Name="btnImprimir" Margin="510,197,50,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnImprimir_Click" ToolTip="Imprimir factura">
-            <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid Background="#FFB0C1C0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnImprimir" Margin="510,197,50,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnImprimir_Click" ToolTip="Imprimir factura">
+                <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_printer_text}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-        <RichTextBox x:Name="txbFactura" HorizontalAlignment="Left" Height="465" Margin="10,10,0,0" VerticalAlignment="Top" Width="448" Foreground="Black" IsEnabled="False">
-            <FlowDocument>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <RichTextBox x:Name="txbFactura" HorizontalAlignment="Left" Height="465" Margin="10,10,0,0" VerticalAlignment="Top" Width="448" Foreground="Black" IsEnabled="False">
+                <FlowDocument>
 
-            </FlowDocument>
-        </RichTextBox>
-    </Grid>
+                </FlowDocument>
+            </RichTextBox>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

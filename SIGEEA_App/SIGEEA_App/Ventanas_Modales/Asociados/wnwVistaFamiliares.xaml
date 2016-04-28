@@ -8,7 +8,9 @@
         xmlns:Asociados="clr-namespace:SIGEEA_App.User_Controls.Asociados" x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwVistaFamiliares"
         mc:Ignorable="d"
         Title="Familiares" Height="559.398" Width="1337.085" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Asociados:uc_ContenedorFamiliares x:Name="ucContenedor" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="469" Width="1270"/>
-    </Grid>
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <Asociados:uc_ContenedorFamiliares x:Name="ucContenedor" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Height="469" Width="1270"/>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

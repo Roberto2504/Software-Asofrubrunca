@@ -7,7 +7,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Buscador de Clientes" Height="475" Width="835" WindowStartupLocation="CenterScreen">
-    <Grid Name="grdContenedorClientes">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid Name="grdContenedorClientes">
 
-    </Grid>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

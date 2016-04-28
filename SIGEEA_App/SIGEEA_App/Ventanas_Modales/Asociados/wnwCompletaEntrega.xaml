@@ -7,39 +7,41 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Factura" Height="487.218" Width="835.714" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <DataGrid Margin="51,113,97,326">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Descripción" Width="450" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cantidad neta" Width="375" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <ScrollViewer Margin="51,132,128,37" VerticalScrollBarVisibility="Visible">
-            <StackPanel Name="stpContenedor">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <DataGrid Margin="51,113,97,326">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Descripción" Width="450" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cantidad neta" Width="375" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ScrollViewer Margin="51,132,128,37" VerticalScrollBarVisibility="Visible">
+                <StackPanel Name="stpContenedor">
 
-            </StackPanel>
-        </ScrollViewer>
-        <Grid HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="830">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF4B689B" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Label Name="lblAsociado" Margin="10,3,443,57" FontWeight="Bold" FontSize="16">Asociado:</Label>
-            <Label Name="lblCedula" Margin="392,3,210,60" FontWeight="Bold" FontSize="16">Cédula:</Label>
-            <Label Name="lblCodigo" Margin="625,0,42,60" FontWeight="Bold" FontSize="16">Código:</Label>
-            <Label Name="lblFactura" Margin="500,46,127,15" FontWeight="Bold" FontSize="16">N° factura:</Label>
-            <Label Name="lblFecEntrega" Margin="146,43,407,13" FontWeight="Bold" FontSize="16">Fecha de entrega:</Label>
-        </Grid>
+                </StackPanel>
+            </ScrollViewer>
+            <Grid HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="830">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FF4B689B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label Name="lblAsociado" Margin="10,3,443,57" FontWeight="Bold" FontSize="16">Asociado:</Label>
+                <Label Name="lblCedula" Margin="392,3,210,60" FontWeight="Bold" FontSize="16">Cédula:</Label>
+                <Label Name="lblCodigo" Margin="625,0,42,60" FontWeight="Bold" FontSize="16">Código:</Label>
+                <Label Name="lblFactura" Margin="500,46,127,15" FontWeight="Bold" FontSize="16">N° factura:</Label>
+                <Label Name="lblFecEntrega" Margin="146,43,407,13" FontWeight="Bold" FontSize="16">Fecha de entrega:</Label>
+            </Grid>
 
-        <Button x:Name="btnGuardar" Margin="738,227,10,153" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click" ToolTip="Guardar cambios">
-            <Rectangle Width="33" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+            <Button x:Name="btnGuardar" Margin="738,227,10,153" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click" ToolTip="Guardar cambios">
+                <Rectangle Width="33" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_save}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-    </Grid>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

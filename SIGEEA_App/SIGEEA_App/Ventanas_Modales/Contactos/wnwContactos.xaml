@@ -7,21 +7,23 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Contacto" Height="359.575" Width="565.957" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <StackPanel x:Name="stpContactos" HorizontalAlignment="Left" Height="275" Margin="10,46,0,0" VerticalAlignment="Top" Width="399" ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <StackPanel x:Name="stpContactos" HorizontalAlignment="Left" Height="275" Margin="10,46,0,0" VerticalAlignment="Top" Width="399" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
-        </StackPanel>
-        <TextBlock x:Name="txbVacio" HorizontalAlignment="Left" Margin="10,99,0,169" TextWrapping="Wrap" Text="No tiene ningún contacto añadido. 
+            </StackPanel>
+            <TextBlock x:Name="txbVacio" HorizontalAlignment="Left" Margin="10,99,0,169" TextWrapping="Wrap" Text="No tiene ningún contacto añadido. 
                    
                    Si desea, puede agregarlo con el botón de la derecha." Width="381" FontSize="16" FontWeight="Bold" TextAlignment="Center" Visibility="Hidden"/>
 
-        <Button x:Name="btnAgregar" Margin="429,116,39,143" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click">
-            <Rectangle Width="38" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+            <Button x:Name="btnAgregar" Margin="429,116,39,143" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click">
+                <Rectangle Width="38" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_add}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-    </Grid>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

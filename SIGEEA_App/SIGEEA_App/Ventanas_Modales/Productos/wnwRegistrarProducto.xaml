@@ -7,22 +7,23 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls" x:Class="SIGEEA_App.Ventanas_Modales.Productos.wnwRegistrarProducto"
         mc:Ignorable="d"
-        Title="wnwRegistrarProducto" Height="321.429" Width="439.85">
-    <Grid>
-        <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="23" Margin="128,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontWeight="Bold" FontSize="13.333" />
-        <TextBox x:Name="txbDescripcion" HorizontalAlignment="Left" Height="60" Margin="128,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" MaxLength="100" FontWeight="Bold" FontSize="13.333"/>
-        <Button x:Name="btnRegistrar" Margin="173,223,207,20" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click">
-            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+        Title="Registro de producto" Height="321.429" Width="439.85" ResizeMode="NoResize">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="23" Margin="128,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontWeight="Bold" FontSize="13.333" />
+            <TextBox x:Name="txbDescripcion" HorizontalAlignment="Left" Height="60" Margin="128,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" MaxLength="100" FontWeight="Bold" FontSize="13.333"/>
+            <Button x:Name="btnRegistrar" Margin="173,223,207,20" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
 						Visual="{DynamicResource appbar_save}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-        <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="34,44,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
-        <Label x:Name="lblCalidad" Content="Calidad" HorizontalAlignment="Left" Margin="34,90,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
-        <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="34,140,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
-        <User_Controls:uControl_Numerico HorizontalAlignment="Left" Margin="128,90,0,0" VerticalAlignment="Top" x:Name="ucCalidad"/>
-
-    </Grid>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="34,44,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+            <Label x:Name="lblCalidad" Content="Calidad" HorizontalAlignment="Left" Margin="34,90,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+            <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="34,140,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+            <User_Controls:uControl_Numerico HorizontalAlignment="Left" Margin="128,90,0,0" VerticalAlignment="Top" x:Name="ucCalidad"/>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

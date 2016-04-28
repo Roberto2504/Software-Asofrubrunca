@@ -7,18 +7,20 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Agregar contacto" Height="155.32" Width="461.702" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,-4">
-        <Label x:Name="label" Content="Contacto" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="33"/>
-        <Label x:Name="label1" Content="Tipo de contacto" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="33"/>
-        <TextBox x:Name="txbContacto" HorizontalAlignment="Left" Height="36" Margin="130,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
-        <ComboBox x:Name="cmbTipoContacto" HorizontalAlignment="Left" Margin="130,75,0,0" VerticalAlignment="Top" Width="201" Height="33" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="btnGuardar" Margin="360,40,34,37" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click" RenderTransformOrigin="0.5,0.5">
-            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid Margin="0,0,0,-4">
+            <Label x:Name="label" Content="Contacto" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="33"/>
+            <Label x:Name="label1" Content="Tipo de contacto" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="33"/>
+            <TextBox x:Name="txbContacto" HorizontalAlignment="Left" Height="36" Margin="130,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
+            <ComboBox x:Name="cmbTipoContacto" HorizontalAlignment="Left" Margin="130,75,0,0" VerticalAlignment="Top" Width="201" Height="33" FontSize="16" FontWeight="Bold"/>
+            <Button x:Name="btnGuardar" Margin="360,40,34,37" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click" RenderTransformOrigin="0.5,0.5">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_save}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-    </Grid>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

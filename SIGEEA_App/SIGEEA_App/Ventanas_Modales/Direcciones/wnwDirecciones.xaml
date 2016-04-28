@@ -7,26 +7,28 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Direcciones" Height="403.191" Width="543.617" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Grid Name="grdNacional" HorizontalAlignment="Left" Height="289" Margin="29,47,0,0" VerticalAlignment="Top" Width="337">
-            <ComboBox x:Name="cmbProvincia" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold" SelectionChanged="cmbProvincia_SelectionChanged"/>
-            <ComboBox x:Name="cmbCanton" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold" SelectionChanged="cmbCanton_SelectionChanged"/>
-            <ComboBox x:Name="cmbDistrito" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold"/>
-            <Label x:Name="lblProvincia" Content="Provincia" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-            <Label x:Name="lblCanton" Content="Cantón" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-            <Label x:Name="lblDistrito" Content="Distrito" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-            <Label x:Name="lblDetalles" Content="Detalles" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
-            <TextBox x:Name="txbDetalles" HorizontalAlignment="Left" Height="58" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" MaxLength="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" FontWeight="Bold"/>
-        </Grid>
-        <Grid Name="grdGuardar" Margin="371,87,45,170">
-            <Button Margin="28,30,29,31" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click">
-                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <Grid Name="grdNacional" HorizontalAlignment="Left" Height="289" Margin="29,47,0,0" VerticalAlignment="Top" Width="337">
+                <ComboBox x:Name="cmbProvincia" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold" SelectionChanged="cmbProvincia_SelectionChanged"/>
+                <ComboBox x:Name="cmbCanton" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold" SelectionChanged="cmbCanton_SelectionChanged"/>
+                <ComboBox x:Name="cmbDistrito" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="273" FontWeight="Bold"/>
+                <Label x:Name="lblProvincia" Content="Provincia" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <Label x:Name="lblCanton" Content="Cantón" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <Label x:Name="lblDistrito" Content="Distrito" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <Label x:Name="lblDetalles" Content="Detalles" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                <TextBox x:Name="txbDetalles" HorizontalAlignment="Left" Height="58" Margin="10,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" MaxLength="100" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" FontWeight="Bold"/>
+            </Grid>
+            <Grid Name="grdGuardar" Margin="371,87,45,170">
+                <Button Margin="28,30,29,31" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click">
+                    <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_check}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Controls:MetroWindow>

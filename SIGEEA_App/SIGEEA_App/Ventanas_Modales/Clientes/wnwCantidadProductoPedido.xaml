@@ -9,48 +9,41 @@
         x:Class="SIGEEA_App.Ventanas_Modales.Clientes.wnwCantidadProductoPedido"
         mc:Ignorable="d"
         Title="Cantidad de Producto a Pedir" Height="508.157" Width="478.626"  WindowStartupLocation="CenterScreen">
-    <Grid x:Name="grdPrincipal" >
-        <TextBlock x:Name="txbTipo" Margin="26,10,288,435"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text=""/>
-        <TextBlock x:Name="txb1" Margin="26,79,342,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
-        <TextBlock x:Name="txbNombre" Margin="240,79,65,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text=""/>
-        <TextBlock x:Name="txb2" Margin="26,116,233,324" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txbCantidad" Margin="240,116,65,324"  TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text=""/>
-
-        <TextBlock x:Name="txb3" Margin="23,224,359,219" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Pedido:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txbId" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="" Visibility="Hidden" RenderTransformOrigin="-1.703,2.062"/>
-
-        <TextBlock x:Name="txb3_Copy" Margin="27,158,355,287" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Precio:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txbPrecio" Margin="238,158,64,287" TextWrapping="Wrap" IsEnabled="True"  FontSize="20" FontWeight="Bold" Text=""/>
-        <TextBlock x:Name="txb3_Copy1" Margin="26,318,326,125" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Descuento:" RenderTransformOrigin="-1.703,2.062"/>
-        <TextBlock x:Name="txb3_Copy2" Margin="23,352,303,91" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Nuevo "/><Run Text="Total"/><Run Text=":"/></TextBlock>
-        <TextBlock x:Name="txbNuevoPrecio" Margin="249,352,59,91" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text=""/>
-
-        <TextBlock x:Name="txbPorcentaje" Margin="303,318,124,125" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="%"/>
-
-
-        <Button Margin="358,391,21,6" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnGuardar_Click" >
-            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid x:Name="grdPrincipal" >
+            <TextBlock x:Name="txbTipo" Margin="26,10,288,435"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text=""/>
+            <TextBlock x:Name="txb1" Margin="26,79,342,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
+            <TextBlock x:Name="txbNombre" Margin="240,79,65,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text=""/>
+            <TextBlock x:Name="txb2" Margin="26,116,233,324" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
+            <TextBlock x:Name="txbCantidad" Margin="240,116,65,324"  TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text=""/>
+            <TextBlock x:Name="txb3" Margin="23,224,359,219" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Pedido:" RenderTransformOrigin="-1.703,2.062"/>
+            <TextBlock x:Name="txbId" Margin="26,116,233,152" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="" Visibility="Hidden" RenderTransformOrigin="-1.703,2.062"/>
+            <TextBlock x:Name="txb3_Copy" Margin="27,158,355,287" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Precio:" RenderTransformOrigin="-1.703,2.062"/>
+            <TextBlock x:Name="txbPrecio" Margin="238,158,64,287" TextWrapping="Wrap" IsEnabled="True"  FontSize="20" FontWeight="Bold" Text=""/>
+            <TextBlock x:Name="txb3_Copy1" Margin="26,318,326,125" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False"  Text="Descuento:" RenderTransformOrigin="-1.703,2.062"/>
+            <TextBlock x:Name="txb3_Copy2" Margin="23,352,303,91" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Nuevo "/><Run Text="Total"/><Run Text=":"/></TextBlock>
+            <TextBlock x:Name="txbNuevoPrecio" Margin="249,352,59,91" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text=""/>
+            <TextBlock x:Name="txbPorcentaje" Margin="303,318,124,125" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="%"/>
+            <Button Margin="358,391,21,6" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnGuardar_Click" >
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_check}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-        <Button Margin="23,391,356,0" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnCancelar_Click" >
-            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button Margin="23,391,356,0" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnCancelar_Click" >
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
         				Visual="{DynamicResource appbar_cancel}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-        <TextBlock x:Name="txb3_Copy3" Margin="23,258,303,185" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Total"/><Run Text=":"/></TextBlock>
-        <TextBlock x:Name="txbTotal" Margin="244,258,64,185" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text=""/>
-
-        <User_Controls:uc_ControlNumericoGrande x:Name="ucPedido" HorizontalAlignment="Left" Margin="245,224,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="uc_ControlNumericoGrande_PreviewMouseLeftButtonUp"/>
-        <User_Controls:uc_ControlNumericoDescuento x:Name="ucDescuento" HorizontalAlignment="Left" Margin="264,318,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="ucDescuento_PreviewMouseLeftButtonUp"/>
-
-    </Grid>
-
-
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <TextBlock x:Name="txb3_Copy3" Margin="23,258,303,185" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Total"/><Run Text=":"/></TextBlock>
+            <TextBlock x:Name="txbTotal" Margin="244,258,64,185" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text=""/>
+            <User_Controls:uc_ControlNumericoGrande x:Name="ucPedido" HorizontalAlignment="Left" Margin="245,224,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="uc_ControlNumericoGrande_PreviewMouseLeftButtonUp"/>
+            <User_Controls:uc_ControlNumericoDescuento x:Name="ucDescuento" HorizontalAlignment="Left" Margin="264,318,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="ucDescuento_PreviewMouseLeftButtonUp"/>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

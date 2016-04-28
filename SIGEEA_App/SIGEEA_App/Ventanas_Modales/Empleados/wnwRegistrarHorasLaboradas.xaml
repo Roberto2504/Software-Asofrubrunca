@@ -7,30 +7,32 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Entrada/salida" Height="263.91" Width="389.098" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Canvas Name="cnvPrincipal" HorizontalAlignment="Left" Height="193" Margin="24,22,0,0" VerticalAlignment="Top" Width="341" >
-            <Label x:Name="label" Content="Cédula:" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="86" FontSize="20" FontWeight="Bold" Canvas.Left="8" Canvas.Top="31"/>
-            <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="41" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="20" FontWeight="Bold" MaxLength="15" TextAlignment="Center" Canvas.Left="113" Canvas.Top="31"/>
-            <Button x:Name="btnValidar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnValidar_Click" Height="70" Canvas.Left="128" Canvas.Top="105" Width="83">
-                <Rectangle Width="30" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <Canvas Name="cnvPrincipal" HorizontalAlignment="Left" Height="193" Margin="24,22,0,0" VerticalAlignment="Top" Width="341" >
+                <Label x:Name="label" Content="Cédula:" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="86" FontSize="20" FontWeight="Bold" Canvas.Left="8" Canvas.Top="31"/>
+                <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="41" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="20" FontWeight="Bold" MaxLength="15" TextAlignment="Center" Canvas.Left="113" Canvas.Top="31"/>
+                <Button x:Name="btnValidar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnValidar_Click" Height="70" Canvas.Left="128" Canvas.Top="105" Width="83">
+                    <Rectangle Width="30" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
         					Visual="{DynamicResource appbar_check}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-        </Canvas>
-        <Canvas Name="cnvSecundaria" Margin="24,22,18,20" Visibility="Collapsed">
-            <Button x:Name="btnRegistrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click" Canvas.Left="128" Canvas.Top="104" Height="72" Width="84">
-                <Rectangle Width="31" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Canvas>
+            <Canvas Name="cnvSecundaria" Margin="24,22,18,20" Visibility="Collapsed">
+                <Button x:Name="btnRegistrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click" Canvas.Left="128" Canvas.Top="104" Height="72" Width="84">
+                    <Rectangle Width="31" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_check}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-            <ComboBox x:Name="cmbPuestos" Canvas.Left="112" Canvas.Top="31" Width="217" Height="39" FontSize="20" FontWeight="Bold"/>
-            <Label x:Name="label1" Content="Puesto" Height="34" Canvas.Left="10" Canvas.Top="31" Width="97" FontSize="20" FontWeight="Bold"/>
-        </Canvas>
-    </Grid>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+                <ComboBox x:Name="cmbPuestos" Canvas.Left="112" Canvas.Top="31" Width="217" Height="39" FontSize="20" FontWeight="Bold"/>
+                <Label x:Name="label1" Content="Puesto" Height="34" Canvas.Left="10" Canvas.Top="31" Width="97" FontSize="20" FontWeight="Bold"/>
+            </Canvas>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

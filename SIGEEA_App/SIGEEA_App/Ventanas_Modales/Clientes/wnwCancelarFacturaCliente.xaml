@@ -7,15 +7,17 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Detalle Factura Cliente" Height="515" Width="715" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Background="#FFB0C1C0">
-        <TextBox x:Name="txbFactura" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="465" Width="500" Margin="10,10,0,0" Background="White" FontSize="16" FontWeight="Bold" IsEnabled="False" VerticalScrollBarVisibility="Visible" TextAlignment="Left"/>
-        <Button x:Name="btnCancelar" Margin="537,184,23,164" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
-            <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                <Rectangle.OpacityMask>
-                    <VisualBrush Stretch="Fill"
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid Background="#FFB0C1C0">
+            <TextBox x:Name="txbFactura" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="465" Width="500" Margin="10,10,0,0" Background="White" FontSize="16" FontWeight="Bold" IsEnabled="False" VerticalScrollBarVisibility="Visible" TextAlignment="Left"/>
+            <Button x:Name="btnCancelar" Margin="537,184,23,164" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
+                <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_money}" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </Button>
-    </Grid>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+    </Border>
 </Controls:MetroWindow>

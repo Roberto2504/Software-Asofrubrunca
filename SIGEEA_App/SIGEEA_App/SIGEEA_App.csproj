@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icono FUNDER.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.1.2.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
@@ -171,7 +174,7 @@
     <Compile Include="User_Controls\uc_Puestos.xaml.cs">
       <DependentUpon>uc_Puestos.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas_Modales\Asociados\uc_FincaLote.xaml.cs">
+    <Compile Include="User_Controls\Asociados\uc_FincaLote.xaml.cs">
       <DependentUpon>uc_FincaLote.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwCompletaEntrega.xaml.cs">
@@ -419,7 +422,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Ventanas_Modales\Asociados\uc_FincaLote.xaml">
+    <Page Include="User_Controls\Asociados\uc_FincaLote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -611,7 +614,20 @@
   <ItemGroup>
     <Resource Include="Themes\Eliminar.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imagenes\Correo.ico" />
+    <Resource Include="Imagenes\Fax.ico" />
+    <Resource Include="Imagenes\Otro.ico" />
+    <Resource Include="Imagenes\Tel. Movil.ico" />
+    <Resource Include="Imagenes\Tel. Residencia.ico" />
+    <Resource Include="Imagenes\Tel. Trabajo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icono FUNDER.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Costa_Fresh.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

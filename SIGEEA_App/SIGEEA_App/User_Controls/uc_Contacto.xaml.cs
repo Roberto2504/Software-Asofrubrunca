@@ -59,6 +59,7 @@ namespace SIGEEA_App.User_Controls
             if (pColor == true) grdContenedor.Background = (Brush)bc.ConvertFrom("#FFC7DFE6");
             else grdContenedor.Background = (Brush)bc.ConvertFrom("#FF5A99AC");
         }
+
         #endregion
 
         #region Constructor
@@ -85,6 +86,11 @@ namespace SIGEEA_App.User_Controls
         {
             uc_Contacto nContacto = (uc_Contacto)d;
             nContacto.TipoInfo = e.NewValue as string;
+        }
+
+        public void cambiaImagen(string url)
+        {
+            imgContacto.Source = new BitmapImage(new Uri(@url, UriKind.RelativeOrAbsolute));
         }
         #endregion
     }

@@ -7,42 +7,44 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Filtrar" Height="300" Width="366.541" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged" FontWeight="Bold" FontSize="14.667"/>
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged" FontWeight="Bold" FontSize="14.667"/>
 
-        <Grid Name="grdTodas" Margin="40,92,51,97" Visibility="Collapsed">
-            <Button x:Name="btnTodas" Margin="67,10,69,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnTodas_Click" ToolTip="Listar todas las facturas pendientes" >
-                <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+            <Grid Name="grdTodas" Margin="40,92,51,97" Visibility="Collapsed">
+                <Button x:Name="btnTodas" Margin="67,10,69,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnTodas_Click" ToolTip="Listar todas las facturas pendientes" >
+                    <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_list}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-        </Grid>
-        <Grid Name="grdAsociado" Margin="10,75,10,36" Visibility="Collapsed">
-            <Label Margin="10,0,6,131" FontWeight="Bold" FontSize="16">Número de cédula o código del asociado:</Label>
-            <TextBox Margin="10,51,10,71" TextAlignment="Center" FontWeight="Bold" FontSize="16" Name="txbAsociado"/>
-            <Button x:Name="btnListaFacAsociado" Margin="135,94,139,5" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnListaFacAsociado_Click" ToolTip="Listar facturas pendientes de un asociado">
-                <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
+            <Grid Name="grdAsociado" Margin="10,75,10,36" Visibility="Collapsed">
+                <Label Margin="10,0,6,131" FontWeight="Bold" FontSize="16">Número de cédula o código del asociado:</Label>
+                <TextBox Margin="10,51,10,71" TextAlignment="Center" FontWeight="Bold" FontSize="16" Name="txbAsociado"/>
+                <Button x:Name="btnListaFacAsociado" Margin="135,94,139,5" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnListaFacAsociado_Click" ToolTip="Listar facturas pendientes de un asociado">
+                    <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_list}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-        </Grid>
-        <Grid Name="grdFacturaUnica" Margin="23,92,28,63" Visibility="Collapsed">
-            <Label Margin="50,0,50,85" FontWeight="Bold" FontSize="14.667">Digite el número de factura:</Label>
-            <TextBox Margin="10,36,10,51" Name="txbFactura" TextAlignment="Center" FontWeight="Bold" FontSize="14.667"></TextBox>
-            <Button x:Name="btnFactura" Margin="126,65,126,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFactura_Click" ToolTip="Obtener factura">
-                <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
+            <Grid Name="grdFacturaUnica" Margin="23,92,28,63" Visibility="Collapsed">
+                <Label Margin="50,0,50,85" FontWeight="Bold" FontSize="14.667">Digite el número de factura:</Label>
+                <TextBox Margin="10,36,10,51" Name="txbFactura" TextAlignment="Center" FontWeight="Bold" FontSize="14.667"></TextBox>
+                <Button x:Name="btnFactura" Margin="126,65,126,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFactura_Click" ToolTip="Obtener factura">
+                    <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_list_hidden}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Controls:MetroWindow>

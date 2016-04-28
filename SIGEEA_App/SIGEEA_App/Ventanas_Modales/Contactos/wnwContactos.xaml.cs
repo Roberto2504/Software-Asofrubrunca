@@ -44,7 +44,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                     uc_Contacto contacto = new uc_Contacto();
                     contacto.Info = c.Dato_Contacto;
                     contacto.Color(color);
-                    contacto.TipoInfo = @"/Imagenes/Contactos/" + c.Nombre_TipContacto + ".ico";
+                    contacto.cambiaImagen("/Imagenes/" + c.Nombre_TipContacto + ".ico");
                     contacto.btnEditar.Click += BtnEditar_Click;
                     contacto.ContactoId = c.PK_Id_Contacto;
                     stpContactos.Children.Add(contacto);

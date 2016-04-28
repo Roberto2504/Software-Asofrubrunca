@@ -7,7 +7,9 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Buscador Asociados" Height="475" Width="835">
-    <Grid x:Name="grdContenedorAsociados">
-        
-    </Grid>
-    </Controls:MetroWindow>
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid x:Name="grdContenedorAsociados">
+
+        </Grid>
+    </Border>
+</Controls:MetroWindow>
