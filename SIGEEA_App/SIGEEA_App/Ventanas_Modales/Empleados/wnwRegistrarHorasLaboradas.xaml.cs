@@ -39,13 +39,16 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                 try
                 {
 
-
+                   
                     if (empleado.DiaIncompleto(txbCedula.Text) == false)//Tiene sus días laborales completos
                     {
                         DataClasses1DataContext dc = new DataClasses1DataContext();
                         MessageBox.Show("A continuación debe elegir la labor que desempeñará el empleado el dia de hoy.", "SIGEEA", MessageBoxButton.OK);
                         cnvPrincipal.Visibility = Visibility.Collapsed;
                         cnvSecundaria.Visibility = Visibility.Visible;
+                        btnValidar.IsDefault = false;
+                        btnRegistrar.IsDefault = true;
+
                         List<SIGEEA_spListarPuestosResult> lista = dc.SIGEEA_spListarPuestos().ToList();
 
                         foreach (SIGEEA_spListarPuestosResult p in lista)

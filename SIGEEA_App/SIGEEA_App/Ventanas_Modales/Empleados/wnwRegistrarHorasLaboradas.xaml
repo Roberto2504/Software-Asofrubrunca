@@ -12,7 +12,7 @@
             <Canvas Name="cnvPrincipal" HorizontalAlignment="Left" Height="193" Margin="24,22,0,0" VerticalAlignment="Top" Width="341" >
                 <Label x:Name="label" Content="Cédula:" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="86" FontSize="20" FontWeight="Bold" Canvas.Left="8" Canvas.Top="31"/>
                 <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="41" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" FontSize="20" FontWeight="Bold" MaxLength="15" TextAlignment="Center" Canvas.Left="113" Canvas.Top="31"/>
-                <Button x:Name="btnValidar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnValidar_Click" Height="70" Canvas.Left="128" Canvas.Top="105" Width="83">
+                <Button x:Name="btnValidar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnValidar_Click" Height="70" Canvas.Left="128" Canvas.Top="105" Width="83" IsDefault="True">
                     <Rectangle Width="30" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill"

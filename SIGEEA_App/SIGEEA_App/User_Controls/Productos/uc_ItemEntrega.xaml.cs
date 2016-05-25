@@ -28,9 +28,11 @@ namespace SIGEEA_App.User_Controls.Productos
         {
             InitializeComponent();
             lblInformacion.Text = Informacion;
-            PK_Detalle = pkDetalle;
+            PK_Detalle = pkDetalle;          
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            cantidad = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle).CanTotal_DetFacAsociado;
+            SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
+            cantidad = detalle.CanTotal_DetFacAsociado;
+            if (detalle.CanNeta_DetFacAsociado > -1) txbCantidadNeta.Text = detalle.CanNeta_DetFacAsociado.ToString(); 
         }
         public int getId()
         {

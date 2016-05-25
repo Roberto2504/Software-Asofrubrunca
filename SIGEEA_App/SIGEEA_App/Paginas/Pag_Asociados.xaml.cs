@@ -73,7 +73,13 @@ namespace SIGEEA_App.Paginas
 
         private void btnPendientes_Click(object sender, RoutedEventArgs e)
         {
-            wnwOpcionesFacturaProducto ventana = new wnwOpcionesFacturaProducto();
+            wnwOpcionesFacturaProducto ventana = new wnwOpcionesFacturaProducto(true);
+            ventana.ShowDialog();
+        }
+
+        private void btnIncompletas_Click(object sender, RoutedEventArgs e)
+        {
+            wnwOpcionesFacturaProducto ventana = new wnwOpcionesFacturaProducto(false);
             ventana.ShowDialog();
         }
     }

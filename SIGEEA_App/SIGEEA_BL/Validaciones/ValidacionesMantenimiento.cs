@@ -17,9 +17,12 @@ namespace SIGEEA_BL.Validaciones
     /// to, la misma será utilizada como "etiqueta" para determinar el tipo de 
     /// validación a la cual deberá ser sometida. A continuación se mostrará el
     /// diccionario de los valores posibles que puede poseer un TextBox:
-    ///     1.  0 = Cadena de caracteres que posean solamente letras.
-    ///     2.  1 = Cadena de caracteres que posean solamente números.
-    ///     3.  2 = Cadena que cumpla con formato de email
+    ///     1.  0 = Cadena de caracteres que posean solamente letras (CAMPO REQUERIDO)
+    ///     2.  1 = Cadena de caracteres que posean solamente número (CAMPO REQUERIDO)
+    ///     3.  2 = Cadena que cumpla con formato de email (CAMPO REQUERIDO)
+    ///     4.  3 = Cadena de caracteres que posean solamente letras (CAMPO OPCIONAL)
+    ///     5.  4 = Cadena de caracteres que posean solamente números (CAMPO OPCIONAL)
+    ///     6.  5 = Cadena de caracteres que cumpla con formato de email (CAMPO OPCIONAL)
     /// </summary>
     public class ValidacionesMantenimiento
     {
@@ -28,13 +31,22 @@ namespace SIGEEA_BL.Validaciones
             switch(pTag)
             {
                 case 0:
-                    if (Regex.IsMatch(pValor, @"^[a-zA-Z]+$") == true) return true;
+                    if (Regex.IsMatch(pValor, @"^[A-Za-zÑñáéíóúÁÉÍÓÚ]+$") == true) return true;
                     else return false;                    
                 case 1:
                     if (Regex.IsMatch(pValor, @"^[0-9]+$") == true) return true;
                     else return false;
-                case 3:
+                case 2:
                     if (VerificaCorreo(pValor) == true) return true;
+                    else return false;
+                case 3:
+                    if (Regex.IsMatch(pValor, @"^[A-Za-zÑñáéíóúÁÉÍÓÚ]+$") == true || pValor.Length >= 0) return true;
+                    else return false;
+                case 4:
+                    if (Regex.IsMatch(pValor, @"^[0-9]+$") == true || pValor.Length >= 0) return true;
+                    else return false;
+                case 5:
+                    if (VerificaCorreo(pValor) == true || pValor.Length >= 0) return true;
                     else return false;
                 default:
                     return false;

@@ -21,9 +21,11 @@ namespace SIGEEA_App.User_Controls.Productos
     /// </summary>
     public partial class uc_FacturaEntrega : UserControl
     {
-        public uc_FacturaEntrega()
+        bool Solicitud = true;
+        public uc_FacturaEntrega(bool pSolicitud)
         {
             InitializeComponent();
+            Solicitud = pSolicitud;
         }
 
         #region Propiedades de dependencia
@@ -99,8 +101,16 @@ namespace SIGEEA_App.User_Controls.Productos
         }
         private void btnDetalles_Click(object sender, RoutedEventArgs e)
         {
-            wnwCompletaEntrega ventana = new wnwCompletaEntrega(this.FacturaId);
-            ventana.ShowDialog();
+            if (Solicitud == false)//Facturas incompletas
+            {
+                wnwCompletaEntrega ventana = new wnwCompletaEntrega(this.FacturaId);
+                ventana.ShowDialog();
+            }
+            else//Facturas pendientes de pago
+            {
+                wnwFacturasPendientesPago ventana = new wnwFacturasPendientesPago(this.FacturaId);
+                ventana.ShowDialog();
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
         Title="Entrega de producto" Height="521.561" Width="1283.994" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid>
-            <Grid Margin="0,0,0,436">
+            <Grid Margin="0,0,0,426">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0"/>
@@ -17,17 +17,16 @@
                     </LinearGradientBrush>
                 </Grid.Background>
                 <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblNombreAsociado" Margin="0,0,850,0">Entrega de:</Label>
-                <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblCedulaAsociado" Margin="474,0,364,29">Cédula #:</Label>
+                <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblCedulaAsociado" Margin="474,0,364,35">Cédula #:</Label>
                 <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblCodigoAsociado" Margin="1052,0,38,0">Código:</Label>
-                <Label x:Name="label" Content="Unidad de medida:" HorizontalAlignment="Left" Height="29" Margin="409,28,0,0" VerticalAlignment="Top" Width="144" FontSize="14.667" FontWeight="Bold"/>
-                <ComboBox x:Name="cmbUniMedida" HorizontalAlignment="Left" Height="19" Margin="570,28,0,0" VerticalAlignment="Top" Width="192" FontSize="14.667" FontWeight="Bold"/>
+                <Label x:Name="label" Content="Unidad de medida:" HorizontalAlignment="Left" Height="29" Margin="421,28,0,0" VerticalAlignment="Top" Width="144" FontSize="14.667" FontWeight="Bold"/>
+                <ComboBox x:Name="cmbUniMedida" HorizontalAlignment="Left" Height="19" Margin="570,31,0,0" VerticalAlignment="Top" Width="192" FontSize="14.667" FontWeight="Bold"/>
             </Grid>
-            <DataGrid Margin="28,62,120,393">
+            <DataGrid Margin="19,85,120,370">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Cantidad" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Uni. Medida" Width="170" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Producto" Width="180" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Mercado" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cantidad" Width="280" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Producto" Width="250" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Mercado" Width="230" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     <DataGridTextColumn Header="Finca" Width="250" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     <DataGridTextColumn Header="Lote" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                 </DataGrid.Columns>
@@ -35,7 +34,7 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,124,81,33">
                 <StackPanel Width="1450" Name="stpContenedor" />
             </ScrollViewer>
-            <Button x:Name="btnAgregar" Margin="1219,169,0,272" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" ToolTip="Agregar ítem">
+            <Button x:Name="btnAgregar" Margin="1209,169,10,272" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" ToolTip="Agregar ítem">
                 <Rectangle Width="25" Height="22" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"
@@ -43,7 +42,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Button x:Name="btnFacturar" Margin="1219,279,0,162" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFacturar_Click" ToolTip="Facturar">
+            <Button x:Name="btnFacturar" Margin="1209,279,10,162" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFacturar_Click" ToolTip="Facturar">
                 <Rectangle Width="25" Height="22" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"

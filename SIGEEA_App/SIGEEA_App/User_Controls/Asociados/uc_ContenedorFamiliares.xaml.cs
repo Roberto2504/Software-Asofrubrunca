@@ -80,7 +80,7 @@ namespace SIGEEA_App.User_Controls.Asociados
         private void btnNuevo_Click(object sender, RoutedEventArgs e)
         {
             uc_ItemFamiliar familiar = new uc_ItemFamiliar(null, false);
-            stpContenedor.Children.Add(familiar);
+            stpContenedor.Children.Insert(0,familiar);
         }
 
         public void CargaFamiliares(string pCedula)

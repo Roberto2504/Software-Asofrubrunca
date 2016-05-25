@@ -46,7 +46,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             uc_IngresoProducto uProducto = new uc_IngresoProducto(asociado.Codigo_Asociado);
-            stpContenedor.Children.Add(uProducto);
+            stpContenedor.Children.Insert(0,uProducto);
         }
 
         private void btnFacturar_Click(object sender, RoutedEventArgs e)

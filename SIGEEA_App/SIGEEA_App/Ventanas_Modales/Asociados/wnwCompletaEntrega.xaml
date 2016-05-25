@@ -9,7 +9,7 @@
         Title="Factura" Height="487.218" Width="835.714" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid>
-            <DataGrid Margin="51,113,97,326">
+            <DataGrid Margin="51,100,97,327">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Descripción" Width="450" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     <DataGridTextColumn Header="Cantidad neta" Width="375" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>

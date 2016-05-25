@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:SIGEEA_App.Custom_Controls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
@@ -458,6 +458,63 @@
                             <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="116,15.246,0,15.246" TextWrapping="Wrap" Text="{Binding calTipProducto, RelativeSource={RelativeSource TemplatedParent}}" Width="17" FontFamily="Segoe UI Black" FontSize="14.667" VerticalAlignment="Center" d:LayoutOverrides="TopMargin, BottomMargin"/>
                             <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Stretch" Margin="235,15.246,245,15.247" TextWrapping="Wrap" Text="{Binding UniMedida, RelativeSource={RelativeSource TemplatedParent}}" Width="Auto" FontFamily="Segoe UI Black" FontSize="14.667" VerticalAlignment="Stretch" d:LayoutOverrides="Height"/>
                             <TextBlock x:Name="textBlock_Copy6" TextWrapping="Wrap" Text="{Binding canInvProducto, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="Segoe UI Black" FontSize="14.667" Width="87" VerticalAlignment="Stretch" Margin="148,15.246,0,15.247" HorizontalAlignment="Left" d:LayoutOverrides="Height"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:ccBotonBasico}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ccBotonBasico}">
+                    <Border Background="{TemplateBinding Background}"
+                		BorderBrush="{TemplateBinding BorderBrush}"
+                		BorderThickness="{TemplateBinding BorderThickness}" Height="58" Width="183.204">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock">
+                                            <EasingColorKeyFrame KeyTime="0" Value="#FF3EAC43"/>
+                                        </ColorAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="0.995"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="grid">
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="-0.5"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="rectangle">
+                                            <EasingColorKeyFrame KeyTime="0" Value="#FF5B3C3C"/>
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed"/>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="grid" Height="Auto" Width="Auto" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Rectangle x:Name="rectangle" Stroke="Black" RadiusY="5.5" RadiusX="5.5">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF954040" Offset="0"/>
+                                        <GradientStop Color="#FF2C1212" Offset="1"/>
+                                        <GradientStop Color="#FF1C0B0B" Offset="0.434"/>
+                                        <GradientStop Color="#FF301616" Offset="0.679"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding Nombre, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="Cooper Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF34B43A" Height="Auto" Margin="0,10,0,21" Width="183.204" TextAlignment="Center"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

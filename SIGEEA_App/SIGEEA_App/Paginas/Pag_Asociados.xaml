@@ -16,6 +16,7 @@
         <Button x:Name="btnCuota" Content="registrar cuota" HorizontalAlignment="Left" Margin="300,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnCuota_Click"/>
         <Button x:Name="btnAdministrarCuotas" Content="Administrar pagos de cuotas" HorizontalAlignment="Left" Margin="300,133,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnAdministrarCuotas_Click"/>
         <Button x:Name="btnEntrega" Content="Entrega de producto" HorizontalAlignment="Left" Margin="300,202,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnEntrega_Click"/>
-        <Button x:Name="btnPendientes" Content="Facturas incompletas" HorizontalAlignment="Left" Margin="541,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnPendientes_Click"/>
+        <Button x:Name="btnIncompletas" Content="Facturas incompletas" HorizontalAlignment="Left" Margin="541,63,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnIncompletas_Click"/>
+        <Button x:Name="btnPendientes" Content="Facturas pendientes" HorizontalAlignment="Left" Margin="541,133,0,0" VerticalAlignment="Top" Width="194" Height="49" Click="btnPendientes_Click"/>
     </Grid>
 </Page>

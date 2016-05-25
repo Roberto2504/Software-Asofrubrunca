@@ -259,7 +259,7 @@ namespace SIGEEA_BL
                 DataClasses1DataContext dc = new DataClasses1DataContext();
 
                 pFactura.FecEntrega_FacAsociado = DateTime.Now;
-                pFactura.CanNeta_FacAsociado = 0;
+                pFactura.CanNeta_FacAsociado = -1;
                 double total = 0;
                 foreach (SIGEEA_DetFacAsociado d in pDetalles) total += d.CanTotal_DetFacAsociado;
                 pFactura.CanTotal_FacAsociado = total;
@@ -272,7 +272,8 @@ namespace SIGEEA_BL
                 {
                     d.FK_Id_PreProCompra = dc.SIGEEA_spObtenerPrecioCompra(d.FK_Id_PreProCompra).First().PK_Id_PreProCompra;
                     d.FK_Id_FacAsociado = pFactura.PK_Id_FacAsociado;
-                    d.CanNeta_DetFacAsociado = 0;
+                    d.CanNeta_DetFacAsociado = -1;
+                    d.Cancelado_DetFacAsociado = false;
                     dc.SIGEEA_DetFacAsociados.InsertOnSubmit(d);
                 }
                 dc.SubmitChanges();
@@ -297,6 +298,7 @@ namespace SIGEEA_BL
                 SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
                 detalle.CanNeta_DetFacAsociado = CantidadNeta;
                 detalle.CanTotal_DetFacAsociado = detalle.CanTotal_DetFacAsociado;
+                detalle.Cancelado_DetFacAsociado = false;
                 detalle.FK_Id_FacAsociado = detalle.FK_Id_FacAsociado;
                 detalle.FK_Id_Lote = detalle.FK_Id_Lote;
                 detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
@@ -307,6 +309,54 @@ namespace SIGEEA_BL
             {
                 throw new ArgumentException("Error: " + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Actualiza la factura con respecto a su cantidad neta
+        /// </summary>
+        /// <param name="pFactura"></param>
+        public void CantidadNetaFactura(int pFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
+            List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(factura.PK_Id_FacAsociado).ToList();
+            double cantidadNeta = 0;
+
+            foreach(SIGEEA_spObtenerDetalleFacturaAsociadoResult f in listaDetalles)
+            {
+                if (f.CanNeta_DetFacAsociado == -1) continue;
+                cantidadNeta += (double)f.CanNeta_DetFacAsociado;                
+            }
+            factura.CanNeta_FacAsociado = cantidadNeta;
+            factura.CanTotal_FacAsociado = factura.CanTotal_FacAsociado;
+            factura.Estado_FacAsociado = factura.Estado_FacAsociado;
+            factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
+            factura.FecPago_FacAsociado = factura.FecPago_FacAsociado;
+            factura.FK_Id_Asociado = factura.FK_Id_Asociado;
+            factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
+            factura.Incompleta_FacAsociado = factura.Incompleta_FacAsociado;
+            factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
+            dc.SubmitChanges();
+
+        }
+
+        /// <summary>
+        /// Obtiene la cantidad de producto neto pendiente de pago la factura con respecto a su cantidad neta
+        /// </summary>
+        /// <param name="pFactura"></param>
+        public int SaldoFactura(int pFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
+            List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(factura.PK_Id_FacAsociado).ToList();
+            int cantidadNeta = 0;
+
+            foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult f in listaDetalles)
+            {
+                if (f.CanNeta_DetFacAsociado == -1 || f.Cancelado_DetFacAsociado == true) continue;
+                cantidadNeta += (int)f.CanNeta_DetFacAsociado;
+            }
+            return cantidadNeta;
         }
 
         /// <summary>
@@ -321,7 +371,11 @@ namespace SIGEEA_BL
 
             foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult d in listaDetalles)
             {
-                if (d.CanNeta_DetFacAsociado < 0) validador = false; //Existe al menos un detalle incompleto
+                if (d.CanNeta_DetFacAsociado < 0)
+                {
+                    validador = false; //Existe al menos un detalle incompleto
+                    break;
+                }
             }
 
             if (validador == true)
@@ -335,6 +389,73 @@ namespace SIGEEA_BL
                 factura.FK_Id_Asociado = factura.FK_Id_Asociado;
                 factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
                 factura.Incompleta_FacAsociado = false;
+                factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
+                dc.SubmitChanges();
+            }
+        }
+
+
+        /// <summary>
+        /// Cancela las facturas 
+        /// </summary>
+        /// <param name="pDetalles"></param>
+        /// <returns></returns>
+        public bool CancelaFacturaAsociado(List<int> pDetalles)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                if(pDetalles.Count > 0)
+                {
+                    foreach(int i in pDetalles)
+                    {
+                        SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == i);
+                        detalle.PK_Id_DetFacAsociado = detalle.PK_Id_DetFacAsociado;
+                        detalle.Cancelado_DetFacAsociado = true;
+                        detalle.CanNeta_DetFacAsociado = detalle.CanNeta_DetFacAsociado;
+                        detalle.CanTotal_DetFacAsociado = detalle.CanTotal_DetFacAsociado;
+                        detalle.FK_Id_FacAsociado = detalle.FK_Id_FacAsociado;
+                        detalle.FK_Id_Lote = detalle.FK_Id_Lote;
+                        detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
+                        detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
+                        dc.SubmitChanges();
+                    }
+                    RevisaFacurasCanceladas(dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == (dc.SIGEEA_DetFacAsociados.First(d => d.PK_Id_DetFacAsociado == pDetalles.First()).FK_Id_FacAsociado)).PK_Id_FacAsociado);
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        private void RevisaFacurasCanceladas(int pFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> lista = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pFactura).ToList();
+            bool validador = true;
+
+            foreach(SIGEEA_spObtenerDetalleFacturaAsociadoResult d in lista)
+            {
+                if(d.Cancelado_DetFacAsociado == false)
+                {
+                    validador = false;
+                    break;
+                }
+            }
+
+            if(validador == true)
+            {
+                SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
+                factura.CanNeta_FacAsociado = factura.CanNeta_FacAsociado;
+                factura.CanTotal_FacAsociado = factura.CanTotal_FacAsociado;
+                factura.Estado_FacAsociado = false;
+                factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
+                factura.FecPago_FacAsociado = DateTime.Now;
+                factura.FK_Id_Asociado = factura.FK_Id_Asociado;
+                factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
+                factura.Incompleta_FacAsociado = factura.Incompleta_FacAsociado;
                 factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
                 dc.SubmitChanges();
             }

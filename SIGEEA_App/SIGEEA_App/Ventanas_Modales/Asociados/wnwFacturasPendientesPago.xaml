@@ -1,0 +1,85 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwFacturasPendientesPago"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Asociados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Factura" Height="512.293" Width="839.459" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <Grid Name="grdPrimera" Visibility="Visible">
+                <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="10,147,157,20" Background="#FFC3BABA" >
+                    <StackPanel Name="stpContenedor"></StackPanel>
+                </ScrollViewer>
+                <Grid HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="830">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0"/>
+                        <GradientStop Color="#FF4B689B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Label x:Name="lblAsociado" Margin="10,3,443,57" FontWeight="Bold" FontSize="16" Content="Asociado:"/>
+                <Label x:Name="lblCedula" Margin="392,3,210,60" FontWeight="Bold" FontSize="16" Content="Cédula:"/>
+                <Label x:Name="lblCodigo" Margin="625,0,42,60" FontWeight="Bold" FontSize="16" Content="Código:"/>
+                <Label x:Name="lblFactura" Margin="500,46,127,15" FontWeight="Bold" FontSize="16" Content="N° factura:"/>
+                <Label x:Name="lblFecEntrega" Margin="146,43,407,13" FontWeight="Bold" FontSize="16" Content="Fecha de entrega:"/>
+            </Grid>
+                <Button x:Name="btnProcesar" Margin="694,275,38,107" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnProcesar_Click" ToolTip="Siguiente">
+                <Rectangle Width="53" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-2.427"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_arrow_right}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            </Grid>
+            <Grid Name="grdSegunda" Visibility="Collapsed" Margin="0,10,0,-10">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,56,177,22">
+                    <RichTextBox Name="txbFactura" Margin="0,0,0,0" Background="#FFD8DFE2" IsEnabled="False"></RichTextBox>
+                </ScrollViewer>
+                <Button x:Name="btnAtras" Margin="684,56,48,326" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAtras_Click" ToolTip="Atrás">
+                    <Rectangle Width="53" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-2.427"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_arrow_left}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+                <Button x:Name="btnCancelar" Margin="684,231,48,151" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click" ToolTip="Cancelar pago">
+                    <Rectangle Width="53" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-2.427"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_money}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Controls:MetroWindow>

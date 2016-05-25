@@ -13,21 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using MahApps.Metro.Controls; 
-using MahApps.Metro.Controls.Dialogs;
-
 namespace SIGEEA_App
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            ShowCloseButton = false;
             btnSalir.Click += BtnSalir_Click;
             this.Loaded += MainWindow_Loaded;
         }
@@ -122,6 +118,11 @@ namespace SIGEEA_App
         }
 
         private void BtnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void btnSalir_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

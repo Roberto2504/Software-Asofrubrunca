@@ -58,7 +58,12 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 AsociadoMantenimiento asociado = new AsociadoMantenimiento();
                 foreach (uc_ItemEntrega item in stpContenedor.Children)
                 {
-                    if (item.Valida() == true) asociado.CompletarEntrega(item.getId(), Convert.ToDouble(item.txbCantidadNeta.Text));
+                    if (item.Valida() == true)
+                    {
+                        if(item.txbCantidadNeta.Text == 0.ToString())item.txbCantidadNeta.Text = (-1).ToString();
+                        asociado.CompletarEntrega(item.getId(), Convert.ToDouble(item.txbCantidadNeta.Text));
+                    }
+
                     else
                     {
                         item.txbCantidadNeta.Foreground = Brushes.Red;
@@ -66,6 +71,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     }
                 }
                 asociado.RevisaFactura(PK_Factura);
+                asociado.CantidadNetaFactura(PK_Factura);
                 MessageBox.Show("Registro realizado con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 this.Close();
             }

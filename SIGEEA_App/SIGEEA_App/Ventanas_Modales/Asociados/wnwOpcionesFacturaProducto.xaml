@@ -11,7 +11,7 @@
         <Grid>
             <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged" FontWeight="Bold" FontSize="14.667"/>
 
-            <Grid Name="grdTodas" Margin="40,92,51,97" Visibility="Collapsed">
+            <Grid Name="grdTodas" Margin="79,92,65,97" Visibility="Collapsed">
                 <Button x:Name="btnTodas" Margin="67,10,69,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnTodas_Click" ToolTip="Listar todas las facturas pendientes" >
                     <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                         <Rectangle.OpacityMask>
@@ -22,7 +22,7 @@
                 </Button>
             </Grid>
             <Grid Name="grdAsociado" Margin="10,75,10,36" Visibility="Collapsed">
-                <Label Margin="10,0,6,131" FontWeight="Bold" FontSize="16">Número de cédula o código del asociado:</Label>
+                <Label Margin="10,12,6,110" FontWeight="Bold" FontSize="16">Número de cédula o código del asociado:</Label>
                 <TextBox Margin="10,51,10,71" TextAlignment="Center" FontWeight="Bold" FontSize="16" Name="txbAsociado"/>
                 <Button x:Name="btnListaFacAsociado" Margin="135,94,139,5" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnListaFacAsociado_Click" ToolTip="Listar facturas pendientes de un asociado">
                     <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
@@ -33,10 +33,10 @@
                     </Rectangle>
                 </Button>
             </Grid>
-            <Grid Name="grdFacturaUnica" Margin="23,92,28,63" Visibility="Collapsed">
-                <Label Margin="50,0,50,85" FontWeight="Bold" FontSize="14.667">Digite el número de factura:</Label>
-                <TextBox Margin="10,36,10,51" Name="txbFactura" TextAlignment="Center" FontWeight="Bold" FontSize="14.667"></TextBox>
-                <Button x:Name="btnFactura" Margin="126,65,126,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFactura_Click" ToolTip="Obtener factura">
+            <Grid Name="grdFacturaUnica" Margin="22,88,29,40" Visibility="Collapsed">
+                <Label Margin="50,0,50,103" FontWeight="Bold" FontSize="14.667">Digite el número de factura:</Label>
+                <TextBox Margin="0,41,10,60" Name="txbFactura" TextAlignment="Center" FontWeight="Bold" FontSize="14.667"></TextBox>
+                <Button x:Name="btnFactura" Margin="124,84,123,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFactura_Click" ToolTip="Obtener factura">
                     <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill"

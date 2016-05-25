@@ -73,6 +73,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Custom_Controls\ccAbonoCliente.cs" />
+    <Compile Include="Custom_Controls\ccBotonBasico.cs" />
     <Compile Include="Custom_Controls\ccCliente.cs" />
     <Compile Include="Custom_Controls\ccCompraInsumo.cs" />
     <Compile Include="Custom_Controls\ccConsultar.cs" />
@@ -132,6 +133,9 @@
     <Compile Include="User_Controls\Fincas\uc_ContenedorAsociados.xaml.cs">
       <DependentUpon>uc_ContenedorAsociados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\General\uc_Menu.xaml.cs">
+      <DependentUpon>uc_Menu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\Insumos\uc_ContenedorInsumos.xaml.cs">
       <DependentUpon>uc_ContenedorInsumos.xaml</DependentUpon>
     </Compile>
@@ -143,6 +147,9 @@
     </Compile>
     <Compile Include="User_Controls\Productos\uc_IngresoProducto.xaml.cs">
       <DependentUpon>uc_IngresoProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Productos\uc_ItemDetallePagoAsoc.xaml.cs">
+      <DependentUpon>uc_ItemDetallePagoAsoc.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Productos\uc_ItemEntrega.xaml.cs">
       <DependentUpon>uc_ItemEntrega.xaml</DependentUpon>
@@ -185,6 +192,12 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwFacturasIncompletas.xaml.cs">
       <DependentUpon>wnwFacturasIncompletas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwFacturasPendientes.xaml.cs">
+      <DependentUpon>wnwFacturasPendientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwFacturasPendientesPago.xaml.cs">
+      <DependentUpon>wnwFacturasPendientesPago.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwIdentificar.xaml.cs">
       <DependentUpon>wnwIdentificar.xaml</DependentUpon>
@@ -269,6 +282,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Puestos\wnwPuestos.xaml.cs">
       <DependentUpon>wnwPuestos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="wnwInicio.xaml.cs">
+      <DependentUpon>wnwInicio.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -366,6 +382,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\General\uc_Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\Insumos\uc_ContenedorInsumos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -379,6 +399,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Controls\Productos\uc_IngresoProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Productos\uc_ItemDetallePagoAsoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -435,6 +459,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwFacturasIncompletas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwFacturasPendientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwFacturasPendientesPago.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -547,6 +579,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Puestos\wnwPuestos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wnwInicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

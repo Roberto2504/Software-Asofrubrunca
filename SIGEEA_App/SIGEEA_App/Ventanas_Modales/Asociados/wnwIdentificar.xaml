@@ -11,7 +11,7 @@
         <Grid>
             <TextBox x:Name="txbInformacion" HorizontalAlignment="Left" Height="40" Margin="23,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" FontSize="18.667" FontWeight="Bold" TextAlignment="Center"/>
             <TextBlock x:Name="txbInstrucciones" HorizontalAlignment="Left" Margin="23,44,0,0" TextWrapping="Wrap" Text="Ingrese el número de cédulo o &#xD;&#xA;código único del asociado" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold" FontSize="16" Width="240"/>
-            <Button x:Name="btnRegistrar" Margin="113,184,120,37" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click">
+            <Button x:Name="btnRegistrar" Margin="113,184,120,37" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click" IsDefault="True">
                 <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"

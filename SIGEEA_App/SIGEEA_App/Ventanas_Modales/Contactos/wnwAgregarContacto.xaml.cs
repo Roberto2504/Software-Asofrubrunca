@@ -60,7 +60,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
             {
                 PersonaMantenimiento persona = new PersonaMantenimiento();
                 ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
-                if ((String)cmbTipoContacto.SelectedValue == "Correo" && validacion.Validar(txbContacto.Text, 3) == true)
+                if ((String)cmbTipoContacto.SelectedValue == "Correo" && validacion.Validar(txbContacto.Text, 2) == true)
                 {
                     if (Accion == "Insertar")
                     {

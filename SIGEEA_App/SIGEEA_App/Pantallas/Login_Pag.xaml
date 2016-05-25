@@ -22,7 +22,7 @@
             </Rectangle>
         </Button>
 
-        <Button x:Name="btnCerrar" Width="50" Height="50" Margin="111,173,317,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
+        <Button x:Name="btnCerrar" Width="50" Height="50" Margin="111,173,317,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" IsCancel="True">
             <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"

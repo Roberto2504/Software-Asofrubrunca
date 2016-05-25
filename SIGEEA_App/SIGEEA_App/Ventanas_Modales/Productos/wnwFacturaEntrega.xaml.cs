@@ -78,9 +78,10 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
             parrafoProductos.FontSize = 16;
             parrafoProductos.Inlines.Add(new Run("Producto           Cantidad          Precio"));
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
-
+            
             foreach (SIGEEA_spObtenerDetallesEntregaResult d in detalles)
             {
+                
                 parrafoProductos.Inlines.Add(new Run(d.Nombre_TipProducto + "          "));
                 parrafoProductos.Inlines.Add(new Run(d.CanTotal_DetFacAsociado + "              "));
                 parrafoProductos.Inlines.Add(new Run(d.Precio));

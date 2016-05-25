@@ -14,7 +14,7 @@
                 <Grid Name="grdValidar" Margin="195,10,357,18">
                     <TextBox x:Name="txbCedula" HorizontalAlignment="Left" Height="23" Margin="6,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="1"/>
                     <TextBox x:Name="txbPriNombre" HorizontalAlignment="Left" Height="23" Margin="6,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0" Background="White"/>
-                    <TextBox x:Name="txbSegNombre" HorizontalAlignment="Left" Height="23" Margin="6,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
+                    <TextBox x:Name="txbSegNombre" HorizontalAlignment="Left" Height="23" Margin="6,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="3"/>
                     <TextBox x:Name="txbPriApellido" HorizontalAlignment="Left" Height="23" Margin="6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
                     <TextBox x:Name="txbSegApellido" HorizontalAlignment="Left" Height="23" Margin="6,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="13.333" FontWeight="Bold" Tag="0"/>
                 </Grid>

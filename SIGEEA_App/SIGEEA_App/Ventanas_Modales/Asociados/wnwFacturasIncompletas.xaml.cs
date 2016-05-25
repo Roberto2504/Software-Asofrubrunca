@@ -30,26 +30,40 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             InitializeComponent();
 
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<SIGEEA_spObtenerFacturasIncompletasResult> listaFacturas = dc.SIGEEA_spObtenerFacturasIncompletas(pAsociado).ToList();
+            List<SIGEEA_spObtenerFacturasIncompletasAsocResult> listaFacturas = dc.SIGEEA_spObtenerFacturasIncompletasAsoc(pAsociado).ToList();
 
-            bool color = true;
-            foreach (SIGEEA_spObtenerFacturasIncompletasResult f in listaFacturas)
+            if (listaFacturas.Count > 0)
             {
-                uc_FacturaEntrega factura = new uc_FacturaEntrega();
-                factura.FacturaId = f.PK_Id_FacAsociado;
-                factura.FacturaCantidad = f.CanTotal_FacAsociado.ToString();
-                factura.FacturaFecha = f.FECHA;
-                
-                factura.btnDetalles.Click += BtnDetalles_Click;
-                factura.Color(color);
-                color = !color;
-                stpContenedor.Children.Add(factura);
+                bool color = true;
+                foreach (SIGEEA_spObtenerFacturasIncompletasAsocResult f in listaFacturas)
+                {
+                    uc_FacturaEntrega factura = new uc_FacturaEntrega(false);
+                    factura.FacturaId = f.PK_Id_FacAsociado;
+                    factura.FacturaCantidad = f.CanTotal_FacAsociado.ToString();
+                    factura.FacturaFecha = f.FECHA;
+
+                    factura.btnDetalles.Click += BtnDetalles_Click;
+                    factura.Color(color);
+                    color = !color;
+                    stpContenedor.Children.Add(factura);
+                }
+            }
+            else
+            {
+                Label lblVacio = new Label();             
+                lblVacio.Foreground = Brushes.IndianRed;
+                lblVacio.FontSize = 18;
+                lblVacio.Width = 430;
+                lblVacio.Content = "No hay registros vinculados a este asociado.";
+                lblVacio.FontWeight = FontWeights.ExtraBold;
+
+                stpContenedor.Children.Add(lblVacio);
             }
         }
 
         private void BtnDetalles_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
     }
 }

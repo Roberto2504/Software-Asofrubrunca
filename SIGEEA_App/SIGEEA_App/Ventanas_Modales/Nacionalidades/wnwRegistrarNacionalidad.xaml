@@ -11,7 +11,7 @@
         <Grid Margin="0,0,2,-3">
             <Label x:Name="label" Content="Nacionalidad:" HorizontalAlignment="Left" Margin="21,36,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
             <TextBox x:Name="txbNacionalidad" HorizontalAlignment="Left" Height="36" Margin="21,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontSize="16" FontWeight="Bold" MaxLength="30" TextAlignment="Center"/>
-            <Button x:Name="btnGuardar" Margin="100,134,100,23" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="btnGuardar" Margin="100,134,100,23" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" RenderTransformOrigin="0.5,0.5" IsDefault="True">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
@@ -20,7 +20,7 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Button.RenderTransform>
-                <Rectangle Width="28" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle Width="28" Height="19" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_save}" />

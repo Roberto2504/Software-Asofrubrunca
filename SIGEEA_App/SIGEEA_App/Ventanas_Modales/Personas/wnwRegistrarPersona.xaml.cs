@@ -72,7 +72,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     if (validacion.Validar(txb.Text, Convert.ToInt32(txb.Tag)) == false)
                     {
                         valido = false;
-                        txb.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
+                        //txb.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
+                        txb.BorderBrush = Brushes.Red;
                     }
                 }
                 if (valido == true)
@@ -182,14 +183,14 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     grdPersona.Visibility = Visibility.Collapsed;
                     grdEmpleado.Visibility = Visibility.Collapsed;
                     grdCliente.Visibility = Visibility.Visible;
-                        listarCategorias();                   
+                    listarCategorias();                   
                 }
             }
             catch
             {
                 MessageBox.Show("Debe ingresar la información de manera correcta.");
             }
-}
+        }
 
         private void BtnRegistrar_Click(object sender, RoutedEventArgs e)
         {
