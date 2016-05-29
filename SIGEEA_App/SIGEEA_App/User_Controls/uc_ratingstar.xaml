@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="SIGEEA_App.User_Controls.uc_ratingstar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIGEEA_App.User_Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="52.638" d:DesignWidth="350.659">
+    <Grid Name="grdPrincipal">
+        <Grid Name="grdEstrellas" Margin="0,0,91,0">
+            <Image x:Name="img1" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Source="/SIGEEA_App;component/Imagenes/nonestar.png"/>
+            <Image x:Name="img2" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Margin="54,0,0,0" Source="/SIGEEA_App;component/Imagenes/nonestar.png"/>
+            <Image x:Name="img3" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Margin="109,0,0,0" Source="/SIGEEA_App;component/Imagenes/nonestar.png"/>
+            <Image x:Name="img4" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Margin="163,0,0,0" Source="/SIGEEA_App;component/Imagenes/nonestar.png"/>
+            <Image x:Name="img5" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="50" Margin="215,0,0,0" Source="/SIGEEA_App;component/Imagenes/nonestar.png"/>
+        </Grid>
+        <TextBlock TextAlignment="Center" Margin="275,0,0,33" FontWeight="Bold">Calificación:</TextBlock>
+        <TextBlock Margin="275,25,0,0" Name="lblCalificacion" TextAlignment="Center" FontWeight="Bold" FontSize="12"></TextBlock>
+    </Grid>
+</UserControl>
+

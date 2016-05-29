@@ -126,7 +126,7 @@ namespace SIGEEA_App.User_Controls.Asociados
 
         private void btnDireccion_Click(object sender, RoutedEventArgs e)
         {
-            wnwDirecciones ventana = new wnwDirecciones(CedulaAsociado, "Asociado");
+            wnwDirecciones ventana = new wnwDirecciones(CedulaAsociado, "Asociado", pkFinca: 0);
             ventana.ShowDialog();
         }
 

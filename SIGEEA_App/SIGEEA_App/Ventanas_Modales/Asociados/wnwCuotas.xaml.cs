@@ -32,9 +32,9 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             List<SIGEEA_spObtenerCuotasResult> listaCuotas = asociado.ListarCuotasActivas();
             bool color = true;
             stpCuotas.Children.Clear();
-            
 
-            foreach(SIGEEA_spObtenerCuotasResult c in listaCuotas)
+
+            foreach (SIGEEA_spObtenerCuotasResult c in listaCuotas)
             {
                 uc_Cuota cuota = new uc_Cuota();
                 cuota.CuotaId = c.PK_ID_CUOTA;
@@ -61,7 +61,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 stpDeudores.Children.Clear();
                 grdPrimaria.Visibility = Visibility.Collapsed;
                 grdSecundaria.Visibility = Visibility.Visible;
-                foreach(SIGEEA_spObtenerDeudoresCuotasResult d in deudores)
+                foreach (SIGEEA_spObtenerDeudoresCuotasResult d in deudores)
                 {
                     uc_DeudorCuota deudor = new uc_DeudorCuota();
                     deudor.CuotaAsociadoId = d.PK_Id_Cuota_Asociado;
@@ -72,7 +72,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     deudor.SaldoPendiente = d.SaldoPendiente;
                     deudor.Color(color);
                     deudor.btnPagar.Tag = d.PK_Id_Cuota_Asociado;
-                    deudor.btnPagar.Click += BtnPagar_Click;                 
+                    deudor.btnPagar.Click += BtnPagar_Click;
                     color = !color;
                     stpDeudores.Children.Add(deudor);
                 }
@@ -98,7 +98,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         {
             //tomar en cuenta el tag
             Button boton = (Button)sender;
-            CargaDeudores(Convert.ToInt32(boton.Tag));            
+            CargaDeudores(Convert.ToInt32(boton.Tag));
         }
 
         private void btnAtras_Click(object sender, RoutedEventArgs e)
@@ -180,7 +180,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }

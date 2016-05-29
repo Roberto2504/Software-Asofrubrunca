@@ -9,9 +9,9 @@
       Title="Pag_Fincas">
 
     <Grid>
-        <Button x:Name="btnAgregarInsumo" Content="Agregar Finca" HorizontalAlignment="Left" Margin="154,114,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarInsumo_Click" />
-        <Button x:Name="btnEditarInsumo" Content="Editar Finca" HorizontalAlignment="Left" Margin="577,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEditarInsumo_Click" />
-        <Button x:Name="btnEliminaroActivarInsumo" Content="Eliminar ó Activar Finca" HorizontalAlignment="Left" Margin="367,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEliminaroActivarInsumo_Click" />
-        
+        <Button x:Name="btnAgregarFinca" Content="Agregar Finca" HorizontalAlignment="Left" Margin="154,114,0,0" VerticalAlignment="Top" Width="124" Click="btnAgregarFinca_Click" />
+        <Button x:Name="btnEditarFinca" Content="Editar Finca" HorizontalAlignment="Left" Margin="577,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEditarFinca_Click" />
+        <Button x:Name="btnEliminaroActivarFinca" Content="Eliminar ó Activar Finca" HorizontalAlignment="Left" Margin="367,114,0,0" VerticalAlignment="Top" Width="124" Click="btnEliminaroActivarFinca_Click" />
+
     </Grid>
 </Page>

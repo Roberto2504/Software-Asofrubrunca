@@ -38,8 +38,8 @@
     <ApplicationIcon>Icono FUNDER.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MahApps.Metro, Version=1.1.2.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
@@ -51,7 +51,7 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -75,6 +75,7 @@
     <Compile Include="Custom_Controls\ccAbonoCliente.cs" />
     <Compile Include="Custom_Controls\ccBotonBasico.cs" />
     <Compile Include="Custom_Controls\ccCliente.cs" />
+    <Compile Include="Custom_Controls\ccCmbBasico.cs" />
     <Compile Include="Custom_Controls\ccCompraInsumo.cs" />
     <Compile Include="Custom_Controls\ccConsultar.cs" />
     <Compile Include="Custom_Controls\ccEditar.cs" />
@@ -99,6 +100,12 @@
     </Compile>
     <Compile Include="Paginas\Pag_Productos.xaml.cs">
       <DependentUpon>Pag_Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Asociados\uc_Asamblea.xaml.cs">
+      <DependentUpon>uc_Asamblea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Asociados\uc_AsociadoAsamblea.xaml.cs">
+      <DependentUpon>uc_AsociadoAsamblea.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Asociados\uc_ContenedorFamiliares.xaml.cs">
       <DependentUpon>uc_ContenedorFamiliares.xaml</DependentUpon>
@@ -132,6 +139,9 @@
     </Compile>
     <Compile Include="User_Controls\Fincas\uc_ContenedorAsociados.xaml.cs">
       <DependentUpon>uc_ContenedorAsociados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Fincas\uc_Lote.xaml.cs">
+      <DependentUpon>uc_Lote.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\General\uc_Menu.xaml.cs">
       <DependentUpon>uc_Menu.xaml</DependentUpon>
@@ -184,11 +194,20 @@
     <Compile Include="User_Controls\Asociados\uc_FincaLote.xaml.cs">
       <DependentUpon>uc_FincaLote.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\uc_ratingstar.xaml.cs">
+      <DependentUpon>uc_ratingstar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwAsambleas.xaml.cs">
+      <DependentUpon>wnwAsambleas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwCompletaEntrega.xaml.cs">
       <DependentUpon>wnwCompletaEntrega.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwCuotas.xaml.cs">
       <DependentUpon>wnwCuotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwDetallesAsamblea.xaml.cs">
+      <DependentUpon>wnwDetallesAsamblea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwFacturasIncompletas.xaml.cs">
       <DependentUpon>wnwFacturasIncompletas.xaml</DependentUpon>
@@ -252,6 +271,12 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Fincas\wnwBuscadorAsociados.xaml.cs">
       <DependentUpon>wnwBuscadorAsociados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Fincas\wnwRegistrarFinca.xaml.cs">
+      <DependentUpon>wnwRegistrarFinca.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Fincas\wnwRegistrarLote.xaml.cs">
+      <DependentUpon>wnwRegistrarLote.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml.cs">
       <DependentUpon>wnwBuscadorInsumo.xaml</DependentUpon>
@@ -338,6 +363,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="User_Controls\Asociados\uc_Asamblea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Asociados\uc_AsociadoAsamblea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\Asociados\uc_ContenedorFamiliares.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -379,6 +412,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Controls\Fincas\uc_ContenedorAsociados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Fincas\uc_Lote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,11 +487,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\uc_ratingstar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwAsambleas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwCompletaEntrega.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwCuotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwDetallesAsamblea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -542,6 +591,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Fincas\wnwRegistrarFinca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Fincas\wnwRegistrarLote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -611,9 +668,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -663,6 +718,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\Costa_Fresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\fullstar.png" />
+    <Resource Include="Imagenes\halfstar.png" />
+    <Resource Include="Imagenes\nonestar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

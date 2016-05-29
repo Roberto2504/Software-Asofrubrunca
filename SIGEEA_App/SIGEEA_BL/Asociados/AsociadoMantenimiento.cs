@@ -16,19 +16,26 @@ namespace SIGEEA_BL
         /// <param name="asociado"></param>
         public void RegistrarAsociado(SIGEEA_Persona persona, SIGEEA_Asociado asociado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
-            nuevaPersona.RegistrarPersona(persona);
-            asociado.FK_Id_Persona = persona.PK_Id_Persona;
-            asociado.Codigo_Asociado = "F";
-            asociado.FK_Id_CatAsociado = 5;
-            dc.SIGEEA_Asociados.InsertOnSubmit(asociado);
-            dc.SubmitChanges();
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
+                nuevaPersona.RegistrarPersona(persona);
+                asociado.FK_Id_Persona = persona.PK_Id_Persona;
+                asociado.Codigo_Asociado = "F";
+                asociado.FK_Id_CatAsociado = null;
+                dc.SIGEEA_Asociados.InsertOnSubmit(asociado);
+                dc.SubmitChanges();
 
-            SIGEEA_Asociado modificarAsociado = new SIGEEA_Asociado();
-            modificarAsociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == asociado.PK_Id_Asociado);
-            modificarAsociado.Codigo_Asociado = "F" + modificarAsociado.PK_Id_Asociado.ToString() + persona.PriNombre_Persona[0] + persona.PriApellido_Persona[0] + persona.SegApellido_Persona[0];
-            dc.SubmitChanges();
+                string codigoAsociado = "F" + asociado.PK_Id_Asociado.ToString() + persona.PriNombre_Persona[0] + persona.PriApellido_Persona[0] + persona.SegApellido_Persona[0];
+
+                dc.SIGEEA_spCodigoAsociado(asociado.PK_Id_Asociado, codigoAsociado);
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error:" + ex.Message);
+            }
         }
 
         /// <summary>
@@ -223,14 +230,51 @@ namespace SIGEEA_BL
                 SIGEEA_Cuota_Asociado cuota = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado);
                 double saldo = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado).Saldo_Cuota_Asociado;
                 cuota.Saldo_Cuota_Asociado = saldo - pMonto;
-                if (cuota.Saldo_Cuota_Asociado <= 0)
+                if (cuota.Saldo_Cuota_Asociado <= 0)//Si el asociado ya terminó de cancelar la cuota
+                {
+                    SIGEEA_Cuota cuotaPrincipal = dc.SIGEEA_Cuotas.First(c => c.PK_Id_Cuota == cuota.FK_Id_Cuota);
+
                     cuota.Estado_Cuota_Asociado = true;
+                    dc.SubmitChanges();
+                    ActualizarCategoriaCuota(cuotaPrincipal, cuota.FK_Id_Asociado);
+                }
                 dc.SubmitChanges();
                 return true;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza la categoría del asociado con respecto a las cuotas
+        /// </summary>
+        /// <param name="pCuota"></param>
+        /// <param name="pAsociado"></param>
+        private void ActualizarCategoriaCuota(SIGEEA_Cuota pCuota, int pAsociado)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                int calificacion;
+
+                SIGEEA_Asociado asociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == pAsociado);
+                List<SIGEEA_spObtenerInfoCategoriaAsocCuotasResult> lista = dc.SIGEEA_spObtenerInfoCategoriaAsocCuotas(pAsociado).ToList();
+                double calificacionActual = dc.SIGEEA_CatAsociados.First(c => c.PK_Id_CatAsociado == asociado.FK_Id_CatAsociado).CuotasProm_CatAsociado;
+                if (DateTime.Now > pCuota.FecFin_Cuota) calificacion = 1; //Si ya se pasó la fecha de pago
+                else if (DateTime.Now == pCuota.FecFin_Cuota) calificacion = 3; //Si hoy es el día de pago
+                else calificacion = 5; //Si va a pagar con antelación
+                int cantidadPagos = lista.Count();
+                double calificacionNuevaTotal = ((cantidadPagos - 1) * calificacionActual) + calificacion;
+                double calificacionNuevaFinal = calificacionNuevaTotal / cantidadPagos;
+
+                dc.SIGEEA_spActualizaCategoriaCuotas(asociado.FK_Id_CatAsociado, calificacionNuevaFinal);
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -322,10 +366,10 @@ namespace SIGEEA_BL
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(factura.PK_Id_FacAsociado).ToList();
             double cantidadNeta = 0;
 
-            foreach(SIGEEA_spObtenerDetalleFacturaAsociadoResult f in listaDetalles)
+            foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult f in listaDetalles)
             {
                 if (f.CanNeta_DetFacAsociado == -1) continue;
-                cantidadNeta += (double)f.CanNeta_DetFacAsociado;                
+                cantidadNeta += (double)f.CanNeta_DetFacAsociado;
             }
             factura.CanNeta_FacAsociado = cantidadNeta;
             factura.CanTotal_FacAsociado = factura.CanTotal_FacAsociado;
@@ -405,9 +449,9 @@ namespace SIGEEA_BL
             try
             {
                 DataClasses1DataContext dc = new DataClasses1DataContext();
-                if(pDetalles.Count > 0)
+                if (pDetalles.Count > 0)
                 {
-                    foreach(int i in pDetalles)
+                    foreach (int i in pDetalles)
                     {
                         SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == i);
                         detalle.PK_Id_DetFacAsociado = detalle.PK_Id_DetFacAsociado;
@@ -424,28 +468,32 @@ namespace SIGEEA_BL
                 }
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
         }
 
+        /// <summary>
+        /// Determina si a una factura ya se le puede cambiar su estado de cancelado a partir de sus detalles
+        /// </summary>
+        /// <param name="pFactura"></param>
         private void RevisaFacurasCanceladas(int pFactura)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> lista = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pFactura).ToList();
             bool validador = true;
 
-            foreach(SIGEEA_spObtenerDetalleFacturaAsociadoResult d in lista)
+            foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult d in lista)
             {
-                if(d.Cancelado_DetFacAsociado == false)
+                if (d.Cancelado_DetFacAsociado == false)
                 {
                     validador = false;
                     break;
                 }
             }
 
-            if(validador == true)
+            if (validador == true)
             {
                 SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
                 factura.CanNeta_FacAsociado = factura.CanNeta_FacAsociado;
@@ -459,6 +507,86 @@ namespace SIGEEA_BL
                 factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
                 dc.SubmitChanges();
             }
+        }
+
+        /// <summary>
+        /// Registra una nueva asamblea de asociados
+        /// </summary>
+        /// <param name="pAsamblea"></param>
+        /// <returns></returns>
+        public bool RegistraAsamblea(SIGEEA_Asamblea pAsamblea)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_Asamblea nuevaAsamblea = new SIGEEA_Asamblea();
+                nuevaAsamblea.Fecha_Asamblea = pAsamblea.Fecha_Asamblea;
+                nuevaAsamblea.NumActa_Asamblea = pAsamblea.NumActa_Asamblea;
+                nuevaAsamblea.Observaciones_Asamblea = pAsamblea.Observaciones_Asamblea;
+                nuevaAsamblea.Tipo_Asamblea = pAsamblea.Tipo_Asamblea;
+                dc.SIGEEA_Asambleas.InsertOnSubmit(nuevaAsamblea);
+                dc.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza el estado de las personas que asistieron o no a una asamblea en particular a partir de una lista
+        /// </summary>
+        /// <param name="pLista"></param>
+        /// <returns></returns>
+        public bool ActualizarDetalleAsamblea(List<SIGEEA_spObtenerListadoAsistenciaResult> pLista)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                foreach (SIGEEA_spObtenerListadoAsistenciaResult a in pLista)
+                {
+                    SIGEEA_AsiAsamblea asamblea = dc.SIGEEA_AsiAsambleas.First(c => c.PK_Id_AsiAsamblea == a.PK_Id_AsiAsamblea);
+                    asamblea.FK_Id_Asamblea = asamblea.FK_Id_Asamblea;
+                    asamblea.FK_Id_Asociado = asamblea.FK_Id_Asociado;
+                    asamblea.PK_Id_AsiAsamblea = asamblea.PK_Id_AsiAsamblea;
+                    asamblea.Estado_AsiAsamblea = a.Estado_AsiAsamblea;
+                    dc.SubmitChanges();
+                    ActualizarCategoriaAsociacion(asamblea.FK_Id_Asociado, asamblea.Estado_AsiAsamblea);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Actualiza la categoría del asociado que se basa en las asambleas
+        /// </summary>
+        /// <param name="pAsociado"></param>
+        /// <param name="pEstado"></param>
+        private void ActualizarCategoriaAsociacion(int pAsociado, int pEstado)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            int calificacion = 1;
+
+            SIGEEA_Asociado asociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == pAsociado);
+            /*List<SIGEEA_spObtenerInfoCategoriaAsocAsambleasResult> listaCantidad = dc.SIGEEA_spObtenerInfoCategoriaAsocAsambleas(pAsociado).ToList();
+            int cantidad = listaCantidad.Count();*/
+            int cantidad = (int)dc.SIGEEA_spObtenerInfoCategoriaAsocAsambleas(pAsociado).First().Cantidad;
+            double calificacionActual = dc.SIGEEA_CatAsociados.First(c => c.PK_Id_CatAsociado == asociado.FK_Id_CatAsociado).AsambleasProm_CatAsociado;
+
+            if (pEstado == 3) calificacion = 1; //Ausencia injustificada
+            else if (pEstado == 2) calificacion = 3; //Ausencia justificada
+            else if (pEstado == 1) calificacion = 5; //Asistió
+
+            double calificacionNuevaTotal = ((cantidad) * calificacionActual) + calificacion;
+            double calificacionNuevaFinal = calificacionNuevaTotal / (cantidad + 1);
+
+            dc.SIGEEA_spActualizaCategoriaAsambleas(asociado.FK_Id_CatAsociado, calificacionNuevaFinal);
+            dc.SubmitChanges();
         }
     }
 }

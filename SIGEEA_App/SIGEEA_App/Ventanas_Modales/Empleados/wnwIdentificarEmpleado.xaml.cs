@@ -48,7 +48,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                 }
                 else if (solicitud == "Direccion")
                 {
-                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado");
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado", pkFinca: 0);
                     ventana.ShowDialog();
                     this.Close();
                 }

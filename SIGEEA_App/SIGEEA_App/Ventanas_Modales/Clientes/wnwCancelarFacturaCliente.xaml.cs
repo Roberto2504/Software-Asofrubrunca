@@ -49,7 +49,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             metodoPago = pmetodoPago;
             numero = pnumero;
             CargaInfoFactura();
-           
+
 
 
 
@@ -61,7 +61,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         string Nombre, Cedula, Direccion, Telefono, Correo, Fecha, Hora;
 
-       
+
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
         {
             if (depObj != null)
@@ -89,31 +89,31 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
 
-             Nombre = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Nombre_Empresa;
+            Nombre = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Nombre_Empresa;
             txbFactura.AppendText(Nombre);
             txbFactura.AppendText(Environment.NewLine);
 
-             Cedula = "Ced. Juridica N°:" + dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).CedJuridica_Empresa;
+            Cedula = "Ced. Juridica N°:" + dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).CedJuridica_Empresa;
             txbFactura.AppendText(Cedula + "");
             txbFactura.AppendText(Environment.NewLine);
 
-             Direccion = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Direccion_Empresa;
+            Direccion = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Direccion_Empresa;
             txbFactura.AppendText(Direccion + "");
             txbFactura.AppendText(Environment.NewLine);
 
-             Telefono = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Telefono_Empresa;
+            Telefono = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Telefono_Empresa;
             txbFactura.AppendText("Teléfono: " + Telefono + "");
             txbFactura.AppendText(Environment.NewLine);
 
-             Correo = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Correo_Empresa;
+            Correo = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Correo_Empresa;
             txbFactura.AppendText("Correo: " + Correo + "");
             txbFactura.AppendText(Environment.NewLine);
 
-             Fecha =  DateTime.Now.ToShortDateString();
-            txbFactura.AppendText("Fecha: "+Fecha + "");
+            Fecha = DateTime.Now.ToShortDateString();
+            txbFactura.AppendText("Fecha: " + Fecha + "");
             txbFactura.AppendText(Environment.NewLine);
 
-             Hora = DateTime.Now.ToShortTimeString();
+            Hora = DateTime.Now.ToShortTimeString();
             txbFactura.AppendText("Hora: " + Hora + "");
             txbFactura.AppendText(Environment.NewLine);
 
@@ -121,12 +121,12 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void CargarDetProducto()
         {
-            if(tipoPedido== "NACIONAL")
+            if (tipoPedido == "NACIONAL")
             {
                 foreach (uc_DetProducto detProducto in listaDetProducto)
 
                 {
-                    string linea = (detProducto.nomTipProducto + "    ¢" + detProducto.preNacProducto+ "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + detProducto.preBruProducto + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + detProducto.preNetProducto);
+                    string linea = (detProducto.nomTipProducto + "    ¢" + detProducto.preNacProducto + "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + detProducto.preBruProducto + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + detProducto.preNetProducto);
                     txbFactura.AppendText(linea);
                     txbFactura.AppendText(Environment.NewLine);
                 }
@@ -142,9 +142,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     txbFactura.AppendText(Environment.NewLine);
                 }
             }
-            txbFactura.AppendText("MONTO TOTAL: "+moneda+" "+montoTotal);
+            txbFactura.AppendText("MONTO TOTAL: " + moneda + " " + montoTotal);
             txbFactura.AppendText(Environment.NewLine);
-            txbFactura.AppendText("DESCUENTO: " + descuentoTotal+ "%");
+            txbFactura.AppendText("DESCUENTO: " + descuentoTotal + "%");
             txbFactura.AppendText(Environment.NewLine);
             txbFactura.AppendText("MONTO NETO TOTAL: " + moneda + " " + montoNetoTotal);
 
@@ -166,12 +166,12 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                                     + " " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Clientes.First(d => d.PK_Id_Cliente == IdCliente).FK_Id_Persona)).SegApellido_Persona;
             txbFactura.AppendText(NombreEmpleado + ".");
             txbFactura.AppendText(Environment.NewLine);
-           
+
             txbFactura.AppendText("TIPO DE FACTURA: " + tipoFactura.ToUpper());
             txbFactura.AppendText(Environment.NewLine);
             txbFactura.AppendText("Nombre    P/UNI   Cantidad   Monto    Descuento  Monto Neto  ");
             txbFactura.AppendText(Environment.NewLine);
-           
+
         }
         public void CargarFinal()
         {
@@ -179,7 +179,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             txbFactura.AppendText(Environment.NewLine);
             txbFactura.AppendText("Metodo de Pago : " + metodoPago.ToUpper());
             txbFactura.AppendText(Environment.NewLine);
-           
+
             if (metodoPago[0].ToString() == "3")
             {
                 txbFactura.AppendText("Número de cheque : " + numero);
@@ -189,7 +189,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 txbFactura.AppendText("Número de cuenta : " + numero);
             }
             txbFactura.AppendText(Environment.NewLine);
-            txbFactura.AppendText("Saldo Anterior: "+ montoNetoTotal);
+            txbFactura.AppendText("Saldo Anterior: " + montoNetoTotal);
             txbFactura.AppendText(Environment.NewLine);
             txbFactura.AppendText("Pago Cliente: " + MontoAbono);
             string fin = (Convert.ToDouble(montoNetoTotal) - Convert.ToDouble(MontoAbono)).ToString();
@@ -220,19 +220,19 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 CargarDetProducto();
                 CargarFinal();
             }
-               
-            
-           
+
+
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             //int IdEmpleado, IdCliente, IdEmpresa;
             //string tipoFactura, tipoPedido, montoTatal, descuentoTotal, montoNetoTotal, moneda, observaciones, MontoAbono, fechaProPago, metodoPago, numero;
-             ObservableCollection<SIGEEA_DetFacCliente> plistaDetProducto = new ObservableCollection<SIGEEA_DetFacCliente>();
+            ObservableCollection<SIGEEA_DetFacCliente> plistaDetProducto = new ObservableCollection<SIGEEA_DetFacCliente>();
 
 
-            
+
             MonedaMantenimiento monMant = new MonedaMantenimiento();
             FacturaClienteMantenimiento facMant = new FacturaClienteMantenimiento();
             UnidadMedidaMantenimiento uniMedMant = new UnidadMedidaMantenimiento();
@@ -264,22 +264,13 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nuevoDetalle.PreUnidad_DetFacCliente = Convert.ToDouble(detFacCliente.preExtProducto);
                     nuevoDetalle.Moneda_DetFacCliente = "$";
                 }
-                
+
                 nuevoDetalle.FK_Id_UniMedida = uniMedMant.PkUniMedida(detFacCliente.UniMedida)[0];
                 nuevoDetalle.FK_Id_TipProducto = Convert.ToInt32(detFacCliente.IdTipProducto);
                 plistaDetProducto.Add(nuevoDetalle);
             }
-            SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();
-            
-            nuevoAbono.Monto_AboCliente = Convert.ToDouble(montoTotal);
-            nuevoAbono.Metodo_AboCliente = Convert.ToInt32(metodoPago[0].ToString());
-            nuevoAbono.Numero_AboCliente = numero;
-            nuevoAbono.Fecha_AboCliente = DateTime.Now;
-            nuevoAbono.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
-            nuevoAbono.FK_Id_Empleado = IdEmpleado;
-            nuevoAbono.Estado_AboCliente = true;
-            nuevoAbono.FK_Id_Cliente = IdCliente;
-            
+
+
             if (tipoFactura == "Proforma")
             {
                 facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, null);
@@ -291,7 +282,18 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             }
             else if (tipoFactura == "Contado")
             {
+                SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();
+
+                nuevoAbono.Monto_AboCliente = Convert.ToDouble(montoTotal);
+                nuevoAbono.Metodo_AboCliente = Convert.ToInt32(metodoPago[0].ToString());
+                nuevoAbono.Numero_AboCliente = numero;
+                nuevoAbono.Fecha_AboCliente = DateTime.Now;
+                nuevoAbono.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
+                nuevoAbono.FK_Id_Empleado = IdEmpleado;
+                nuevoAbono.Estado_AboCliente = true;
+                nuevoAbono.FK_Id_Cliente = IdCliente;
                 facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, nuevoAbono);
+
             }
             MessageBox.Show("Imprimiendo Factura");
         }

@@ -24,21 +24,23 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
     /// </summary>
     public partial class wnwDirecciones : MetroWindow
     {
-        int pk_persona;
+        int pk_persona, pk_finca;
         bool editar;
-        public wnwDirecciones(string pCedula_pCodigo, string tipoPersona)
+        string tipo;
+        public wnwDirecciones(string pCedula_pCodigo, string tipoPersona, int pkFinca)
         {
             InitializeComponent();
             PersonaMantenimiento persona = new PersonaMantenimiento();
             DataClasses1DataContext dc = new DataClasses1DataContext();
             AsociadoMantenimiento asociado = new AsociadoMantenimiento();
             cmbProvincia.ItemsSource = persona.ListarProvinciasNacionales();//Se carga el ComboBox de provincias
-
+            pk_finca = pkFinca;
+            tipo = tipoPersona;
             if (tipoPersona == "Asociado")
             {
                 if (asociado.DireccionRegistradaAsociado(pCedula: pCedula_pCodigo, pCodigo: null) == true)//Si el asociado tiene ya una dirección registrada
                 {
-                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
+                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null, pIdFinca:null);
                     editar = true;
                 }
                 else
@@ -53,7 +55,7 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
                 EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
                 if (empleado.DireccionRegistradaEmpleado(pCedula_pCodigo) == true)// Si el empleado ya tiene una dirección registrada
                 {
-                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null);
+                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null, pIdFinca:null);
                     editar = true;
                 }
                 else
@@ -61,6 +63,21 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
                     MessageBox.Show("Este empleado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
                     editar = false;
                     pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
+                }
+            }
+            else if (tipoPersona == "Finca")
+            {
+                FincaMantenimiento finca = new FincaMantenimiento();
+                if (finca.DireccionRegistradaFinca(pk_finca.ToString()) == true)// Si el empleado ya tiene una dirección registrada
+                {
+                    CargaInformacion(tipoPersona, pCedula: pCedula_pCodigo, pCodigo: null, pIdFinca: null);
+                    editar = true;
+                }
+                else
+                {
+                    MessageBox.Show("Esta Finca no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
+                    editar = false;
+
                 }
             }
         }
@@ -92,7 +109,7 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
         /// </summary>
         /// <param name="pCedula"></param>
         /// <param name="pCodigo"></param>
-        public void CargaInformacion(string tipoPersona, string pCedula, string pCodigo)
+        public void CargaInformacion(string tipoPersona, string pCedula, string pCodigo, string pIdFinca)
         {
             if (tipoPersona == "Asociado")
             {
@@ -140,6 +157,21 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
                     txbDetalles.Text = direccion.Detalles_Direccion;
                 }
             }
+            else if (tipoPersona == "Finca")
+            {
+                FincaMantenimiento Finca = new FincaMantenimiento();
+
+                if (pIdFinca == null)
+                {
+                    SIGEEA_spObtenerDireccionFincaResult direccion = Finca.ObtenerDireccionFinca(Convert.ToInt32(pIdFinca));
+                    CargaCantones(direccion.Nombre_Provincia);
+                    CargaDistritos(direccion.Nombre_Canton);
+                    cmbProvincia.SelectedItem = direccion.Nombre_Provincia;
+                    cmbCanton.SelectedItem = direccion.Nombre_Canton;
+                    cmbDistrito.SelectedItem = direccion.Nombre_Distrito;
+                    txbDetalles.Text = direccion.Detalles_Direccion;
+                }
+            }
         }
 
         private void cmbCanton_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -168,12 +200,22 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             PersonaMantenimiento direccion = new PersonaMantenimiento();
+            FincaMantenimiento direccionFinca = new FincaMantenimiento();
             if (editar == true)
             {
                 try
                 {
-                    direccion.EditarDireccion(pk_persona, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
-                    MessageBox.Show("Dirección actualizada con éxito", "SIGEEA", MessageBoxButton.OK);
+
+                    if (tipo == "Finca")
+                    {
+                        direccionFinca.EditarDireccion(pk_finca, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
+                        MessageBox.Show("Información de finca actualizada con éxito", "SIGEEA", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        direccion.EditarDireccion(pk_persona, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
+                        MessageBox.Show("Dirección actualizada con éxito", "SIGEEA", MessageBoxButton.OK);
+                    }
                     this.Close();
                 }
                 catch
@@ -185,8 +227,16 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
             {
                 try
                 {
-                    direccion.AgregarDireccion(pk_persona, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
-                    MessageBox.Show("Dirección registrada con éxito", "SIGEEA", MessageBoxButton.OK);
+                    if (tipo == "Finca")
+                    {
+                        direccionFinca.AgregarDireccion(pk_finca, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
+                        MessageBox.Show("Finca registrada con éxito", "SIGEEA", MessageBoxButton.OK);
+                    }
+                    else
+                    {
+                        direccion.AgregarDireccion(pk_persona, txbDetalles.Text, (string)cmbDistrito.SelectedItem);
+                        MessageBox.Show("Dirección registrada con éxito", "SIGEEA", MessageBoxButton.OK);
+                    }
                     this.Close();
                 }
                 catch

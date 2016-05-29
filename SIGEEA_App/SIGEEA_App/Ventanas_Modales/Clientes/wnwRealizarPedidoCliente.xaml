@@ -3,49 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Clientes"      
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Clientes"
+        
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls"
         x:Class="SIGEEA_App.Ventanas_Modales.Clientes.wnwRealizarPedidoCliente"
         mc:Ignorable="d"
         Title="Pedido de Cliente" Height="560.631" Width="1200.503" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Border BorderBrush="#83919F" BorderThickness="2">
-        <Grid>
-            <TextBox x:Name="txbBuscarProducto" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextChanged="txbBuscarProducto_TextChanged" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186"/>
-            <Label x:Name="label" Content="Filtrar por Nombre de Producto" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="186"/>
-            <TextBlock x:Name="txbCantitadTotal" Margin="572,433,326,51" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Cantidad Total (Colones):"/>
-            <TextBlock x:Name="txbCanTotDolares" Margin="823,433,116,64" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
-            <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="350" Margin="10,74,0,0" VerticalAlignment="Top" Width="540">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <WrapPanel x:Name="wpProducto" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="350" Width="524" Background="White" />
-                </ScrollViewer>
-            </Border>
-            <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="350" Margin="572,76,0,0" VerticalAlignment="Top" Width="611">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <WrapPanel x:Name="wpVeProducto" x:Uid="wpVeProducto" AllowDrop="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Drop="wpVeProducto_Drop"  Height="350" Width="591" Background="White" />
-                </ScrollViewer>
-            </Border>
-            <Button x:Name="btnGenerarFactura" Margin="1090,442,10,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerarFactura_Click">
-                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
+    <Grid>
+        <TextBox x:Name="txbBuscarProducto" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextChanged="txbBuscarProducto_TextChanged" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186"/>
+        <Label x:Name="label" Content="Filtrar por Nombre de Producto" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="186"/>
+        <TextBlock x:Name="txbCantitadTotal" Margin="572,433,326,51" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Cantidad Total (Colones):"/>
+        <TextBlock x:Name="txbCanTotBruto" Margin="823,433,116,51" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
+        <TextBlock x:Name="txbSigno" Margin="1052,433,116,64" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
+        <TextBlock x:Name="txbSigno1" Margin="1017,508,118,-22" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="350" Margin="10,74,0,0" VerticalAlignment="Top" Width="540">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <WrapPanel x:Name="wpProducto" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="350" Width="524" Background="White" />
+            </ScrollViewer>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="350" Margin="572,76,0,0" VerticalAlignment="Top" Width="611">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <WrapPanel x:Name="wpVeProducto" x:Uid="wpVeProducto" AllowDrop="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Drop="wpVeProducto_Drop"  Height="350" Width="591" Background="White" />
+            </ScrollViewer>
+        </Border>
+        <Button x:Name="btnGenerarFactura" Margin="1090,442,10,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerarFactura_Click">
+            <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
 						Visual="{DynamicResource appbar_save}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-            <TextBlock x:Name="txbMoneda" HorizontalAlignment="Left" Margin="296,442,0,0" TextWrapping="Wrap" Text="TIPO DE MONEDA" VerticalAlignment="Top" />
-            <ComboBox x:Name="cmbMoneda" HorizontalAlignment="Left" SelectionChanged="cmbMoneda_SelectionChanged" Margin="420,437,0,0" VerticalAlignment="Top"  Width="140" SelectedIndex="1" />
-            <ComboBox x:Name="cmbVenta" HorizontalAlignment="Left" Margin="310,36,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbVenta_SelectionChanged"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <TextBlock x:Name="txbMoneda" HorizontalAlignment="Left" Margin="296,442,0,0" TextWrapping="Wrap" Text="TIPO DE MONEDA" VerticalAlignment="Top" />
+        <ComboBox x:Name="cmbMoneda" HorizontalAlignment="Left" SelectionChanged="cmbMoneda_SelectionChanged" Margin="420,437,0,0" VerticalAlignment="Top"  Width="140" SelectedIndex="1" />
+        <ComboBox x:Name="cmbVenta" HorizontalAlignment="Left" Margin="310,36,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbVenta_SelectionChanged"/>
 
 
-            <Label x:Name="label_Copy" Content="Tipo de Vente" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Width="140"/>
-            <ComboBox x:Name="cmbTipoFactura" HorizontalAlignment="Left" Margin="976,41,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbTipoFactura_SelectionChanged"/>
+        <Label x:Name="label_Copy" Content="Tipo de Vente" HorizontalAlignment="Left" Margin="310,5,0,0" VerticalAlignment="Top" Width="140"/>
+        <ComboBox x:Name="cmbTipoFactura" HorizontalAlignment="Left" Margin="976,41,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbTipoFactura_SelectionChanged"/>
 
-            <Label x:Name="label_Copy1" Content="Tipo de Factura" HorizontalAlignment="Left" Margin="976,10,0,0" VerticalAlignment="Top" Width="140"/>
-            <User_Controls:uc_ControlNumericoDescuento x:Name="ucDescuentoTotal" HorizontalAlignment="Left" Margin="722,468,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="ucDescuentoTotal_PreviewMouseLeftButtonUp"/>
-            <TextBlock x:Name="txbDescuentoTexto" Margin="572,467,484,29" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Descuento %"/>
-            <TextBlock x:Name="txbMontoNetoTexto" Margin="572,502,326,-26" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"><Run Text="Monto Neto"/><Run Text=":"/></TextBlock>
-            <TextBlock x:Name="txbCanTotNeto" Margin="823,502,116,-26" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
+        <Label x:Name="label_Copy1" Content="Tipo de Factura" HorizontalAlignment="Left" Margin="976,10,0,0" VerticalAlignment="Top" Width="140"/>
+        <User_Controls:uc_ControlNumericoDescuento x:Name="ucDescuentoTotal" HorizontalAlignment="Left" Margin="722,468,0,0" VerticalAlignment="Top" PreviewMouseLeftButtonUp="ucDescuentoTotal_PreviewMouseLeftButtonUp"/>
+        <TextBlock x:Name="txbDescuentoTexto" Margin="572,467,484,29" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Descuento %"/>
+        <TextBlock x:Name="txbMontoNetoTexto" Margin="572,502,326,-26" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"><Run Text="Monto Neto"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="txbCanTotNeto" Margin="823,502,116,-26" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
+        <Grid Name="grdCredito" Visibility="Hidden">
+            <Label x:Name="lbCredito" Content="Credito disponible:" HorizontalAlignment="Left" Margin="621,36,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBlock x:Name="txbCredito" Margin="739,36,235,442" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="0"/>
         </Grid>
-    </Border>
+    </Grid>
 </Controls:MetroWindow>

@@ -148,25 +148,20 @@ namespace SIGEEA_BL
         /// ObtenerCreditosCliente
         /// </summary>
         /// <param name="PK_Id_Cliente"></param>
-        public List<Double> ListarCreditosCliente(int PK_Id_Cliente)
+        public List<SIGEEA_spListarCreditoClienteResult> ListarCreditosCliente(int PK_Id_Cliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<Double> SumarInventario = new List<Double>();
-            SumarInventario = (from c in dc.SIGEEA_CreClientes where c.FK_Id_Cliente == PK_Id_Cliente && c.Estado_CreCliente==true select c.Saldo_CreCliente).ToList();
-            return SumarInventario;
+            return dc.SIGEEA_spListarCreditoCliente(PK_Id_Cliente).ToList(); ;
         }
 
         /// <summary>
         /// ObtenerLimiteCredito
         /// </summary>
         /// <param name="PK_Id_Cliente"></param>
-        public String LimiteCreditoCliente(int PK_Id_Cliente)
+        public SIGEEA_spObtenerCategoriaClienteResult LimiteCreditoCliente(int PK_Id_Cliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            String limiteCredito;
-            string fkCategoria = (from c in dc.SIGEEA_Clientes where c.PK_Id_Cliente == PK_Id_Cliente select c.FK_Id_CatCliente).ToString();
-            limiteCredito = (from c in dc.SIGEEA_CatClientes where c.PK_Id_CatCliente == Convert.ToInt32(fkCategoria) select c.Limite_CatCliente).ToString();
-            return limiteCredito;
+            return dc.SIGEEA_spObtenerCategoriaCliente(PK_Id_Cliente).FirstOrDefault();
         }
 
     }

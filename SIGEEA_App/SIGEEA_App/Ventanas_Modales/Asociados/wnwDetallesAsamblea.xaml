@@ -1,0 +1,25 @@
+﻿<Controls:MetroWindow x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwDetallesAsamblea"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Asociados"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Asamblea" Height="429.283" Width="1248.298">
+    <Border BorderBrush="#83919F" BorderThickness="2">
+        <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="33,34,30,77" Background="#FFB8C3E2">
+                <StackPanel Name="stpContenedor" HorizontalAlignment="Left" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="1155"/>
+            </ScrollViewer>
+            <Button x:Name="btnGuardar" Margin="587,322,575,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGuardar_Click" ToolTip="Guardar cambios">
+                <Rectangle Width="33" Height="27" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+                				Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+    </Border>
+</Controls:MetroWindow>

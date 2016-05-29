@@ -29,7 +29,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         SIGEEA_Persona nuevaPersona;
         bool editar;
         int pk_Persona;
-        
+
         ClienteMantenimiento mantCliente = new ClienteMantenimiento();
         public wnwRegistrarPersona(string pTipoPersona, SIGEEA_spObtenerAsociadoResult pAsociado, SIGEEA_spObtenerEmpleadoResult pEmpleado, SIGEEA_spObtenerClienteResult pCliente)
         {
@@ -45,7 +45,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 CargarInformacionAsociado(pAsociado);
                 pk_Persona = pAsociado.PK_Id_Persona;
             }
-            if(pEmpleado != null)//Si se desea editar un empleado
+            if (pEmpleado != null)//Si se desea editar un empleado
             {
                 editar = true;
                 CargarInformacionEmpleado(pEmpleado);
@@ -65,7 +65,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             {
                 ValidacionesMantenimiento validacion = new ValidacionesMantenimiento();
                 bool valido = true;
-                foreach(TextBox txb in grdValidar.Children)
+                foreach (TextBox txb in grdValidar.Children)
                 {
                     BrushConverter bc = new BrushConverter();
                     txb.Foreground = (Brush)bc.ConvertFrom("#FF000000");
@@ -93,7 +93,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     nuevaPersona.SegNombre_Persona = txbSegNombre.Text;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Los datos ingresados no coinciden con los formatos del sistema: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -110,6 +110,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             if (pAsociado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             DataClasses1DataContext dc = new DataClasses1DataContext();
             ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pAsociado.FK_Id_Nacionalidad).Nombre_Nacionalidad);
+            ucEstrellas.cargaEstrellas((float)dc.SIGEEA_spObtenerCategoriaAsociado(pAsociado.PK_Id_Asociado).First().Categoria);
+            ucEstrellas.Visibility = Visibility.Visible;
         }
 
         public void CargarInformacionEmpleado(SIGEEA_spObtenerEmpleadoResult pEmpleado)
@@ -183,10 +185,10 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     grdPersona.Visibility = Visibility.Collapsed;
                     grdEmpleado.Visibility = Visibility.Collapsed;
                     grdCliente.Visibility = Visibility.Visible;
-                    listarCategorias();                   
+                    listarCategorias();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Debe ingresar la información de manera correcta.");
             }
@@ -206,8 +208,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 EmpleadoMantenimiento empleadoMant = new EmpleadoMantenimiento();
 
                 if (editar == false)
-                {                  
-                    SIGEEA_Empleado nuevoEmpleado = new SIGEEA_Empleado();                    
+                {
+                    SIGEEA_Empleado nuevoEmpleado = new SIGEEA_Empleado();
                     empleadoMant.RegistrarEmpleado(nuevaPersona, nuevoEmpleado, nuevaEscolaridad);
                 }
                 else
@@ -230,7 +232,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             {
                 RegistrarPersona();
                 nuevaPersona.PK_Id_Persona = pk_Persona;
-                
+
                 ClienteMantenimiento clienteMant = new ClienteMantenimiento();
 
                 if (editar == false)
@@ -241,7 +243,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 else
                 {
                     SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content),nuevaPersona);
+                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content), nuevaPersona);
                 }
 
                 MessageBox.Show("La solicitud realizada se finalizó con éxito.");
@@ -254,8 +256,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         public void listarCategorias()
         {
             ClienteMantenimiento mantCliente = new ClienteMantenimiento();
-            cmbTipCliente.ItemsSource = mantCliente.ListarCategorias();  
-            
+            cmbTipCliente.ItemsSource = mantCliente.ListarCategorias();
+
         }
         public void ObtenerCategorias(int pkCat)
         {

@@ -9,10 +9,10 @@ namespace SIGEEA_BL.Seguridad
 {
     public static class UsuarioGlobal
     {
-        public static string Rol;
-        public static List<string> Permisos;
-        public static List<string> SubModulos;
-        public static List<string> Modulos;
+        public static List<SIGEEA_spListarPermisosResult> Permisos = new List<SIGEEA_spListarPermisosResult>();
+        public static List<SIGEEA_spListarSubModulosResult> SubModulos = new List<SIGEEA_spListarSubModulosResult>();
+        public static List<SIGEEA_spListarModulosResult> Modulos = new List<SIGEEA_spListarModulosResult>();
+        public static SIGEEA_spInfoUsuarioResult InfoUsuario;
 
     }
 }

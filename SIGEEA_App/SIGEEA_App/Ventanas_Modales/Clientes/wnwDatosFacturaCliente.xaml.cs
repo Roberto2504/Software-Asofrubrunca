@@ -42,16 +42,20 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             descuentoTotal = pDescuentoTotal;
             montoNetoTotal = pMontoNetoTotal;
             moneda = pMonedaTotal;
-            
+
             if (tipoFactura == "Contado")
             {
                 grdPago.Visibility = Visibility.Visible;
-                
+
             }
             else if (tipoFactura == "Credito")
             {
                 grdPago.Visibility = Visibility.Visible;
                 grdAbono.Visibility = Visibility.Visible;
+            }
+            else if (tipoFactura == "Proforma")
+            {
+                grdPago.Visibility = Visibility.Visible;
             }
             ListaMetodos();
         }
@@ -75,7 +79,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             }
             else if (metodoPago[0].ToString() == "3")
             {
-               
+
                 txtNumero0.Visibility = Visibility.Visible;
                 txtNumero.Visibility = Visibility.Visible;
                 txtNumero0.Text = "Numero de Cheque:";
@@ -99,7 +103,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             txtNumero0.Visibility = Visibility.Hidden;
             txtNumero.Visibility = Visibility.Hidden;
             cmbMetodoPago.ItemsSource = ListarMetodosDePago;
-            
+
         }
         private void btnPagar_Click(object sender, RoutedEventArgs e)
         {
@@ -111,7 +115,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nueva.ShowDialog();
                     this.Close();
                 }
-            }else if (tipoFactura == "Credito")
+            }
+            else if (tipoFactura == "Credito")
             {
                 if (txtObservaciones.Text != "")
                 {
@@ -120,8 +125,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     this.Close();
                 }
             }
-            
-            
+            else if (tipoFactura == "Proforma")
+            {
+                if (txtObservaciones.Text != "")
+                {
+                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: 2, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: txtMontoAbono.Text, pfechaProPago: null, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    nueva.ShowDialog();
+                    this.Close();
+                }
+            }
+
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

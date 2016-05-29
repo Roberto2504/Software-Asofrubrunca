@@ -55,7 +55,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 AsociadoMantenimiento Asociado = new AsociadoMantenimiento();
                 if (Asociado.AutenticaAsociado(txbInformacion.Text) != null)
                 {
-                    wnwDirecciones ventana = new wnwDirecciones(txbInformacion.Text, "Asociado");
+                    wnwDirecciones ventana = new wnwDirecciones(txbInformacion.Text, "Asociado", pkFinca: 0);
                     ventana.ShowDialog();
                     this.Close();
                 }

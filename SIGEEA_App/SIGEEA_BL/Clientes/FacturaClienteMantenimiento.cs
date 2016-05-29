@@ -9,18 +9,18 @@ using System.Collections.ObjectModel;
 
 namespace SIGEEA_BL
 {
-   public class FacturaClienteMantenimiento
+    public class FacturaClienteMantenimiento
     {
         /// <summary>
         /// Registrar Factura)
         /// </summary>
         /// <param name="pFacCliente"></param>
         /// <param name="pListaDetalle"></param>
-        
+
         public void RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            
+
             SIGEEA_FacCliente nuevaFactura = new SIGEEA_FacCliente();
             nuevaFactura.FecEntrega_FacCliente = DateTime.Now;
             nuevaFactura.FecPago_FacCliente = DateTime.Now;
@@ -50,7 +50,7 @@ namespace SIGEEA_BL
                 dc.SIGEEA_DetFacClientes.InsertOnSubmit(nuevoDetalle);
                 dc.SubmitChanges();
             }
-          
+
             if (pAboCliente != null)
             {
                 SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();

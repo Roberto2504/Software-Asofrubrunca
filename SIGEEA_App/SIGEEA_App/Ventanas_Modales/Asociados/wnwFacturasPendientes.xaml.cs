@@ -34,7 +34,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
         private void BtnDetalles_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
 
         private void Inicializar(bool pSolicitud, string pAsociado)
@@ -42,7 +42,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             //pSolicitud = true : si se desean obtener facturas pendientes
             //pSolicitud = false : si se desean obtener facturas incompletas
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<SIGEEA_spObtenerFacturasPendientesAsocResult> listaFacturasPendientes = new List<SIGEEA_spObtenerFacturasPendientesAsocResult>() ;
+            List<SIGEEA_spObtenerFacturasPendientesAsocResult> listaFacturasPendientes = new List<SIGEEA_spObtenerFacturasPendientesAsocResult>();
             List<SIGEEA_spObtenerFacturasIncompletasAsocResult> listaFacturasIncompletas = new List<SIGEEA_spObtenerFacturasIncompletasAsocResult>();
 
 
@@ -88,13 +88,13 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     }
                 }
             }
-           if(listaFacturasIncompletas.Count == 0 || listaFacturasPendientes.Count == 0)
-           {
+            if (listaFacturasIncompletas.Count == 0 && listaFacturasPendientes.Count == 0)
+            {
                 Label lblVacio = new Label();
                 lblVacio.Foreground = Brushes.IndianRed;
                 lblVacio.FontSize = 18;
                 lblVacio.Width = 430;
-                lblVacio.Content = "No hay registros vinculados a este asociado.";
+                lblVacio.Content = "No hay registros.";
                 lblVacio.FontWeight = FontWeights.ExtraBold;
                 stpContenedor.Children.Add(lblVacio);
             }

@@ -82,5 +82,11 @@ namespace SIGEEA_App.Paginas
             wnwOpcionesFacturaProducto ventana = new wnwOpcionesFacturaProducto(false);
             ventana.ShowDialog();
         }
+
+        private void btnAsambleas_Click(object sender, RoutedEventArgs e)
+        {
+            wnwAsambleas ventana = new wnwAsambleas();
+            ventana.ShowDialog();
+        }
     }
 }

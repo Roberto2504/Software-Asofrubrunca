@@ -514,11 +514,20 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding Nombre, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="Cooper Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF34B43A" Height="Auto" Margin="0,10,0,21" Width="183.204" TextAlignment="Center"/>
+                            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding Nombre, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="Cooper Black" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Stretch" FontSize="26.667" Foreground="#FF34B43A" Height="Auto" Margin="0,10,0,21" Width="183.204" TextAlignment="Center" OpacityMask="#FFF5E9E9"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+
+
+    <Style TargetType="{x:Type local:ccCmbBasico}">
+       
+           
+        
+    </Style>
+    
 </ResourceDictionary>

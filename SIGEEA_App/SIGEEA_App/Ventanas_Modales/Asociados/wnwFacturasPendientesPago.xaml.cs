@@ -65,13 +65,13 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         private void CbxSeleccionar_Unchecked(object sender, RoutedEventArgs e)
         {
             bool boton = true;
-            foreach(uc_ItemDetallePagoAsoc item in stpContenedor.Children)
+            foreach (uc_ItemDetallePagoAsoc item in stpContenedor.Children)
             {
                 if (item.Seleccionado() == true) boton = false;
             }
             if (boton == false) btnProcesar.IsEnabled = true;
             else btnProcesar.IsEnabled = false;
-                
+
         }
 
         private void CbxSeleccionar_Checked(object sender, RoutedEventArgs e)
@@ -185,12 +185,12 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         private void btnProcesar_Click(object sender, RoutedEventArgs e)
         {
             Detalles = new List<int>();
-            foreach(uc_ItemDetallePagoAsoc item in stpContenedor.Children)
+            foreach (uc_ItemDetallePagoAsoc item in stpContenedor.Children)
             {
                 if (item.Seleccionado() == true)
                     Detalles.Add(item.PkDetalleFactura);
             }
-            if(Detalles.Count > 0)
+            if (Detalles.Count > 0)
             {
                 grdPrimera.Visibility = Visibility.Collapsed;
                 grdSegunda.Visibility = Visibility.Visible;
@@ -213,7 +213,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     else throw new ArgumentException("No se ha seleccionado ningún elemento.");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -28,11 +28,11 @@ namespace SIGEEA_BL.Validaciones
     {
         public bool Validar(string pValor, int pTag)
         {
-            switch(pTag)
+            switch (pTag)
             {
                 case 0:
                     if (Regex.IsMatch(pValor, @"^[A-Za-zÑñáéíóúÁÉÍÓÚ]+$") == true) return true;
-                    else return false;                    
+                    else return false;
                 case 1:
                     if (Regex.IsMatch(pValor, @"^[0-9]+$") == true) return true;
                     else return false;
@@ -49,7 +49,7 @@ namespace SIGEEA_BL.Validaciones
                     if (VerificaCorreo(pValor) == true || pValor.Length >= 0) return true;
                     else return false;
                 default:
-                    return false;
+                    return true;
             }
         }
 

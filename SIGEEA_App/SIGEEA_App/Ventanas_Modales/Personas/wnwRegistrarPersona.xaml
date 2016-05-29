@@ -41,6 +41,7 @@
                 </Button>
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="5,0,0,0" TextWrapping="Wrap" Text="Información personal" VerticalAlignment="Top" TextDecorations="Underline" FontWeight="Bold" FontSize="26.667"/>
                 <User_Controls:uc_Nacionalidades x:Name="ucNacionalidad" HorizontalAlignment="Left" Margin="507,156,0,0" VerticalAlignment="Top" Height="31" Width="175"/>
+                <User_Controls:uc_ratingstar Visibility="Collapsed" x:Name="ucEstrellas" HorizontalAlignment="Left" Margin="353,10,-23,0" VerticalAlignment="Top" RenderTransformOrigin="0.137,0.441" Width="352"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" x:Name="grdEmpleado" Visibility="Collapsed">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Escolaridad" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>

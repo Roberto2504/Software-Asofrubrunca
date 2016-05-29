@@ -31,18 +31,19 @@ namespace SIGEEA_App.Paginas
             InitializeComponent();
         }
 
-        private void btnAgregarInsumo_Click(object sender, RoutedEventArgs e)
+
+        private void btnAgregarFinca_Click(object sender, RoutedEventArgs e)
         {
             wnwBuscadorAsociados nuevo = new wnwBuscadorAsociados("Registrar");
             nuevo.Show();
         }
 
-        private void btnEditarInsumo_Click(object sender, RoutedEventArgs e)
+        private void btnEditarFinca_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnEliminaroActivarInsumo_Click(object sender, RoutedEventArgs e)
+        private void btnEliminaroActivarFinca_Click(object sender, RoutedEventArgs e)
         {
 
         }

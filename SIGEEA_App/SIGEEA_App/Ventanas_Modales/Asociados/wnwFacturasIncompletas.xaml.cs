@@ -50,11 +50,11 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             }
             else
             {
-                Label lblVacio = new Label();             
+                Label lblVacio = new Label();
                 lblVacio.Foreground = Brushes.IndianRed;
                 lblVacio.FontSize = 18;
                 lblVacio.Width = 430;
-                lblVacio.Content = "No hay registros vinculados a este asociado.";
+                lblVacio.Content = "No hay registros.";
                 lblVacio.FontWeight = FontWeights.ExtraBold;
 
                 stpContenedor.Children.Add(lblVacio);
@@ -63,7 +63,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
         private void BtnDetalles_Click(object sender, RoutedEventArgs e)
         {
-            //this.Close();
+            this.Close();
         }
     }
 }

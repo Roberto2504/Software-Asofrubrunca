@@ -12,7 +12,7 @@
             <Grid Name="grdPrimaria" Visibility="Visible">
                 <DataGrid Margin="10,57,23,458">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nombre" Width="300" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Nombre" Width="250" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                         <DataGridTextColumn Header="Monto" Width="150" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                         <DataGridTextColumn Header="Fec. Inicio - Fec. Fin" Width="150" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     </DataGrid.Columns>
@@ -22,7 +22,7 @@
                 </ScrollViewer>
             </Grid>
             <Grid Name="grdSecundaria" Visibility="Collapsed">
-                <Button x:Name="btnAtras"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnAtras_Click" Margin="24,8,643,380" ToolTip="Atrás">
+                <Button x:Name="btnAtras"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnAtras_Click" Margin="24,8,643,487" ToolTip="Atrás">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -47,8 +47,8 @@
                         <DataGridTextColumn Header="Saldo" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,90,10,71">
-                    <StackPanel Name="stpDeudores" HorizontalAlignment="Left" Height="255" VerticalAlignment="Top" Width="683" Margin="10,10,10,30"/>
+                <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="10,90,10,71" Background="#FF8AA1B4" >
+                    <StackPanel Name="stpDeudores" HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="683" Margin="10,10,10,30"/>
                 </ScrollViewer>
             </Grid>
             <Grid Name="grdIndicarMonto" Visibility="Collapsed">
@@ -112,3 +112,4 @@
         </Grid>
     </Border>
 </Controls:MetroWindow>
+

@@ -26,7 +26,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <TabControl HorizontalAlignment="Center" Margin="103,80,71,126" Width="1180" BorderBrush="Black">
+        <TabControl HorizontalAlignment="Center" Margin="-1270,15,1444,191" Width="1180" BorderBrush="Black">
             <TabItem Header="Mant.General" x:Name="tiGeneral" Width="300">
                 <Frame x:Name="frmGeneral" NavigationUIVisibility="Hidden"/>
             </TabItem>
@@ -51,6 +51,11 @@
             </TabItem>
         </TabControl>
         <WrapPanel HorizontalAlignment="Left" Height="34" Margin="320,31,0,0" VerticalAlignment="Top" Width="159"/>
+        <WrapPanel HorizontalAlignment="Left" Name="wrpPrincipal" Height="65" Margin="10,65,0,0" VerticalAlignment="Top" Width="1334">
+
+        </WrapPanel>
+        <Label x:Name="label" Content="Bienvenido!! " HorizontalAlignment="Left" Margin="978,15,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbUsuarioActual" Content="Bienvenido!! " HorizontalAlignment="Left" Margin="1057,11,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontStyle="Italic" FontSize="16"/>
 
     </Grid>
 </Window>

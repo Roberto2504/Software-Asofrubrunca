@@ -54,13 +54,13 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
 
                 if (empleado.AutenticaEmpleado(txbCedula.Text) != null) //Es un empleado
                 {
-                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado");
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Empleado", pkFinca:0);
                     ventana.ShowDialog();
                     this.Close();
                 }
                 else if (asociado.AutenticaAsociado(txbCedula.Text) != null) //Es un asociado
                 {
-                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Asociado");
+                    wnwDirecciones ventana = new wnwDirecciones(txbCedula.Text, "Asociado", pkFinca: 0);
                     ventana.ShowDialog();
                     this.Close();
                 }
