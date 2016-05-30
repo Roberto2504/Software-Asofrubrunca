@@ -76,7 +76,7 @@ namespace SIGEEA_App.Pantallas
                     }
                }
                 MainWindow ventana = new MainWindow();
-                MessageBox.Show("Bienvenido al sistema SIGEEA"+UsuarioGlobal.InfoUsuario.NomUsuario, "Bienvenida", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               
                 ventana.ShowDialog();
                 this.Close();
             }

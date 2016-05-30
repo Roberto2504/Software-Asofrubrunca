@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Clientes"
                            xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Datos Factura Cliente" Height="445.751" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Datos Factura Cliente" Height="489.251" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-3">
         <Grid x:Name="grdObservaciones" HorizontalAlignment="Left" Height="95" Margin="10,30,0,0" VerticalAlignment="Top" Width="372">
             <TextBlock x:Name="txt1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Observaciones: " VerticalAlignment="Top"/>
@@ -20,15 +20,19 @@
             <TextBlock x:Name="txtNumero0" HorizontalAlignment="Left" Margin="22,61,0,0" TextWrapping="Wrap" Text="Numero:" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txtNumero" HorizontalAlignment="Left" Height="23" Margin="22,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274"/>
         </Grid>
-        <Grid x:Name="grdAbono" HorizontalAlignment="Left" Height="115" Margin="10,241,0,0" VerticalAlignment="Top" Width="372" Visibility="Hidden">
-            <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="22,9,0,0" TextWrapping="Wrap" Text="Monto a Abonar" VerticalAlignment="Top" Width="93"/>
-            <TextBox x:Name="txtMontoAbono" HorizontalAlignment="Left" Height="23" Margin="22,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274"/>
-            <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="22,61,0,0" TextWrapping="Wrap" Text="Fecha Próximo Pago" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtFechaProximoPago" HorizontalAlignment="Left" Height="23" Margin="22,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274"/>
+        <Grid x:Name="grdAbono" HorizontalAlignment="Left" Height="156" Margin="10,241,0,0" VerticalAlignment="Top" Width="372" Visibility="Hidden">
 
+            <TextBlock x:Name="textBlock13" IsEnabled="False" HorizontalAlignment="Left" Margin="2,36,0,0" TextWrapping="Wrap" Text="Fecha Próximo Pago" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtFechaProximoPago" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="122,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+            <TextBlock x:Name="textBlock13_Copy" IsEnabled="False" HorizontalAlignment="Left" Margin="2,9,0,0" TextWrapping="Wrap" Text="Fecha Limite de Pago" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtFechaLimitePago" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="122,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+            <TextBlock x:Name="textBlock13_Copy1" IsEnabled="False" HorizontalAlignment="Left" Margin="0,80,0,0" TextWrapping="Wrap" Text="Mónto a cancelar" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtMontoaCancelar" IsEnabled="False"  HorizontalAlignment="Left" Height="22" Margin="120,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+            <TextBlock x:Name="lbAbono" HorizontalAlignment="Left" Margin="2,123,0,0" TextWrapping="Wrap" Text="Monto a Abonar" VerticalAlignment="Top" Width="93"/>
+            <TextBox x:Name="txtMontoAbono" Height="23" Margin="122,123,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
         </Grid>
-        <Button x:Name="btnPagar" Margin="334,356,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">
+        <Button x:Name="btnPagar" Margin="334,402,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">
             <Rectangle Width="43" Height="53" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -36,7 +40,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button x:Name="btnCancelar" Margin="10,356,334,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
+        <Button x:Name="btnCancelar" Margin="10,402,334,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
             <Rectangle Width="43" Height="53" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"

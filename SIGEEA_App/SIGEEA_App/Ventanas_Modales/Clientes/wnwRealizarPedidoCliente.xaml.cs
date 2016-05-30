@@ -19,6 +19,7 @@ using SIGEEA_App.Custom_Controls;
 using SIGEEA_App.User_Controls;
 using SIGEEA_App.User_Controls.Clientes;
 using System.Collections.ObjectModel;
+using SIGEEA_BL.Seguridad;
 namespace SIGEEA_App.Ventanas_Modales.Clientes
 {
     /// <summary>
@@ -51,7 +52,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         ProductoMantenimiento producto = new ProductoMantenimiento();
         ClienteMantenimiento clientMant = new ClienteMantenimiento();
         private uc_Producto productoAnterior = new uc_Producto();
-
+        int primera = 0;
         bool color = true;
         int Contador = 0;
         int conta = 0;
@@ -373,7 +374,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             if (nomMoneda == "Colón")
             {
                 txbCanTotBruto.Text = Math.Round(Total, 3).ToString();
-                txbSigno.Text = "¢"; 
+                txbSigno.Text = "¢";
                 txbSigno1.Text = "¢";
                 if (txbCanTotBruto.Text != "")
                 {
@@ -435,7 +436,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
             }
             CalcularPrecioTotal();
-            
+
         }
         public void ListarDetalleProducto()
         {
@@ -446,7 +447,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             ObservableCollection<uc_DetProducto> listarDetProducto = new ObservableCollection<uc_DetProducto>();
             foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))
             {
-                clientMant.SumarInventario(Convert.ToInt32(Producto.IdTipProducto), (Convert.ToDouble(Producto.canDisProducto) + Convert.ToDouble(Producto.canInvProducto)));
+
                 listarDetProducto.Add(Producto);
             }
 
@@ -455,7 +456,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 MessageBoxResult m = MessageBox.Show("Su tipo de factura es: " + cmbTipoFactura.SelectedItem.ToString(), "Mensaje de Confirmación", MessageBoxButton.YesNo);
                 if (m == MessageBoxResult.Yes)
                 {
-                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: 2, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
                     nueva.ShowDialog();
                 }
             }
@@ -464,7 +465,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 MessageBoxResult m = MessageBox.Show("Su tipo de factura es: " + cmbTipoFactura.SelectedItem.ToString(), "Mensaje de Confirmación", MessageBoxButton.YesNo);
                 if (m == MessageBoxResult.Yes)
                 {
-                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: 2, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
                     nueva.ShowDialog();
                 }
             }
@@ -480,7 +481,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                         clientMant.SumarInventario(Convert.ToInt32(Producto.IdTipProducto), (Convert.ToDouble(Producto.canDisProducto) + Convert.ToDouble(Producto.canInvProducto)));
 
                     }
-                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: 2, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
                     nueva.ShowDialog();
                 }
 
@@ -495,7 +496,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 CalculaCredito();
             }
         }
-       
+
         private void cmbTipoFactura_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
@@ -506,57 +507,71 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void CalculaCredito()
         {
-       
-            MonedaMantenimiento monMant = new MonedaMantenimiento();
-            List<SIGEEA_spListarCreditoClienteResult> listadeCredito = new List<SIGEEA_spListarCreditoClienteResult>();
-            listadeCredito = clientMant.ListarCreditosCliente(idCliente);
-            totalCredito = 0;
-            foreach (SIGEEA_spListarCreditoClienteResult saldo in listadeCredito)
+            if (primera != 0)
             {
-                totalCredito += Convert.ToDouble(saldo.Saldo);
+                if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
+                {
+                    MonedaMantenimiento monMant = new MonedaMantenimiento();
+                    List<SIGEEA_spListarCreditoClienteResult> listadeCredito = new List<SIGEEA_spListarCreditoClienteResult>();
+                    listadeCredito = clientMant.ListarCreditosCliente(idCliente);
+                    totalCredito = 0;
+                    foreach (SIGEEA_spListarCreditoClienteResult saldo in listadeCredito)
+                    {
+                        totalCredito += Convert.ToDouble(saldo.Saldo);
+                    }
+                    if (nomMoneda == "Colón")
+                    {
+                        totalCredito += Convert.ToDouble(txbCanTotNeto.Text);
+                        if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
+                        {
+                            totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                            totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
+                            MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
+                        }
+                        else
+                        {
+                            if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
+                            {
+                                totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                                grdCredito.Visibility = Visibility.Visible;
+                                totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
+                                txbCredito.Text = "¢" + totalCredito;
+                            }
+                            else grdCredito.Visibility = Visibility.Hidden;
+                        }
+                    }
+                    else if (nomMoneda == "Dolar")
+                    {
+                        totalCredito += Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
+                        if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
+                        {
+                            totalCredito -= Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
+                            totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
+                            totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
+                            MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
+                        }
+                        else
+                        {
+                            if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
+                            {
+                                grdCredito.Visibility = Visibility.Visible;
+
+                                totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                                grdCredito.Visibility = Visibility.Visible;
+                                totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
+                                totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
+                                txbCredito.Text = "$" + totalCredito;
+                            }
+                            else grdCredito.Visibility = Visibility.Hidden;
+                        }
+                    }
+                }
+                else grdCredito.Visibility = Visibility.Hidden;
             }
-            if (nomMoneda == "Colón")
-            {
-                totalCredito += Convert.ToDouble(txbCanTotNeto.Text);
-                if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
-                {
-                    totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
-                        totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
-                        MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
-                }
-                else
-                {
-                    totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
-                    grdCredito.Visibility = Visibility.Visible;
-                    totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
-                    txbCredito.Text = "¢" + totalCredito;
-                }
-            }
-            else if (nomMoneda == "Dolar")
-            {
-                totalCredito += Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
-                if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
-                {
-                    totalCredito -= Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
-                        totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
-                        totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
-                        MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
-                }
-                else
-                {
-                    grdCredito.Visibility = Visibility.Visible;
-                    
-                    totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
-                    grdCredito.Visibility = Visibility.Visible;
-                    totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
-                    totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
-                    txbCredito.Text = "$" + totalCredito;
-                }
-                }
-            
+            primera++;
+
 
 
         }
-
     }
 }

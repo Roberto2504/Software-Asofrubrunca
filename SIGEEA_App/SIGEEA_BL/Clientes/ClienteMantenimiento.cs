@@ -92,10 +92,19 @@ namespace SIGEEA_BL
         /// Obtener Categorias
         /// </summary>
         /// <param name="Nombre"></param>
-        public SIGEEA_spObtenerCategoriaResult ObtenerCategorias(int pkCatCliente)
+        public SIGEEA_spObtenerCategoriaResult ObtenerCategorias(int pkIdCliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            return dc.SIGEEA_spObtenerCategoria(pkCatCliente).FirstOrDefault();
+            return dc.SIGEEA_spObtenerCategoria(pkIdCliente).FirstOrDefault();
+        }
+        /// <summary>
+        /// Obtener Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
+        public SIGEEA_spObtenerCategoriaClienteResult ObtenerCategoriaCliente(int pkIdCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerCategoriaCliente(pkIdCliente).FirstOrDefault();
         }
         /// <summary>
         /// Listar Categorias

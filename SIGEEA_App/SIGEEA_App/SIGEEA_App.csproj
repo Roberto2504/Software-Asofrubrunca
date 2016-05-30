@@ -245,6 +245,9 @@
     <Compile Include="Ventanas_Modales\Clientes\wnwDatosFacturaCliente.xaml.cs">
       <DependentUpon>wnwDatosFacturaCliente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaFactura.xaml.cs">
+      <DependentUpon>wnwMetodoBusquedaFactura.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwRealizarPedidoCliente.xaml.cs">
       <DependentUpon>wnwRealizarPedidoCliente.xaml</DependentUpon>
     </Compile>
@@ -552,6 +555,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Clientes\wnwDatosFacturaCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaFactura.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

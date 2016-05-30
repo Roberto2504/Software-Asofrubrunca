@@ -42,14 +42,35 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             descuentoTotal = pDescuentoTotal;
             montoNetoTotal = pMontoNetoTotal;
             moneda = pMonedaTotal;
-
+            ClienteMantenimiento cliMant = new ClienteMantenimiento();
             if (tipoFactura == "Contado")
             {
                 grdPago.Visibility = Visibility.Visible;
 
             }
-            else if (tipoFactura == "Credito")
+            else if (tipoFactura == "Crédito")
             {
+
+                DateTime hoy = DateTime.Now;
+                DateTime hoy1 = DateTime.Now;
+                SIGEEA_spObtenerCategoriaClienteResult categoria = cliMant.ObtenerCategoriaCliente(IdCliente);
+                proximoPago = hoy.AddDays(Convert.ToDouble(categoria.RanPagos_CatCliente));
+                proximoLimite = hoy1.AddDays(Convert.ToDouble(categoria.TieMaximo_CatCliente));
+                fechaProPago = proximoPago.ToShortDateString();
+                fechaLimite = proximoLimite.ToShortDateString();
+                txtFechaLimitePago.Text = fechaLimite;
+                txtFechaProximoPago.Text = fechaProPago;
+                if (moneda == "Dolar")
+                {
+                    txtMontoaCancelar.Text = String.Concat("$", montoNetoTotal);
+                    lbAbono.Text = "Monto a Abonar:$";
+                }
+                else
+                {
+                    txtMontoaCancelar.Text = String.Concat("¢", montoNetoTotal);
+                    lbAbono.Text = "Monto a Abonar:¢";
+                }
+
                 grdPago.Visibility = Visibility.Visible;
                 grdAbono.Visibility = Visibility.Visible;
             }
@@ -60,8 +81,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             ListaMetodos();
         }
         int IdEmpleado, IdCliente, IdEmpresa;
-        string tipoFactura, tipoPedido, montoTatal, descuentoTotal, montoNetoTotal, moneda, observaciones, MontoAbono, fechaProPago, metodoPago, numero, montoAbono;
-
+        string tipoFactura, tipoPedido, montoTatal, descuentoTotal, montoNetoTotal, moneda, observaciones, MontoAbono, fechaProPago, fechaLimite, metodoPago, numero, montoAbono;
+        DateTime proximoPago;
+        DateTime proximoLimite;
         private void cmbMetodoPago_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             metodoPago = this.cmbMetodoPago.SelectedItem.ToString();
@@ -111,16 +133,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: 2, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: montoNetoTotal, pfechaProPago: null, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: montoNetoTotal, pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
                     nueva.ShowDialog();
                     this.Close();
                 }
             }
-            else if (tipoFactura == "Credito")
+            else if (tipoFactura == "Crédito")
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: 2, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: txtMontoAbono.Text, pfechaProPago: null, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    MontoAbono = txtMontoAbono.Text;
+                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: MontoAbono, pfechaProPago: proximoPago, pfechaLimPago: proximoLimite, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
                     nueva.ShowDialog();
                     this.Close();
                 }
@@ -129,7 +152,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: 2, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: txtMontoAbono.Text, pfechaProPago: null, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: 0.ToString(), pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
                     nueva.ShowDialog();
                     this.Close();
                 }
@@ -140,7 +163,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

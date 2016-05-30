@@ -13,7 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIGEEA_App.Custom_Controls;
+using SIGEEA_App.Ventanas_Modales.Productos;
+using MahApps.Metro.Controls.Dialogs;
+using SIGEEA_App.Ventanas_Modales.Asociados;
+using SIGEEA_App.Ventanas_Modales.Clientes;
+using SIGEEA_App.Ventanas_Modales.Empleados;
 using MahApps.Metro.Controls;
+using SIGEEA_App.Ventanas_Modales.Fincas;
+using SIGEEA_App.Ventanas_Modales.Insumos;
+using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_BO;
 using SIGEEA_BL.Seguridad;
 namespace SIGEEA_App
@@ -27,8 +35,8 @@ namespace SIGEEA_App
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-            btnSalir.Click += BtnSalir_Click;
-            this.Loaded += MainWindow_Loaded;
+
+            //this.Loaded += MainWindow_Loaded;
             CargarPantalla();
 
         }
@@ -56,17 +64,24 @@ namespace SIGEEA_App
                 if (entro == false || primera == 0)
                 {
                     primera++;
-                    DropDownButton nuevo = new DropDownButton();
-                    nuevo.Content = Modulo.Nombre_Modulo;
-                    nuevo.FontFamily = new FontFamily("Cooper Black");
-                    nuevo.FontSize = 20;
-                    nuevo.Foreground = new SolidColorBrush(Colors.White);
-                    nuevo.Background = new LinearGradientBrush(Colors.DarkSlateGray, Colors.MidnightBlue, 90);
-                    nuevo.Width = 150;
+                    ComboBox nuevo = new ComboBox();
 
-                    nuevo.ItemsSource = segMant.ObtenerSubModulos(Modulo.PK_Id_Modulo);
-                    
-                    nuevo.Click += Nuevo_Click;
+                    nuevo.FontFamily = new FontFamily("Cooper Black");
+                    nuevo.FontSize = 28;
+                    nuevo.Foreground = new SolidColorBrush(Colors.White);
+                    nuevo.Background = new LinearGradientBrush(Colors.Green, Colors.MidnightBlue, 90);
+                    nuevo.Width = 220;
+                    nuevo.Height = 60;
+                    List<string> lista = new List<string>();
+                    lista.Add(Modulo.Nombre_Modulo);
+                    foreach (string submodulo in segMant.ObtenerSubModulos(Modulo.PK_Id_Modulo))
+                    {
+                        lista.Add(submodulo);
+                    }
+                    nuevo.ItemsSource = lista;
+                    nuevo.SelectedIndex = 0;
+                    nuevo.SelectionChanged += Nuevo_SelectionChanged;
+
                     wrpPrincipal.Children.Add(nuevo);
                     entro = false;
                 }
@@ -83,45 +98,65 @@ namespace SIGEEA_App
             }
         }
 
-        private void Nuevo_Click(object sender, RoutedEventArgs e)
+        private void Nuevo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DropDownButton cmb = (DropDownButton)sender;
-           
-            switch (cmb.Content.ToString())
+            ComboBox cmb = (ComboBox)sender;
+
+
+            switch (cmb.SelectedItem.ToString())
             {
 
                 case "Registrar nuevo asociado":
-                    MessageBox.Show("hola");
+
                     break;
 
                 case "Editar asociado existente":
                     break;
 
                 case "Agregar/Editar dirección de asociados":
+                    wnwIdentificar ventana = new wnwIdentificar("Direccion");
+                    ventana.ShowDialog();
                     break;
 
                 case "Registrar cuota":
+                    wnwRegistrarCuota venRegistraCuota = new wnwRegistrarCuota(0);
+                    venRegistraCuota.ShowDialog();
                     break;
 
                 case "Administrar pagos de cuotas":
+                    DataClasses1DataContext dc = new DataClasses1DataContext();
+                    if (dc.SIGEEA_spObtenerCuotas().ToList().Count > 0)
+                    {
+                        wnwCuotas ventana2 = new wnwCuotas();
+                        ventana2.ShowDialog();
+                    }
                     break;
 
                 case "Reuniones":
                     break;
 
                 case "Registrar nuevo cliente":
+                    wnwRegistrarPersona venRegistroCliente = new wnwRegistrarPersona(pTipoPersona: "Cliente", pAsociado: null, pEmpleado: null, pCliente: null);
+                    venRegistroCliente.Show();
                     break;
 
                 case "Editar cliente":
+                    wnwBuscadorCliente venEditarCliente = new wnwBuscadorCliente("Editar");
+                    venEditarCliente.Show();
                     break;
 
                 case "Generar factura":
+                    wnwBuscadorCliente venPedidoCliente = new wnwBuscadorCliente("Pedido");
+                    venPedidoCliente.Show();
                     break;
 
                 case "Realizar abono a factura":
+                    wnwBuscadorCliente venAbonoCredito = new wnwBuscadorCliente("Abono");
+                    venAbonoCredito.Show();
                     break;
 
                 case "Entrega de producto":
+
                     break;
 
                 case "Gestionar facturas incompletas":
@@ -131,6 +166,8 @@ namespace SIGEEA_App
                     break;
 
                 case "Gestiona facturas incompletas":
+                    wnwBuscadorCliente nuevo = new wnwBuscadorCliente("Facturas Incompletas");
+                    nuevo.Show();
                     break;
 
                 case "Registrar nuevo empleado":
@@ -152,6 +189,8 @@ namespace SIGEEA_App
                     break;
 
                 case "Agregar finca":
+                    wnwBuscadorAsociados venAgregarFinca = new wnwBuscadorAsociados("Registrar");
+                    venAgregarFinca.Show();
                     break;
 
                 case "Editar finca":
@@ -164,6 +203,8 @@ namespace SIGEEA_App
                     break;
 
                 case "Agregar insumo":
+                    wnwRegistrarInsumo venAgregarInsumo = new wnwRegistrarInsumo();
+                    venAgregarInsumo.Show();
                     break;
 
                 case "Editar insumo":
@@ -178,103 +219,11 @@ namespace SIGEEA_App
                 default:
                     break;
             }
+            cmb.SelectedIndex = 0;
+
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            tiAsociados.GotFocus += TiAsociados_GotFocus;
-            tiEmpleados.GotFocus += TiEmpleados_GotFocus;
-            tiProductos.GotFocus += TiProductos_GotFocus;
-            tiClientes.GotFocus += TiClientes_GotFocus;
-            tiFincas.GotFocus += TiFincas_GotFocus;
-            tiInsumos.GotFocus += TiInsumos_GotFocus;
-            tiGeneral.GotFocus += TiGeneral_GotFocus;
-
-            frmAsociados.Navigate(new Uri("/Paginas/Pag_Asociados.xaml", UriKind.RelativeOrAbsolute));
-            frmEmpleados.Navigate(new Uri("/Paginas/Pag_Empleados.xaml", UriKind.RelativeOrAbsolute));
-            frmProductos.Navigate(new Uri("/Paginas/Pag_Productos.xaml", UriKind.RelativeOrAbsolute));
-            frmClietnes.Navigate(new Uri("/Paginas/Pag_Clientes.xaml", UriKind.RelativeOrAbsolute));
-            frmFincas.Navigate(new Uri("/Paginas/Pag_Fincas.xaml", UriKind.RelativeOrAbsolute));
-            frmInsumos.Navigate(new Uri("/Paginas/Pag_Insumos.xaml", UriKind.RelativeOrAbsolute));
-            frmGeneral.Navigate(new Uri("/Paginas/Pag_General.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void TiGeneral_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmProductos.Refresh();
-            frmEmpleados.Refresh();
-            frmClietnes.Refresh();
-            frmAsociados.Refresh();
-            frmFincas.Refresh();
-            frmInsumos.Refresh();
-        }
-
-        private void TiInsumos_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmProductos.Refresh();
-            frmEmpleados.Refresh();
-            frmClietnes.Refresh();
-            frmAsociados.Refresh();
-            frmFincas.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void TiFincas_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmProductos.Refresh();
-            frmEmpleados.Refresh();
-            frmClietnes.Refresh();
-            frmInsumos.Refresh();
-            frmAsociados.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void TiClientes_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmAsociados.Refresh();
-            frmProductos.Refresh();
-            frmEmpleados.Refresh();
-            frmInsumos.Refresh();
-            frmFincas.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void TiProductos_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmAsociados.Refresh();
-            frmEmpleados.Refresh();
-            frmClietnes.Refresh();
-            frmInsumos.Refresh();
-            frmFincas.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void TiEmpleados_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmAsociados.Refresh();
-            frmProductos.Refresh();
-            frmClietnes.Refresh();
-            frmInsumos.Refresh();
-            frmFincas.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void TiAsociados_GotFocus(object sender, RoutedEventArgs e)
-        {
-            frmProductos.Refresh();
-            frmEmpleados.Refresh();
-            frmClietnes.Refresh();
-            frmInsumos.Refresh();
-            frmFincas.Refresh();
-            frmGeneral.Refresh();
-        }
-
-        private void BtnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void btnSalir_Click_1(object sender, RoutedEventArgs e)
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

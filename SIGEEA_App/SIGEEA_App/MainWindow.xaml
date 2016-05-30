@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIGEEA_App"
         xmlns:Custom_Controls="clr-namespace:SIGEEA_App.Custom_Controls" x:Class="SIGEEA_App.MainWindow"
+         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Pantalla principal" Width="1353.901" Height="758.865"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="Icono FUNDER.ico" >
-    <Grid Margin="8,0,-8,-2">
-        <Image x:Name="image" HorizontalAlignment="Left" Height="116" Margin="215,635,0,0" VerticalAlignment="Top" Width="226" Source="Imagenes/Costa_Fresh.png"/>
-        <Button x:Name="btnSalir" Margin="42,616,1187,40" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnSalir_Click_1">
-            <Rectangle Width="74" Height="62" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+    <Grid Margin="0,0,-8,-2" Background="#FF808E9C">
+        <Image x:Name="image" HorizontalAlignment="Left" Height="121" VerticalAlignment="Top" Width="229" Source="Imagenes/Costa_Fresh.png"/>
+        <Button x:Name="btnSalir" Margin="10,683,1271,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnSalir_Click">
+            <Rectangle Width="40" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
-						Visual="{DynamicResource appbar_github}" />
+						Visual="{DynamicResource appbar_close}" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
 
-        <Button x:Name="btnAyuda" Margin="1153,616,71,40" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
+        <Button x:Name="btnAyuda" Margin="1261,683,18,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand">
             <Rectangle Width="37" Height="31" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -26,34 +27,11 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <TabControl HorizontalAlignment="Center" Margin="103,135,71,71" Width="1180" BorderBrush="Black">
-            <TabItem Header="Mant.General" x:Name="tiGeneral" Width="300">
-                <Frame x:Name="frmGeneral" NavigationUIVisibility="Hidden" Margin="0,-3,0,3"/>
-            </TabItem>
 
-            <TabItem Header="Asociados" x:Name="tiAsociados">
-                <Frame x:Name="frmAsociados" NavigationUIVisibility="Hidden"/>
-            </TabItem>
-            <TabItem Header="Empleados" x:Name="tiEmpleados">
-                <Frame x:Name="frmEmpleados" NavigationUIVisibility="Hidden"/>
-            </TabItem>
-            <TabItem Header="Productos" x:Name="tiProductos">
-                <Frame x:Name="frmProductos"/>
-            </TabItem>
-            <TabItem Header="Clientes" x:Name="tiClientes">
-                <Frame x:Name="frmClietnes"/>
-            </TabItem>
-            <TabItem Header="Fincas" x:Name="tiFincas">
-                <Frame x:Name="frmFincas"/>
-            </TabItem>
-            <TabItem Header="Insumos" x:Name="tiInsumos">
-                <Frame x:Name="frmInsumos"/>
-            </TabItem>
-        </TabControl>
-        <WrapPanel HorizontalAlignment="Left" Height="34" Margin="320,31,0,0" VerticalAlignment="Top" Width="159"/>
-        <WrapPanel HorizontalAlignment="Left" Name="wrpPrincipal" Height="65" Margin="10,65,0,0" VerticalAlignment="Top" Width="1334">
+        <WrapPanel HorizontalAlignment="Left" Name="wrpPrincipal" Height="65" Margin="10,102,0,0" VerticalAlignment="Top" Width="1334">
 
         </WrapPanel>
+
         <Label x:Name="label" Content="Bienvenido!! " HorizontalAlignment="Left" Margin="978,15,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbUsuarioActual" Content="Bienvenido!! " HorizontalAlignment="Left" Margin="1057,11,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontStyle="Italic" FontSize="16"/>
 

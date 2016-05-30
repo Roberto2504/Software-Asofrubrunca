@@ -17,7 +17,7 @@ namespace SIGEEA_BL
         /// <param name="pFacCliente"></param>
         /// <param name="pListaDetalle"></param>
 
-        public void RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente)
+        public void RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
 
@@ -65,7 +65,26 @@ namespace SIGEEA_BL
                 nuevoAbono.FK_Id_FacCliente = nuevaFactura.PK_Id_FacCliente;
                 dc.SIGEEA_AboClientes.InsertOnSubmit(nuevoAbono);
             }
+            if (pCreCliente != null)
+            {
+                SIGEEA_CreCliente nuevoCredito = new SIGEEA_CreCliente();
+                nuevoCredito.Estado_CreCliente = pCreCliente.Estado_CreCliente;
+                nuevoCredito.Fecha_CreCliente = pCreCliente.Fecha_CreCliente;
+                nuevoCredito.Monto_CreCliente = pCreCliente.Monto_CreCliente;
+                nuevoCredito.Saldo_CreCliente = pCreCliente.Saldo_CreCliente;
+                nuevoCredito.FecProPago_CreCliente = pCreCliente.FecProPago_CreCliente;
+                nuevoCredito.FecLimPago_CreCliente = pCreCliente.FecLimPago_CreCliente;
+                nuevoCredito.FK_Id_Cliente = pCreCliente.FK_Id_Cliente;
+                nuevoCredito.FK_Id_Moneda = pCreCliente.FK_Id_Moneda;
+                nuevoCredito.FK_Id_FacCliente = nuevaFactura.PK_Id_FacCliente;
+                dc.SIGEEA_CreClientes.InsertOnSubmit(nuevoCredito);
+            }
             dc.SubmitChanges();
+        }
+        public SIGEEA_spObtenerIdUltimaFacturaResult ObtenerIdUltimaFactura()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerIdUltimaFactura().FirstOrDefault();
         }
     }
 }
