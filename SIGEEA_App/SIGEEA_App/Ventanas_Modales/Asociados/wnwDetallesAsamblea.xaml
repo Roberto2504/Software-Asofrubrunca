@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Asociados"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Asamblea" Height="429.283" Width="1248.298">
+        Title="Asamblea" Height="429.283" Width="1248.298" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid>
             <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="33,34,30,77" Background="#FFB8C3E2">

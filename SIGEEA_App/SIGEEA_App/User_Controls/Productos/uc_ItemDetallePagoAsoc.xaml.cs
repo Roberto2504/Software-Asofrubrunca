@@ -31,7 +31,7 @@ namespace SIGEEA_App.User_Controls.Productos
         {
             InitializeComponent();
             this.PkDetalleFactura = pDetalleFactura.PK_Id_DetFacAsociado;
-            this.InformacionDet = pDetalleFactura.Informacion;
+            this.InformacionDet = pDetalleFactura.canNeta + pDetalleFactura.Informacion;
             this.PrecioDet = pDetalleFactura.Precio;
             this.TotalDet = pDetalleFactura.Total;
             this.Color(pColor);

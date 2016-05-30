@@ -95,7 +95,11 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
-
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.Equals(true))
+            {
+                printDialog.PrintDocument((((IDocumentPaginatorSource)txbFactura.Document).DocumentPaginator), "Imprimiendo...");
+            }
         }
     }
 }

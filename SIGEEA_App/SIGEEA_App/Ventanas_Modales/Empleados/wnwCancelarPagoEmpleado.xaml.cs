@@ -113,6 +113,11 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                     EmpleadoMantenimiento empleado = new EmpleadoMantenimiento();
                     empleado.CancelarPago(Lista, pk_empleado);
                     MessageBox.Show("Pago realizado exitosamente.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == DialogResult.Equals(true))
+                    {
+                        printDialog.PrintDocument((((IDocumentPaginatorSource)txbFactura.Document).DocumentPaginator), "Imprimiendo...");
+                    }
                     this.Close();
                 }
             }

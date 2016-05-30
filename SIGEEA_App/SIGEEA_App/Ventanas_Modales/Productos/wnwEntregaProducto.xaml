@@ -19,8 +19,6 @@
                 <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblNombreAsociado" Margin="0,0,850,0">Entrega de:</Label>
                 <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblCedulaAsociado" Margin="474,0,364,35">Cédula #:</Label>
                 <Label FontWeight="Bold" FontSize="14.667" Width="auto" Name="lblCodigoAsociado" Margin="1052,0,38,0">Código:</Label>
-                <Label x:Name="label" Content="Unidad de medida:" HorizontalAlignment="Left" Height="29" Margin="421,28,0,0" VerticalAlignment="Top" Width="144" FontSize="14.667" FontWeight="Bold"/>
-                <ComboBox x:Name="cmbUniMedida" HorizontalAlignment="Left" Height="19" Margin="570,31,0,0" VerticalAlignment="Top" Width="192" FontSize="14.667" FontWeight="Bold"/>
             </Grid>
             <DataGrid Margin="19,85,120,370">
                 <DataGrid.Columns>
@@ -31,8 +29,8 @@
                     <DataGridTextColumn Header="Lote" Width="200" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,124,81,33">
-                <StackPanel Width="1450" Name="stpContenedor" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,124,81,33" Background="#FF4B6181">
+                <StackPanel Margin="0,0,15,0" Name="stpContenedor" Height="Auto"/>
             </ScrollViewer>
             <Button x:Name="btnAgregar" Margin="1209,169,10,272" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click" ToolTip="Agregar ítem">
                 <Rectangle Width="25" Height="22" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">

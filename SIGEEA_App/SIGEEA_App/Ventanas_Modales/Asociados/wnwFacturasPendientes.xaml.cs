@@ -57,7 +57,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     {
                         uc_FacturaEntrega factura = new uc_FacturaEntrega(pSolicitud);
                         factura.FacturaId = f.PK_Id_FacAsociado;
-                        factura.FacturaCantidad = f.CanTotal_FacAsociado.ToString();
                         factura.FacturaFecha = f.FECHA;
 
                         factura.btnDetalles.Click += BtnDetalles_Click; ;
@@ -78,7 +77,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     {
                         uc_FacturaEntrega factura = new uc_FacturaEntrega(pSolicitud);
                         factura.FacturaId = f.PK_Id_FacAsociado;
-                        factura.FacturaCantidad = f.CanTotal_FacAsociado.ToString();
                         factura.FacturaFecha = f.FECHA;
 
                         factura.btnDetalles.Click += BtnDetalles_Click; ;

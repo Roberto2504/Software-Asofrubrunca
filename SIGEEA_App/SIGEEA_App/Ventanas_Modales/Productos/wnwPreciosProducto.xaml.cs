@@ -24,44 +24,56 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
     /// </summary>
     public partial class wnwPreciosProducto : MetroWindow
     {
-        string Accion;
         ProductoMantenimiento mantProducto = new ProductoMantenimiento();
-        public wnwPreciosProducto(string pAccion)
+        public wnwPreciosProducto()
         {
-            InitializeComponent();           
-            cmbProducto.ItemsSource = mantProducto.ListarTipoProducto();
-            Accion = pAccion;
+            InitializeComponent();
+            cmbProductoVenta.ItemsSource = mantProducto.ListarTipoProducto();
+            cmbProductoCompra.ItemsSource = mantProducto.ListarTipoProducto();
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (Accion == "Compra")
-                {
-                    SIGEEA_PreProCompra nuevoPrecio = new SIGEEA_PreProCompra();
-                    nuevoPrecio.PreNacional_PreProCompra = Convert.ToDouble(txbPreNacional.Text);
-                    nuevoPrecio.PreExtranjero_PreProCompra = Convert.ToDouble(txbPreExtranjero.Text);
-                    nuevoPrecio.FK_Id_TipProducto = cmbProducto.SelectedIndex + 1;
-                    nuevoPrecio.FecRegistro_PreProCompra = DateTime.Now;
-                    mantProducto.ActualizarPrecioCompra(nuevoPrecio);
-                }
+                SIGEEA_PreProCompra nuevoPrecioCompra = new SIGEEA_PreProCompra();
+                nuevoPrecioCompra.PreNacional_PreProCompra = Convert.ToDouble(txbPreNacionalCompra.Text);
+                nuevoPrecioCompra.PreExtranjero_PreProCompra = Convert.ToDouble(txbPreExtranjeroCompra.Text);
+                nuevoPrecioCompra.FK_Id_TipProducto = cmbProductoCompra.SelectedIndex + 1;
+                nuevoPrecioCompra.FecRegistro_PreProCompra = DateTime.Now;
+                mantProducto.ActualizarPrecioCompra(nuevoPrecioCompra);
 
-                else if (Accion == "Venta")
-                {
-                    SIGEEA_PreProVenta nuevoPrecio = new SIGEEA_PreProVenta();
-                    nuevoPrecio.PreNacional_PreProVenta = Convert.ToDouble(txbPreNacional.Text);
-                    nuevoPrecio.PreExtranjero_PreProVenta = Convert.ToDouble(txbPreExtranjero.Text);
-                    nuevoPrecio.FK_Id_TipProducto = cmbProducto.SelectedIndex + 1;
-                    nuevoPrecio.FecRegistro_PreProVenta = DateTime.Now;
-                    mantProducto.ActualizarPrecioVenta(nuevoPrecio);
-                }
-                MessageBox.Show("Actualización realizada con éxito");
+                SIGEEA_PreProVenta nuevoPrecioVenta = new SIGEEA_PreProVenta();
+                nuevoPrecioVenta.PreNacional_PreProVenta = Convert.ToDouble(txbPreNacionalVenta.Text);
+                nuevoPrecioVenta.PreExtranjero_PreProVenta = Convert.ToDouble(txbPreExtranjeroVenta.Text);
+                nuevoPrecioVenta.FK_Id_TipProducto = cmbProductoVenta.SelectedIndex + 1;
+                nuevoPrecioVenta.FecRegistro_PreProVenta = DateTime.Now;
+                nuevoPrecioVenta.FK_Id_Moneda = 2;
+                mantProducto.ActualizarPrecioVenta(nuevoPrecioVenta);
+                MessageBox.Show("Actualización realizada con éxito", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             catch
             {
-                MessageBox.Show("No se pudo realizar la acción solicitada");
+                MessageBox.Show("No se pudo realizar la acción solicitada", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+        }
+
+        private void cmbProductoVenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_spObtenerPreciosVentaActualProdResult precio = dc.SIGEEA_spObtenerPreciosVentaActualProd(cmbProductoVenta.SelectedValue.ToString()).First();
+
+            txbPreExtranjeroVenta.Text = precio.PreExtranjero_PreProVenta.ToString();
+            txbPreNacionalVenta.Text = precio.PreNacional_PreProVenta.ToString();
+        }
+
+        private void cmbProductoCompra_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_spObtenerPreciosCompraActualProdResult precio = dc.SIGEEA_spObtenerPreciosCompraActualProd(cmbProductoCompra.SelectedValue.ToString()).First();
+
+            txbPreExtranjeroCompra.Text = precio.PreExtranjero_PreProCompra.ToString();
+            txbPreNacionalCompra.Text = precio.PreNacional_PreProCompra.ToString();
         }
     }
 }

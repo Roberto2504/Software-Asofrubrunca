@@ -35,13 +35,13 @@ namespace SIGEEA_App.Paginas
 
         private void btnPrecioCompra_Click(object sender, RoutedEventArgs e)
         {
-            wnwPreciosProducto ventana = new wnwPreciosProducto("Compra");
+            wnwPreciosProducto ventana = new wnwPreciosProducto();
             ventana.Show();
         }
 
         private void btnPrecioVenta_Click(object sender, RoutedEventArgs e)
         {
-            wnwPreciosProducto ventana = new wnwPreciosProducto("Venta");
+            wnwPreciosProducto ventana = new wnwPreciosProducto();
             ventana.Show();
         }
     }

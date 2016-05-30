@@ -12,8 +12,7 @@
             <DataGrid Margin="61,27,87,234">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Factura N°" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Fecha de entrega" Width="170" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Cantidad" Width="75" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Fecha de entrega" Width="auto" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <ScrollViewer VerticalScrollBarVisibility="Visible" Margin="30,59,29,57" Width="450">

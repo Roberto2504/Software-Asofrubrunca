@@ -85,9 +85,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             DataClasses1DataContext dc = new DataClasses1DataContext();
             int factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == (dc.SIGEEA_DetFacAsociados.First(d => d.PK_Id_DetFacAsociado == detalles.First()).FK_Id_FacAsociado)).PK_Id_FacAsociado;
             SIGEEA_spGenerarFacturaEntregaResult encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).First();
-            SIGEEA_spObtenerFacturaCompletaAsocResult infoFactura = dc.SIGEEA_spObtenerFacturaCompletaAsoc(factura).First();
-            List<SIGEEA_spObtenerDetallesEntregaResult> listaDetalles = dc.SIGEEA_spObtenerDetallesEntrega(factura).ToList();
-            String uMedida = infoFactura.CantidadNeta.Substring(infoFactura.CantidadNeta.Length - 2);
+            List<SIGEEA_spObtenerDetallesFacturaCompletaAsocResult> listaDetalles = dc.SIGEEA_spObtenerDetallesFacturaCompletaAsoc(factura).ToList();
             Run run;
 
             Paragraph parrafoEncabezado = new Paragraph();
@@ -126,7 +124,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
 
 
-            Paragraph parrafoFactura = new Paragraph();
+            /*Paragraph parrafoFactura = new Paragraph();
             parrafoFactura.TextAlignment = TextAlignment.Left;
             parrafoFactura.FontFamily = new FontFamily("Agency FB");
             parrafoFactura.FontSize = 16;
@@ -140,7 +138,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
             parrafoFactura.Inlines.Add(new Run("______________________________________________________________________________________________"));
             parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
-            txbFactura.Document.Blocks.Add(parrafoFactura);
+            txbFactura.Document.Blocks.Add(parrafoFactura);*/
 
 
             Paragraph parrafoProductos = new Paragraph();
@@ -151,22 +149,26 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             run = new Run();
             run.FontWeight = FontWeights.Bold;
             run.FontSize = 20;
-            run.Text = "Producto          Cantidad                Precio";
+            run.Text = "Producto          Cantidad total        Cantidad neta               Merma              Precio";
             parrafoProductos.Inlines.Add(run);
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
             double total = 0;
 
+
             foreach (int i in detalles)
             {
-                foreach (SIGEEA_spObtenerDetallesEntregaResult d in listaDetalles)
+                foreach (SIGEEA_spObtenerDetallesFacturaCompletaAsocResult d in listaDetalles)
                 {
                     if (d.PK_Id_DetFacAsociado == i)
                     {
                         parrafoProductos.Inlines.Add(new Run(d.Nombre_TipProducto + "                   "));
-                        parrafoProductos.Inlines.Add(new Run(d.CanNeta_DetFacAsociado + uMedida + "                               "));
-                        parrafoProductos.Inlines.Add(new Run(d.Precio));
-                        total += (int)d.CanNeta_DetFacAsociado;
+                        parrafoProductos.Inlines.Add(new Run(d.CantidadTotalString + "                                "));
+                        parrafoProductos.Inlines.Add(new Run(d.CantidadNetaString + "                            "));
+                        parrafoProductos.Inlines.Add(new Run(d.MERMA + "                          "));
+                        parrafoProductos.Inlines.Add(new Run(d.Precio.ToString()));
+                        moneda = d.Precio[0].ToString();
+                        total += Convert.ToDouble(d.Precio.ToString().Remove(0, 1)) * (double)d.CanNeta_DetFacAsociado;
                         parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
                     }
                 }
@@ -175,13 +177,15 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             run = new Run();
             run.FontWeight = FontWeights.Bold;
             run.FontSize = 20;
-            run.Text = "Total                  " + total.ToString() + uMedida + "           ";
+            run.Text = "Total                  " + moneda + total.ToString() + "           ";
             parrafoProductos.Inlines.Add(run);
+            parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
             parrafoProductos.Inlines.Add(new Run("Este recibo es un comprobante legal en el que se respalda que el asociado realizó la entrega de producto. Recomendamos conservarlo."));
             txbFactura.Document.Blocks.Add(parrafoProductos);
         }
         List<int> Detalles;
+        string moneda;
         private void btnProcesar_Click(object sender, RoutedEventArgs e)
         {
             Detalles = new List<int>();

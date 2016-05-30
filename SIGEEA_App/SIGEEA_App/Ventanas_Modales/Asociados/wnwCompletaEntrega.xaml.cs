@@ -41,7 +41,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
             PK_Factura = pkFactura;
             List<SIGEEA_spObtenerInformacionEntregaResult> listaDetalles = dc.SIGEEA_spObtenerInformacionEntrega(pkFactura).ToList();
-            PK_UMedida = listaDetalles.First().PK_Id_UniMedida;
+            PK_UMedida = dc.SIGEEA_spObtenerUnidadMedidaPorTipo(listaDetalles.First().FK_Id_TipProducto).First().PK_Id_UniMedida;
             bool color = true;
 
             foreach (SIGEEA_spObtenerInformacionEntregaResult e in listaDetalles)
@@ -62,7 +62,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 {
                     if (item.Valida() == true)
                     {
-                        if(item.txbCantidadNeta.Text == 0.ToString())item.txbCantidadNeta.Text = (-1).ToString();
+                        if (item.txbCantidadNeta.Text == 0.ToString()) item.txbCantidadNeta.Text = (-1).ToString();
                         asociado.CompletarEntrega(item.getId(), Convert.ToDouble(item.txbCantidadNeta.Text), PK_UMedida, item.producto, item.getEstado());
                     }
 

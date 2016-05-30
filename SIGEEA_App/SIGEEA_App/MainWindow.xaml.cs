@@ -22,6 +22,7 @@ using MahApps.Metro.Controls;
 using SIGEEA_App.Ventanas_Modales.Fincas;
 using SIGEEA_App.Ventanas_Modales.Insumos;
 using SIGEEA_App.Ventanas_Modales.Personas;
+using SIGEEA_App.Ventanas_Modales.Puestos;
 using SIGEEA_BO;
 using SIGEEA_BL.Seguridad;
 namespace SIGEEA_App
@@ -107,15 +108,18 @@ namespace SIGEEA_App
             {
 
                 case "Registrar nuevo asociado":
-
+                    wnwRegistrarPersona ventanaRegistro = new wnwRegistrarPersona(pTipoPersona: "Asociado", pAsociado: null, pEmpleado: null, pCliente: null);
+                    ventanaRegistro.Show();
                     break;
 
                 case "Editar asociado existente":
+                    wnwVistaAsociados ventanaEdicion = new wnwVistaAsociados();
+                    ventanaEdicion.ShowDialog();
                     break;
 
                 case "Agregar/Editar dirección de asociados":
-                    wnwIdentificar ventana = new wnwIdentificar("Direccion");
-                    ventana.ShowDialog();
+                    wnwIdentificar ventanaDireccion = new wnwIdentificar("Direccion");
+                    ventanaDireccion.ShowDialog();
                     break;
 
                 case "Registrar cuota":
@@ -130,9 +134,12 @@ namespace SIGEEA_App
                         wnwCuotas ventana2 = new wnwCuotas();
                         ventana2.ShowDialog();
                     }
+                    else MessageBox.Show("No hay cuotas registradas actualmente.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
 
                 case "Reuniones":
+                    wnwAsambleas ventana = new wnwAsambleas();
+                    ventana.ShowDialog();
                     break;
 
                 case "Registrar nuevo cliente":
@@ -156,13 +163,18 @@ namespace SIGEEA_App
                     break;
 
                 case "Entrega de producto":
-
+                    wnwIdentificar ventanaEntrega = new wnwIdentificar("Entrega");
+                    ventanaEntrega.ShowDialog();
                     break;
 
                 case "Gestionar facturas incompletas":
+                    wnwOpcionesFacturaProducto ventanaIncompletas = new wnwOpcionesFacturaProducto(false);
+                    ventanaIncompletas.ShowDialog();
                     break;
 
                 case "Gestionar facturas pendientes":
+                    wnwOpcionesFacturaProducto ventanaPendientes = new wnwOpcionesFacturaProducto(true);
+                    ventanaPendientes.ShowDialog();
                     break;
 
                 case "Gestiona facturas incompletas":
@@ -171,21 +183,33 @@ namespace SIGEEA_App
                     break;
 
                 case "Registrar nuevo empleado":
+                    wnwRegistrarPersona ventanaRegistroEmp = new wnwRegistrarPersona(pTipoPersona: "Empleado", pAsociado: null, pEmpleado: null, pCliente: null);
+                    ventanaRegistroEmp.Show();
                     break;
 
                 case "Editar empleado existente":
+                    wnwIdentificarEmpleado ventanaIdentifica = new wnwIdentificarEmpleado("Editar");
+                    ventanaIdentifica.ShowDialog();
                     break;
 
                 case "Agregar/Editar dirección de empleados":
+                    wnwIdentificarEmpleado ventanaDir = new wnwIdentificarEmpleado("Direccion");
+                    ventanaDir.ShowDialog();
                     break;
 
                 case "Gestionar puestos":
+                    wnwPuestos ventanaPuestos = new wnwPuestos();
+                    ventanaPuestos.ShowDialog();
                     break;
 
                 case "Registro de horas ":
+                    wnwRegistrarHorasLaboradas ventanaHor = new wnwRegistrarHorasLaboradas();
+                    ventanaHor.ShowDialog();
                     break;
 
                 case "Realizar pagos":
+                    wnwIdentificarEmpleado ventanaPagos = new wnwIdentificarEmpleado("Pagos");
+                    ventanaPagos.ShowDialog();
                     break;
 
                 case "Agregar finca":
@@ -197,9 +221,13 @@ namespace SIGEEA_App
                     break;
 
                 case "Registrar nuevo producto":
+                    wnwRegistrarProducto ventanaProd = new wnwRegistrarProducto();
+                    ventanaProd.Show();
                     break;
 
                 case "Compra/Venta del producto":
+                    wnwPreciosProducto ventanaPrecios = new wnwPreciosProducto();
+                    ventanaPrecios.Show();
                     break;
 
                 case "Agregar insumo":

@@ -7,7 +7,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls" x:Class="SIGEEA_App.Ventanas_Modales.Productos.wnwRegistrarProducto"
         mc:Ignorable="d"
-        Title="Registro de producto" Height="321.429" Width="439.85" ResizeMode="NoResize">
+        Title="Registro de producto" Height="321.429" Width="439.85" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid>
             <TextBox x:Name="txbNombre" HorizontalAlignment="Left" Height="23" Margin="128,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontWeight="Bold" FontSize="13.333" />

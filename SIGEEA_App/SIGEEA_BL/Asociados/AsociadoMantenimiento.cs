@@ -380,7 +380,6 @@ namespace SIGEEA_BL
             factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
             factura.FecPago_FacAsociado = factura.FecPago_FacAsociado;
             factura.FK_Id_Asociado = factura.FK_Id_Asociado;
-            factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
             factura.Incompleta_FacAsociado = factura.Incompleta_FacAsociado;
             factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
             dc.SubmitChanges();
@@ -434,7 +433,6 @@ namespace SIGEEA_BL
                 factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
                 factura.FecPago_FacAsociado = factura.FecPago_FacAsociado;
                 factura.FK_Id_Asociado = factura.FK_Id_Asociado;
-                factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
                 factura.Incompleta_FacAsociado = false;
                 factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
                 dc.SubmitChanges();
@@ -505,7 +503,6 @@ namespace SIGEEA_BL
                 factura.FecEntrega_FacAsociado = factura.FecEntrega_FacAsociado;
                 factura.FecPago_FacAsociado = DateTime.Now;
                 factura.FK_Id_Asociado = factura.FK_Id_Asociado;
-                factura.FK_Id_UniMedida = factura.FK_Id_UniMedida;
                 factura.Incompleta_FacAsociado = factura.Incompleta_FacAsociado;
                 factura.Observaciones_FacAsociado = factura.Observaciones_FacAsociado;
                 dc.SubmitChanges();

@@ -38,15 +38,12 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
             lblNombreAsociado.Content += " " + asociado.PriNombre_Persona + " " + asociado.PriApellido_Persona + " " + asociado.SegApellido_Persona;
             lblCedulaAsociado.Content += " " + asociado.CedParticular_Persona.ToString();
             lblCodigoAsociado.Content += " " + asociado.Codigo_Asociado.ToString();
-            listaMedida = dc.SIGEEA_UniMedidas.ToList();
-
-            foreach (SIGEEA_UniMedida p in listaMedida) cmbUniMedida.Items.Add(p.Nombre_UniMedida);
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             uc_IngresoProducto uProducto = new uc_IngresoProducto(asociado.Codigo_Asociado);
-            stpContenedor.Children.Insert(0,uProducto);
+            stpContenedor.Children.Insert(0, uProducto);
         }
 
         private void btnFacturar_Click(object sender, RoutedEventArgs e)
@@ -61,8 +58,6 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
         {
             try
             {
-                if (cmbUniMedida.SelectedValue != null)
-                {
                     AsociadoMantenimiento asociadoM = new AsociadoMantenimiento();
                     List<SIGEEA_DetFacAsociado> listaDetalles = new List<SIGEEA_DetFacAsociado>();
 
@@ -70,7 +65,6 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
                     factura.Estado_FacAsociado = true;
                     factura.FecEntrega_FacAsociado = DateTime.Now;
                     factura.FK_Id_Asociado = asociado.PK_Id_Asociado;
-                    factura.FK_Id_UniMedida = getMedida();
 
 
                     foreach (uc_IngresoProducto ip in stpContenedor.Children)
@@ -87,24 +81,11 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
                     wnwFacturaEntrega ventana = new wnwFacturaEntrega(factura.PK_Id_FacAsociado);
                     ventana.ShowDialog();
                     this.Close();
-                }
-                else { throw new ArgumentException("Debe seleccionar la unidad de medida."); }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-
-
-        public int getMedida()
-        {
-            int pkMedida = 0;
-            foreach (SIGEEA_UniMedida m in listaMedida)
-            {
-                if ((string)cmbUniMedida.SelectedValue == m.Nombre_UniMedida) pkMedida = m.PK_Id_UniMedida;
-            }
-            return pkMedida;
         }
     }
 }
