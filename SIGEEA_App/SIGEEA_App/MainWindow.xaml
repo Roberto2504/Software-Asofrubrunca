@@ -26,9 +26,9 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <TabControl HorizontalAlignment="Center" Margin="-1270,15,1444,191" Width="1180" BorderBrush="Black">
+        <TabControl HorizontalAlignment="Center" Margin="103,135,71,71" Width="1180" BorderBrush="Black">
             <TabItem Header="Mant.General" x:Name="tiGeneral" Width="300">
-                <Frame x:Name="frmGeneral" NavigationUIVisibility="Hidden"/>
+                <Frame x:Name="frmGeneral" NavigationUIVisibility="Hidden" Margin="0,-3,0,3"/>
             </TabItem>
 
             <TabItem Header="Asociados" x:Name="tiAsociados">

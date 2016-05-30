@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SIGEEA_BD" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PC-PC\ROBERTO;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString3" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LUIS-PC\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.SIGEEA_AboCliente" Member="SIGEEA_AboClientes">
     <Type Name="SIGEEA_AboCliente">
       <Column Name="PK_Id_AboCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -772,6 +772,11 @@
       <Association Name="SIGEEA_Rol_SIGEEA_Usuario" Member="SIGEEA_Rol" ThisKey="FK_Id_Rol" OtherKey="PK_Id_Rol" Type="SIGEEA_Rol" IsForeignKey="true" />
     </Type>
   </Table>
+  <Function Name="dbo.SIGEEA_spActualizaCategoriaAsambleas" Method="SIGEEA_spActualizaCategoriaAsambleas">
+    <Parameter Name="PK_Categoria" Parameter="pK_Categoria" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Categoria" Parameter="categoria" Type="System.Double" DbType="Float" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.SIGEEA_spActualizaCategoriaCuotas" Method="SIGEEA_spActualizaCategoriaCuotas">
     <Parameter Name="PK_Categoria" Parameter="pK_Categoria" Type="System.Int32" DbType="Int" />
     <Parameter Name="Categoria" Parameter="categoria" Type="System.Double" DbType="Float" />
@@ -1253,13 +1258,6 @@
       <Column Name="Cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerInformacionEntrega" Method="SIGEEA_spObtenerInformacionEntrega">
-    <Parameter Name="Factura" Parameter="factura" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SIGEEA_spObtenerInformacionEntregaResult">
-      <Column Name="Informacion" Type="System.String" DbType="VarChar(146) NOT NULL" CanBeNull="false" />
-      <Column Name="PK_Id_DetFacAsociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SIGEEA_spObtenerInsumo" Method="SIGEEA_spObtenerInsumo">
     <Parameter Name="idInsumo" Type="System.Int32" DbType="Int" />
     <ElementType Name="SIGEEA_spObtenerInsumoResult">
@@ -1292,17 +1290,6 @@
       <Column Name="Simbolo_Moneda" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerPagosEmpleadosPendientes" Method="SIGEEA_spObtenerPagosEmpleadosPendientes">
-    <Parameter Name="Empleado" Parameter="empleado" Type="System.String" DbType="VarChar(15)" />
-    <ElementType Name="SIGEEA_spObtenerPagosEmpleadosPendientesResult">
-      <Column Name="Fecha" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
-      <Column Name="Diferencia" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Nombre_Puesto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Column Name="Total" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
-      <Column Name="PK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Tarifa" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SIGEEA_spObtenerPrecioCompra" Method="SIGEEA_spObtenerPrecioCompra">
     <Parameter Name="Producto" Parameter="producto" Type="System.Int32" DbType="Int" />
     <ElementType Name="SIGEEA_spObtenerPrecioCompraResult">
@@ -1326,9 +1313,47 @@
     <Parameter Name="Puesto" Parameter="puesto" Type="System.String" DbType="VarChar(30)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.SIGEEA_spActualizaCategoriaAsambleas" Method="SIGEEA_spActualizaCategoriaAsambleas">
-    <Parameter Name="PK_Categoria" Parameter="pK_Categoria" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Categoria" Parameter="categoria" Type="System.Double" DbType="Float" />
-    <Return Type="System.Int32" />
+  <Function Name="dbo.SIGEEA_spObtenerInvProducto" Method="SIGEEA_spObtenerInvProducto">
+    <ElementType Name="SIGEEA_spObtenerInvProductoResult">
+      <Column Name="PK_Id_DetInvProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cantidad_DetInvProductos" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_TipProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_InvProductos" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_UniMedida" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spObtenerInformacionEntrega" Method="SIGEEA_spObtenerInformacionEntrega">
+    <Parameter Name="Factura" Parameter="factura" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SIGEEA_spObtenerInformacionEntregaResult">
+      <Column Name="Informacion" Type="System.String" DbType="VarChar(146) NOT NULL" CanBeNull="false" />
+      <Column Name="PK_Id_DetFacAsociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PK_Id_UniMedida" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FK_Id_TipProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spGenerarFacturaPagoEmpleado" Method="SIGEEA_spGenerarFacturaPagoEmpleado">
+    <Parameter Name="Empleado" Parameter="empleado" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SIGEEA_spGenerarFacturaPagoEmpleadoResult">
+      <Column Name="Nombre_Empresa" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CedJuridica" Type="System.String" DbType="VarChar(45) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion_Empresa" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Correo" Type="System.String" DbType="VarChar(37) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Hora" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="NombreAsociado" Type="System.String" DbType="VarChar(113) NOT NULL" CanBeNull="false" />
+      <Column Name="CedPersona" Type="System.String" DbType="VarChar(33) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spObtenerPagosEmpleadosPendientes" Method="SIGEEA_spObtenerPagosEmpleadosPendientes">
+    <Parameter Name="Empleado" Parameter="empleado" Type="System.String" DbType="VarChar(15)" />
+    <ElementType Name="SIGEEA_spObtenerPagosEmpleadosPendientesResult">
+      <Column Name="Fecha" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="Diferencia" Type="System.Decimal" DbType="Decimal(17,6)" CanBeNull="true" />
+      <Column Name="Nombre_Puesto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
+      <Column Name="PK_Id_HorLaboradas" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Tarifa" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
+    </ElementType>
   </Function>
 </Database>

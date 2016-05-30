@@ -334,12 +334,13 @@ namespace SIGEEA_BL
         /// </summary>
         /// <param name="pkDetalle"></param>
         /// <param name="CantidadNeta"></param>
-        public void CompletarEntrega(int pkDetalle, double CantidadNeta)
+        public void CompletarEntrega(int pkDetalle, double CantidadNeta, int unidadMedida, int pProducto, bool pEstado)
         {
             try
             {
                 DataClasses1DataContext dc = new DataClasses1DataContext();
                 SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
+                ProductoMantenimiento producto = new ProductoMantenimiento();
                 detalle.CanNeta_DetFacAsociado = CantidadNeta;
                 detalle.CanTotal_DetFacAsociado = detalle.CanTotal_DetFacAsociado;
                 detalle.Cancelado_DetFacAsociado = false;
@@ -348,6 +349,8 @@ namespace SIGEEA_BL
                 detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
                 detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
                 dc.SubmitChanges();
+
+                if(pEstado == true) producto.IncrementarInventario(unidadMedida, pProducto, CantidadNeta);
             }
             catch (Exception ex)
             {
@@ -588,5 +591,7 @@ namespace SIGEEA_BL
             dc.SIGEEA_spActualizaCategoriaAsambleas(asociado.FK_Id_CatAsociado, calificacionNuevaFinal);
             dc.SubmitChanges();
         }
+
+
     }
 }

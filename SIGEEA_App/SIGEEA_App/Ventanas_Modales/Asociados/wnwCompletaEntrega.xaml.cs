@@ -27,6 +27,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
     public partial class wnwCompletaEntrega : MetroWindow
     {
         int PK_Factura;
+        int PK_UMedida;
         public wnwCompletaEntrega(int pkFactura)
         {
             InitializeComponent();
@@ -40,11 +41,12 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
             PK_Factura = pkFactura;
             List<SIGEEA_spObtenerInformacionEntregaResult> listaDetalles = dc.SIGEEA_spObtenerInformacionEntrega(pkFactura).ToList();
+            PK_UMedida = listaDetalles.First().PK_Id_UniMedida;
             bool color = true;
 
             foreach (SIGEEA_spObtenerInformacionEntregaResult e in listaDetalles)
             {
-                uc_ItemEntrega item = new uc_ItemEntrega(e.Informacion, e.PK_Id_DetFacAsociado);
+                uc_ItemEntrega item = new uc_ItemEntrega(e.Informacion, e.PK_Id_DetFacAsociado, e.FK_Id_TipProducto);
                 item.Color(color);
                 color = !color;
                 stpContenedor.Children.Add(item);
@@ -61,7 +63,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     if (item.Valida() == true)
                     {
                         if(item.txbCantidadNeta.Text == 0.ToString())item.txbCantidadNeta.Text = (-1).ToString();
-                        asociado.CompletarEntrega(item.getId(), Convert.ToDouble(item.txbCantidadNeta.Text));
+                        asociado.CompletarEntrega(item.getId(), Convert.ToDouble(item.txbCantidadNeta.Text), PK_UMedida, item.producto, item.getEstado());
                     }
 
                     else

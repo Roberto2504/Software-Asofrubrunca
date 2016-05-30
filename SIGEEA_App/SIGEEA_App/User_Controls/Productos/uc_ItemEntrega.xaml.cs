@@ -24,15 +24,27 @@ namespace SIGEEA_App.User_Controls.Productos
     {
         int PK_Detalle;
         double cantidad;
-        public uc_ItemEntrega(string Informacion, int pkDetalle)
+        public int producto;
+        public uc_ItemEntrega(string Informacion, int pkDetalle, int pkProducto)
         {
             InitializeComponent();
             lblInformacion.Text = Informacion;
-            PK_Detalle = pkDetalle;          
+            PK_Detalle = pkDetalle;
+            producto = pkProducto;
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
             cantidad = detalle.CanTotal_DetFacAsociado;
-            if (detalle.CanNeta_DetFacAsociado > -1) txbCantidadNeta.Text = detalle.CanNeta_DetFacAsociado.ToString(); 
+            if (detalle.CanNeta_DetFacAsociado > -1)
+            {
+                txbCantidadNeta.Text = detalle.CanNeta_DetFacAsociado.ToString();
+                txbCantidadNeta.IsEnabled = false;
+            }
+        }
+
+        public bool getEstado()
+        {
+            if (txbCantidadNeta.IsEnabled == true) return true;
+            else return false;
         }
         public int getId()
         {

@@ -69,5 +69,74 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spListarProductos(nombre).ToList();
         }
+
+
+        public void IncrementarInventario(int pUMedida, int pProducto, double pCantidad)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                List<SIGEEA_spObtenerInvProductoResult> inventario = dc.SIGEEA_spObtenerInvProducto().ToList();
+                bool indicador = false;
+
+                foreach (SIGEEA_spObtenerInvProductoResult item in inventario)
+                {
+                    if (item.FK_Id_TipProducto == pProducto && item.FK_Id_UniMedida == pUMedida)//Si ya existe inventario registrado del producto
+                    {
+                        ActualizarInvProducto(item.PK_Id_DetInvProductos, pCantidad);
+                        indicador = true;
+                        break;
+                    }
+                }
+
+                if (indicador == false) //Si no existen registros del producto en el inventario
+                {
+                    InsertarInvProducto(pUMedida, pProducto, pCantidad);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al actualizar: " + ex.Message);
+            }
+        }
+
+        private void ActualizarInvProducto(int pkDetalle, double pCantidad)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DetInvProducto detalle = dc.SIGEEA_DetInvProductos.First(c => c.PK_Id_DetInvProductos == pkDetalle);
+                if (pCantidad <= 0) detalle.Cantidad_DetInvProductos += 0;
+                else detalle.Cantidad_DetInvProductos += pCantidad;
+                detalle.PK_Id_DetInvProductos = detalle.PK_Id_DetInvProductos;
+                detalle.FK_Id_InvProductos = detalle.FK_Id_InvProductos;
+                detalle.FK_Id_TipProducto = detalle.FK_Id_TipProducto;
+                detalle.FK_Id_UniMedida = detalle.FK_Id_UniMedida;
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al actualizar: " + ex.Message);
+            }
+        }
+
+        private void InsertarInvProducto(int pkUMedida, int pkProducto, double pCantidad)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DetInvProducto detalle = new SIGEEA_DetInvProducto();
+                detalle.FK_Id_InvProductos = 1;
+                detalle.FK_Id_TipProducto = pkProducto;
+                detalle.FK_Id_UniMedida = pkUMedida;
+                detalle.Cantidad_DetInvProductos = pCantidad;
+                dc.SIGEEA_DetInvProductos.InsertOnSubmit(detalle);
+                dc.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException("Error al actualizar: " + ex.Message);
+            }
+        }
     }
 }

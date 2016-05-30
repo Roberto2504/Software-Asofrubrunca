@@ -25,32 +25,83 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
     public partial class wnwCancelarPagoEmpleado : MetroWindow
     {
         double total = 0;
-        int horas = 0;
+        double horas = 0;
         int pk_empleado;
         List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> Lista = new List<SIGEEA_spObtenerPagosEmpleadosPendientesResult>();
 
         public wnwCancelarPagoEmpleado(List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> pLista, int pEmpleado)
         {
             InitializeComponent();
-            txbFactura.AppendText("Nombre del empleado: ");
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            string NombreEmpleado = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).PriNombre_Persona
-                                    + " " +dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).PriApellido_Persona
-                                    + " " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == pEmpleado).FK_Id_Persona)).SegApellido_Persona;
-            txbFactura.AppendText(NombreEmpleado + ".");
-            txbFactura.AppendText(Environment.NewLine);
+
+            SIGEEA_spGenerarFacturaPagoEmpleadoResult encabezado = dc.SIGEEA_spGenerarFacturaPagoEmpleado(pEmpleado).First();
+
+
+
+            Paragraph parrafoEncabezado = new Paragraph();
+            parrafoEncabezado.TextAlignment = TextAlignment.Center;
+            parrafoEncabezado.FontFamily = new FontFamily("Agency FB");
+            parrafoEncabezado.FontSize = 18;
+
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.Nombre_Empresa));
+            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.CedJuridica));
+            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.Direccion_Empresa));
+            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.Telefono));
+            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.Correo));
+            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.Fecha));
+            parrafoEncabezado.Inlines.Add(new Run("  " + encabezado.Hora));
+
+            txbFactura.Document.Blocks.Add(parrafoEncabezado);
+
+            Paragraph parrafoEmpleado = new Paragraph();
+            parrafoEmpleado.TextAlignment = TextAlignment.Left;
+            parrafoEmpleado.FontFamily = new FontFamily("Agency FB");
+            parrafoEmpleado.FontSize = 16;
+
+            parrafoEmpleado.Inlines.Add(new Run(encabezado.NombreAsociado));
+            parrafoEmpleado.Inlines.Add(new Run(Environment.NewLine));
+            parrafoEmpleado.Inlines.Add(new Run(encabezado.CedPersona));
+            parrafoEmpleado.Inlines.Add(new Run(Environment.NewLine));
+            txbFactura.Document.Blocks.Add(parrafoEmpleado);
+
+
             Lista = pLista;
             pk_empleado = pEmpleado;
 
+
+            Paragraph parrafoFactura = new Paragraph();
+            parrafoFactura.TextAlignment = TextAlignment.Left;
+            parrafoFactura.FontFamily = new FontFamily("Agency FB");
+            parrafoFactura.FontSize = 16;
+
+            parrafoFactura.Inlines.Add("Puesto      Horas       Precio      Total");
+            parrafoFactura.Inlines.Add(Environment.NewLine);
+
             foreach (SIGEEA_spObtenerPagosEmpleadosPendientesResult p in pLista)
             {
-                total += Convert.ToDouble(p.Total.Remove(0, 1));
-                horas += Convert.ToInt32(p.Diferencia);
+                total += Convert.ToDouble(p.Total.Remove(0,1));
+                horas += Convert.ToDouble(p.Diferencia);
+                parrafoFactura.Inlines.Add(p.Nombre_Puesto + "      " + p.Diferencia +"         "+ p.Tarifa + "      " + p.Total);
+                parrafoFactura.Inlines.Add(Environment.NewLine);        
             }
 
-            txbFactura.AppendText("Total a cancelar: ₡" + total.ToString());
-            txbFactura.AppendText(Environment.NewLine);
-            txbFactura.AppendText("Horas laboradas: " + horas.ToString());
+            txbFactura.Document.Blocks.Add(parrafoFactura);
+
+            Paragraph parrafoTotal = new Paragraph();
+            parrafoTotal.TextAlignment = TextAlignment.Left;
+            parrafoTotal.FontFamily = new FontFamily("Agency FB");
+            parrafoTotal.FontSize = 16;
+            parrafoTotal.Inlines.Add("Total a cancelar: ₡" + total.ToString());
+            parrafoTotal.Inlines.Add(Environment.NewLine);
+            parrafoTotal.Inlines.Add("Horas laboradas: " + horas.ToString());
+
+
+            txbFactura.Document.Blocks.Add(parrafoTotal);
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
