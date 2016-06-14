@@ -34,13 +34,17 @@ namespace SIGEEA_BL
         /// Modificar insumo
         /// </summary>
         /// <param name="insumo"></param>
-        public void ModificarInsumo(SIGEEA_Insumo insumo)
+        public void ModificarInsumo(SIGEEA_Insumo insumo, SIGEEA_InvInsumo invInsumo, string UnidadMedida)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Nombre_Insumo = insumo.Nombre_Insumo;
             modInsumo.Descripcion_Insumo = modInsumo.Descripcion_Insumo;
-            
+            SIGEEA_UniMedida uniMedida = new SIGEEA_UniMedida();
+            uniMedida = dc.SIGEEA_UniMedidas.First(c => c.Nombre_UniMedida == UnidadMedida);
+            SIGEEA_InvInsumo inv = dc.SIGEEA_InvInsumos.First(c => c.FK_Id_Insumo == insumo.PK_Id_Insumo);
+            inv.Cantidad_InvInsumo = invInsumo.Cantidad_InvInsumo;
+            inv.FK_UniMedida = uniMedida.PK_Id_UniMedida;
             dc.SubmitChanges();
           
         }
@@ -75,6 +79,15 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spListarInsumos(nomInsumo).ToList();
+        }
+        /// <summary>
+        /// Listar
+        /// </summary>
+        /// <param name="nomInsumo"></param>
+        public SIGEEA_spObtenerInsumoResult ObtenerInsumo(int pkInsumo)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spObtenerInsumo(pkInsumo).FirstOrDefault();
         }
     }
 }

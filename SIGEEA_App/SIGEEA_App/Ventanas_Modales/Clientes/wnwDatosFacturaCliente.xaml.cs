@@ -60,19 +60,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 fechaLimite = proximoLimite.ToShortDateString();
                 txtFechaLimitePago.Text = fechaLimite;
                 txtFechaProximoPago.Text = fechaProPago;
-                if (moneda == "Dolar")
-                {
-                    txtMontoaCancelar.Text = String.Concat("$", montoNetoTotal);
-                    lbAbono.Text = "Monto a Abonar:$";
-                }
-                else
-                {
-                    txtMontoaCancelar.Text = String.Concat("¢", montoNetoTotal);
-                    lbAbono.Text = "Monto a Abonar:¢";
-                }
-
-                grdPago.Visibility = Visibility.Visible;
+                txtMontoaCancelar.Text = pMontoNetoTotal;
                 grdAbono.Visibility = Visibility.Visible;
+               
             }
             else if (tipoFactura == "Proforma")
             {
@@ -125,7 +115,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             txtNumero0.Visibility = Visibility.Hidden;
             txtNumero.Visibility = Visibility.Hidden;
             cmbMetodoPago.ItemsSource = ListarMetodosDePago;
-
         }
         private void btnPagar_Click(object sender, RoutedEventArgs e)
         {
@@ -142,7 +131,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    MontoAbono = txtMontoAbono.Text;
+                    
                     wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: MontoAbono, pfechaProPago: proximoPago, pfechaLimPago: proximoLimite, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
                     nueva.ShowDialog();
                     this.Close();

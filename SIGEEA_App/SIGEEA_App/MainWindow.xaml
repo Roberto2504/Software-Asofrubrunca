@@ -8,9 +8,9 @@
          xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Pantalla principal" Width="1353.901" Height="758.865"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" WindowState="Maximized" Icon="Icono FUNDER.ico" >
-    <Grid Margin="0,0,-8,-2" Background="#FF808E9C">
+    <Grid Margin="0,0,-8,-2" Background="#FF366126">
         <Image x:Name="image" HorizontalAlignment="Left" Height="121" VerticalAlignment="Top" Width="229" Source="Imagenes/Costa_Fresh.png"/>
-        <Button x:Name="btnSalir" Margin="10,683,1271,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnSalir_Click">
+        <Button x:Name="btnSalir" Margin="10,664,1258,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnSalir_Click">
             <Rectangle Width="40" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -28,7 +28,7 @@
             </Rectangle>
         </Button>
 
-        <WrapPanel HorizontalAlignment="Left" Name="wrpPrincipal" Height="65" Margin="10,102,0,0" VerticalAlignment="Top" Width="1334">
+        <WrapPanel HorizontalAlignment="Left" Name="wrpPrincipal" Height="65" Margin="10,110,0,0" VerticalAlignment="Top" Width="1334">
 
         </WrapPanel>
 

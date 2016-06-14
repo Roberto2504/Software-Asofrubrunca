@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Clientes"
                          xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Metodo Busqueda Factura" Height="300" Width="369.549">
+        Title="Metodo Busqueda Factura" Height="300" Width="369.549" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged"  FontWeight="Bold" FontSize="14.667"/>
@@ -24,7 +24,7 @@
             <TextBlock x:Name="lbNumero" Visibility="Hidden" HorizontalAlignment="Left" Margin="29,28,0,0" TextWrapping="Wrap" Text="Digite el número de factura: " IsEnabled="False" VerticalAlignment="Top"/>
             <TextBlock x:Name="txtNumeroFactura" Visibility="Hidden" HorizontalAlignment="Left" Margin="29,49,0,0" TextWrapping="Wrap" Text=" " IsEnabled="True" VerticalAlignment="Top" Width="192" Height="28"/>
         </Grid>
-        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click" Margin="0,212,284,0"  >
+        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click" Margin="0,212,293,0"  >
             <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"

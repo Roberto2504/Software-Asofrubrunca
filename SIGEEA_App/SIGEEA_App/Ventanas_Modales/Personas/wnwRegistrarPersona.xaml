@@ -72,7 +72,7 @@
                 <ComboBox x:Name="cmbTipCliente" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="215" FontWeight="Bold" FontSize="18.667" Text="" SelectionChanged="cmbTipCliente_SelectionChanged"/>
 
                 <Label x:Name="label2" Content="Credito Máximo" HorizontalAlignment="Left" Margin="305,45,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
-                <TextBox x:Name="txbCreMaximo" HorizontalAlignment="Left" Height="23" Margin="305,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
+                <TextBox x:Name="txbCreMaximo" HorizontalAlignment="Left" Height="23" Margin="305,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold"/>
                 <Label x:Name="label3" Content="Rango entre pagos (Días)" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
 
                 <Label x:Name="label3_Copy" Content="Tiempo máximo para pagar (Dias)" HorizontalAlignment="Left" Margin="305,140,0,0" VerticalAlignment="Top" FontSize="18.667" FontWeight="Bold"/>
@@ -86,8 +86,8 @@
                     </Rectangle>
                 </Button>
                 <Label x:Name="lbPkCatCliente" Content="" Visibility="Hidden" HorizontalAlignment="Left" Margin="215,52,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="txbRango" HorizontalAlignment="Left" Height="23" Margin="10,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
-                <TextBox x:Name="txbTiempoMaximo" HorizontalAlignment="Left" Height="23" Margin="305,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" IsEnabled="False"/>
+                <TextBox x:Name="txbRango" HorizontalAlignment="Left" Height="23" Margin="10,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" />
+                <TextBox x:Name="txbTiempoMaximo" HorizontalAlignment="Left" Height="23" Margin="305,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" />
             </Grid>
         </Grid>
     </Border>

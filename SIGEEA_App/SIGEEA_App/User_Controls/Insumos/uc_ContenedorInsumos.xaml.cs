@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SIGEEA_BL;
 using SIGEEA_BO;
-using SIGEEA_App.Ventanas_Modales;
+using SIGEEA_App.Ventanas_Modales.Insumos;
 using SIGEEA_App.User_Controls.Insumos;
 namespace SIGEEA_App.User_Controls.Insumos
 {
@@ -71,16 +71,16 @@ namespace SIGEEA_App.User_Controls.Insumos
                         nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
-                    else if (opcion == "Ver")
+                    else if (opcion == "Pedido")
                     {
-                        nuevo.btnOpcion.Content = "Ver Insumo";
-                        nuevo.btnOpcion2.Content = "Ver Movimientos";
+                        nuevo.btnOpcion.Content = "Hacer pedido";
+                        nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
-                    else if (opcion == "Comprar")
+                    else if (opcion == "Compra")
                     {
                         nuevo.btnOpcion.Content = "Comprar Insumo";
-                        nuevo.btnOpcion2.IsEnabled = false;
+                        nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
                     else if (opcion == "Eliminar o Activar")
@@ -112,7 +112,27 @@ namespace SIGEEA_App.User_Controls.Insumos
 
         private void BtnOpcion_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            var boton = (Button)sender;
+           
+            if (opcion == "Editar")
+            {
+
+                wnwRegistrarInsumo nuevo = new wnwRegistrarInsumo("Editar", Convert.ToInt32(boton.Tag));
+                nuevo.ShowDialog();
+
+            }
+            else if (opcion == "Pedido")
+            {
+                wnwPedidoInsumo pedido = new wnwPedidoInsumo();
+                pedido.ShowDialog();
+
+            }
+            else if (opcion == "Compra")
+            {
+                ;
+
+            }
+            
         }
 
         public void actualiza()

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Fincas"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Buscador Asociados" Height="475" Width="835">
+        Title="Buscador Asociados" Height="475" Width="835" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid x:Name="grdContenedorAsociados">
 

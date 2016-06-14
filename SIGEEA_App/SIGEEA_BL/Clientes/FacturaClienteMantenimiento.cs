@@ -81,10 +81,51 @@ namespace SIGEEA_BL
             }
             dc.SubmitChanges();
         }
+        public void RegitrarAbono(SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+
+            SIGEEA_CreCliente creclient = dc.SIGEEA_CreClientes.First(c => c.PK_Id_CreCliente == pCreCliente.PK_Id_CreCliente);
+            creclient.FecProPago_CreCliente = pCreCliente.FecProPago_CreCliente;
+            creclient.Estado_CreCliente = pCreCliente.Estado_CreCliente;
+            creclient.Saldo_CreCliente = pCreCliente.Saldo_CreCliente;
+            SIGEEA_AboCliente aboClient = new SIGEEA_AboCliente();
+            aboClient.Monto_AboCliente = pAboCliente.Monto_AboCliente;
+            aboClient.Metodo_AboCliente = pAboCliente.Metodo_AboCliente;
+            aboClient.Numero_AboCliente = pAboCliente.Numero_AboCliente;
+            aboClient.Fecha_AboCliente = pAboCliente.Fecha_AboCliente;
+            aboClient.FK_Id_Moneda = pAboCliente.FK_Id_Moneda;
+            aboClient.FK_Id_Empleado = pAboCliente.FK_Id_Empleado;
+            aboClient.Estado_AboCliente = pAboCliente.Estado_AboCliente;
+            aboClient.FK_Id_Cliente = pAboCliente.FK_Id_Cliente;
+            aboClient.FK_Id_FacCliente = pAboCliente.FK_Id_FacCliente;
+            dc.SIGEEA_AboClientes.InsertOnSubmit(aboClient);
+            dc.SubmitChanges();
+        }
         public SIGEEA_spObtenerIdUltimaFacturaResult ObtenerIdUltimaFactura()
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spObtenerIdUltimaFactura().FirstOrDefault();
+        }
+        public List<SIGEEA_spListarFacturaPendienteClienteResult> ListarPendiente()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarFacturaPendienteCliente().ToList();
+        }
+        public List<SIGEEA_spListarFacturaPendientePorClienteResult> ListarPendientePorCliente(int pIdCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarFacturaPendientePorCliente(pIdCliente).ToList();
+        }
+        public List<SIGEEA_spListarFacturaPendientePorFacturaResult> ListarPendientePorFactura(int pIdFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarFacturaPendientePorFactura(pIdFactura).ToList();
+        }
+        public SIGEEA_spListarFacturaPendientePorFacturaResult ObtenerFactura(int pIdFactura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_spListarFacturaPendientePorFactura(pIdFactura).FirstOrDefault();
         }
     }
 }

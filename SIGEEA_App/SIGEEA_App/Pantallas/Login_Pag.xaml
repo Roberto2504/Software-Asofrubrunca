@@ -10,7 +10,7 @@
     <Grid>
         <Label x:Name="lblUsuario" Content="Usuario" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
         <Label x:Name="lblClave" Content="Contraseña" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" FontSize="26.667" FontWeight="Bold"/>
-        <TextBox x:Name="txbUsuario" HorizontalAlignment="Left" Height="38" Margin="216,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontSize="21.333" FontWeight="Bold" Text="luis2802"/>
+        <TextBox x:Name="txbUsuario" HorizontalAlignment="Left" Height="38" Margin="216,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontSize="21.333" FontWeight="Bold" Text=""/>
         <PasswordBox x:Name="psbClave" HorizontalAlignment="Left" Height="38" Margin="216,114,0,0" VerticalAlignment="Top" Width="162" FontWeight="Bold" FontSize="21.333"/>
 
         <Button x:Name="btnIngresar" Width="50" Height="50" Margin="282,173,146,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" IsDefault="True">

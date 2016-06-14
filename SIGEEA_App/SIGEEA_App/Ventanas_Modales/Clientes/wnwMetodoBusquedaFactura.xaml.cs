@@ -50,12 +50,28 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         private void btnFiltrar_Click(object sender, RoutedEventArgs e)
         {
+            if (cmbOpciones.SelectedIndex == 0)//Listar Todas las facturas pendientes
+            {
+                wnwFacturasCliente nueva = new wnwFacturasCliente(Tipo: "Todas", IdCliente: 0, IdFactura: 0);
+                nueva.ShowDialog();
+            }
+            if (cmbOpciones.SelectedIndex == 1)//Listar las facturas pendientes por cliente
+            {
+                wnwBuscadorCliente venPedidoCliente = new wnwBuscadorCliente("Ver");
+                venPedidoCliente.Show();
 
+            }
+            if (cmbOpciones.SelectedIndex == 2)//Listar A partir del número de factura
+            {
+
+                wnwFacturasCliente nueva = new wnwFacturasCliente(Tipo: "Por factura", IdCliente: 0, IdFactura: Convert.ToInt32(txtNumeroFactura.Text));
+                nueva.ShowDialog();
+            }
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }

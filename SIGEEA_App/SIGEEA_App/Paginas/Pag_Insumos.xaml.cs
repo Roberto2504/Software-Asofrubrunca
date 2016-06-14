@@ -34,8 +34,8 @@ namespace SIGEEA_App.Paginas
 
         private void btnAgregarInsumo_Click(object sender, RoutedEventArgs e)
         {
-            Ventanas_Modales.Insumos.wnwRegistrarInsumo ventanaInsumo = new Ventanas_Modales.Insumos.wnwRegistrarInsumo();
-            ventanaInsumo.Show();
+            
+           
         }
 
        

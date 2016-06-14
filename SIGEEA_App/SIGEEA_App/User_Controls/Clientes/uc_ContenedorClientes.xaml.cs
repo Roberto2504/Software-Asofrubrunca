@@ -56,36 +56,36 @@ namespace SIGEEA_App.User_Controls.Clientes
                     uc_Cliente nuevo = new uc_Cliente();
                     nuevo.NombreCompletoCliente = lista.nombreCompleto;
                     nuevo.CedulaCliente = lista.CedParticular_Persona;
-                    nuevo.CatCliente = lista.Nombre_CatCliente;
+                    nuevo.CatCliente = lista.Nombre_TipCatCliente;
                     if (lista.Estado_Cliente == true) { nuevo.EstadoCliente = "ACTIVO"; } else { nuevo.EstadoCliente = "INACTIVO"; }
-                    
+
                     nuevo.btnOpcion.Tag = lista.PK_Id_Cliente;
                     nuevo.btnOpcion2.Tag = lista.PK_Id_Cliente;
-                   
+
                     if (opcion == "Pedido")
                     {
                         nuevo.btnOpcion.Content = "Hacer Pedido";
-                        nuevo.btnOpcion2.Content = "Ver Credito";
-                        
+                        nuevo.btnOpcion2.IsEnabled = false;
+
                     }
                     else if (opcion == "Editar")
                     {
 
                         nuevo.btnOpcion.Content = "Editar";
-                        nuevo.btnOpcion2.Content = "Credito";
-                        
+                        nuevo.btnOpcion2.IsEnabled = false;
+
                     }
                     else if (opcion == "Ver")
                     {
-                        nuevo.btnOpcion.Content = "Ver Cliente";
-                        nuevo.btnOpcion2.Content = "Ver Credito";
-                     
+                        nuevo.btnOpcion.Content = "Ver Facturas";
+                        nuevo.btnOpcion2.IsEnabled = false;
+
                     }
                     else if (opcion == "Abono")
                     {
                         nuevo.btnOpcion.Content = "Hacer Abono";
                         nuevo.btnOpcion2.IsEnabled = false;
-                        
+
                     }
                     else if (opcion == "Eliminar o Activar")
                     {
@@ -97,7 +97,7 @@ namespace SIGEEA_App.User_Controls.Clientes
                     }
                     nuevo.btnOpcion.Click += BtnOpcion_Click;
                     nuevo.btnOpcion2.Click += BtnOpcion2_Click;
-                  
+
                     stpClientes.Children.Add(nuevo);
                 }
             }
@@ -109,7 +109,7 @@ namespace SIGEEA_App.User_Controls.Clientes
 
         }
 
-     
+
 
         private void BtnOpcion2_Click(object sender, RoutedEventArgs e)
         {
@@ -127,12 +127,7 @@ namespace SIGEEA_App.User_Controls.Clientes
                 //nuevo.btnOpcion2.Content = "Credito";
 
             }
-            else if (opcion == "Ver")
-            {
 
-                // nuevo.btnOpcion2.Content = "Ver Credito";
-
-            }
             else if (opcion == "Eliminar o Activar")
             {
 
@@ -141,7 +136,7 @@ namespace SIGEEA_App.User_Controls.Clientes
                 {
                     ClienteMantenimiento mant = new ClienteMantenimiento();
                     mant.ActivarCliente(Convert.ToInt32(boton.Tag));//eliminar
-                   
+
                 }
                 actualiza();
             }
@@ -166,7 +161,8 @@ namespace SIGEEA_App.User_Controls.Clientes
             }
             else if (opcion == "Ver")
             {
-                //nuevo.btnOpcion.Content = "Ver Cliente";
+                wnwFacturasCliente nueva = new wnwFacturasCliente(Tipo: "Por cliente", IdCliente: Convert.ToInt32(boton.Tag), IdFactura: 0);
+                nueva.ShowDialog();
 
             }
             else if (opcion == "Abono")
@@ -179,10 +175,10 @@ namespace SIGEEA_App.User_Controls.Clientes
 
 
                 if (MessageBox.Show("¿Realmente eliminar este Cliente?", "SIGEEA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-                {                    
+                {
                     ClienteMantenimiento mant = new ClienteMantenimiento();
                     mant.EliminarCliente(Convert.ToInt32(boton.Tag));//eliminar
-                   
+
                 }
                 actualiza();
             }

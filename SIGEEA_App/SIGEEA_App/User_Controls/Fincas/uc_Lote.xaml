@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Fincas"
              mc:Ignorable="d" Height="38.19" Width="354.75">
-    <Grid>
+    <Grid Name="grdLote">
         <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="355"/>
-        <TextBlock x:Name="txbTamaño" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="28" Width="166" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="45,10,0,0"/>
+        <TextBlock x:Name="txbTamaño" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="28" Width="152" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="59,10,0,0"/>
         <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="216,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
         <Button x:Name="btnOpcion" Content="Editar" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="221,5,0,0" VerticalAlignment="Top" Width="65"   Background="#FF2E8936" Foreground="White"/>
         <Button x:Name="btnOpcion2" Content="Borrar" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="291,5,0,0" VerticalAlignment="Top" Width="60"  Background="#FF2E8936" Foreground="White"/>
-        <TextBlock x:Name="txbNumero" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="28" Width="35" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="42,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-
+        <TextBlock x:Name="txbCodigo" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="28" Width="48" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="53,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <TextBlock x:Name="txbEstado" Visibility="Hidden" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Height="28" Width="48" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
     </Grid>
 </UserControl>

@@ -72,8 +72,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                     if (validacion.Validar(txb.Text, Convert.ToInt32(txb.Tag)) == false)
                     {
                         valido = false;
-                        //txb.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
-                        txb.BorderBrush = Brushes.Red;
+                        txb.Foreground = (Brush)bc.ConvertFrom("#FFFF0404");
                     }
                 }
                 if (valido == true)
@@ -138,13 +137,17 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbPriApellido.Text = pCliente.PriApellido_Persona;
             txbSegApellido.Text = pCliente.SegApellido_Persona;
             dtpFecNacimiento.Text = pCliente.FecNacimiento_Persona.ToString();
-            ObtenerCategorias(pCliente.PK_Id_CatCliente);
+            listarCategorias();
+            lbPkCatCliente.Content =  pCliente.PK_Id_TipCatCliente;
+            txbCreMaximo.Text = pCliente.Limite_CatCliente.ToString();
+            txbRango.Text = pCliente.RanPagos_CatCliente;
+            txbTiempoMaximo.Text = pCliente.TieMaximo_CatCliente;
             lbPkCatCliente.Content = pCliente.PK_Id_CatCliente;
-            cmbTipCliente.Text = pCliente.Nombre_CatCliente;
+            cmbTipCliente.Text = pCliente.Nombre_TipCatCliente;
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             DataClasses1DataContext dc = new DataClasses1DataContext();
             ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pCliente.FK_Id_Nacionalidad).Nombre_Nacionalidad);
-            ObtenerCategorias(pCliente.PK_Id_CatCliente);
+           
         }
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
         {
@@ -182,6 +185,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 }
                 else if (tipoPersona == "Cliente")
                 {
+                    RegistrarPersona();
                     grdPersona.Visibility = Visibility.Collapsed;
                     grdEmpleado.Visibility = Visibility.Collapsed;
                     grdCliente.Visibility = Visibility.Visible;
@@ -198,7 +202,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         {
             try
             {
-                RegistrarPersona();
+                
                 nuevaPersona.PK_Id_Persona = pk_Persona;
                 SIGEEA_Escolaridad nuevaEscolaridad = new SIGEEA_Escolaridad();
                 nuevaEscolaridad.Leer_Escolaridad = chkLeer.IsChecked.GetValueOrDefault();
@@ -231,19 +235,30 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             try
             {
                 RegistrarPersona();
-                nuevaPersona.PK_Id_Persona = pk_Persona;
+                
 
                 ClienteMantenimiento clienteMant = new ClienteMantenimiento();
 
                 if (editar == false)
                 {
                     SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-                    clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content));
+                    SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
+                    nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
+                    nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
+                    nuevaCat.RanPagos_CatCliente = txbRango.Text;
+                    nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
+                    clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, clienteMant.RegistrarCategoria(nuevaCat));
                 }
                 else
                 {
+                    
+                    SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
+                    nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
+                    nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
+                    nuevaCat.RanPagos_CatCliente = txbRango.Text;
+                    nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
                     SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-                    clienteMant.ModificarCliente(nuevoCliente, Convert.ToInt32(lbPkCatCliente.Content), nuevaPersona);
+                    clienteMant.ModificarCliente(nuevoCliente, mantCliente.EditarCategoria(nuevaCat), nuevaPersona);
                 }
 
                 MessageBox.Show("La solicitud realizada se finalizó con éxito.");
@@ -259,20 +274,13 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             cmbTipCliente.ItemsSource = mantCliente.ListarCategorias();
 
         }
-        public void ObtenerCategorias(int pkCat)
-        {
-            ClienteMantenimiento mantCliente = new ClienteMantenimiento();
-            SIGEEA_spObtenerCategoriaResult cat = mantCliente.ObtenerCategorias(pkCat);
-            lbPkCatCliente.Content = cat.PK_Id_CatCliente.ToString();
-            txbCreMaximo.Text = cat.Limite_CatCliente.ToString();
-            txbRango.Text = cat.RanPagos_CatCliente;
-            txbTiempoMaximo.Text = cat.TieMaximo_CatCliente;
-        }
+       
 
         private void cmbTipCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            ObtenerCategorias(mantCliente.ObtenerPkCategoria(Convert.ToString(this.cmbTipCliente.SelectedItem)));
+            ClienteMantenimiento mantCliente = new ClienteMantenimiento();
+            lbPkCatCliente.Content = mantCliente.ObtenerPkTipCategoria(Convert.ToString(this.cmbTipCliente.SelectedItem));
         }
     }
 }

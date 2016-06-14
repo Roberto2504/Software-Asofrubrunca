@@ -29,9 +29,10 @@ namespace SIGEEA_App.Ventanas_Modales.Fincas
             tipo = ptipo;
             txtTipo.Text = ptipo;
 
-            if (tipo == "Agregar")
+            if (tipo == "Registrar")
             {
                 txtTamaño.Text = "";
+                numLote = pNumLote;
             }
             else
             {
@@ -50,16 +51,16 @@ namespace SIGEEA_App.Ventanas_Modales.Fincas
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            if (tipo == "Agregar")
+            if (tipo == "Registrar")
             {
                 tamaño = txtTamaño.Text;
-                ((wnwRegistrarFinca)this.Owner).agregarLote(tamaño);
+                ((wnwRegistrarFinca)this.Owner).agregarLote(tamaño, Lote:null);
                 this.Close();
             }
             else
             {
                 tamaño = txtTamaño.Text;
-                ((wnwRegistrarFinca)this.Owner).EditatLote(numLote, tamaño);
+                ((wnwRegistrarFinca)this.Owner).EditarLote(numLote, tamaño);
                 this.Close();
             }
 

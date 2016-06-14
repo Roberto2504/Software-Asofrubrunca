@@ -25,26 +25,59 @@ namespace SIGEEA_App.Ventanas_Modales.Insumos
     {
         UnidadMedidaMantenimiento MantUnidades = new UnidadMedidaMantenimiento();
         InsumoMantenimiento MantInsumo = new InsumoMantenimiento();
-        public wnwRegistrarInsumo()
+        public wnwRegistrarInsumo(string ptipo, int ppkInsumo)
         {
             InitializeComponent();
+            tipo = ptipo;
+            pkInsumo = ppkInsumo;
             cbxUnidadesDeMedida.ItemsSource = MantUnidades.listarUnidades();
+            if(tipo == "Editar")
+            {
+                cargarInfo();
+            }
         }
-
+        string tipo;
+        int pkInsumo;
+        public void cargarInfo()
+        {
+            SIGEEA_spObtenerInsumoResult insumo = MantInsumo.ObtenerInsumo(pkInsumo);
+            cbxUnidadesDeMedida.Text = insumo.Nombre_UniMedida;
+            txtCantidad.Text = insumo.Cantidad_InvInsumo.ToString();
+            txtNombre.Text = insumo.Nombre_Insumo;
+            txtDescripcion.Text = insumo.Descripcion_Insumo;
+        }
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             try
                 {
-                SIGEEA_Insumo nuevoInsumo = new SIGEEA_Insumo();
-                nuevoInsumo.Nombre_Insumo = txtNombre.Text;
-                nuevoInsumo.Descripcion_Insumo = txtDescripcion.Text;
-                nuevoInsumo.Estado_Insumo = true;
-                MantInsumo.RegistrarInsumo(nuevoInsumo,cbxUnidadesDeMedida.Text,txtCantidad.Text);
+                if (tipo == "Editar")
+                {
+                    SIGEEA_Insumo nuevoInsumo = new SIGEEA_Insumo();
+                    nuevoInsumo.Nombre_Insumo = txtNombre.Text;
+                    nuevoInsumo.Descripcion_Insumo = txtDescripcion.Text;
+                    nuevoInsumo.Estado_Insumo = true;
+                    nuevoInsumo.PK_Id_Insumo = pkInsumo;
+                    SIGEEA_InvInsumo inv = new SIGEEA_InvInsumo();
+                    inv.Cantidad_InvInsumo = Convert.ToDouble(txtCantidad.Text);
+                    MantInsumo.ModificarInsumo(nuevoInsumo,  inv, cbxUnidadesDeMedida.Text);
+                    MessageBox.Show("Editado correctamente");
+
+                }
+                else
+                {
+                    SIGEEA_Insumo nuevoInsumo = new SIGEEA_Insumo();
+                    nuevoInsumo.Nombre_Insumo = txtNombre.Text;
+                    nuevoInsumo.Descripcion_Insumo = txtDescripcion.Text;
+                    nuevoInsumo.Estado_Insumo = true;
+                    MantInsumo.RegistrarInsumo(nuevoInsumo, cbxUnidadesDeMedida.Text, txtCantidad.Text);
+                    MessageBox.Show("Registrado correctamente");
+                }
+                this.Close();
 
                     }
             catch
             {
-                MessageBox.Show("Que madre no Registro");
+                MessageBox.Show("Error al registrar");
             }
             
         }

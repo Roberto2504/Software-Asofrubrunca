@@ -20,16 +20,15 @@
             <TextBlock x:Name="txtNumero0" HorizontalAlignment="Left" Margin="22,61,0,0" TextWrapping="Wrap" Text="Numero:" VerticalAlignment="Top" Width="120"/>
             <TextBox x:Name="txtNumero" HorizontalAlignment="Left" Height="23" Margin="22,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274"/>
         </Grid>
-        <Grid x:Name="grdAbono" HorizontalAlignment="Left" Height="156" Margin="10,241,0,0" VerticalAlignment="Top" Width="372" Visibility="Hidden">
+        <Grid x:Name="grdAbono" HorizontalAlignment="Left" Height="123" Margin="12,219,0,0" VerticalAlignment="Top" Width="372" Visibility="Hidden">
 
-            <TextBlock x:Name="textBlock13" IsEnabled="False" HorizontalAlignment="Left" Margin="2,36,0,0" TextWrapping="Wrap" Text="Fecha Próximo Pago" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="textBlock13" IsEnabled="False" HorizontalAlignment="Left" Margin="2,36,0,0" TextWrapping="Wrap" Text="Fecha Próximo Pago" VerticalAlignment="Top" Width="120" Height="26"/>
             <TextBox x:Name="txtFechaProximoPago" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="122,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-            <TextBlock x:Name="textBlock13_Copy" IsEnabled="False" HorizontalAlignment="Left" Margin="2,9,0,0" TextWrapping="Wrap" Text="Fecha Limite de Pago" VerticalAlignment="Top" Width="120"/>
+            <TextBlock x:Name="textBlock13_Copy" IsEnabled="False" HorizontalAlignment="Left" Margin="2,9,0,0" TextWrapping="Wrap" Text="Fecha Limite de Pago" VerticalAlignment="Top" Width="120" Height="26"/>
             <TextBox x:Name="txtFechaLimitePago" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="122,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-            <TextBlock x:Name="textBlock13_Copy1" IsEnabled="False" HorizontalAlignment="Left" Margin="0,80,0,0" TextWrapping="Wrap" Text="Mónto a cancelar" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtMontoaCancelar" IsEnabled="False"  HorizontalAlignment="Left" Height="22" Margin="120,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
-            <TextBlock x:Name="lbAbono" HorizontalAlignment="Left" Margin="2,123,0,0" TextWrapping="Wrap" Text="Monto a Abonar" VerticalAlignment="Top" Width="93"/>
-            <TextBox x:Name="txtMontoAbono" Height="23" Margin="122,123,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+            <TextBlock x:Name="textBlock13_Copy1" IsEnabled="False" HorizontalAlignment="Left" Margin="2,70,0,0" TextWrapping="Wrap" Text="Mónto a cancelar" VerticalAlignment="Top" Width="107" Height="26"/>
+            <TextBox x:Name="txtMontoaCancelar" IsEnabled="False"  HorizontalAlignment="Left" Height="22" Margin="122,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"/>
+
 
         </Grid>
         <Button x:Name="btnPagar" Margin="334,402,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">

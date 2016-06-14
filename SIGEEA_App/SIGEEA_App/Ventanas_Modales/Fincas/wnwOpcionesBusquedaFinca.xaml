@@ -1,0 +1,27 @@
+﻿<Window xmlns:Custom_Controls="clr-namespace:SIGEEA_App.Custom_Controls"  x:Class="SIGEEA_App.Ventanas_Modales.Fincas.wnwOpcionesBusquedaFinca"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Fincas"
+        mc:Ignorable="d"
+        Title="Opciones para buscar finca" Height="314.662" Width="357.519" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,2,0">
+       
+
+
+
+        <Button x:Name="btnOpcion" Content="Código o nombre del dueño" HorizontalAlignment="Left" Click="btnOpcion_Click" Visibility="Visible" Height="42" Margin="39,46,0,0" VerticalAlignment="Top" Width="272"   Background="#FF2E8936" Foreground="White" FontSize="16"/>
+        <Button x:Name="btnOpcion2" Content="Asociado" HorizontalAlignment="Left" Visibility="Visible" Click="btnOpcion2_Click" Height="42" Margin="39,125,0,0" VerticalAlignment="Top" Width="272"   Background="#FF2E8936" Foreground="White" FontSize="16"/>
+        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click"  Margin="0,215,282,0"  >
+            <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_close}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="348"/>
+    </Grid>
+
+</Window>

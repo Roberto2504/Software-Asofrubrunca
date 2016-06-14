@@ -25,7 +25,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
     /// <summary>
     /// Interaction logic for wnwRealizarPedidoCliente.xaml
     /// </summary>
-    public partial class wnwRealizarPedidoCliente : MetroWindow
+    public partial class wnwRealizarPedidoCliente : Window
     {
         public wnwRealizarPedidoCliente(int pPk_Id_Cliente)
         {
@@ -62,10 +62,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         Double totalCredito;
         List<string> listaTipoPedido = new List<string>();
         List<string> listaTipoFactura = new List<string>();
-        private void txbBuscarProducto_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CargarProductos(txbBuscarProducto.Text);
-        }
+        
         public void CargarProductos(string nombre)
         {
             try
@@ -332,7 +329,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         private void cmbMoneda_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             nomMoneda = this.cmbMoneda.SelectedItem.ToString();
-            txbCantitadTotal.Text = "TOTAL(" + this.cmbMoneda.SelectedItem + ")=";
+
             if (conta != 0)
             {
                 CalcularPrecioTotal();
@@ -348,6 +345,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 Total = Total + Convert.ToDouble(Producto.preNetProducto);
             }
+            
             if (Total != 0)
             {
                 if (cmbVenta.SelectedItem.ToString() == "NACIONAL")
@@ -371,24 +369,25 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
                 }
             }
+
             if (nomMoneda == "Colón")
             {
-                txbCanTotBruto.Text = Math.Round(Total, 3).ToString();
-                txbSigno.Text = "¢";
-                txbSigno1.Text = "¢";
+                txbCanTotBruto.Text = "¢" + Math.Round(Total, 3).ToString();
+                string conTotBruto = txbCanTotBruto.Text;
+                
                 if (txbCanTotBruto.Text != "")
                 {
-                    txbCanTotNeto.Text = (Math.Round(((Convert.ToDouble(txbCanTotBruto.Text)) - (((Convert.ToDouble(txbCanTotBruto.Text)) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
+                    txbCanTotNeto.Text = "¢" + (Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
                 }
             }
             else if (nomMoneda == "Dolar")
             {
-                txbCanTotBruto.Text = String.Concat("$", Math.Round(Total, 3).ToString());
-                txbSigno.Text = "$";
-                txbSigno1.Text = "$";
+                txbCanTotBruto.Text = "$" + Math.Round(Total, 3).ToString();
+                string conTotBruto = txbCanTotBruto.Text;
+               
                 if (txbCanTotBruto.Text != "")
                 {
-                    txbCanTotNeto.Text = (Math.Round(((Convert.ToDouble(txbCanTotBruto.Text)) - (((Convert.ToDouble(txbCanTotBruto.Text)) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
+                    txbCanTotNeto.Text = "$"+(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0,1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
                 }
             }
             CalculaCredito();
@@ -492,7 +491,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         {
             if (txbCanTotBruto.Text != "")
             {
-                txbCanTotNeto.Text = (Math.Round(((Convert.ToDouble(txbCanTotBruto.Text)) - (((Convert.ToDouble(txbCanTotBruto.Text)) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
+                string conTotBruto = txbCanTotBruto.Text;
+                txbCanTotNeto.Text = string.Concat(txbCanTotBruto.Text[0],(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString());
                 CalculaCredito();
             }
         }
@@ -511,6 +511,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
                 {
+                    string CanTotNeto = txbCanTotNeto.Text;
                     MonedaMantenimiento monMant = new MonedaMantenimiento();
                     List<SIGEEA_spListarCreditoClienteResult> listadeCredito = new List<SIGEEA_spListarCreditoClienteResult>();
                     listadeCredito = clientMant.ListarCreditosCliente(idCliente);
@@ -521,10 +522,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     }
                     if (nomMoneda == "Colón")
                     {
-                        totalCredito += Convert.ToDouble(txbCanTotNeto.Text);
+                        totalCredito += Convert.ToDouble(CanTotNeto.Remove(0, 1));
                         if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
                         {
-                            totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                            totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0,1));
                             totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                             MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
                         }
@@ -532,7 +533,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                         {
                             if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
                             {
-                                totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                                totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1));
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                                 txbCredito.Text = "¢" + totalCredito;
@@ -542,10 +543,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     }
                     else if (nomMoneda == "Dolar")
                     {
-                        totalCredito += Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
+                        totalCredito += Convert.ToDouble(CanTotNeto.Remove(0, 1)) * monMant.PrecioVenta("Dolar");
                         if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
                         {
-                            totalCredito -= Convert.ToDouble(txbCanTotNeto.Text) * monMant.PrecioVenta("Dolar");
+                            totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1)) * monMant.PrecioVenta("Dolar");
                             totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                             totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
                             MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
@@ -556,7 +557,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                             {
                                 grdCredito.Visibility = Visibility.Visible;
 
-                                totalCredito -= Convert.ToDouble(txbCanTotNeto.Text);
+                                totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1));
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                                 totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
@@ -572,6 +573,16 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
 
 
+        }
+
+        private void txbBuscarProducto_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CargarProductos(txbBuscarProducto.Text);
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

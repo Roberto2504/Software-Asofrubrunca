@@ -128,8 +128,14 @@
     <Compile Include="User_Controls\Clientes\uc_ContenedorClientes.xaml.cs">
       <DependentUpon>uc_ContenedorClientes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Clientes\uc_ContenedorFacturas.xaml.cs">
+      <DependentUpon>uc_ContenedorFacturas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\Clientes\uc_DetProducto.xaml.cs">
       <DependentUpon>uc_DetProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Clientes\uc_Factura.xaml.cs">
+      <DependentUpon>uc_Factura.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Clientes\uc_Producto.xaml.cs">
       <DependentUpon>uc_Producto.xaml</DependentUpon>
@@ -139,6 +145,12 @@
     </Compile>
     <Compile Include="User_Controls\Fincas\uc_ContenedorAsociados.xaml.cs">
       <DependentUpon>uc_ContenedorAsociados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Fincas\uc_ContenedorFincas.xaml.cs">
+      <DependentUpon>uc_ContenedorFincas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Fincas\uc_Finca.xaml.cs">
+      <DependentUpon>uc_Finca.xaml</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Fincas\uc_Lote.xaml.cs">
       <DependentUpon>uc_Lote.xaml</DependentUpon>
@@ -233,6 +245,9 @@
     <Compile Include="Ventanas_Modales\Asociados\wnwVistaFamiliares.xaml.cs">
       <DependentUpon>wnwVistaFamiliares.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwAbonoFactura.xaml.cs">
+      <DependentUpon>wnwAbonoFactura.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwBuscadorCliente.xaml.cs">
       <DependentUpon>wnwBuscadorCliente.xaml</DependentUpon>
     </Compile>
@@ -244,6 +259,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwDatosFacturaCliente.xaml.cs">
       <DependentUpon>wnwDatosFacturaCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwFacturasCliente.xaml.cs">
+      <DependentUpon>wnwFacturasCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaFactura.xaml.cs">
       <DependentUpon>wnwMetodoBusquedaFactura.xaml</DependentUpon>
@@ -275,6 +293,12 @@
     <Compile Include="Ventanas_Modales\Fincas\wnwBuscadorAsociados.xaml.cs">
       <DependentUpon>wnwBuscadorAsociados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Fincas\wnwBuscadorFincas.xaml.cs">
+      <DependentUpon>wnwBuscadorFincas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Fincas\wnwOpcionesBusquedaFinca.xaml.cs">
+      <DependentUpon>wnwOpcionesBusquedaFinca.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Fincas\wnwRegistrarFinca.xaml.cs">
       <DependentUpon>wnwRegistrarFinca.xaml</DependentUpon>
     </Compile>
@@ -283,6 +307,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml.cs">
       <DependentUpon>wnwBuscadorInsumo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Insumos\wnwPedidoInsumo.xaml.cs">
+      <DependentUpon>wnwPedidoInsumo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Insumos\wnwRegistrarInsumo.xaml.cs">
       <DependentUpon>wnwRegistrarInsumo.xaml</DependentUpon>
@@ -402,7 +429,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\Clientes\uc_ContenedorFacturas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Controls\Clientes\uc_DetProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Clientes\uc_Factura.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -415,6 +450,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Controls\Fincas\uc_ContenedorAsociados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Fincas\uc_ContenedorFincas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Fincas\uc_Finca.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -542,6 +585,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwAbonoFactura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Clientes\wnwBuscadorCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -555,6 +602,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Clientes\wnwDatosFacturaCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwFacturasCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -598,6 +649,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Fincas\wnwBuscadorFincas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Fincas\wnwOpcionesBusquedaFinca.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Fincas\wnwRegistrarFinca.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -607,6 +666,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Insumos\wnwPedidoInsumo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

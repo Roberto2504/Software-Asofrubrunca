@@ -33,6 +33,37 @@ namespace SIGEEA_BL
             dc.SubmitChanges();
         }
         /// <summary>
+        /// Registrar categoria
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <param name="cliente"></param>
+        /// <param name="creCliente"></param>
+        public int RegistrarCategoria(SIGEEA_CatCliente catCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_CatClientes.InsertOnSubmit(catCliente);
+            dc.SubmitChanges();
+            return catCliente.PK_Id_CatCliente;
+        }
+        /// <summary>
+        /// Editar categoria
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <param name="cliente"></param>
+        /// <param name="creCliente"></param>
+        public int EditarCategoria(SIGEEA_CatCliente catCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_CatCliente Editar = dc.SIGEEA_CatClientes.First(c => c.PK_Id_CatCliente == catCliente.PK_Id_CatCliente);
+            Editar.Limite_CatCliente = catCliente.Limite_CatCliente;
+            Editar.RanPagos_CatCliente = catCliente.RanPagos_CatCliente;
+            Editar.TieMaximo_CatCliente = catCliente.TieMaximo_CatCliente;
+            Editar.FK_Id_TipCatCliente = catCliente.FK_Id_TipCatCliente;
+            dc.SIGEEA_CatClientes.InsertOnSubmit(Editar);
+            dc.SubmitChanges();
+            return Editar.PK_Id_CatCliente;
+        }
+        /// <summary>
         /// Eliminar un cliente, solo cambia de estado
         /// </summary>
         /// <param name="cliente"></param>
@@ -115,7 +146,7 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<string> Categorias = new List<string>();
-            Categorias = (from c in dc.SIGEEA_CatClientes select c.Nombre_CatCliente).ToList();
+            Categorias = (from c in dc.SIGEEA_TipCatClientes select c.Nombre_TipCatCliente).ToList();
             return Categorias;
         }
         /// <summary>
@@ -123,12 +154,31 @@ namespace SIGEEA_BL
         /// </summary>
         /// <param name="Nombre"></param>
 
-        public int ObtenerPkCategoria(string nombre)
+        public SIGEEA_CatAsociado ObtenerCategoria(int pkCat)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            return dc.SIGEEA_CatClientes.First(c => c.Nombre_CatCliente == nombre).PK_Id_CatCliente;
+            return (from c in dc.SIGEEA_CatAsociados where pkCat == c.PK_Id_CatAsociado select c).FirstOrDefault(); ;
         }
+        /// <summary>
+        /// Listar Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
 
+        public string ObtenerTipCategoria(int pkIdCatCliente)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_TipCatClientes.First(c => c.PK_Id_TipCatCliente == pkIdCatCliente).Nombre_TipCatCliente;
+        }
+        /// <summary>
+        /// Listar Categorias
+        /// </summary>
+        /// <param name="Nombre"></param>
+
+        public int ObtenerPkTipCategoria(string nombre)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_TipCatClientes.First(c => c.Nombre_TipCatCliente == nombre).PK_Id_TipCatCliente;
+        }
         /// <summary>
         /// Restar Inventario
         /// </summary>

@@ -7,26 +7,37 @@
         
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Registrar Finca" Height="458.647" Width="668.797" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Registrar Finca" Height="506.647" Width="824.797" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="0,0,4,0">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="256*"/>
             <ColumnDefinition Width="403*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Tipo: " VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtTipo" HorizontalAlignment="Left" Margin="44,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtTipoDeFinca" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" Text="Tipo de Finca:" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbTiposDeFinca" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbTiposDeFinca_SelectionChanged"/>
-        <Grid x:Name="grdDatosDueño" IsEnabled="False" Grid.ColumnSpan="2" Margin="0,0,364,0">
-            <TextBlock x:Name="txtNombre" HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" Text="Nombre completo del dueño registral:" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtNombreComplet" HorizontalAlignment="Left" Height="23" Margin="10,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272" Grid.ColumnSpan="2"/>
-            <TextBlock x:Name="txtApellido" HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" Text="Apellido completo del dueño registral:" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtApellidos" HorizontalAlignment="Left" Height="23" Margin="10,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"><Run Text="Tipo"/><Run Text=" de proceso"/><Run Text=": "/></TextBlock>
+        <TextBlock x:Name="txtTipo" HorizontalAlignment="Left" Margin="101,10,0,0" TextWrapping="Wrap" Text="" IsEnabled="False" VerticalAlignment="Top" Width="73" Grid.Column="1"/>
+        <TextBlock x:Name="txtTipoDeFinca" HorizontalAlignment="Left" Margin="10,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"><Run Text="Estado con respecto al asociado"/><Run Text=":"/></TextBlock>
+        <ComboBox x:Name="cmbTiposDeFinca" HorizontalAlignment="Left" Margin="187,49,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbTiposDeFinca_SelectionChanged"/>
+        <Grid x:Name="grdDatosDueño" IsEnabled="False" Grid.ColumnSpan="2" Margin="0,102,369,237">
+            <Label x:Name="txtNombre" HorizontalAlignment="Left" Margin="10,-92,0,0" VerticalAlignment="Top" Content="Datos de la Finca" FontWeight="Bold" FontSize="18.667" Background="White" Foreground="Black"/>
+            <TextBox x:Name="txtPriNombre" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+            <TextBox x:Name="txtSegNombre" HorizontalAlignment="Left" Height="23" Margin="228,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+            <Label x:Name="lbPriApellido" HorizontalAlignment="Left" Margin="10,69,0,0" Content="Primer apellido" VerticalAlignment="Top" Foreground="Black"/>
+            <TextBox x:Name="txtPriApellido" HorizontalAlignment="Left" Height="23" Margin="10,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+            <Label x:Name="lbPriNombre" HorizontalAlignment="Left" Margin="10,17,0,0" Content="Primer nombre:" VerticalAlignment="Top" Foreground="Black"/>
+            <Label x:Name="lbSegNombre" HorizontalAlignment="Left" Margin="228,17,0,0"  Content="Segundo nombre:" VerticalAlignment="Top" Foreground="Black"/>
 
+            <Label x:Name="lbSegApellido" HorizontalAlignment="Left" Margin="228,69,0,0" Content="Segundo apellido" VerticalAlignment="Top" Foreground="Black"/>
+            <TextBox x:Name="txtSegApellido" HorizontalAlignment="Left" Height="23" Margin="228,90,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+            <Label x:Name="lbCodigo" HorizontalAlignment="Left" Margin="173,306,0,-202" VerticalAlignment="Top" Content="Código de la finca:" FontWeight="Bold" FontSize="18.667" Background="White" Foreground="Black"/>
+            <Label x:Name="lbCodGenerado" HorizontalAlignment="Left" Margin="346,306,-73,-202" VerticalAlignment="Top" Content="" FontWeight="Bold" FontSize="18.667" Background="{x:Null}" Foreground="Black"/>
         </Grid>
-        <TextBlock x:Name="txtNumeroRe" HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="Número de registro:" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNumeroRegistro" HorizontalAlignment="Left" Height="23" Margin="10,203,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnRegistrar" Margin="321,349,10,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click" Grid.Column="1">
+        <Label x:Name="lbTamFinca" HorizontalAlignment="Left" Margin="10,269,0,0" Content="Tamaño de finca en metros cuadrados:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTamFinca" HorizontalAlignment="Left" Height="23" Margin="10,290,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272" RenderTransformOrigin="0.507,0.962"/>
+
+        <TextBlock x:Name="txtNumeroRe" HorizontalAlignment="Left" Margin="10,321,0,0" TextWrapping="Wrap" Text="Número de registro:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNumeroRegistro" HorizontalAlignment="Left" Height="23" Margin="10,342,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="btnRegistrar" Margin="417,414,10,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click" Grid.Column="1">
             <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -34,7 +45,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button x:Name="btnCancelar" Margin="29,349,154,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
+        <Button x:Name="btnCancelar" Margin="29,414,237,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
             <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -42,12 +53,12 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Grid Margin="44,10,10,59" Grid.Column="1">
+        <Grid Margin="134,10,10,134" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="163*"/>
                 <RowDefinition Height="164*"/>
             </Grid.RowDefinitions>
-            <DataGrid Margin="-6,27,-1,130" RenderTransformOrigin="0.5,0.5">
+            <DataGrid Margin="-41,27,185,115" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Width="210">
                 <DataGrid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -57,7 +68,7 @@
                     </TransformGroup>
                 </DataGrid.RenderTransform>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Número" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Cod Lote" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                     <DataGridTextColumn Header="Tamaño" Width="88" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
@@ -66,7 +77,7 @@
                     <StackPanel x:Name="stpLotes"  HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="354" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                 </ScrollViewer>
             </Border>
-            <Button x:Name="btnAgregar" Margin="298,2,1,129" Click="btnAgregar_Click"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
+            <Button x:Name="btnAgregar" Margin="306,2,1,117" Click="btnAgregar_Click"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -82,8 +93,11 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Label x:Name="lbAgregar" Content="Agregar Lote" HorizontalAlignment="Left" Margin="224,19,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lbAgregar" Content="Agregar Lote" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top"/>
         </Grid>
+        <TextBlock x:Name="txtTipoDeFinca_Copy" HorizontalAlignment="Left" Margin="10,84,0,0" TextWrapping="Wrap" Text="Datos del dueño registral:" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"/>
+        <TextBlock x:Name="txtTipoDeFinca_Copy1" HorizontalAlignment="Left" Margin="10,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="13.333"><Run Text="Datos de"/><Run Text=" la finca"/><Run Text=":"/></TextBlock>
+        <Border BorderBrush="Black" BorderThickness="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="478" VerticalAlignment="Top" Width="815"/>
     </Grid>
 
 </Controls:MetroWindow>

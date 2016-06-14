@@ -20,16 +20,11 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             finca.FK_Id_Asociado = asociado.PK_Id_Asociado;
-            finca.Codigo_Finca = "hi";
+            finca.FecRegistro_Finca = DateTime.Now;
+            finca.FK_Id_Direccion = null;
             dc.SIGEEA_Fincas.InsertOnSubmit(finca);
-
             dc.SubmitChanges();
-
-            SIGEEA_Finca modFinca = dc.SIGEEA_Fincas.First(c => c.PK_Id_Finca == finca.PK_Id_Finca);
-            SIGEEA_Persona persona = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == asociado.FK_Id_Persona);
-            modFinca.Codigo_Finca = "F" + finca.PK_Id_Finca + persona.PriNombre_Persona[0] + persona.PriApellido_Persona[0] + persona.SegApellido_Persona[0];
-            dc.SubmitChanges();
-            return modFinca.PK_Id_Finca;
+            return finca.PK_Id_Finca;
         }
         /// <summary>
         /// Modificar Finca
@@ -41,9 +36,12 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_Finca editarFinca = dc.SIGEEA_Fincas.First(c => c.PK_Id_Finca == finca.PK_Id_Finca);
-            editarFinca.NomDuenno_Finca = finca.NomDuenno_Finca;
-            editarFinca.ApeDuenno_Finca = finca.ApeDuenno_Finca;
+            editarFinca.PriNomDuenno_Finca = finca.PriNomDuenno_Finca;
+            editarFinca.SegNomDuenno_Finca = finca.SegNomDuenno_Finca;
+            editarFinca.PriApeDuenno_Finca = finca.PriApeDuenno_Finca;
+            editarFinca.SegApeDuenno_Finca = finca.SegApeDuenno_Finca;
             editarFinca.Codigo_Finca = finca.Codigo_Finca;
+            editarFinca.Alquilada_Finca = finca.Alquilada_Finca;
             editarFinca.FK_Id_Direccion = finca.FK_Id_Direccion;
             editarFinca.FK_Id_Asociado = finca.FK_Id_Asociado;
             dc.SubmitChanges();
@@ -79,8 +77,34 @@ namespace SIGEEA_BL
         public void EditarLote(SIGEEA_Lote lote)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_Lote editarLote = dc.SIGEEA_Lotes.First(c => c.PK_Id_Lote == lote.PK_Id_Lote);
+            SIGEEA_Lote editarLote = dc.SIGEEA_Lotes.FirstOrDefault(c => c.PK_Id_Lote == lote.PK_Id_Lote);
             editarLote.Tamanno_Lote = lote.Tamanno_Lote;
+            editarLote.Estado_Lote = lote.Estado_Lote;
+            dc.SubmitChanges();
+        }
+        /// <summary>
+        /// Existe Lote
+        /// </summary>
+        /// <param name="lote"></param>
+        public bool ExisteLote(int pklote)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Lote Lote = dc.SIGEEA_Lotes.FirstOrDefault(c => c.PK_Id_Lote == pklote);
+            if (Lote != null) return true; else return false;
+           
+        }
+        /// <summary>
+        /// Eliminar finca, solo le cambia el estado
+        /// </summary>
+        /// <param name="pidFinca"></param>
+        public void CambiarEstadoFinca(int pidFinca)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Finca editarFinca = dc.SIGEEA_Fincas.FirstOrDefault(c => c.PK_Id_Finca == pidFinca);
+            if(editarFinca.Estado_Finca == "1")
+            {
+                editarFinca.Estado_Finca = "0";
+            }else editarFinca.Estado_Finca = "1";
             dc.SubmitChanges();
         }
         /// <summary>
@@ -101,7 +125,6 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_spObtenerDireccionFincaResult direccion = new SIGEEA_spObtenerDireccionFincaResult();
-
             if (pkId != null)
             {
                 direccion = dc.SIGEEA_spObtenerDireccionFinca(Convert.ToInt32(pkId)).FirstOrDefault();
@@ -119,7 +142,6 @@ namespace SIGEEA_BL
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_Finca finca = dc.SIGEEA_Fincas.FirstOrDefault(c => c.FK_Id_Asociado == pkId);
-
             if (finca != null)
             {
                 return true;
@@ -165,11 +187,40 @@ namespace SIGEEA_BL
 
             dc.SubmitChanges();
         }
-        public SIGEEA_Finca ObtenerInfoFinca(SIGEEA_Asociado asociado)
+        public List<SIGEEA_spListarFincasResult> ListarInfoFinca(int pPkAsociado, string pCodigo, string pNombre)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_Finca finca = dc.SIGEEA_Fincas.First(c => c.FK_Id_Asociado == asociado.PK_Id_Asociado);
-            return finca;
+            if(pPkAsociado == 0)
+            {
+                return dc.SIGEEA_spListarFincas(pCodigo, null, pNombre).ToList();
+            }else 
+            return dc.SIGEEA_spListarFincas(pCodigo, pPkAsociado, pNombre).ToList();
+        }
+        public SIGEEA_Finca ObtenerFinca(int pkIdFinca)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_Fincas.FirstOrDefault(c => c.PK_Id_Finca == pkIdFinca);
+        }
+        public SIGEEA_Finca ObtenerFincaPorIdAsociado(int pkIdAsociado)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_Fincas.FirstOrDefault(c => c.FK_Id_Asociado == pkIdAsociado);
+        }
+        public int ObtenerIdUltimaFinca()
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+
+            return Convert.ToInt32(dc.SIGEEA_spObtenerIdUltimaFinca().FirstOrDefault().PKFinca);
+        }
+        public List<SIGEEA_Lote> ListarLote(int fkFinca)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return (from c in dc.SIGEEA_Lotes where c.FK_Id_Finca == fkFinca select c).ToList();
+        }
+        public SIGEEA_Lote ObtenerLote(int pkLote)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return (from c in dc.SIGEEA_Lotes where c.PK_Id_Lote == pkLote select c).FirstOrDefault();
         }
 
     }

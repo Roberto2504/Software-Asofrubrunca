@@ -68,10 +68,10 @@ namespace SIGEEA_App
                     ComboBox nuevo = new ComboBox();
 
                     nuevo.FontFamily = new FontFamily("Cooper Black");
-                    nuevo.FontSize = 28;
+                    nuevo.FontSize = 25;
                     nuevo.Foreground = new SolidColorBrush(Colors.White);
                     nuevo.Background = new LinearGradientBrush(Colors.Green, Colors.MidnightBlue, 90);
-                    nuevo.Width = 220;
+                    nuevo.Width = 210;
                     nuevo.Height = 60;
                     List<string> lista = new List<string>();
                     lista.Add(Modulo.Nombre_Modulo);
@@ -158,7 +158,7 @@ namespace SIGEEA_App
                     break;
 
                 case "Realizar abono a factura":
-                    wnwBuscadorCliente venAbonoCredito = new wnwBuscadorCliente("Abono");
+                    wnwMetodoBusquedaFactura venAbonoCredito = new wnwMetodoBusquedaFactura();
                     venAbonoCredito.Show();
                     break;
 
@@ -218,6 +218,8 @@ namespace SIGEEA_App
                     break;
 
                 case "Editar finca":
+                    wnwOpcionesBusquedaFinca venEditarFinca = new wnwOpcionesBusquedaFinca("Editar");
+                    venEditarFinca.Show();
                     break;
 
                 case "Registrar nuevo producto":
@@ -231,17 +233,23 @@ namespace SIGEEA_App
                     break;
 
                 case "Agregar insumo":
-                    wnwRegistrarInsumo venAgregarInsumo = new wnwRegistrarInsumo();
+                    wnwRegistrarInsumo venAgregarInsumo = new wnwRegistrarInsumo(ptipo:"Registrar", ppkInsumo:0);
                     venAgregarInsumo.Show();
                     break;
 
                 case "Editar insumo":
+                    wnwBuscadorInsumo editarInsumo = new wnwBuscadorInsumo("Editar");
+                    editarInsumo.ShowDialog();
                     break;
 
                 case "Compra de insumo":
+                    wnwBuscadorInsumo compraInsumo = new wnwBuscadorInsumo("Compra");
+                    compraInsumo.ShowDialog();
                     break;
 
                 case "Pedir insumo":
+                    wnwBuscadorInsumo pedirInsumo = new wnwBuscadorInsumo("Pedido");
+                    pedirInsumo.ShowDialog();
                     break;
 
                 default:
