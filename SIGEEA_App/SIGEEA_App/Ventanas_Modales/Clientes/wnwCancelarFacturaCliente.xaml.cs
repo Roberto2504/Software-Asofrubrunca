@@ -310,8 +310,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 nuevaFactura.Observaciones_FacCliente = observaciones;
                 nuevaFactura.FK_Id_Cliente = IdCliente;
 
-                nuevaFactura.MonTotal_FacCliente = Convert.ToDouble(montoTotal);
-                nuevaFactura.MonNeto_FacCliente = Convert.ToDouble(montoNetoTotal);
+                nuevaFactura.MonTotal_FacCliente = Convert.ToDouble( montoTotal.Remove(0,1));
+                nuevaFactura.MonNeto_FacCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
                 nuevaFactura.Descuento_FacCliente = Convert.ToDouble(descuentoTotal);
                 nuevaFactura.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
                 nuevaFactura.FK_Id_Empresa = IdEmpresa;
@@ -361,7 +361,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 else if (tipoFactura == "Contado")
                 {
                     SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();
-                    nuevoAbono.Monto_AboCliente = Convert.ToDouble(montoNetoTotal);
+                    nuevoAbono.Monto_AboCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                    nuevaFactura.Estado_FacCliente = "CO";
                     nuevoAbono.Metodo_AboCliente = Convert.ToInt32(metodoPago[0].ToString());
                     nuevoAbono.Numero_AboCliente = numero;
                     nuevoAbono.Fecha_AboCliente = DateTime.Now;

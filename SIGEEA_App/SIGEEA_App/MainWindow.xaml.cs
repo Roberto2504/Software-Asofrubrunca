@@ -25,6 +25,9 @@ using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_App.Ventanas_Modales.Puestos;
 using SIGEEA_BO;
 using SIGEEA_BL.Seguridad;
+using Microsoft.Win32;
+using System.IO;
+
 namespace SIGEEA_App
 {
     /// <summary>
@@ -36,10 +39,7 @@ namespace SIGEEA_App
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
-
-            //this.Loaded += MainWindow_Loaded;
             CargarPantalla();
-
         }
         SeguridadMantenimiento segMant = new SeguridadMantenimiento();
         List<SIGEEA_spListarSubModulosResult> listaSubModulos = new List<SIGEEA_spListarSubModulosResult>();
@@ -48,12 +48,10 @@ namespace SIGEEA_App
         bool entro = false;
         public void CargarPantalla()
         {
-
             lbUsuarioActual.Content = UsuarioGlobal.InfoUsuario.NomUsuario.ToString();
 
             foreach (SIGEEA_spListarModulosResult Modulo in UsuarioGlobal.Modulos)
             {
-
                 foreach (SIGEEA_spListarModulosResult incluir in listaModulos)
                 {
                     if (incluir.PK_Id_Modulo == Modulo.PK_Id_Modulo)
@@ -66,13 +64,12 @@ namespace SIGEEA_App
                 {
                     primera++;
                     ComboBox nuevo = new ComboBox();
-
-                    nuevo.FontFamily = new FontFamily("Cooper Black");
-                    nuevo.FontSize = 25;
+                    nuevo.FontFamily = new FontFamily("Segoe UI");
+                    nuevo.FontSize = 24;
                     nuevo.Foreground = new SolidColorBrush(Colors.White);
-                    nuevo.Background = new LinearGradientBrush(Colors.Green, Colors.MidnightBlue, 90);
-                    nuevo.Width = 210;
-                    nuevo.Height = 60;
+                    nuevo.Background = new LinearGradientBrush(Colors.Green, Colors.DarkSlateGray, 90);
+                    nuevo.Width = 200;
+                    nuevo.Height = 30;
                     List<string> lista = new List<string>();
                     lista.Add(Modulo.Nombre_Modulo);
                     foreach (string submodulo in segMant.ObtenerSubModulos(Modulo.PK_Id_Modulo))
@@ -82,7 +79,7 @@ namespace SIGEEA_App
                     nuevo.ItemsSource = lista;
                     nuevo.SelectedIndex = 0;
                     nuevo.SelectionChanged += Nuevo_SelectionChanged;
-
+                    nuevo.MouseUp += Nuevo_MouseUp;  
                     wrpPrincipal.Children.Add(nuevo);
                     entro = false;
                 }
@@ -90,13 +87,12 @@ namespace SIGEEA_App
                 {
                     entro = false;
                 }
-
-
-
-
-
-
             }
+        }
+
+        private void Nuevo_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Activate();
         }
 
         private void Nuevo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -262,6 +258,21 @@ namespace SIGEEA_App
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnFondo_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Imagenes jpg(*.jpg)|*.jpg";
+            if (ofd.ShowDialog() == true)
+            {
+                using (Stream stream = ofd.OpenFile())
+                {
+                    ImageBrush myBrush = new ImageBrush();
+                    myBrush.ImageSource = new BitmapImage(new Uri(ofd.InitialDirectory + ofd.FileName, UriKind.RelativeOrAbsolute));
+                    this.Background = myBrush;
+                }
+            }
         }
     }
 }
