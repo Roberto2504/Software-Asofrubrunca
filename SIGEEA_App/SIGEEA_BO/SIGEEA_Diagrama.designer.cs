@@ -225,7 +225,7 @@ namespace SIGEEA_BO
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::SIGEEA_BO.Properties.Settings.Default.SIGEEA_BDConnectionString5, mappingSource)
+				base(global::SIGEEA_BO.Properties.Settings.Default.SIGEEA_BDConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1084,13 +1084,6 @@ namespace SIGEEA_BO
 			return ((ISingleResult<SIGEEA_spObtenerDetallesFacturaCompletaAsocResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc")]
-		public ISingleResult<SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult> SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factura", DbType="Int")] System.Nullable<int> factura)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factura);
-			return ((ISingleResult<SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDeudoresCuotas")]
 		public ISingleResult<SIGEEA_spObtenerDeudoresCuotasResult> SIGEEA_spObtenerDeudoresCuotas([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Cuota", DbType="Int")] System.Nullable<int> cuota)
 		{
@@ -1278,6 +1271,13 @@ namespace SIGEEA_BO
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), producto);
 			return ((ISingleResult<SIGEEA_spObtenerUnidadMedidaPorTipoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc")]
+		public ISingleResult<SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult> SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc([global::System.Data.Linq.Mapping.ParameterAttribute(Name="Factura", DbType="Int")] System.Nullable<int> factura)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), factura);
+			return ((ISingleResult<SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -6064,6 +6064,8 @@ namespace SIGEEA_BO
 		
 		private bool _Cancelado_DetFacAsociado;
 		
+		private System.Nullable<double> _Saldo_DetFacAsociado;
+		
 		private EntityRef<SIGEEA_FacAsociado> _SIGEEA_FacAsociado;
 		
 		private EntityRef<SIGEEA_PreProCompra> _SIGEEA_PreProCompra;
@@ -6088,6 +6090,8 @@ namespace SIGEEA_BO
     partial void OnFK_Id_LoteChanged();
     partial void OnCancelado_DetFacAsociadoChanging(bool value);
     partial void OnCancelado_DetFacAsociadoChanged();
+    partial void OnSaldo_DetFacAsociadoChanging(System.Nullable<double> value);
+    partial void OnSaldo_DetFacAsociadoChanged();
     #endregion
 		
 		public SIGEEA_DetFacAsociado()
@@ -6261,6 +6265,26 @@ namespace SIGEEA_BO
 					this._Cancelado_DetFacAsociado = value;
 					this.SendPropertyChanged("Cancelado_DetFacAsociado");
 					this.OnCancelado_DetFacAsociadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saldo_DetFacAsociado", DbType="Float")]
+		public System.Nullable<double> Saldo_DetFacAsociado
+		{
+			get
+			{
+				return this._Saldo_DetFacAsociado;
+			}
+			set
+			{
+				if ((this._Saldo_DetFacAsociado != value))
+				{
+					this.OnSaldo_DetFacAsociadoChanging(value);
+					this.SendPropertyChanging();
+					this._Saldo_DetFacAsociado = value;
+					this.SendPropertyChanged("Saldo_DetFacAsociado");
+					this.OnSaldo_DetFacAsociadoChanged();
 				}
 			}
 		}
@@ -22005,122 +22029,6 @@ namespace SIGEEA_BO
 		}
 	}
 	
-	public partial class SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult
-	{
-		
-		private string _canNeta;
-		
-		private int _PK_Id_TipProducto;
-		
-		private string _Informacion;
-		
-		private string _Precio;
-		
-		private string _Total;
-		
-		private int _PK_Id_DetFacAsociado;
-		
-		public SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canNeta", DbType="VarChar(55)")]
-		public string canNeta
-		{
-			get
-			{
-				return this._canNeta;
-			}
-			set
-			{
-				if ((this._canNeta != value))
-				{
-					this._canNeta = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_TipProducto", DbType="Int NOT NULL")]
-		public int PK_Id_TipProducto
-		{
-			get
-			{
-				return this._PK_Id_TipProducto;
-			}
-			set
-			{
-				if ((this._PK_Id_TipProducto != value))
-				{
-					this._PK_Id_TipProducto = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Informacion", DbType="VarChar(69)")]
-		public string Informacion
-		{
-			get
-			{
-				return this._Informacion;
-			}
-			set
-			{
-				if ((this._Informacion != value))
-				{
-					this._Informacion = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio", DbType="VarChar(24)")]
-		public string Precio
-		{
-			get
-			{
-				return this._Precio;
-			}
-			set
-			{
-				if ((this._Precio != value))
-				{
-					this._Precio = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="VarChar(24)")]
-		public string Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_DetFacAsociado", DbType="Int NOT NULL")]
-		public int PK_Id_DetFacAsociado
-		{
-			get
-			{
-				return this._PK_Id_DetFacAsociado;
-			}
-			set
-			{
-				if ((this._PK_Id_DetFacAsociado != value))
-				{
-					this._PK_Id_DetFacAsociado = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SIGEEA_spObtenerDeudoresCuotasResult
 	{
 		
@@ -23952,6 +23860,140 @@ namespace SIGEEA_BO
 				if ((this._Nombre_UniMedida != value))
 				{
 					this._Nombre_UniMedida = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult
+	{
+		
+		private string _canNeta;
+		
+		private int _PK_Id_TipProducto;
+		
+		private string _Informacion;
+		
+		private string _Precio;
+		
+		private string _Total;
+		
+		private string _Saldo;
+		
+		private int _PK_Id_DetFacAsociado;
+		
+		public SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_canNeta", DbType="VarChar(55)")]
+		public string canNeta
+		{
+			get
+			{
+				return this._canNeta;
+			}
+			set
+			{
+				if ((this._canNeta != value))
+				{
+					this._canNeta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_TipProducto", DbType="Int NOT NULL")]
+		public int PK_Id_TipProducto
+		{
+			get
+			{
+				return this._PK_Id_TipProducto;
+			}
+			set
+			{
+				if ((this._PK_Id_TipProducto != value))
+				{
+					this._PK_Id_TipProducto = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Informacion", DbType="VarChar(69)")]
+		public string Informacion
+		{
+			get
+			{
+				return this._Informacion;
+			}
+			set
+			{
+				if ((this._Informacion != value))
+				{
+					this._Informacion = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio", DbType="VarChar(24)")]
+		public string Precio
+		{
+			get
+			{
+				return this._Precio;
+			}
+			set
+			{
+				if ((this._Precio != value))
+				{
+					this._Precio = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="VarChar(24)")]
+		public string Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saldo", DbType="VarChar(24) NOT NULL", CanBeNull=false)]
+		public string Saldo
+		{
+			get
+			{
+				return this._Saldo;
+			}
+			set
+			{
+				if ((this._Saldo != value))
+				{
+					this._Saldo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PK_Id_DetFacAsociado", DbType="Int NOT NULL")]
+		public int PK_Id_DetFacAsociado
+		{
+			get
+			{
+				return this._PK_Id_DetFacAsociado;
+			}
+			set
+			{
+				if ((this._PK_Id_DetFacAsociado != value))
+				{
+					this._PK_Id_DetFacAsociado = value;
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SIGEEA_BD" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-UG5K51J\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString5" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LUIS-PC\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString4" Provider="System.Data.SqlClient" />
   <Table Name="dbo.SIGEEA_AboCliente" Member="SIGEEA_AboClientes">
     <Type Name="SIGEEA_AboCliente">
       <Column Name="PK_Id_AboCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -231,6 +231,7 @@
       <Column Name="FK_Id_PreProCompra" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="FK_Id_Lote" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Cancelado_DetFacAsociado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Saldo_DetFacAsociado" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="SIGEEA_FacAsociado_SIGEEA_DetFacAsociado" Member="SIGEEA_FacAsociado" ThisKey="FK_Id_FacAsociado" OtherKey="PK_Id_FacAsociado" Type="SIGEEA_FacAsociado" IsForeignKey="true" />
       <Association Name="SIGEEA_PreProCompra_SIGEEA_DetFacAsociado" Member="SIGEEA_PreProCompra" ThisKey="FK_Id_PreProCompra" OtherKey="PK_Id_PreProCompra" Type="SIGEEA_PreProCompra" IsForeignKey="true" />
     </Type>
@@ -1222,17 +1223,6 @@
       <Column Name="Precio" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc" Method="SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc">
-    <Parameter Name="Factura" Parameter="factura" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult">
-      <Column Name="canNeta" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
-      <Column Name="PK_Id_TipProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Informacion" Type="System.String" DbType="VarChar(69)" CanBeNull="true" />
-      <Column Name="Precio" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
-      <Column Name="Total" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
-      <Column Name="PK_Id_DetFacAsociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SIGEEA_spObtenerDeudoresCuotas" Method="SIGEEA_spObtenerDeudoresCuotas">
     <Parameter Name="Cuota" Parameter="cuota" Type="System.Int32" DbType="Int" />
     <ElementType Name="SIGEEA_spObtenerDeudoresCuotasResult">
@@ -1453,6 +1443,18 @@
     <ElementType Name="SIGEEA_spObtenerUnidadMedidaPorTipoResult">
       <Column Name="PK_Id_UniMedida" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nombre_UniMedida" Type="System.String" DbType="VarChar(25) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc" Method="SIGEEA_spObtenerDetallesFacturaSinCancelarAsoc">
+    <Parameter Name="Factura" Parameter="factura" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SIGEEA_spObtenerDetallesFacturaSinCancelarAsocResult">
+      <Column Name="canNeta" Type="System.String" DbType="VarChar(55)" CanBeNull="true" />
+      <Column Name="PK_Id_TipProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Informacion" Type="System.String" DbType="VarChar(69)" CanBeNull="true" />
+      <Column Name="Precio" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
+      <Column Name="Total" Type="System.String" DbType="VarChar(24)" CanBeNull="true" />
+      <Column Name="Saldo" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
+      <Column Name="PK_Id_DetFacAsociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

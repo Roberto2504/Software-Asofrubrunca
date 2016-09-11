@@ -33,10 +33,13 @@ namespace SIGEEA_App.User_Controls.Productos
             this.PkDetalleFactura = pDetalleFactura.PK_Id_DetFacAsociado;
             this.InformacionDet = pDetalleFactura.canNeta + pDetalleFactura.Informacion;
             this.PrecioDet = pDetalleFactura.Precio;
-            this.TotalDet = pDetalleFactura.Total;
+            this.TotalDet = pDetalleFactura.Saldo;
             this.Color(pColor);
+            this.Abono = false;
         }
 
+        public bool Abono;
+        public float Monto;
         public bool Seleccionado()
         {
             if (cbxSeleccionar.IsChecked == true) return true;
@@ -112,6 +115,25 @@ namespace SIGEEA_App.User_Controls.Productos
             BrushConverter bc = new BrushConverter();
             if (pColor == true) grdContenedor.Background = (Brush)bc.ConvertFrom("#FFC7DFE6");
             else grdContenedor.Background = (Brush)bc.ConvertFrom("#FF5A99AC");
+        }
+
+        private void cbxCambioVista_Checked(object sender, RoutedEventArgs e)
+        {
+            lblTotal.Visibility = Visibility.Collapsed;
+            txbMonto.Visibility = Visibility.Visible;
+            cbxSeleccionar.IsChecked = true;
+            cbxSeleccionar.IsEnabled = false;
+            Abono = true;
+        }
+
+        private void cbxCambioVista_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lblTotal.Visibility = Visibility.Visible;
+            txbMonto.Visibility = Visibility.Collapsed;
+            cbxSeleccionar.IsChecked = false;
+            cbxSeleccionar.IsEnabled = true;
+            Abono = false;
+            txbMonto.Text = String.Empty;
         }
     }
 }

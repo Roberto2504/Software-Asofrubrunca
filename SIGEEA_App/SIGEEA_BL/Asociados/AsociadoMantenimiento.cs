@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SIGEEA_BO;
 
+
 namespace SIGEEA_BL
 {
     public class AsociadoMantenimiento
@@ -346,6 +347,7 @@ namespace SIGEEA_BL
                 detalle.Cancelado_DetFacAsociado = false;
                 detalle.FK_Id_FacAsociado = detalle.FK_Id_FacAsociado;
                 detalle.FK_Id_Lote = detalle.FK_Id_Lote;
+                detalle.Saldo_DetFacAsociado = CantidadNeta * (detalle.Mercado_DetFacAsociado == 1 ? dc.SIGEEA_PreProCompras.First(c => c.PK_Id_PreProCompra == detalle.FK_Id_PreProCompra).PreNacional_PreProCompra : dc.SIGEEA_PreProCompras.First(c => c.PK_Id_PreProCompra == detalle.FK_Id_PreProCompra).PreExtranjero_PreProCompra);
                 detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
                 detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
                 dc.SubmitChanges();
@@ -445,18 +447,23 @@ namespace SIGEEA_BL
         /// </summary>
         /// <param name="pDetalles"></param>
         /// <returns></returns>
-        public bool CancelaFacturaAsociado(List<int> pDetalles)
+        public bool CancelaFacturaAsociado(List<int> pDetalles, List<double> pMontos)
         {
             try
             {
                 DataClasses1DataContext dc = new DataClasses1DataContext();
                 if (pDetalles.Count > 0)
                 {
+                    int indice = 0;
                     foreach (int i in pDetalles)
-                    {
+                    {                        
                         SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == i);
+
+                        if (pMontos.ElementAt(indice) > detalle.Saldo_DetFacAsociado) return false;
+                        else if (pMontos.ElementAt(indice) < detalle.Saldo_DetFacAsociado) detalle.Saldo_DetFacAsociado = detalle.Saldo_DetFacAsociado - pMontos.ElementAt(indice);
+                        else detalle.Saldo_DetFacAsociado = 0;
                         detalle.PK_Id_DetFacAsociado = detalle.PK_Id_DetFacAsociado;
-                        detalle.Cancelado_DetFacAsociado = true;
+                        detalle.Cancelado_DetFacAsociado = detalle.Saldo_DetFacAsociado > 0 ? false : true;
                         detalle.CanNeta_DetFacAsociado = detalle.CanNeta_DetFacAsociado;
                         detalle.CanTotal_DetFacAsociado = detalle.CanTotal_DetFacAsociado;
                         detalle.FK_Id_FacAsociado = detalle.FK_Id_FacAsociado;
@@ -464,6 +471,7 @@ namespace SIGEEA_BL
                         detalle.FK_Id_PreProCompra = detalle.FK_Id_PreProCompra;
                         detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
                         dc.SubmitChanges();
+                        indice++;
                     }
                     RevisaFacurasCanceladas(dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == (dc.SIGEEA_DetFacAsociados.First(d => d.PK_Id_DetFacAsociado == pDetalles.First()).FK_Id_FacAsociado)).PK_Id_FacAsociado);
                 }

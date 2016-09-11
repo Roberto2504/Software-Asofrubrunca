@@ -8,9 +8,11 @@
              d:DesignHeight="69" d:DesignWidth="680">
     <Grid Name="grdContenedor">
         <TextBlock x:Name="lblInformacion" HorizontalAlignment="Left" Margin="10,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="240" FontFamily="Agency FB" FontSize="18" Text="{Binding InformacionDet, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemDetallePagoAsoc}}}"/>
-        <TextBlock x:Name="lblPrecio" TextAlignment="Center" HorizontalAlignment="Left" Margin="329,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="48" FontFamily="Agency FB" FontSize="20" Text="{Binding PrecioDet, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemDetallePagoAsoc}}}"></TextBlock>
+        <TextBlock x:Name="lblPrecio" TextAlignment="Center" HorizontalAlignment="Left" Margin="285,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="48" FontFamily="Agency FB" FontSize="20" Text="{Binding PrecioDet, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemDetallePagoAsoc}}}"></TextBlock>
         <TextBlock x:Name="lblTotal" TextAlignment="Center" HorizontalAlignment="Left" Margin="445,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="139" FontFamily="Agency FB" FontSize="20" Text="{Binding TotalDet, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_ItemDetallePagoAsoc}}}"></TextBlock>
-        <CheckBox x:Name="cbxSeleccionar" Content="CheckBox" HorizontalAlignment="Left" Height="24" Margin="617,22,0,0" VerticalAlignment="Top" Width="24"/>
+        <TextBox x:Name="txbMonto" TextAlignment="Right" HorizontalAlignment="Left" Margin="445,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="139" FontFamily="Agency FB" FontSize="20" Text="" Visibility="Collapsed"></TextBox>
+        <CheckBox x:Name="cbxSeleccionar" HorizontalAlignment="Left" Height="24" Margin="617,22,0,0" VerticalAlignment="Top" Width="22"/>
+        <CheckBox x:Name="cbxCambioVista" HorizontalAlignment="Left" Height="24" Margin="418,22,0,0" VerticalAlignment="Top" Width="22" ToolTip="Realizar parte del pago" Checked="cbxCambioVista_Checked" Unchecked="cbxCambioVista_Unchecked"/>
 
     </Grid>
 </UserControl>
