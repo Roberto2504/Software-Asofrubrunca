@@ -15,7 +15,7 @@
             <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="14" Margin="109,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
             <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="23" Margin="19,80,0,0" TextWrapping="Wrap" Text="Descripción:" VerticalAlignment="Top" Width="72"/>
             <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Height="23" Margin="19,127,0,0" TextWrapping="Wrap" Text="Cantidad" VerticalAlignment="Top" Width="60"/>
-            <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="19,150,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="120" />
+            <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="19,150,0,0" TextWrapping="Wrap" PreviewTextInput="txtCantidad_PreviewTextInput" TextChanged="txtCantidad_TextChanged" Text=" " VerticalAlignment="Top" Width="120" />
             <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Height="23" Margin="160,127,0,0" TextWrapping="Wrap" Text="Unidad de Medida" VerticalAlignment="Top" Width="106"/>
             <ComboBox x:Name="cbxUnidadesDeMedida" HorizontalAlignment="Left" Height="15" Margin="160,150,0,0" VerticalAlignment="Top" Width="122"/>
             <Button x:Name="btnRegistrar" Margin="201,204,26,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnRegistrar_Click">

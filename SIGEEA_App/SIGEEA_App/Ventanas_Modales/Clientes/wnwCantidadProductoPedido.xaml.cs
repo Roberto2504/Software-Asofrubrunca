@@ -52,7 +52,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             ucPedido.NUDTextBox.TextChanged += NUDTextBox_TextChanged1;
             
         }
-
+        public string SepararMiles(double Cantidad)
+        {
+            return Cantidad.ToString("N2");
+        }
         private void NUDTextBox_TextInput(object sender, TextCompositionEventArgs e)
         {
             if (tipoProceso == "Agregar")
@@ -60,27 +63,25 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
             }
             preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
-            txbTotal.Text = string.Concat(moneda, preBru);
+            txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
             preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
-            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+            txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2))); 
         }
 
         private void NUDTextBox_TextChanged1(object sender, TextChangedEventArgs e)
         {
             
                 cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
-                
-            
             txbCantidad.Text = string.Concat(cantidad, uniMedida);
             preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
-            txbTotal.Text = string.Concat(moneda, preBru);
+            txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
             preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
-            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+            txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
         }
 
         private void NUDTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txbNuevoPrecio.Text = string.Concat(moneda, (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString());
+            txbNuevoPrecio.Text =   string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble((((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString()), 2)));
         }
 
         uc_Producto proModifica = new uc_Producto();
@@ -104,7 +105,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 cantidad = Producto.canInvProducto;
                 canAnterior = Producto.canInvProducto;
                 uniMedida = Producto.UniMedida;
-                txbPrecio.Text = string.Concat(Producto.Moneda, Producto.preProducto);
+                txbPrecio.Text = string.Concat(Producto.Moneda, SepararMiles(Math.Round(Convert.ToDouble(Producto.preProducto), 2))); 
                 precio = Producto.preProducto;
                 txbNombre.Text = Producto.nomTipProducto;
                 txbTipo.Text = TipoProceso;
@@ -118,7 +119,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
 
                 txbCantidad.Text = string.Concat(DetProdcuto.canDisProducto, DetProdcuto.UniMedida);
-                txbPrecio.Text = string.Concat(DetProdcuto.Moneda, DetProdcuto.preProducto);
+                txbPrecio.Text = string.Concat(DetProdcuto.Moneda, SepararMiles(Math.Round(Convert.ToDouble(DetProdcuto.preProducto), 2)));
                 txbNombre.Text = DetProdcuto.nomTipProducto;
                 txbTipo.Text = TipoProceso;
                 uniMedida = DetProdcuto.UniMedida;
@@ -129,8 +130,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                // txbCantidad.Text = DetProdcuto.canDisProducto;
                 preBru = DetProdcuto.preBruProducto;
                 preNet = DetProdcuto.preNetProducto;
-                txbTotal.Text = DetProdcuto.preBruProducto;
-                txbNuevoPrecio.Text = DetProdcuto.preNetProducto;
+                txbTotal.Text = SepararMiles(Math.Round(Convert.ToDouble(DetProdcuto.preBruProducto), 2));
+                txbNuevoPrecio.Text = SepararMiles(Math.Round(Convert.ToDouble(DetProdcuto.preNetProducto), 2));  
                 ucPedido.NUDTextBox.Text = DetProdcuto.canInvProducto;
                 ucDescuento.NUDTextBox.Text = DetProdcuto.desProducto;
                 moneda = DetProdcuto.Moneda;
@@ -200,9 +201,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             
             txbCantidad.Text = string.Concat(cantidad, uniMedida);
             preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
-            txbTotal.Text = string.Concat(moneda, preBru);
+            txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
             preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
-            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+            txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
 
         }
 
@@ -210,7 +211,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         {
             preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
             preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
-            txbNuevoPrecio.Text = string.Concat(moneda, preNet);
+            txbNuevoPrecio.Text =  string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
         }
     }
 }

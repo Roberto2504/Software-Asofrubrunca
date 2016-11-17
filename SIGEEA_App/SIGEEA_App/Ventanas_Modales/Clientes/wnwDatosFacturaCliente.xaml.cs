@@ -42,6 +42,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             descuentoTotal = pDescuentoTotal;
             montoNetoTotal = pMontoNetoTotal;
             moneda = pMonedaTotal;
+            txtbTipoFactura.Text = Tipo;
             ClienteMantenimiento cliMant = new ClienteMantenimiento();
             if (tipoFactura == "Contado")
             {

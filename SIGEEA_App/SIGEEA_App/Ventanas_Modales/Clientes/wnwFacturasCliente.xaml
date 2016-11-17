@@ -43,5 +43,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Name="stkPrincipal" HorizontalAlignment="Left" Height="445" VerticalAlignment="Top" Width="950" Margin="10,28,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="585" VerticalAlignment="Top" Width="970"/>
     </Grid>
 </Controls:MetroWindow>

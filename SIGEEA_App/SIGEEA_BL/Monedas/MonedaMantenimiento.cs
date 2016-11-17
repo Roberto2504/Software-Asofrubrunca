@@ -33,6 +33,19 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();     
             return dc.SIGEEA_spObtenerPrecioVentaMoneda(id).FirstOrDefault().PreVenta_Moneda;
         }
+        public SIGEEA_Moneda Moneda(int id)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            return dc.SIGEEA_Monedas.FirstOrDefault(c=>c.PK_Id_Moneda == id);
+        }
+        public void ActualizaPrecio(double venta, double compra)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_Moneda moneda = dc.SIGEEA_Monedas.FirstOrDefault(d => d.PK_Id_Moneda == 1);
+            moneda.PreCompra_Moneda = compra;
+            moneda.PreVenta_Moneda = venta;
+            dc.SubmitChanges();
+        }
 
     }
 }

@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Insumos"
              
-              mc:Ignorable="d" Height="409" Width="835">
+              mc:Ignorable="d" Height="409" Width="838">
     <Grid>
-        <DataGrid Margin="57,68,58,318" RenderTransformOrigin="0.5,0.5">
+        <DataGrid Margin="98,71,108,315" RenderTransformOrigin="0.5,0.5">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,16 +17,16 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre " Width="120" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Descripción" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Cantidad" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
-                <DataGridTextColumn Header="Uni/Medida" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre " Width="140" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Descripción" Width="115" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="Cantidad" Width="110" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
+                <DataGridTextColumn Header="U/M" Width="60" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
                 <DataGridTextColumn Header="Estado" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="58,91,0,0" VerticalAlignment="Top" Width="720">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-1,-1,1,1">
-                <StackPanel x:Name="stpClientes" Width="720" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="274" Margin="99,91,0,0" VerticalAlignment="Top" Width="632">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-1,-1,1,-1">
+                <StackPanel x:Name="stpClientes" Width="629" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             </ScrollViewer>
         </Border>
         <Grid HorizontalAlignment="Left" Height="67" Margin="131,0,0,0" VerticalAlignment="Top" Width="600">

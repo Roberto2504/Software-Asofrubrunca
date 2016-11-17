@@ -48,9 +48,13 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             cmbTipoFactura.ItemsSource = listaTipoFactura;
 
         }
-
+        public string SepararMiles(double Cantidad)
+        {
+            return Cantidad.ToString("N2");
+        }
         ProductoMantenimiento producto = new ProductoMantenimiento();
         ClienteMantenimiento clientMant = new ClienteMantenimiento();
+        MonedaMantenimiento monMant = new MonedaMantenimiento();
         private uc_Producto productoAnterior = new uc_Producto();
         int primera = 0;
         bool color = true;
@@ -77,16 +81,16 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nueProducto.nomTipProducto = result.Nombre_TipProducto;
                     nueProducto.calTipProducto = result.Calidad_TipProducto.ToString();
                     nueProducto.UniMedida = result.Nombre_UniMedida;
-                    nueProducto.preNacProducto = result.PreNacional_PreProVenta.ToString();
-                    nueProducto.preExtProducto = result.PreExtranjero_PreProVenta.ToString();
-                    nueProducto.canInvProducto = result.Cantidad_DetInvProductos.ToString();
+                    nueProducto.preNacProducto = SepararMiles(Math.Round(Convert.ToDouble(result.PreNacional_PreProVenta),2)).ToString();
+                    nueProducto.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(result.PreExtranjero_PreProVenta), 2)).ToString();
+                    nueProducto.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(result.Cantidad_DetInvProductos), 2)).ToString();
                     if (cmbVenta.Text == "NACIONAL")
                     {
-                        nueProducto.preProducto = result.PreNacional_PreProVenta.ToString();
+                        nueProducto.preProducto = SepararMiles(Math.Round(Convert.ToDouble(result.PreNacional_PreProVenta), 2)).ToString();
                         nueProducto.Moneda = "¢";
                     }
                     else {
-                        nueProducto.preProducto = result.PreExtranjero_PreProVenta.ToString();
+                        nueProducto.preProducto = SepararMiles(Math.Round(Convert.ToDouble(result.PreExtranjero_PreProVenta), 2)).ToString();
                         nueProducto.Moneda = "¢"; ;
                     }
                     nueProducto.IdTipProducto = result.PK_Id_TipProducto.ToString();
@@ -120,9 +124,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nuevo.nomTipProducto = Producto.nomTipProducto;
                     nuevo.IdTipProducto = Producto.IdTipProducto;
                     nuevo.Moneda = Producto.Moneda;
-                    nuevo.preProducto = Producto.preProducto;
-                    nuevo.preExtProducto = Producto.preExtProducto;
-                    nuevo.preNacProducto = Producto.preNacProducto;
+                    nuevo.preProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preProducto), 2)).ToString(); 
+                    nuevo.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preExtProducto), 2)).ToString(); 
+                    nuevo.preNacProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preNacProducto), 2)).ToString(); 
                     nuevo.UniMedida = Producto.UniMedida;
                     nuevo.calTipProducto = Producto.calTipProducto;
                     Contador++;
@@ -165,15 +169,15 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 // se recolecta la informacion de el objeto y se le asigna a la clase global
                 productoAnterior.Tag = Contador.ToString();
                 productoAnterior.nomTipProducto = ObjetoSeleccionado.nomTipProducto;
-                productoAnterior.preProducto = ObjetoSeleccionado.preProducto;
+                productoAnterior.preProducto = SepararMiles(Math.Round(Convert.ToDouble(ObjetoSeleccionado.preProducto), 2));
                 productoAnterior.calTipProducto = ObjetoSeleccionado.calTipProducto;
-                productoAnterior.canInvProducto = ObjetoSeleccionado.canInvProducto;
+                productoAnterior.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(ObjetoSeleccionado.canInvProducto), 2)); 
                 productoAnterior.UniMedida = ObjetoSeleccionado.UniMedida;
                 productoAnterior.IdTipProducto = ObjetoSeleccionado.IdTipProducto;
                 productoAnterior.Color(color);
                 productoAnterior.Moneda = ObjetoSeleccionado.Moneda;
-                productoAnterior.preExtProducto = ObjetoSeleccionado.preExtProducto;
-                productoAnterior.preNacProducto = ObjetoSeleccionado.preNacProducto;
+                productoAnterior.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(ObjetoSeleccionado.preExtProducto), 2)); 
+                productoAnterior.preNacProducto = SepararMiles(Math.Round(Convert.ToDouble(ObjetoSeleccionado.preNacProducto), 2)); 
                 productoAnterior.IdMoneda = ObjetoSeleccionado.IdMoneda;
                 productoAnterior.calTipProducto = ObjetoSeleccionado.calTipProducto;
                 Contador++;
@@ -188,19 +192,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
             uc_Producto nuevo = new uc_Producto();
             base.OnDrop(e);
-
-            nuevo.preExtProducto = productoAnterior.preExtProducto;
-            nuevo.preNacProducto = productoAnterior.preNacProducto;
-            nuevo.canInvProducto = productoAnterior.canInvProducto;
+            nuevo.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(productoAnterior.preExtProducto), 2)); 
+            nuevo.preNacProducto = SepararMiles(Math.Round(Convert.ToDouble(productoAnterior.preNacProducto), 2));
+            nuevo.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(productoAnterior.canInvProducto), 2));
             nuevo.nomTipProducto = productoAnterior.nomTipProducto;
             nuevo.IdTipProducto = productoAnterior.IdTipProducto;
             nuevo.UniMedida = productoAnterior.UniMedida;
             nuevo.Moneda = productoAnterior.Moneda;
-            nuevo.preProducto = productoAnterior.preProducto;
+            nuevo.preProducto = SepararMiles(Math.Round(Convert.ToDouble(productoAnterior.preProducto), 2));
             nuevo.Color(color);
             nuevo.Tag = productoAnterior.Tag;
             nuevo.calTipProducto = productoAnterior.calTipProducto;
-
             wnwCantidadProductoPedido nueva = new wnwCantidadProductoPedido("Agregar", pProducto: nuevo, pDetProducto: null);
             nueva.Owner = this;
             nueva.ShowDialog();
@@ -238,10 +240,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 {
                     Producto.calTipProducto = pdetProducto.calTipProducto;
                     Producto.desProducto = pdetProducto.desProducto;
-                    Producto.preBruProducto = pdetProducto.preBruProducto;
-                    Producto.preNetProducto = pdetProducto.preNetProducto;
-                    Producto.canDisProducto = pdetProducto.canDisProducto;
-                    Producto.canInvProducto = pdetProducto.canInvProducto;
+                    Producto.preBruProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.preBruProducto), 2));
+                    Producto.preNetProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.preNetProducto), 2));
+                    Producto.canDisProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.preNetProducto), 2));
+                    Producto.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.canInvProducto), 2)); 
                     pdetProducto.Color(color);
                     //wpVeProducto.Children.Add(pdetProducto);
                     RestarInventario(pdetProducto);
@@ -282,18 +284,18 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 {
                     nuevo.calTipProducto = Producto.calTipProducto;
                     nuevo = Producto;
-                    nuevo.canInvProducto = Producto.canInvProducto;
+                    nuevo.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.canInvProducto), 2)); 
                     nuevo.nomTipProducto = Producto.nomTipProducto;
                     nuevo.IdTipProducto = Producto.IdTipProducto;
                     nuevo.desProducto = Producto.desProducto;
-                    nuevo.preBruProducto = Producto.preBruProducto;
-                    nuevo.preNetProducto = Producto.preNetProducto;
-                    nuevo.preExtProducto = Producto.preExtProducto;
-                    nuevo.preNacProducto = Producto.preNacProducto;
-                    nuevo.preProducto = Producto.preProducto;
+                    nuevo.preBruProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preBruProducto), 2)); 
+                    nuevo.preNetProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preNetProducto), 2)); 
+                    nuevo.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preExtProducto), 2)); 
+                    nuevo.preNacProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preNacProducto), 2)); 
+                    nuevo.preProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preProducto), 2)); 
                     nuevo.Moneda = Producto.Moneda;
                     nuevo.UniMedida = Producto.UniMedida;
-                    nuevo.canDisProducto = Producto.canDisProducto;
+                    nuevo.canDisProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.canDisProducto), 2)); 
                     nuevo.Tag = Producto.Tag;
                 }
 
@@ -339,7 +341,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void CalcularPrecioTotal()
         {
-            MonedaMantenimiento monMant = new MonedaMantenimiento();
+            
             double Total = 0;
             foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))//revisa la lista de producto para verificar que existan disponibles
             {
@@ -348,7 +350,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             
             if (Total != 0)
             {
-                if (cmbVenta.SelectedItem.ToString() == "NACIONAL")
+                if (cmbVenta.SelectedItem.ToString() == "NACIONAL")//ESTO SE PUEDE CAMBIAR PARA QUE EL PRECIO DEL EXTRAJERO APAREZCA EN COLONES
                 {
                     if (nomMoneda == "Colón")
                     {
@@ -372,22 +374,22 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
             if (nomMoneda == "Colón")
             {
-                txbCanTotBruto.Text = "¢" + Math.Round(Total, 3).ToString();
+                txbCanTotBruto.Text = "₡" + SepararMiles(Math.Round(Total, 3));
                 string conTotBruto = txbCanTotBruto.Text;
                 
                 if (txbCanTotBruto.Text != "")
                 {
-                    txbCanTotNeto.Text = "¢" + (Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
+                    txbCanTotNeto.Text = "₡" + SepararMiles(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)); 
                 }
             }
             else if (nomMoneda == "Dolar")
             {
-                txbCanTotBruto.Text = "$" + Math.Round(Total, 3).ToString();
+                txbCanTotBruto.Text = "$" + SepararMiles(Math.Round(Total, 3));
                 string conTotBruto = txbCanTotBruto.Text;
                
                 if (txbCanTotBruto.Text != "")
                 {
-                    txbCanTotNeto.Text = "$"+(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0,1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString();
+                    txbCanTotNeto.Text = "$"+ SepararMiles((Math.Round(((Convert.ToDouble(conTotBruto.Remove(0,1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)));
                 }
             }
             CalculaCredito();
@@ -403,32 +405,32 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))//revisa la lista de producto para verificar que existan disponibles
                 {
 
-                    Producto.preNetProducto = ((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto))).ToString();
-                    Producto.preBruProducto = ((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) - (((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) * Convert.ToDouble(Producto.desProducto)) / 100)).ToString();
+                    Producto.preNetProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto))),2));
+                    Producto.preBruProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) - (((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) * Convert.ToDouble(Producto.desProducto)) / 100)),2));
                     Producto.Moneda = "¢";
 
                 }
                 foreach (uc_Producto Producto in FindVisualChildren<uc_Producto>(wpProducto))
                 {
-                    Producto.preProducto = Producto.preNacProducto;
+                    Producto.preProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preNacProducto),2));
                     Producto.Moneda = "¢";
                 }
 
             }
             else
             {
-
+               
                 foreach (uc_Producto Producto in FindVisualChildren<uc_Producto>(wpProducto))
                 {
 
-                    Producto.preProducto = Producto.preExtProducto;
+                    Producto.preProducto = SepararMiles(Math.Round((Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar")), 2)); 
                     Producto.Moneda = "$";
                 }
                 foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))
                 {
 
-                    Producto.preBruProducto = ((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preExtProducto))).ToString();
-                    Producto.preNetProducto = ((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preExtProducto)) - (((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preExtProducto)) * Convert.ToDouble(Producto.desProducto)) / 100)).ToString();
+                    Producto.preBruProducto = SepararMiles(Math.Round((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))), 2)); 
+                    Producto.preNetProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))) - (((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))) * Convert.ToDouble(Producto.desProducto)) / 100)), 2));
                     Producto.Moneda = "$";
 
                 }
@@ -456,6 +458,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 if (m == MessageBoxResult.Yes)
                 {
                     wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    nueva.Closed += Nueva_Closed;
                     nueva.ShowDialog();
                 }
             }
@@ -465,6 +468,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 if (m == MessageBoxResult.Yes)
                 {
                     wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    nueva.Closed += Nueva_Closed;
                     nueva.ShowDialog();
                 }
             }
@@ -481,10 +485,16 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
                     }
                     wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                    nueva.Closed += Nueva_Closed;
                     nueva.ShowDialog();
                 }
 
             }
+        }
+
+        private void Nueva_Closed(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void ucDescuentoTotal_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -492,7 +502,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             if (txbCanTotBruto.Text != "")
             {
                 string conTotBruto = txbCanTotBruto.Text;
-                txbCanTotNeto.Text = string.Concat(txbCanTotBruto.Text[0],(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2)).ToString());
+                txbCanTotNeto.Text = string.Concat(txbCanTotBruto.Text[0],(SepararMiles(Math.Round(((Convert.ToDouble(conTotBruto.Remove(0, 1))) - (((Convert.ToDouble(conTotBruto.Remove(0, 1))) * Convert.ToDouble(ucDescuentoTotal.NUDTextBox.Text)) / 100)), 2))));
                 CalculaCredito();
             }
         }
@@ -536,7 +546,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                                 totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1));
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
-                                txbCredito.Text = "¢" + totalCredito;
+                                txbCredito.Text = "¢" + SepararMiles(Math.Round(totalCredito,2));
                             }
                             else grdCredito.Visibility = Visibility.Hidden;
                         }
@@ -561,7 +571,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                                 totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
-                                txbCredito.Text = "$" + totalCredito;
+                                txbCredito.Text = "$" + SepararMiles(Math.Round(totalCredito, 2));
                             }
                             else grdCredito.Visibility = Visibility.Hidden;
                         }
@@ -582,6 +592,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))
+            {
+                clientMant.SumarInventario(Convert.ToInt32(Producto.IdTipProducto), (Convert.ToDouble(Producto.canDisProducto) + Convert.ToDouble(Producto.canInvProducto)));
+            }
             this.Close();
         }
     }

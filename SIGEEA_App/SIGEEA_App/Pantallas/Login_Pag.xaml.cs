@@ -21,12 +21,11 @@ namespace SIGEEA_App.Pantallas
     /// <summary>
     /// Interaction logic for Login_Pag.xaml
     /// </summary>
-    public partial class Login_Pag : MetroWindow
+    public partial class Login_Pag : Window
     {
         public Login_Pag()
         {
             InitializeComponent();
-            ShowCloseButton = false;
             btnIngresar.Click += BtnIngresar_Click;
             btnCerrar.Click += BtnCerrar_Click;
         }
@@ -47,23 +46,13 @@ namespace SIGEEA_App.Pantallas
 
             }
             else {
+
                 UsuarioGlobal.InfoUsuario = segMant.InfoUsuario(Acceso);
-                List<SIGEEA_spListarPermisosResult> listaPermisos = segMant.ListarPermisos(UsuarioGlobal.InfoUsuario.FK_Id_Rol);
-                
-                foreach (SIGEEA_spListarPermisosResult permiso in listaPermisos) {
-                    UsuarioGlobal.Permisos.Add(permiso);
-                   
-                    foreach (SIGEEA_spListarSubModulosResult subModulo in segMant.ListarSubModulos(permiso.PK_Id_Permiso))
-                    {
-                            foreach (SIGEEA_spListarModulosResult Modulo in segMant.ListasModulos(subModulo.FK_Id_Modulo))
-                            {
-                            UsuarioGlobal.Modulos.Add(Modulo);
-                        }
-                    }
-               }
                 MainWindow ventana = new MainWindow();
+                txbUsuario.Text = String.Empty;
+                psbClave.Password = string.Empty;
                 ventana.ShowDialog();
-                this.Close();
+
             }
             
         }

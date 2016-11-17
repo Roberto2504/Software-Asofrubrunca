@@ -27,6 +27,7 @@ namespace SIGEEA_App.User_Controls.Clientes
             InitializeComponent();
             idCliente = pidCliente;
             idFactura = pidFactura;
+            tipo = pTipo;
             if (pTipo == "Todas")
             {
                 CargarFacturasPendientes();
@@ -41,22 +42,31 @@ namespace SIGEEA_App.User_Controls.Clientes
             }
         }
         int idCliente, idFactura;
-
+        string tipo;
+        string saldo = "";
         FacturaClienteMantenimiento facCliMan = new FacturaClienteMantenimiento();
+        public string SepararMiles(double Cantidad)
+        {
+            return Cantidad.ToString("N2");
+        }
         public void CargarPorIdCliente(int idCliente)
         {
             foreach (SIGEEA_spListarFacturaPendientePorClienteResult pendiente in facCliMan.ListarPendientePorCliente(idCliente))
             {
+                saldo = "";
                 uc_Factura nueva = new uc_Factura();
                 nueva.txtNumFacuta.Text = pendiente.PK_Id_FacCliente.ToString();
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
 
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                nueva.txbMonto.Text = pendiente.Saldo;
+                for (int i = 0; i < pendiente.Saldo.Length; i++)
+                {
+                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
+                }
+                nueva.txbMonto.Text = pendiente.Saldo[0]+SepararMiles(Convert.ToDouble(saldo.Remove(0,1)));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
-                nueva.btnVerFactura.Click += BtnVerFactura_Click;
                 wprPrincipal.Children.Add(nueva);
             }
         }
@@ -64,15 +74,19 @@ namespace SIGEEA_App.User_Controls.Clientes
         {
             foreach (SIGEEA_spListarFacturaPendientePorFacturaResult pendiente in facCliMan.ListarPendientePorFactura(idFactura))
             {
+                saldo = "";
                 uc_Factura nueva = new uc_Factura();
                 nueva.txtNumFacuta.Text = pendiente.PK_Id_FacCliente.ToString();
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                nueva.txbMonto.Text = pendiente.Saldo;
+                for (int i = 0; i < pendiente.Saldo.Length; i++)
+                {
+                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
+                }
+                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0, 1)));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
-                nueva.btnVerFactura.Click += BtnVerFactura_Click;
                 wprPrincipal.Children.Add(nueva);
             }
         }
@@ -81,32 +95,50 @@ namespace SIGEEA_App.User_Controls.Clientes
 
         public void CargarFacturasPendientes()
         {
+            wprPrincipal.Children.Clear();
             foreach (SIGEEA_spListarFacturaPendienteClienteResult pendiente in facCliMan.ListarPendiente())
             {
+                saldo = "";
                 uc_Factura nueva = new uc_Factura();
                 nueva.txtNumFacuta.Text = pendiente.PK_Id_FacCliente.ToString();
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                nueva.txbMonto.Text = pendiente.Saldo;
+                for (int i = 0; i < pendiente.Saldo.Length; i++)
+                {
+                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
+                }
+                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0, 1)));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
-                nueva.btnVerFactura.Click += BtnVerFactura_Click;
                 wprPrincipal.Children.Add(nueva);
             }
-        }
-
-        private void BtnVerFactura_Click(object sender, RoutedEventArgs e)
-        {
-            // throw new NotImplementedException();
         }
 
         private void BtnAbono_Click(object sender, RoutedEventArgs e)
         {
             Button boton = (Button)sender;
             wnwAbonoFactura nueva = new wnwAbonoFactura(Convert.ToInt32(boton.Tag));
+            nueva.Closed += Nueva_Closed;
             nueva.ShowDialog();
 
+        }
+
+        private void Nueva_Closed(object sender, EventArgs e)
+        {
+            wprPrincipal.Children.Clear();
+            if (tipo == "Todas")
+            {
+                CargarFacturasPendientes();
+            }
+            if (tipo == "Por cliente")
+            {
+                CargarPorIdCliente(idCliente);
+            }
+            if (tipo == "Por factura")
+            {
+                CargarPorIdFactura(idFactura);
+            }
         }
     }
 }

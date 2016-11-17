@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Fincas"
              mc:Ignorable="d" d:DesignWidth="600" Height="420.462">
     <Grid>
-        <DataGrid Margin="57,68,43,324" RenderTransformOrigin="0.5,0.5">
+        <DataGrid Margin="14,68,16,324" RenderTransformOrigin="0.5,0.5">
             <DataGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -22,9 +22,9 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="58,91,0,0" VerticalAlignment="Top" Width="500">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="10,91,0,0" VerticalAlignment="Top" Width="580">
             <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="-1,-1,1,1">
-                <StackPanel x:Name="stpFincas" Width="498" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <StackPanel x:Name="stpFincas" Width="572" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             </ScrollViewer>
         </Border>
         <Grid HorizontalAlignment="Left" Height="67" Margin="0,0,-1,0" VerticalAlignment="Top" Width="601">

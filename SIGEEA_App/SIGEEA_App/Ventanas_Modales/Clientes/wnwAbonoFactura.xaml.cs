@@ -43,7 +43,11 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         ClienteMantenimiento cliMant = new ClienteMantenimiento();
         FacturaClienteMantenimiento facMant = new FacturaClienteMantenimiento();
         double Total;
-
+        string saldo = "";
+        public string SepararMiles(double Cantidad)
+        {
+            return Cantidad.ToString("N2");
+        }
         public void ListaMetodos()
         {
 
@@ -55,7 +59,13 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             txtNumero.Visibility = Visibility.Hidden;
             cmbMetodoPago.ItemsSource = ListarMetodosDePago;
             cmbMoneda.ItemsSource = mon.ListarMonedas();
-            txtMontoaCancelar.Text = lista.Saldo;
+             
+           
+            for(int i = 0; i< lista.Saldo.Length; i++)
+            {
+                if (lista.Saldo[i] == '.') saldo += ','; else saldo += lista.Saldo[i];
+            }
+            txtMontoaCancelar.Text = saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0,1)));
             idCliente = lista.PK_Id_Cliente;
             SIGEEA_spObtenerCategoriaClienteResult categoria = cliMant.ObtenerCategoriaCliente(idCliente);
             lista.FecProPago_CreCliente = lista.FecProPago_CreCliente.AddDays(Convert.ToDouble(categoria.RanPagos_CatCliente));
@@ -107,8 +117,16 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         private void btnPagar_Click(object sender, RoutedEventArgs e)
         {
-            wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: lista.PK_Id_FacCliente, Tipo: "Abono", pkIdEmpresa: 1, ptipoPedido: null, nueva: null, pMontoTotal: null, pDescuentoTotal: null, pMontoNetoTotal: lista.Saldo, pMonedaTotal: moneda, pObservaciones: null, pMontoAbono: txtMontoAbono.Text, pfechaProPago: lista.FecProPago_CreCliente, pfechaLimPago: lista.FecLimPago_CreCliente, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-            nueva.ShowDialog();
+            if(cmbMetodoPago.SelectedValue != null)
+            {
+                wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: lista.PK_Id_FacCliente, Tipo: "Abono", pkIdEmpresa: 1, ptipoPedido: null, nueva: null, pMontoTotal: Total.ToString(), pDescuentoTotal: null, pMontoNetoTotal: saldo, pMonedaTotal: moneda, pObservaciones: null, pMontoAbono: txtMontoAbono.Text, pfechaProPago: lista.FecProPago_CreCliente, pfechaLimPago: lista.FecLimPago_CreCliente, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                nueva.ShowDialog();
+                this.Close();
+            }else
+            {
+                MessageBox.Show("Debe seleccionar un metodo de pago");
+            }
+            
         }
 
         private void txtMontoAbono_TextChanged(object sender, TextChangedEventArgs e)
@@ -124,24 +142,24 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 {
                     if (moneda == "Colón")
                     {
-                        Total = Convert.ToDouble(lista.Saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) / mon.PrecioVenta(moneda));
+                        Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) / mon.PrecioVenta(moneda));
 
                     }
-                    else Total = Convert.ToDouble(lista.Saldo.Remove(0, 1).ToString()) - Convert.ToDouble(txtMontoAbono.Text);
+                    else Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - Convert.ToDouble(txtMontoAbono.Text);
 
-                    txtNuevoSaldo.Text = string.Concat("$", Total);
+                    txtNuevoSaldo.Text = string.Concat("$", Math.Round(Convert.ToDouble(SepararMiles(Total)), 2));
                 }
                 else {
                     if (moneda == "Colón")
                     {
-                        Total = Convert.ToDouble(lista.Saldo.Remove(0, 1).ToString()) - Convert.ToDouble(txtMontoAbono.Text);
+                        Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - Convert.ToDouble(txtMontoAbono.Text);
                     }
                     else if (moneda == "Dolar")
                     {
-                        Total = Convert.ToDouble(lista.Saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) * mon.PrecioVenta(moneda));
+                        Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) * mon.PrecioVenta(moneda));
                     }
 
-                    txtNuevoSaldo.Text = string.Concat("¢", Total);
+                    txtNuevoSaldo.Text = string.Concat("¢", Math.Round(Convert.ToDouble(SepararMiles(Total)),2));
                 }
             }
 

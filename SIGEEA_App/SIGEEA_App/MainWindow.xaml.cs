@@ -23,10 +23,13 @@ using SIGEEA_App.Ventanas_Modales.Fincas;
 using SIGEEA_App.Ventanas_Modales.Insumos;
 using SIGEEA_App.Ventanas_Modales.Personas;
 using SIGEEA_App.Ventanas_Modales.Puestos;
+using SIGEEA_App.Ventanas_Modales.Usuarios;
 using SIGEEA_BO;
 using SIGEEA_BL.Seguridad;
 using Microsoft.Win32;
 using System.IO;
+using SIGEEA_BL;
+using SIGEEA_App.Pantallas;
 
 namespace SIGEEA_App
 {
@@ -35,24 +38,151 @@ namespace SIGEEA_App
     /// </summary>
     public partial class MainWindow : Window
     {
+      
         public MainWindow()
         {
             InitializeComponent();
             WindowState = WindowState.Maximized;
             CargarPantalla();
+            CargarMoneda();
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource = new BitmapImage(new Uri(UsuarioGlobal.InfoUsuario.RutFondo_Usuario, UriKind.RelativeOrAbsolute));
+            this.Background = myBrush;
+
+
         }
+        
         SeguridadMantenimiento segMant = new SeguridadMantenimiento();
+        MonedaMantenimiento monMant = new MonedaMantenimiento();
         List<SIGEEA_spListarSubModulosResult> listaSubModulos = new List<SIGEEA_spListarSubModulosResult>();
-        List<SIGEEA_spListarModulosResult> listaModulos = new List<SIGEEA_spListarModulosResult>();
+        List<SIGEEA_Modulo> listaModulos = new List<SIGEEA_Modulo>();
         int primera = 0;
         bool entro = false;
+
+        string venta;
+        string compra;
+        System.Net.WebClient client = new System.Net.WebClient();
+        Stream d;
+        StreamReader r;
+        string line;
+        public void CargarMoneda()
+        {
+           txtCompra.Text = "₡ " + Math.Round(Convert.ToDouble(monMant.Moneda(1).PreCompra_Moneda), 2).ToString();
+           txtVenta.Text = "₡ " + Math.Round(Convert.ToDouble(monMant.Moneda(1).PreVenta_Moneda), 2).ToString();
+        }
+        private void SincronizarTipoCambio()
+        {
+            txtVenta.Text = "";
+            txtVenta.Text = "";
+            compra = "";
+            venta = "";
+            try
+            {
+                d = client.OpenRead("https://www.bncr.fi.cr/BNCR/TipoCambio.aspx"); // Accede a la pagina que quieres buscar
+                r = new StreamReader(d); // lee la informacion o contenido de la web
+                line = r.ReadLine(); // recorre linea x linea la web
+                int para = 0;
+                int leido = 0;
+                bool leer = false;
+                while (line != null && leido != 2) // mientras exista contenido
+                {
+                    // aca realizas tu codigo de verificacion o obtener informacion
+
+                    line = r.ReadLine(); // para seguir leendo las otras lineas de la pagina
+                    if (para != 0)
+                    {
+                        try
+                        {
+                            for (int i = 0; i < line.Length; i++)
+                            {
+                                try
+                                {
+                                    if (line[i] == '>' && line[i + 1] == '5')
+                                    {
+                                        i++; leer = true;
+                                    }
+                                }
+                                catch { }
+                                if (line[i] == '<' && leer == true) { leer = false; leido++; }
+                                if (leer == true)
+                                {
+                                    if (leido == 0)
+                                    {
+                                        if (line[i] == '.')
+                                        {
+                                            compra += ",";
+                                        }
+                                        else
+                                        {
+                                            compra += line[i];
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        if (line[i] == '.')
+                                        {
+                                            venta += ",";
+                                        }
+                                        else
+                                        {
+                                            venta += line[i];
+                                        }
+
+                                    }
+                                }
+
+                            }
+                        }
+                        catch { }
+
+                    }
+
+
+
+
+                    para++;
+                }
+                monMant.ActualizaPrecio(Convert.ToDouble(venta), Convert.ToDouble(compra));
+                txtVenta.Text = "₡ " + Math.Round(Convert.ToDouble(venta), 2).ToString();
+                txtCompra.Text = "₡ " + Math.Round(Convert.ToDouble(compra), 2).ToString();
+                d.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No hay conexión a internet");
+            }
+
+          
+        }
+
+
         public void CargarPantalla()
         {
+            wrpPrincipal.Children.Clear();
+            listaModulos.Clear();
             lbUsuarioActual.Content = UsuarioGlobal.InfoUsuario.NomUsuario.ToString();
-
-            foreach (SIGEEA_spListarModulosResult Modulo in UsuarioGlobal.Modulos)
+            UsuarioGlobal.Modulos.Clear();
+            foreach (SIGEEA_spListarSubModulosResult subModulo in segMant.ListarSubModulos(Convert.ToInt32(UsuarioGlobal.InfoUsuario.FK_Id_Permiso)))
             {
-                foreach (SIGEEA_spListarModulosResult incluir in listaModulos)
+                bool entro = false;
+                SIGEEA_Modulo nuevoModulo = segMant.ObteneModulos(subModulo.FK_Id_Modulo);
+                foreach (SIGEEA_Modulo Modulo1 in UsuarioGlobal.Modulos)
+                {
+                    if (Modulo1.PK_Id_Modulo == nuevoModulo.PK_Id_Modulo)
+                    {
+                        entro = true;
+                    }
+                }
+                if (entro == false)
+                {
+                    UsuarioGlobal.Modulos.Add(nuevoModulo);
+                }
+            }
+            List<SIGEEA_Modulo> ordenada = UsuarioGlobal.Modulos.OrderBy(c => c.Nombre_Modulo).ToList();
+                foreach (SIGEEA_Modulo Modulo in ordenada)
+            {
+                foreach (SIGEEA_Modulo incluir in listaModulos)
                 {
                     if (incluir.PK_Id_Modulo == Modulo.PK_Id_Modulo)
                     {
@@ -64,22 +194,22 @@ namespace SIGEEA_App
                 {
                     primera++;
                     ComboBox nuevo = new ComboBox();
-                    nuevo.FontFamily = new FontFamily("Segoe UI");
+                    nuevo.FontFamily = new FontFamily("Segoe UI Ligth");
                     nuevo.FontSize = 24;
                     nuevo.Foreground = new SolidColorBrush(Colors.White);
-                    nuevo.Background = new LinearGradientBrush(Colors.Green, Colors.DarkSlateGray, 90);
-                    nuevo.Width = 200;
-                    nuevo.Height = 30;
+                    nuevo.Background = new LinearGradientBrush(Colors.Transparent, Colors.Gray, 90);
+                    nuevo.Width = 180;
+                    nuevo.Height = 35;
                     List<string> lista = new List<string>();
                     lista.Add(Modulo.Nombre_Modulo);
-                    foreach (string submodulo in segMant.ObtenerSubModulos(Modulo.PK_Id_Modulo))
+                    foreach (SIGEEA_spListaSubModuloPorPermisoResult submodulo in segMant.ListaSubModuloPorPermiso(Convert.ToInt32( UsuarioGlobal.InfoUsuario.FK_Id_Permiso),Modulo.PK_Id_Modulo))
                     {
-                        lista.Add(submodulo);
+                        lista.Add(submodulo.Nombre_SubModulo);
                     }
                     nuevo.ItemsSource = lista;
                     nuevo.SelectedIndex = 0;
                     nuevo.SelectionChanged += Nuevo_SelectionChanged;
-                    nuevo.MouseUp += Nuevo_MouseUp;  
+                    nuevo.MouseUp += Nuevo_MouseUp;
                     wrpPrincipal.Children.Add(nuevo);
                     entro = false;
                 }
@@ -239,7 +369,7 @@ namespace SIGEEA_App
                     break;
 
                 case "Compra de insumo":
-                    wnwBuscadorInsumo compraInsumo = new wnwBuscadorInsumo("Compra");
+                    wmwCompraInsumo compraInsumo = new wmwCompraInsumo();
                     compraInsumo.ShowDialog();
                     break;
 
@@ -247,6 +377,16 @@ namespace SIGEEA_App
                     wnwBuscadorInsumo pedirInsumo = new wnwBuscadorInsumo("Pedido");
                     pedirInsumo.ShowDialog();
                     break;
+                case "Permisos y roles":
+                    wnwRoles permisosyroles = new wnwRoles();
+                    permisosyroles.Closed += Permisosyroles_Closed;
+                    permisosyroles.ShowDialog();
+                    break;
+                case "Registrar usuario":
+                    wnwAgregarUsuario nuevoUsuario = new wnwAgregarUsuario(tipo: "Agregar", pUsuario:null);
+                    nuevoUsuario.ShowDialog();
+                    break;
+                
 
                 default:
                     break;
@@ -255,8 +395,14 @@ namespace SIGEEA_App
 
         }
 
+        private void Permisosyroles_Closed(object sender, EventArgs e)
+        {
+            CargarPantalla();
+        }
+
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
         }
 
@@ -271,8 +417,25 @@ namespace SIGEEA_App
                     ImageBrush myBrush = new ImageBrush();
                     myBrush.ImageSource = new BitmapImage(new Uri(ofd.InitialDirectory + ofd.FileName, UriKind.RelativeOrAbsolute));
                     this.Background = myBrush;
+                    segMant.CambiarFondo(ofd.FileName, UsuarioGlobal.InfoUsuario.PK_Id_Usuario);
                 }
             }
+        }
+
+        private void btnRefrescar_Click(object sender, RoutedEventArgs e)
+        {
+            txtVenta.Text = "";
+            txtVenta.Text = "";
+            
+            SincronizarTipoCambio();
+        }
+
+        private void lbCerrarSesión_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+            //Login_Pag login = new Login_Pag();
+            //login.ShowDialog();
+            
         }
     }
 }

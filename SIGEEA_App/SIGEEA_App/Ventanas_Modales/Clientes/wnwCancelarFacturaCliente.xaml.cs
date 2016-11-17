@@ -31,12 +31,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             if (Tipo != "Abono")
             {
                 foreach (uc_DetProducto detProducto in nueva)
-
                 {
                     listaDetProducto.Add(detProducto);
                 }
             }
-
             lista = facMant.ObtenerFactura(pkIdCliente);//en realidad entra el iddelafactura
             IdEmpleado = pkIdEmpleado;
             IdCliente = pkIdCliente;
@@ -97,28 +95,13 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         public void InfoEmpresa()
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-
             Nombre = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Nombre_Empresa;
-
-
             Cedula = "Ced. Juridica N°:" + dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).CedJuridica_Empresa;
-
-
             Direccion = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Direccion_Empresa;
-
-
             Telefono = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Telefono_Empresa;
-
-
             Correo = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Correo_Empresa;
-
-
             Fecha = DateTime.Now.ToShortDateString();
-
             Hora = DateTime.Now.ToShortTimeString();
-
-
-
         }
         public void CargarDetProducto()
         {
@@ -150,6 +133,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             }
 
         }
+        public string SepararMiles(double Cantidad)
+        {
+            return Cantidad.ToString("N2");
+        }
         public void CargarFinal()
         {
             InfoEmpresa();
@@ -180,8 +167,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             parrafoEncabezado.Inlines.Add(new Run(NombreEmpleado + "."));
             parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
             parrafoEncabezado.Inlines.Add(new Run(NombreCliente + "."));
-
-
             txbFactura.Document.Blocks.Add(parrafoEncabezado);
             run = new Run();
             Paragraph parrafoFactura = new Paragraph();
@@ -212,7 +197,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     foreach (uc_DetProducto detProducto in listaDetProducto)
 
                     {
-                        string linea = (detProducto.nomTipProducto + "    ¢" + detProducto.preNacProducto + "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + detProducto.preBruProducto + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + detProducto.preNetProducto);
+                        string linea = (detProducto.nomTipProducto + "    ¢" + SepararMiles(Math.Round(Convert.ToDouble(detProducto.preNacProducto),2)) + "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + SepararMiles(Math.Round(Convert.ToDouble(detProducto.preBruProducto), 2)) + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + SepararMiles(Math.Round(Convert.ToDouble(detProducto.preNetProducto), 2)));
                         parrafoFactura.Inlines.Add(linea);
                         parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                     }
@@ -222,35 +207,40 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     foreach (uc_DetProducto detProducto in listaDetProducto)
 
                     {
-                        string linea = (detProducto.nomTipProducto + "    $" + detProducto.preExtProducto + "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + detProducto.preBruProducto + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + detProducto.preNetProducto);
+                        string linea = (detProducto.nomTipProducto + "    $" + SepararMiles(Math.Round((Convert.ToDouble(detProducto.preExtProducto) / monMant.PrecioVenta("Dolar")), 2)) + "        " + detProducto.canInvProducto + "         " + detProducto.Moneda + " " + SepararMiles(Math.Round(Convert.ToDouble(detProducto.preBruProducto), 2)) + "            " + detProducto.desProducto + "         " + detProducto.Moneda + " " + SepararMiles(Math.Round(Convert.ToDouble(detProducto.preNetProducto), 2)));
                         parrafoFactura.Inlines.Add(linea);
                         parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                     }
                 }
-
-
                 parrafoFactura.Inlines.Add("_______________________________________________________");
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                 run = new Run();
                 run.FontWeight = FontWeights.Bold;
                 run.FontSize = 20;
-                parrafoFactura.Inlines.Add("MONTO TOTAL: " + moneda + " " + montoTotal);
+                if (moneda == "Dolar")
+                parrafoFactura.Inlines.Add("MONTO TOTAL: $ "  + SepararMiles(Math.Round(Convert.ToDouble(montoTotal.Remove(0, 1)), 2)));
+                else
+                parrafoFactura.Inlines.Add("MONTO TOTAL: ¢ " + SepararMiles(Math.Round(Convert.ToDouble( montoTotal.Remove(0,1)),2)));
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                 parrafoFactura.Inlines.Add("DESCUENTO: " + descuentoTotal + "%");
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
-                parrafoFactura.Inlines.Add("MONTO NETO TOTAL: " + moneda + " " + montoNetoTotal);
+                if (moneda == "Dolar")
+                parrafoFactura.Inlines.Add("MONTO NETO TOTAL: $ " + SepararMiles(Math.Round(Convert.ToDouble(montoNetoTotal.Remove(0, 1)), 2)));
+                else
+                parrafoFactura.Inlines.Add("MONTO NETO TOTAL: ¢ "  + SepararMiles(Math.Round(Convert.ToDouble(montoNetoTotal.Remove(0, 1)),2)));
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
             }
             else
             {
                 parrafoFactura.Inlines.Add("NÚMERO DE FACTURA: " + (lista.PK_Id_FacCliente).ToString());
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
-
                 parrafoFactura.Inlines.Add("FECHA LIMITE DE PAGO: " + fechaLimite.ToShortDateString().ToUpper());
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
+                if(montoTotal!="0")
                 parrafoFactura.Inlines.Add("PROXIMO PAGO: " + fechaProPago.ToShortDateString().ToUpper());
+                else
+                parrafoFactura.Inlines.Add("PROXIMO PAGO: FACTURA CANCELADA" );
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
-
             }
 
 
@@ -270,10 +260,22 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     parrafoFactura.Inlines.Add("Número de cuenta : " + numero);
                     parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                 }
-                parrafoFactura.Inlines.Add("Saldo Anterior: " + montoNetoTotal);
+                parrafoFactura.Inlines.Add("Saldo anterior: " + montoNetoTotal[0] + SepararMiles(Math.Round(Convert.ToDouble( montoNetoTotal.Remove(0,1)),1)));
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
+               if(tipoFactura != "Abono"&& tipoFactura != "Proforma")
+                {
+                    if (moneda == "Dolar") parrafoFactura.Inlines.Add("Pago de cliente: $" + SepararMiles(Math.Round(Convert.ToDouble(MontoAbono.Remove(0, 1)), 1)));
+                    else
+                        parrafoFactura.Inlines.Add("Pago de cliente: ¢" + SepararMiles(Math.Round(Convert.ToDouble(MontoAbono.Remove(0, 1)), 1)));
+                }else
+                {
+                    if (moneda == "Dolar") parrafoFactura.Inlines.Add("Pago de cliente: $" + SepararMiles(Math.Round(Convert.ToDouble(MontoAbono), 1)));
+                    else
+                        parrafoFactura.Inlines.Add("Pago de cliente: ¢" + SepararMiles(Math.Round(Convert.ToDouble(MontoAbono), 1)));
+                }
+                
 
-                parrafoFactura.Inlines.Add("Pago Cliente: " + MontoAbono);
+
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
             }
 
@@ -281,16 +283,20 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (tipoFactura != "Proforma")
                 {
-                    fin = Convert.ToDouble(montoNetoTotal.Remove(0,1)) - Convert.ToDouble(MontoAbono.Remove(0,1));
-                    parrafoFactura.Inlines.Add("Saldo Actual: " + Math.Round(fin, 2));
+                    if (MontoAbono == null) MontoAbono = "0";
+                    fin = Convert.ToDouble(montoNetoTotal.Remove(0,1));
+                        parrafoFactura.Inlines.Add("Saldo actual: "  +montoTotal[0] + SepararMiles(Math.Round(Convert.ToDouble(fin), 2)));
                 }
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
                 parrafoFactura.Inlines.Add(new Run("Observaciones: " + observaciones));
             }
             else
             {
-                fin = Convert.ToDouble(montoNetoTotal.Remove(0, 1)) - Convert.ToDouble(MontoAbono.Remove(0, 1));
-                parrafoFactura.Inlines.Add("Saldo Actual: " + montoNetoTotal[0] + Math.Round(fin, 2));
+                fin = Convert.ToDouble(montoTotal);
+                if (moneda == "Dolar")
+                    parrafoFactura.Inlines.Add("Saldo actual: $" + SepararMiles(Math.Round(Convert.ToDouble(fin), 2)));
+                else
+                    parrafoFactura.Inlines.Add("Saldo actual: ¢" + SepararMiles(Math.Round(Convert.ToDouble(fin), 2)));
                 parrafoFactura.Inlines.Add(new Run(Environment.NewLine));
             }
             txbFactura.Document.Blocks.Add(parrafoFactura);
@@ -402,16 +408,25 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 facMant.RegitrarAbono(nuevoAbono, nuevoCredito);
             }
 
-            MessageBox.Show("Imprimiendo Factura");
+            MessageBox.Show("Imprimiendo factura");
             print(txbFactura);
+            this.Close();
         }
         private void print(RichTextBox pFactura)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.Equals(true))
+            try
             {
-                printDialog.PrintDocument((((IDocumentPaginatorSource)pFactura.Document).DocumentPaginator), "Imprimiendo");
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == DialogResult.Equals(true))
+                {
+                    printDialog.PrintDocument((((IDocumentPaginatorSource)pFactura.Document).DocumentPaginator), "Imprimiendo");
+                }
             }
+            catch
+            {
+
+            }
+            
         }
 
     }

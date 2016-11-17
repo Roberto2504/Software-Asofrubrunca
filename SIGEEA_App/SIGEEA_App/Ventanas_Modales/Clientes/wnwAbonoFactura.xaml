@@ -8,9 +8,9 @@
         mc:Ignorable="d"
         Title="Abono Factura" Height="501.88" Width="412.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-3">
-
-        <TextBlock x:Name="txtbFactura" HorizontalAlignment="Left" Margin="30,5,0,0" TextWrapping="Wrap" Text="Tipo:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="txtbTipoFactura" HorizontalAlignment="Left" Margin="72,5,0,0" TextWrapping="Wrap" Text="Abono" VerticalAlignment="Top" Width="210" Height="20"/>
+        <TextBlock x:Name="txtbTipoFactura" HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="20" FontFamily="Segoe UI Semibold" FontWeight="Bold" FontSize="16"><Run Text="Abono"/><InlineUIContainer>
+        		<Rectangle Fill="Black" Height="20" Stroke="Black" Width="396" OpacityMask="Black"/>
+        	</InlineUIContainer></TextBlock>
         <Grid x:Name="grdPago" HorizontalAlignment="Left" Height="127" Margin="10,30,0,0" VerticalAlignment="Top" Width="385" Visibility="Visible">
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="22,9,0,0" TextWrapping="Wrap" Text="Método de Pago" VerticalAlignment="Top" Width="93"/>
             <ComboBox x:Name="cmbMetodoPago" HorizontalAlignment="Left" Margin="22,30,0,0" VerticalAlignment="Top"  Width="188" RenderTransformOrigin="0.206,-0.448" SelectionChanged="cmbMetodoPago_SelectionChanged"/>
@@ -50,6 +50,8 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
+        <Rectangle HorizontalAlignment="Left" Height="2" Margin="10,25,0,0" VerticalAlignment="Top" Width="387" Fill="#FF0A2B99"/>
+        <Rectangle HorizontalAlignment="Left" Height="2" Margin="0,395,0,0" VerticalAlignment="Top" Width="387" Fill="#FF0A2B99"/>
 
     </Grid>
 </Controls:MetroWindow>

@@ -34,11 +34,11 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         {
             if (cmbOpciones.SelectedIndex == 0)//Listar Todas las facturas pendientes
             {
-                grdOpciones.Visibility = Visibility.Visible;
+                grdOpciones.Visibility = Visibility.Hidden;
             }
             if (cmbOpciones.SelectedIndex == 1)//Listar las facturas pendientes por cliente
             {
-                grdOpciones.Visibility = Visibility.Visible;
+                grdOpciones.Visibility = Visibility.Hidden;
 
             }
             if (cmbOpciones.SelectedIndex == 2)//Listar A partir del número de factura

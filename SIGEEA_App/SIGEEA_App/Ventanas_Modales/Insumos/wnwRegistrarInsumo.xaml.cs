@@ -25,6 +25,8 @@ namespace SIGEEA_App.Ventanas_Modales.Insumos
     {
         UnidadMedidaMantenimiento MantUnidades = new UnidadMedidaMantenimiento();
         InsumoMantenimiento MantInsumo = new InsumoMantenimiento();
+        int conta = 0;
+        int conta1 = 0;
         public wnwRegistrarInsumo(string ptipo, int ppkInsumo)
         {
             InitializeComponent();
@@ -87,6 +89,33 @@ namespace SIGEEA_App.Ventanas_Modales.Insumos
             txtCantidad.Text = cbxUnidadesDeMedida.Text;
         }
 
-        
+        private void txtCantidad_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+                e.Handled = true;
+            if (e.Text == "," && conta == 0 && txtCantidad.Text != "")
+            {
+                e.Handled = false;
+                conta1 = 1;
+            }
+        }
+
+        private void txtCantidad_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool entro = false;
+            for (int i = 0; i < txtCantidad.Text.Length; i++)
+            {
+                if (txtCantidad.Text[i] == ',')
+                {
+                    entro = true;
+                }
+            }
+            if (entro == true)
+            {
+                conta = 1;
+            }
+            else conta = 0;
+            
+        }
     }
 }

@@ -158,6 +158,9 @@
     <Compile Include="User_Controls\General\uc_Menu.xaml.cs">
       <DependentUpon>uc_Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User_Controls\Insumos\ucCompraInsumo.xaml.cs">
+      <DependentUpon>ucCompraInsumo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Controls\Insumos\uc_ContenedorInsumos.xaml.cs">
       <DependentUpon>uc_ContenedorInsumos.xaml</DependentUpon>
     </Compile>
@@ -208,6 +211,15 @@
     </Compile>
     <Compile Include="User_Controls\uc_ratingstar.xaml.cs">
       <DependentUpon>uc_ratingstar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Usuarios\uc_Modulos.xaml.cs">
+      <DependentUpon>uc_Modulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Usuarios\uc_SubModulos.xaml.cs">
+      <DependentUpon>uc_SubModulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Controls\Usuarios\uc_Usuario.xaml.cs">
+      <DependentUpon>uc_Usuario.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwAsambleas.xaml.cs">
       <DependentUpon>wnwAsambleas.xaml</DependentUpon>
@@ -305,6 +317,12 @@
     <Compile Include="Ventanas_Modales\Fincas\wnwRegistrarLote.xaml.cs">
       <DependentUpon>wnwRegistrarLote.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Insumos\wmwCompraInsumo.xaml.cs">
+      <DependentUpon>wmwCompraInsumo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Insumos\wmwProveedores.xaml.cs">
+      <DependentUpon>wmwProveedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml.cs">
       <DependentUpon>wnwBuscadorInsumo.xaml</DependentUpon>
     </Compile>
@@ -337,6 +355,18 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Puestos\wnwPuestos.xaml.cs">
       <DependentUpon>wnwPuestos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Usuarios\wnwAgregarRol.xaml.cs">
+      <DependentUpon>wnwAgregarRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Usuarios\wnwAgregarUsuario.xaml.cs">
+      <DependentUpon>wnwAgregarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Usuarios\wnwMantenimientoUsuarios.xaml.cs">
+      <DependentUpon>wnwMantenimientoUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Usuarios\wnwRoles.xaml.cs">
+      <DependentUpon>wnwRoles.xaml</DependentUpon>
     </Compile>
     <Compile Include="wnwInicio.xaml.cs">
       <DependentUpon>wnwInicio.xaml</DependentUpon>
@@ -469,6 +499,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="User_Controls\Insumos\ucCompraInsumo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="User_Controls\Insumos\uc_ContenedorInsumos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -534,6 +568,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Controls\uc_ratingstar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Usuarios\uc_Modulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Usuarios\uc_SubModulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Controls\Usuarios\uc_Usuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -665,6 +711,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Insumos\wmwCompraInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Insumos\wmwProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Insumos\wnwBuscadorInsumo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -706,6 +760,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Puestos\wnwPuestos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Usuarios\wnwAgregarRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Usuarios\wnwAgregarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Usuarios\wnwMantenimientoUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Usuarios\wnwRoles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -796,6 +866,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ventanas_Modales\General\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\fondo pantalla.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\LOGIN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\LOGIN1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

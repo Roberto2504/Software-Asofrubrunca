@@ -1,0 +1,81 @@
+﻿<Window x:Class="SIGEEA_App.Ventanas_Modales.Insumos.wmwCompraInsumo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Insumos"
+        mc:Ignorable="d"
+        Title="Compra de insumos" Height="585" Width="626" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="585" VerticalAlignment="Top" Width="626"/>
+        <DataGrid Margin="5,133,34,394" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.001"/>
+                    <RotateTransform Angle="0.041"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre " Width="105" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                
+                <DataGridTextColumn Header="Descripción" Width="90" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Disponible" Width="80" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Cantidad" Width="140" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="P/U" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Total" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="310" Margin="10,162,0,0" VerticalAlignment="Top" Width="585">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="1,-1,-1,-1">
+                <StackPanel x:Name="stpInsumos" Width="580" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            </ScrollViewer>
+        </Border>
+        <Rectangle  HorizontalAlignment="Left" Height="1" Margin="19,523,0,0" VerticalAlignment="Top" Width="588" Fill="Black"/>
+        <Grid HorizontalAlignment="Left" Height="126" Margin="14,10,0,0" VerticalAlignment="Top" Width="592">
+            <TextBlock  HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" Text="Compra de insumos" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="22" Height="29" Width="198" />
+            <Rectangle  HorizontalAlignment="Left" Height="1" Margin="0,37,0,0" VerticalAlignment="Top" Width="582" Fill="Black"/>
+
+            <TextBlock   HorizontalAlignment="Left" Margin="293,467,0,-370" TextWrapping="Wrap" Text="Total:" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="22" Height="29" Width="48" />
+            <CheckBox x:Name="cbCredito" Checked="cbCredito_Checked"  Click="cbCredito_Checked" Content="Credito" HorizontalAlignment="Left" Margin="25,473,0,-382" VerticalAlignment="Top" Height="18"/>
+            <CheckBox x:Name="cbEfectivo" Checked="cbEfectivo_Checked" Click="cbEfectivo_Checked" Content="Efectivo" HorizontalAlignment="Left" Margin="115,473,0,-382" VerticalAlignment="Top" IsChecked="True" Height="18"/>
+            <TextBlock x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="346,472,0,-369" TextWrapping="Wrap" Text="₡ 0" VerticalAlignment="Top" Width="236" TextAlignment="Right" FontSize="14"/>
+
+
+            <TextBox x:Name="txtBuscar"  TextChanged="txtBuscar_TextChanged"  MaxLength="200" 
+    						HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="224" Margin="107,90,0,10" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+
+            <TextBox x:Name="txtDetalle"  MaxLength="100" 
+        		HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="514" Margin="68,48,0,41" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+            <Image  Source="/SIGEEA_App;component/Imagenes/buscar.png" Margin="311,90,0,8"  Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.25"  />
+
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,98,0,0" TextWrapping="Wrap" Text="Nombre de insumo" VerticalAlignment="Top" Width="118"/>
+            <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="0,51,0,0" TextWrapping="Wrap" Text="Descripción:" VerticalAlignment="Top" Width="68"/>
+        </Grid>
+        <Button x:Name="btnPedir" Margin="556,529,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPedir_Click">
+            <Rectangle Width="33" Height="43" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_money}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button x:Name="btnCancelar" Margin="13,525,549,4" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click"  RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Rectangle Width="36" Height="32" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_cancel}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+</Window>

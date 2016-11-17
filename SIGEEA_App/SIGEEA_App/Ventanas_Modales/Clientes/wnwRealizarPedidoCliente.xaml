@@ -12,18 +12,17 @@
         Title="Pedido de Cliente" Height="600.631" Width="1200.503" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
 
-        <Grid HorizontalAlignment="Left" Height="67" Margin="-62,0,0,0" VerticalAlignment="Top" Width="406">
+        <Grid HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="344">
 
-            <StackPanel x:Name="stack_search_text" VerticalAlignment="Center" Margin="83,29,116,0" Height="38" >
-                <StackPanel x:Name="SearchSubPanel" Orientation="Horizontal">
-                    <StackPanel x:Name="SearchInterenal" Orientation="Horizontal" Width="206" Height="46" >
-                        <TextBox x:Name="txbBuscarProducto"  TextChanged="txbBuscarProducto_TextChanged" MaxLength="200" 
-        					HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="198" Margin="0,10,0,9" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
-                        <Image  Source="/SIGEEA_App;component/Imagenes/buscar.png" Margin="-30,0,0,0"  Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.25"  />
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
-            <TextBlock x:Name="textBlock" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="83,10,0,0" TextWrapping="Wrap" Text="Nombre del producto:" VerticalAlignment="Top" Width="177"/>
+            <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="599" Margin="0,0,-853,-532" VerticalAlignment="Top" Width="1197"/>
+
+
+            <TextBox x:Name="txbBuscarProducto"  TextChanged="txbBuscarProducto_TextChanged" MaxLength="200" 
+                		HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="203" Margin="9,31,0,10" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+            <Image  Source="/SIGEEA_App;component/Imagenes/buscar.png" Margin="190,34,0,0" HorizontalAlignment="Left" Width="20" RenderTransformOrigin="0.5,0.25" Height="23" VerticalAlignment="Top"  />
+
+
+            <TextBlock x:Name="textBlock" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,9,0,0" TextWrapping="Wrap" Text="Nombre del producto:" VerticalAlignment="Top" Width="177"/>
         </Grid>
 
         <TextBlock x:Name="txbCantitadTotal" Margin="572,449,326,117" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Monto bruto:"/>
@@ -39,7 +38,7 @@
                 <WrapPanel x:Name="wpVeProducto" x:Uid="wpVeProducto" AllowDrop="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Drop="wpVeProducto_Drop"  Height="350" Width="591" Background="White" />
             </ScrollViewer>
         </Border>
-        <Button x:Name="btnGenerarFactura" Margin="1090,484,10,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerarFactura_Click">
+        <Button x:Name="btnGenerarFactura" Margin="1097,490,26,20" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerarFactura_Click">
             <Rectangle Width="40" Height="42" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -47,7 +46,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click"  Margin="0,484,1098,10"  >
+        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click"  Margin="36,500,1083,28"  >
             <Rectangle Width="38" Height="38" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
@@ -57,10 +56,10 @@
         </Button>
         <TextBlock x:Name="txbMoneda" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="238,459,0,0" TextWrapping="Wrap" Text="TIPO DE MONEDA:" VerticalAlignment="Top" />
         <ComboBox x:Name="cmbMoneda" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" SelectionChanged="cmbMoneda_SelectionChanged" Margin="421,459,0,0" VerticalAlignment="Top"  Width="140" SelectedIndex="1" />
-        <ComboBox x:Name="cmbVenta" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="421,10,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbVenta_SelectionChanged"/>
+        <ComboBox x:Name="cmbVenta" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Margin="421,10,0,0" VerticalAlignment="Top" Width="163" SelectedIndex="0" SelectionChanged="cmbVenta_SelectionChanged"/>
 
 
-        <Label x:Name="label_Copy" FontSize="20" FontWeight="Bold" Content="Tipo de venta:" HorizontalAlignment="Left" Margin="238,6,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="label_Copy" FontSize="20" FontWeight="Bold" Content="Tipo de venta:" HorizontalAlignment="Left" Margin="238,6,0,0" VerticalAlignment="Top" Width="154"/>
         <ComboBox x:Name="cmbTipoFactura" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold" Margin="1043,10,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" SelectionChanged="cmbTipoFactura_SelectionChanged"/>
 
         <Label x:Name="label_Copy1" Content="Tipo de factura:" HorizontalAlignment="Left" Margin="866,10,0,0"  FontSize="20" FontWeight="Bold" VerticalAlignment="Top" Width="172"/>
@@ -104,7 +103,7 @@
                 <DataGridTextColumn Header="CANTIDAD" Width="115" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
                 <DataGridTextColumn Header="BRUTO" Width="105" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
                 <DataGridTextColumn Header="DES" Width="50" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
-                <DataGridTextColumn Header="BRUTO" Width="105" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="NETO" Width="105" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
             </DataGrid.Columns>
         </DataGrid>
 

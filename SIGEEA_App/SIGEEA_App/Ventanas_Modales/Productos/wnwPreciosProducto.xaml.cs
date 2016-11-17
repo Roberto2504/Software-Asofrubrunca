@@ -50,7 +50,8 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
                 nuevoPrecioVenta.FecRegistro_PreProVenta = DateTime.Now;
                 nuevoPrecioVenta.FK_Id_Moneda = 2;
                 mantProducto.ActualizarPrecioVenta(nuevoPrecioVenta);
-                MessageBox.Show("Actualización realizada con éxito", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show("Actualización realizada con éxito", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
             }
             catch
             {

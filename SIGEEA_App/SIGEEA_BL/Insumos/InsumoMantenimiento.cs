@@ -25,10 +25,10 @@ namespace SIGEEA_BL
             invInsumo.FK_UniMedida = uniMedida.PK_Id_UniMedida;
             invInsumo.Cantidad_InvInsumo = Convert.ToDouble(Cantidad);
             invInsumo.FK_Id_Insumo = insumo.PK_Id_Insumo;
-            
+
             dc.SIGEEA_InvInsumos.InsertOnSubmit(invInsumo);
             dc.SubmitChanges();
-          
+
         }
         /// <summary>
         /// Modificar insumo
@@ -46,7 +46,7 @@ namespace SIGEEA_BL
             inv.Cantidad_InvInsumo = invInsumo.Cantidad_InvInsumo;
             inv.FK_UniMedida = uniMedida.PK_Id_UniMedida;
             dc.SubmitChanges();
-          
+
         }
         /// <summary>
         /// Eliminar insumo (solo le cambia el estado)
@@ -58,7 +58,7 @@ namespace SIGEEA_BL
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Estado_Insumo = false;
             dc.SubmitChanges();
-           
+
         }
         /// <summary>
         /// Realizar Pedido
@@ -69,7 +69,7 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             dc.SIGEEA_PedInsumos.InsertOnSubmit(nuevoPedido);
             dc.SubmitChanges();
-            
+
         }
         /// <summary>
         /// Listar
@@ -81,13 +81,50 @@ namespace SIGEEA_BL
             return dc.SIGEEA_spListarInsumos(nomInsumo).ToList();
         }
         /// <summary>
-        /// Listar
+        /// ObtenerInsumo
         /// </summary>
-        /// <param name="nomInsumo"></param>
+        /// <param name="pkInsumo"></param>
         public SIGEEA_spObtenerInsumoResult ObtenerInsumo(int pkInsumo)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             return dc.SIGEEA_spObtenerInsumo(pkInsumo).FirstOrDefault();
+        }
+        /// <summary>
+        /// Sumar inventario
+        /// </summary>
+        /// <param name="pkInsumo"></param>
+        public void SumarInventario(int invInsumo, double cantidad)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_InvInsumo insumo = dc.SIGEEA_InvInsumos.FirstOrDefault(c => c.FK_Id_Insumo == invInsumo);
+            insumo.Cantidad_InvInsumo += cantidad;
+            dc.SubmitChanges();
+
+        }
+        /// <summary>
+        /// Restar inventario
+        /// </summary>
+        /// <param name="pkInsumo"></param>
+        public void RestarInventario(int invInsumo, double cantidad)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_InvInsumo insumo = dc.SIGEEA_InvInsumos.FirstOrDefault(c => c.FK_Id_Insumo == invInsumo);
+            insumo.Cantidad_InvInsumo = insumo.Cantidad_InvInsumo - cantidad;
+            dc.SubmitChanges();
+
+        }
+        public SIGEEA_FacInsumo AgregarFactura(SIGEEA_FacInsumo Factura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_FacInsumos.InsertOnSubmit(Factura);
+            dc.SubmitChanges();
+            return Factura;
+        }
+        public void AgregarDetalleFactura(SIGEEA_DetFacInsumo Factura)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            dc.SIGEEA_DetFacInsumos.InsertOnSubmit(Factura);
+            dc.SubmitChanges();
         }
     }
 }

@@ -11,20 +11,21 @@
     <Grid>
         <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged"  FontWeight="Bold" FontSize="14.667"/>
 
-        <Grid Name="grdOpciones" Margin="10,51,0,0" Visibility="Hidden">
+        <Grid Name="grdOpciones" Margin="10,51,0,0" Visibility="Visible">
 
-            <Button x:Name="btnFiltrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFiltrar_Click" Margin="272,164,0,0"  >
-                <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush Stretch="Fill"
-            				Visual="{DynamicResource appbar_list}" />
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
+          
             <TextBlock x:Name="lbNumero" Visibility="Hidden" HorizontalAlignment="Left" Margin="29,28,0,0" TextWrapping="Wrap" Text="Digite el número de factura: " IsEnabled="False" VerticalAlignment="Top"/>
-            <TextBlock x:Name="txtNumeroFactura" Visibility="Hidden" HorizontalAlignment="Left" Margin="29,49,0,0" TextWrapping="Wrap" Text=" " IsEnabled="True" VerticalAlignment="Top" Width="192" Height="28"/>
+            <TextBox x:Name="txtNumeroFactura" Visibility="Hidden" HorizontalAlignment="Left" Margin="29,64,0,0" TextWrapping="Wrap" Text=" " IsEnabled="True" VerticalAlignment="Top" Width="192" Height="28"/>
         </Grid>
-        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click" Margin="0,212,293,0"  >
+        <Button x:Name="btnFiltrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFiltrar_Click" Margin="286,200,16,12"  >
+            <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_list}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click" Margin="16,200,277,12"  >
             <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"

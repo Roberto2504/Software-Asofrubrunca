@@ -47,7 +47,15 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
                 {
                     MessageBox.Show("Este asociado no cuenta con ninguna dirección registrada. Puede registrarla a continuación.", "SIGEEA", MessageBoxButton.OK);
                     editar = false;
-                    pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
+                    if (pCedula_pCodigo.Length < 9)
+                    {
+                         
+                        pk_persona = dc.SIGEEA_Asociados.FirstOrDefault(p => p.Codigo_Asociado == pCedula_pCodigo).FK_Id_Persona;
+                    }else
+                    {
+                        pk_persona = dc.SIGEEA_Personas.First(p => p.CedParticular_Persona == pCedula_pCodigo).PK_Id_Persona;
+                    }
+                    
                 }
             }
             else if (tipoPersona == "Empleado")

@@ -15,8 +15,8 @@
             <RadioButton x:Name="rbtAusenciaJus" HorizontalAlignment="Left" Margin="896,2,0,0" VerticalAlignment="Top" Width="19"/>
             <RadioButton x:Name="rbtPresente" HorizontalAlignment="Left" Margin="1012,2,0,0" VerticalAlignment="Top" Width="18"/>
         </Grid>
-        <Label Margin="747,-2,159,0" FontSize="14" Content="Ausencia justificada" Foreground="#FFF3FF00" Background="{x:Null}"/>
-        <Label Margin="937,-5,33,3" FontSize="14" Content="Presente" Foreground="#FF0CFF00" Background="{x:Null}"/>
+        <Label Margin="747,-2,159,0" FontSize="14" Content="Ausencia justificada" Foreground="#FF6E7400" Background="{x:Null}"/>
+        <Label Margin="937,-5,33,3" FontSize="14" Content="Presente" Foreground="#FF0E8D07" Background="{x:Null}"/>
     </Grid>
 </UserControl>
 

@@ -4,15 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Fincas"
-             mc:Ignorable="d" Height="38" Width="497.667">
+             mc:Ignorable="d" Height="38" Width="510.167">
     <Grid Name="grdFinca">
-        <TextBlock x:Name="txbCodFinca" HorizontalAlignment="Left" TextWrapping="Wrap" Text="1234567891" Height="28" Width="81" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="91,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <TextBlock x:Name="txbNomCompleto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Roberto Antonio Alvarado Fallas" Height="28" Width="216" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="97,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="385,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <TextBlock x:Name="txbAlquilada" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Alquilada" Height="28" Width="68" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="318,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="312,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="499" Margin="-2,0,0,0"/>
-        <Button x:Name="btnOpcion" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="393,6,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="102*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="512" Margin="-2,0,0,0" Grid.ColumnSpan="7"/>
+        <TextBlock x:Name="txbCodFinca" HorizontalAlignment="Left" TextWrapping="Wrap" Text="1234567891" Height="28" Width="81" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="4,6,0,4"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="1,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="1"/>
+        <TextBlock x:Name="txbNomCompleto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Roberto Antonio Alvarado Fallas" Height="28" Width="233" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="4,6,0,4" Grid.Column="2"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="5"/>
+        <TextBlock x:Name="txbAlquilada" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Alquilada" Height="28" Width="68" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="2,6,0,4" Grid.Column="4"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="3" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Button x:Name="btnOpcion" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="1,6,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White" Grid.Column="6"/>
     </Grid>
 </UserControl>

@@ -24,7 +24,7 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
             nuevaPersona.RegistrarPersona(persona);
-            dc.SubmitChanges();
+          
             cliente.FK_Id_Persona = persona.PK_Id_Persona;
             cliente.FK_Id_CatCliente = pkCategoria;
             cliente.Estado_Cliente = true;
@@ -59,7 +59,6 @@ namespace SIGEEA_BL
             Editar.RanPagos_CatCliente = catCliente.RanPagos_CatCliente;
             Editar.TieMaximo_CatCliente = catCliente.TieMaximo_CatCliente;
             Editar.FK_Id_TipCatCliente = catCliente.FK_Id_TipCatCliente;
-            dc.SIGEEA_CatClientes.InsertOnSubmit(Editar);
             dc.SubmitChanges();
             return Editar.PK_Id_CatCliente;
         }
@@ -91,7 +90,7 @@ namespace SIGEEA_BL
         /// <param name="cliente"></param>
         /// <param name="creCliente"></param>
         /// <param name="persona"></param>
-        public void ModificarCliente(SIGEEA_Cliente cliente, int pkCategoria, SIGEEA_Persona pPersona)
+        public void ModificarCliente(int pkCategoria, SIGEEA_Persona pPersona)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
 

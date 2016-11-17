@@ -5,17 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SIGEEA_App.User_Controls.Fincas"
              mc:Ignorable="d" 
-             d:DesignHeight="38" d:DesignWidth="640">
+             d:DesignHeight="38" Width="584.255">
     <Grid>
-        <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="640"/>
-        <TextBlock x:Name="txbNomCompleto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding NombreCompletoAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="211" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="216,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="314,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
-        <TextBlock x:Name="txbCedula" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Codigo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="87" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="222,10,0,0"/>
-        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="409,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="92*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="108*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFE8E8E8" HorizontalAlignment="Left" Height="38" Stroke="Black" VerticalAlignment="Top" Width="584" Grid.ColumnSpan="7"/>
+        <TextBlock x:Name="txbNomCompleto" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding NombreCompletoAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="266" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5,5,0,5"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="2.47,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="1"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="1.47,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="3"/>
+        <TextBlock x:Name="txbCedula" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Codigo, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="87" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="4.47,5,0,5" Grid.Column="2"/>
+        <Rectangle Fill="#FF020000" HorizontalAlignment="Left" Height="38" Margin="1.47,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" Grid.Column="5"/>
 
-        <TextBlock x:Name="txbEstAsociado" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding EstadoAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="78" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="326,10,0,0"/>
-        <Button x:Name="btnOpcion" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="415,5,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
-        <Button x:Name="btnOpcion2" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="529,5,0,0" VerticalAlignment="Top" Width="101"  Background="#FF2E8936" Foreground="White"/>
+        <TextBlock x:Name="txbEstAsociado" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding EstadoAsociado, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_Asociado}}}" Height="28" Width="83" FontFamily="Segoe UI Semibold" FontSize="14.667" VerticalAlignment="Center" Margin="5.47,5,0,5" Grid.Column="4"/>
+        <Button x:Name="btnOpcion" Content="" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="4.475,5,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White" Grid.Column="6"/>
     </Grid>
 </UserControl>

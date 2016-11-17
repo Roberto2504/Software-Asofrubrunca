@@ -38,7 +38,7 @@ namespace SIGEEA_App.User_Controls.Insumos
         {
             actualiza();
         }
-        private void FiltrarClientes(string CedNombre)
+        private void FiltrarInsumos(string CedNombre)
         {
             try
             {
@@ -56,8 +56,7 @@ namespace SIGEEA_App.User_Controls.Insumos
                     if (lista.Estado_Insumo == true) { nuevo.EstadoInsumo = "ACTIVO"; } else { nuevo.EstadoInsumo = "INACTIVO"; }
                     nuevo.IdInsumo = lista.PK_Id_Insumo.ToString();
                     nuevo.btnOpcion.Tag = lista.PK_Id_Insumo;
-                    nuevo.btnOpcion2.Tag = lista.PK_Id_Insumo;
-
+                    nuevo.btnOpcion.DataContext = lista;
                     if (opcion == "Pedido")
                     {
                         nuevo.btnOpcion.Content = "Hacer Pedido";
@@ -68,31 +67,24 @@ namespace SIGEEA_App.User_Controls.Insumos
                     {
 
                         nuevo.btnOpcion.Content = "Editar";
-                        nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
                     else if (opcion == "Pedido")
                     {
                         nuevo.btnOpcion.Content = "Hacer pedido";
-                        nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
                     else if (opcion == "Compra")
                     {
                         nuevo.btnOpcion.Content = "Comprar Insumo";
-                        nuevo.btnOpcion2.Visibility = Visibility.Hidden;
 
                     }
                     else if (opcion == "Eliminar o Activar")
                     {
-                        if (nuevo.EstadoInsumo == "ACTIVO") { nuevo.btnOpcion.Visibility = Visibility.Visible; nuevo.btnOpcion2.Visibility = Visibility.Hidden; }
-                        else { nuevo.btnOpcion.Visibility = Visibility.Hidden; nuevo.btnOpcion2.Visibility = Visibility.Visible; }
-                        nuevo.btnOpcion.Content = "Eliminar";
-                        nuevo.btnOpcion2.Content = "Activar";
-
+                        if (nuevo.EstadoInsumo == "ACTIVO") { nuevo.btnOpcion.Content = "Eliminar"; }
+                        else { nuevo.btnOpcion.Content = "Activar"; }
                     }
-                    nuevo.btnOpcion.Click += BtnOpcion_Click; ;
-                    nuevo.btnOpcion2.Click += BtnOpcion2_Click; ;
+                    nuevo.btnOpcion.Click += BtnOpcion_Click; 
 
                     stpClientes.Children.Add(nuevo);
                 }
@@ -105,34 +97,39 @@ namespace SIGEEA_App.User_Controls.Insumos
 
         }
 
-        private void BtnOpcion2_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         private void BtnOpcion_Click(object sender, RoutedEventArgs e)
         {
             var boton = (Button)sender;
-           
+            SIGEEA_spListarInsumosResult insumo = boton.DataContext as SIGEEA_spListarInsumosResult;
             if (opcion == "Editar")
             {
 
                 wnwRegistrarInsumo nuevo = new wnwRegistrarInsumo("Editar", Convert.ToInt32(boton.Tag));
+                nuevo.Closed += Nuevo_Closed;
                 nuevo.ShowDialog();
 
             }
             else if (opcion == "Pedido")
             {
-                wnwPedidoInsumo pedido = new wnwPedidoInsumo();
+                wnwPedidoInsumo pedido = new wnwPedidoInsumo(pinsumo: insumo);
+                pedido.Closed += Pedido_Closed;
                 pedido.ShowDialog();
 
             }
-            else if (opcion == "Compra")
-            {
-                ;
-
-            }
+           
             
+        }
+
+        private void Nuevo_Closed(object sender, EventArgs e)
+        {
+            FiltrarInsumos(nomCed);
+        }
+
+        private void Pedido_Closed(object sender, EventArgs e)
+        {
+            FiltrarInsumos(nomCed);
         }
 
         public void actualiza()
@@ -141,7 +138,7 @@ namespace SIGEEA_App.User_Controls.Insumos
             {
 
                 nomCed = searchIn.Text;
-                FiltrarClientes(nomCed);
+                FiltrarInsumos(nomCed);
             }
 
         }

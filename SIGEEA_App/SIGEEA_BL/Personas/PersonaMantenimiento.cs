@@ -13,13 +13,29 @@ namespace SIGEEA_BL
         /// Registrar una persona nueva
         /// </summary>
         /// <param name="persona"></param>
-        public void RegistrarPersona(SIGEEA_Persona persona)
+        public SIGEEA_Persona RegistrarPersona(SIGEEA_Persona persona)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             dc.SIGEEA_Personas.InsertOnSubmit(persona);
             dc.SubmitChanges();
+            return persona;
         }
-        
+        public bool ValidaCedJuridica(string ced)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            if (dc.SIGEEA_Personas.FirstOrDefault(c => c.CedJuridica_Persona == ced) != null)
+                return true;
+            else
+                return false;
+        }
+        public bool ValidaCedParticar(string ced)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            if (dc.SIGEEA_Personas.FirstOrDefault(c => c.CedParticular_Persona == ced) != null)
+                return true;
+            else
+                return false;
+        }
         /// <summary>
         /// Modificar datos de la persona
         /// </summary>

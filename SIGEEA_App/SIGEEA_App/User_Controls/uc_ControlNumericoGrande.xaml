@@ -15,7 +15,7 @@
             <RowDefinition Height="15" />
         </Grid.RowDefinitions>
         <TextBox Name="NUDTextBox" Grid.Column="0" TextAlignment="Center" PreviewKeyDown="NUDTextBox_PreviewKeyDown" PreviewKeyUp="NUDTextBox_PreviewKeyUp" TextChanged="NUDTextBox_TextChanged" FontSize="14.667" FontWeight="Bold" Margin="-150,0,0,-3" Grid.RowSpan="2" HorizontalAlignment="Left" Width="150"/>
-        <RepeatButton Name="NUDButtonUP"  Grid.Column="1" Grid.Row="0" FontSize="8" FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="NUDButtonUP_Click" Margin="0,0,0,1">5</RepeatButton>
-        <RepeatButton Name="NUDButtonDown" Grid.Row="1" FontSize="8"  FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="13" VerticalAlignment="Bottom" Click="NUDButtonDown_Click" RenderTransformOrigin="-19.474,0.408" Grid.Column="1">6</RepeatButton>
+        <RepeatButton Name="NUDButtonUP" Grid.Row="0" FontSize="8" FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="NUDButtonUP_Click" Margin="0,0,0,13" Grid.ColumnSpan="2" Grid.RowSpan="2">5</RepeatButton>
+        <RepeatButton Name="NUDButtonDown" Grid.Row="1" FontSize="8"  FontFamily="Marlett" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="16" VerticalAlignment="Bottom" Click="NUDButtonDown_Click" RenderTransformOrigin="-19.474,0.408" Grid.ColumnSpan="2" Margin="0,0,0,-3">6</RepeatButton>
     </Grid>
 </UserControl>

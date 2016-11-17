@@ -31,12 +31,22 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
-            SIGEEA_TipProducto nuevoTipo = new SIGEEA_TipProducto();
-            nuevoTipo.Nombre_TipProducto = txbNombre.Text;
-            nuevoTipo.Calidad_TipProducto = Convert.ToInt32(ucCalidad.NUDTextBox.Text);
-            nuevoTipo.Descripcion_TipProducto = txbDescripcion.Text;
-            ProductoMantenimiento prodMantenimiento = new ProductoMantenimiento();
-            prodMantenimiento.RegistrarTipoProducto(nuevoTipo);
+            if (txbDescripcion.Text != "" && txbNombre.Text != "")
+            {
+                SIGEEA_TipProducto nuevoTipo = new SIGEEA_TipProducto();
+                nuevoTipo.Nombre_TipProducto = txbNombre.Text;
+                nuevoTipo.Calidad_TipProducto = Convert.ToInt32(ucCalidad.NUDTextBox.Text);
+                nuevoTipo.Descripcion_TipProducto = txbDescripcion.Text;
+                ProductoMantenimiento prodMantenimiento = new ProductoMantenimiento();
+                prodMantenimiento.RegistrarTipoProducto(nuevoTipo);
+                MessageBox.Show("El producto se ha registrado correctamente");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Debe completar todos los campos");
+            }
+           
         }
     }
 }

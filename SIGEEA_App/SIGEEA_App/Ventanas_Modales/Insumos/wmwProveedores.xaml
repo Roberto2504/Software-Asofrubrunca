@@ -1,0 +1,43 @@
+﻿<Window x:Class="SIGEEA_App.Ventanas_Modales.Insumos.wmwProveedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Insumos"
+        mc:Ignorable="d"
+        Title="Proveedores" Height="353.008" Width="556.684" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid Margin="21,132,42,132" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.001"/>
+                    <RotateTransform Angle="0.041"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre " Width="120" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Descripción" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Editar" Width="100" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="Contacto" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+                <DataGridTextColumn Header="COMPRAR" Width="92" CanUserResize="False" FontSize="16" FontWeight="Bold" TextBlock.TextAlignment="Center"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock  HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" Text="Proveedores" VerticalAlignment="Top" FontFamily="Segoe UI Light" FontSize="22" Height="29" Width="198" />
+        <Rectangle  HorizontalAlignment="Left" Height="1" Margin="10,37,0,0" VerticalAlignment="Top" Width="528" Fill="Black"/>
+        <TextBox x:Name="txtBuscar"  TextChanged="txtBuscar_TextChanged"  MaxLength="200" 
+        	HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="224" Margin="10,64,0,262" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+        <Image  Source="/SIGEEA_App;component/Imagenes/buscar.png" Margin="207,64,0,261"  Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.25"  />
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="10,43,0,0" TextWrapping="Wrap" Text="Nombre de proveedor" VerticalAlignment="Top" Width="177"/>
+        <Button x:Name="btnAgregar" Margin="239,58,283,261" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnAgregar_Click">
+            <Rectangle Width="15" Height="15" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+        				Visual="{DynamicResource appbar_add}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+
+    </Grid>
+</Window>

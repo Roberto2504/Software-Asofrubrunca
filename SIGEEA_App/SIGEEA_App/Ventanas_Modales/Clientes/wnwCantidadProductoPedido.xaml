@@ -8,10 +8,10 @@
         xmlns:User_Controls="clr-namespace:SIGEEA_App.User_Controls" 
         x:Class="SIGEEA_App.Ventanas_Modales.Clientes.wnwCantidadProductoPedido"
         mc:Ignorable="d"
-        Title="Cantidad de Producto a Pedir" Height="508.157" Width="478.626"  WindowStartupLocation="CenterScreen">
+        Title="Cantidad de Producto a Pedir" Height="508.157" WindowStyle="None"  Width="478.626"  WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid x:Name="grdPrincipal" >
-            <TextBlock x:Name="txbTipo" Margin="26,10,288,435"   TextWrapping="Wrap" FontSize="20" FontWeight="Bold"   Text=""/>
+            <TextBlock x:Name="txbTipo" Margin="26,10,288,435"   TextWrapping="Wrap" FontSize="22" FontWeight="Bold"   Text=""/>
             <TextBlock x:Name="txb1" Margin="26,79,342,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text="Nombre:"/>
             <TextBlock x:Name="txbNombre" Margin="240,79,65,366" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text=""/>
             <TextBlock x:Name="txb2" Margin="26,116,233,324" TextWrapping="Wrap" FontSize="20" FontWeight="Bold"  Text="Cantidad disponible:" RenderTransformOrigin="-1.703,2.062"/>
@@ -24,7 +24,7 @@
             <TextBlock x:Name="txb3_Copy2" Margin="23,352,303,91" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="-1.703,2.062"><Run Text="Nuevo "/><Run Text="Total"/><Run Text=":"/></TextBlock>
             <TextBlock x:Name="txbNuevoPrecio" Margin="249,352,59,91" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text=""/>
             <TextBlock x:Name="txbPorcentaje" Margin="303,318,124,125" TextWrapping="Wrap" IsEnabled="False"  FontSize="20" FontWeight="Bold" Text="%"/>
-            <Button Margin="358,391,21,6" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnGuardar_Click" >
+            <Button Margin="358,410,21,6" x:Name="btnGuardar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnGuardar_Click" >
                 <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"
@@ -32,7 +32,7 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <Button Margin="23,391,356,0" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnCancelar_Click" >
+            <Button Margin="23,410,356,0" x:Name="btnCancelar"  Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="BtnCancelar_Click" >
                 <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"

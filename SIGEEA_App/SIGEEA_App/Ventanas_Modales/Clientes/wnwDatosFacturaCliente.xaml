@@ -8,6 +8,8 @@
         mc:Ignorable="d"
         Title="Datos Factura Cliente" Height="489.251" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-3">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="463" VerticalAlignment="Top" Width="394"/>
+
         <Grid x:Name="grdObservaciones" HorizontalAlignment="Left" Height="95" Margin="10,30,0,0" VerticalAlignment="Top" Width="372">
             <TextBlock x:Name="txt1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Observaciones: " VerticalAlignment="Top"/>
             <TextBox x:Name="txtObservaciones" HorizontalAlignment="Left" Height="61" Margin="10,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="352"/>

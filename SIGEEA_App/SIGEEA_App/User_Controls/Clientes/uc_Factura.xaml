@@ -15,10 +15,9 @@
             <Rectangle Fill="Black" HorizontalAlignment="Left" Height="43" Margin="483,0,0,0" Stroke="Black" VerticalAlignment="Bottom" Width="2"/>
             <TextBlock x:Name="txbFecLimPago" Margin="490,4,341,6" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text=""/>
             <Rectangle Fill="Black" HorizontalAlignment="Left" Height="44" Margin="601,0,0,-1" Stroke="Black" VerticalAlignment="Bottom" Width="2"/>
-            <TextBlock x:Name="txbMonto" Margin="608,5,211,5" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text=""/>
-            <Button x:Name="btnAbono" Content="Abono" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="736,9,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
-            <Button x:Name="btnVerFactura" Content="Ver factura" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="839,9,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
-            <Rectangle Fill="Black" HorizontalAlignment="Left" Height="44" Margin="729,0,0,-1" Stroke="Black" VerticalAlignment="Bottom" Width="2"/>
+            <TextBlock x:Name="txbMonto" Margin="608,5,123,5" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Text=""/>
+            <Button x:Name="btnAbono" Content="Abono" HorizontalAlignment="Left" Visibility="Visible" Height="28" Margin="834,9,0,0" VerticalAlignment="Top" Width="98"   Background="#FF2E8936" Foreground="White"/>
+            <Rectangle Fill="Black" HorizontalAlignment="Left" Height="44" Margin="824,0,0,-1" Stroke="Black" VerticalAlignment="Bottom" Width="2"/>
         </Grid>
     </Border>
 </UserControl>

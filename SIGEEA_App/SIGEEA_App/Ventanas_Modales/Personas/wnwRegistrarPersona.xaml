@@ -42,6 +42,7 @@
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="5,0,0,0" TextWrapping="Wrap" Text="Información personal" VerticalAlignment="Top" TextDecorations="Underline" FontWeight="Bold" FontSize="26.667"/>
                 <User_Controls:uc_Nacionalidades x:Name="ucNacionalidad" HorizontalAlignment="Left" Margin="507,156,0,0" VerticalAlignment="Top" Height="31" Width="175"/>
                 <User_Controls:uc_ratingstar Visibility="Collapsed" x:Name="ucEstrellas" HorizontalAlignment="Left" Margin="353,10,-23,0" VerticalAlignment="Top" RenderTransformOrigin="0.137,0.441" Width="352"/>
+                <!--<CheckBox x:Name="cbxTipoPersona" Content="Cédula jurídica" HorizontalAlignment="Left" Margin="353,56,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"   Click="cbxTipoPersona_Checked" Visibility="Hidden"/>-->
             </Grid>
             <Grid HorizontalAlignment="Left" Height="328" Margin="25,32,0,0" VerticalAlignment="Top" Width="708" x:Name="grdEmpleado" Visibility="Collapsed">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Escolaridad" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" TextDecorations="Underline"/>
@@ -89,6 +90,7 @@
                 <TextBox x:Name="txbRango" HorizontalAlignment="Left" Height="23" Margin="10,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" />
                 <TextBox x:Name="txbTiempoMaximo" HorizontalAlignment="Left" Height="23" Margin="305,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" FontSize="13.333" FontWeight="Bold" />
             </Grid>
+            <CheckBox x:Name="cbxEmpresa" Visibility="Hidden" Content="Empresa" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="393,83,0,0" Width="119" FontWeight="Bold" FontSize="14"  Click="cbxEmpresa_Click"/>
         </Grid>
     </Border>
 </Controls:MetroWindow>

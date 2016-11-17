@@ -58,13 +58,10 @@ namespace SIGEEA_App.User_Controls.Fincas
                     nuevo.idPersona = lista.PK_Id_Persona.ToString();
                     nuevo.IdAsociado = lista.PK_Id_Asociado.ToString();
                     nuevo.btnOpcion.Tag = lista.PK_Id_Asociado;
-                    nuevo.btnOpcion2.Tag = lista.PK_Id_Asociado;
 
                     if (opcion == "Registrar")
                     {
                         nuevo.btnOpcion.Content = "Registrar Finca";
-                        nuevo.btnOpcion2.IsEnabled = false;
-                        nuevo.btnOpcion2.Content = "Ver Fincas";
 
                     }
 
@@ -75,16 +72,15 @@ namespace SIGEEA_App.User_Controls.Fincas
 
                     }
 
-                    else if (opcion == "Eliminar o Activar")
-                    {
-                        if (nuevo.EstadoAsociado == "ACTIVO") { nuevo.btnOpcion.Visibility = Visibility.Visible; nuevo.btnOpcion2.Visibility = Visibility.Hidden; }
-                        else { nuevo.btnOpcion.Visibility = Visibility.Hidden; nuevo.btnOpcion2.Visibility = Visibility.Visible; }
-                        nuevo.btnOpcion.Content = "Eliminar";
-                        nuevo.btnOpcion2.Content = "Activar";
+                    //else if (opcion == "Eliminar o Activar")
+                    //{
+                    //    if (nuevo.EstadoAsociado == "ACTIVO") { nuevo.btnOpcion.Visibility = Visibility.Visible; nuevo.btnOpcion2.Visibility = Visibility.Hidden; }
+                    //    else { nuevo.btnOpcion.Visibility = Visibility.Hidden; nuevo.btnOpcion2.Visibility = Visibility.Visible; }
+                    //    nuevo.btnOpcion.Content = "Eliminar";
+                    //    nuevo.btnOpcion2.Content = "Activar";
 
-                    }
+                    //}
                     nuevo.btnOpcion.Click += BtnOpcion_Click;
-                    nuevo.btnOpcion2.Click += BtnOpcion2_Click;
 
                     stpClientes.Children.Add(nuevo);
                 }
