@@ -79,7 +79,7 @@
         <TextBlock x:Name="txtVenta"  HorizontalAlignment="Left" Margin="1064,100,0,0" VerticalAlignment="Top"  FontSize="16" FontStyle="Italic" Background="{x:Null}" Foreground="Black" Width="77" TextAlignment="Right"/>
         <TextBlock x:Name="txtCompra"  HorizontalAlignment="Left" Margin="1149,100,0,0" VerticalAlignment="Top"  FontSize="16" FontStyle="Italic" Background="{x:Null}" Foreground="Black" Width="82" TextAlignment="Right" Height="21" />
         <Label x:Name="label_Copy1" Content="Venta" HorizontalAlignment="Left" Margin="1077,66,0,0" VerticalAlignment="Top"  FontSize="16" FontStyle="Italic" Background="{x:Null}" Foreground="Black"/>
-        <TextBlock x:Name="label1" HorizontalAlignment="Left" Margin="422,76,0,0" VerticalAlignment="Top" TextAlignment="Center" Height="21" Width="314" FontFamily="Yu Gothic UI Semibold" Foreground="White"><Run Text="P"/><Run Text="PUEBLO NUEVO DE CAJÓN, PÉREZ ZELEDÓN, SAN JOSÉ"/></TextBlock>
+        <TextBlock x:Name="label1" HorizontalAlignment="Left" Margin="422,76,0,0" VerticalAlignment="Top" TextAlignment="Center" Height="21" Width="314" FontFamily="Yu Gothic UI Semibold" Foreground="White"><Run Text=""/><Run Text="PUEBLO NUEVO DE CAJÓN, PÉREZ ZELEDÓN, SAN JOSÉ"/></TextBlock>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="62" Margin="344,18,0,0" VerticalAlignment="Top" Width="470" Stretch="Fill" Source="Imagenes/logo.png">
             <Image.OpacityMask>
                 <ImageBrush ImageSource="Imagenes/logo.png"/>

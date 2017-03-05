@@ -106,7 +106,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             parrafoEncabezado.Inlines.Add(new Run(encabezado.Fecha));
             parrafoEncabezado.Inlines.Add(new Run("  " + encabezado.Hora));
             parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.NumFactura));
+            parrafoEncabezado.Inlines.Add(new Run(encabezado.NumFactura.ToString()));
 
             txbFactura.Document.Blocks.Add(parrafoEncabezado);//FINAL
 

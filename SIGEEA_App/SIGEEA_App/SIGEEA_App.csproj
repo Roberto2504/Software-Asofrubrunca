@@ -37,11 +37,15 @@
   <PropertyGroup>
     <ApplicationIcon>Icono FUNDER.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SIGEEA_App.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
@@ -50,6 +54,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -63,9 +68,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -100,6 +107,21 @@
     </Compile>
     <Compile Include="Paginas\Pag_Productos.xaml.cs">
       <DependentUpon>Pag_Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SIGEEA_BDDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SIGEEA_BDDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SIGEEA_BDDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Asociados\uc_Asamblea.xaml.cs">
       <DependentUpon>uc_Asamblea.xaml</DependentUpon>
@@ -804,6 +826,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Facturas\Re_Factura_Orden_Venta.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -814,6 +837,39 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SIGEEA_BDDataSet.xsc">
+      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SIGEEA_BDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SIGEEA_BDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SIGEEA_BDDataSet.xss">
+      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SIGEEA_BDDataSet1.xsc">
+      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SIGEEA_BDDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SIGEEA_BDDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SIGEEA_BDDataSet1.xss">
+      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SIGEEA_BDDataSet2.xsc">
+      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SIGEEA_BDDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SIGEEA_BDDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SIGEEA_BDDataSet2.xss">
+      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
+    </None>
     <Resource Include="Recursos\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
