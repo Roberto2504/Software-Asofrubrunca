@@ -16,6 +16,7 @@ using MahApps.Metro.Controls.Dialogs;
 
 using SIGEEA_BL;
 using SIGEEA_BO;
+using Microsoft.Reporting.WinForms;
 
 namespace SIGEEA_App.Ventanas_Modales.Productos
 {
@@ -33,81 +34,87 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
         private void GeneraFactura(int factura)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_spGenerarFacturaEntregaResult encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).First();
+            List<SIGEEA_spGenerarFacturaEntregaResult> encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).ToList();
             List<SIGEEA_spObtenerDetallesEntregaResult> detalles = dc.SIGEEA_spObtenerDetallesEntrega(factura).ToList();
 
-
-            Paragraph parrafoEncabezado = new Paragraph();
-            parrafoEncabezado.TextAlignment = TextAlignment.Center;
-            parrafoEncabezado.FontFamily = new FontFamily("Agency FB");
-            parrafoEncabezado.FontSize = 18;
-
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.Nombre_Empresa));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.CedJuridica));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.Direccion_Empresa));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.Telefono));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.Correo));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.Fecha));
-            parrafoEncabezado.Inlines.Add(new Run("  " + encabezado.Hora));
-            parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoEncabezado.Inlines.Add(new Run(encabezado.NumFactura));
-
-            txbFactura.Document.Blocks.Add(parrafoEncabezado);//FINAL
-
-            Paragraph parrafoAsociado = new Paragraph();
-            parrafoAsociado.TextAlignment = TextAlignment.Left;
-            parrafoAsociado.FontFamily = new FontFamily("Agency FB");
-            parrafoAsociado.FontSize = 16;
-
-            parrafoAsociado.Inlines.Add(new Run(encabezado.NombreAsociado));
-            parrafoAsociado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoAsociado.Inlines.Add(new Run(encabezado.CedPersona));
-            parrafoAsociado.Inlines.Add(new Run(Environment.NewLine));
-            parrafoAsociado.Inlines.Add(new Run(encabezado.CodigoAsociado));
-            txbFactura.Document.Blocks.Add(parrafoAsociado);
+            var source = new ReportDataSource("Detalle", SIGEEA.BL.Facturas.helper.ConvertToDatatable(detalles));
+            var source2 = new ReportDataSource("Encabezado", SIGEEA.BL.Facturas.helper.ConvertToDatatable(encabezado));
 
 
-            Paragraph parrafoProductos = new Paragraph();
-            parrafoProductos.TextAlignment = TextAlignment.Left;
-            parrafoProductos.FontFamily = new FontFamily("Agency FB");
-            parrafoProductos.FontSize = 16;
-            parrafoProductos.Inlines.Add(new Run("Producto           Cantidad          Precio"));
-            parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
-            
-            foreach (SIGEEA_spObtenerDetallesEntregaResult d in detalles)
-            {
-                
-                parrafoProductos.Inlines.Add(new Run(d.Nombre_TipProducto + "          "));
-                parrafoProductos.Inlines.Add(new Run(d.CanTotal_DetFacAsociado + "              "));
-                parrafoProductos.Inlines.Add(new Run(d.Precio));
-                parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
-            }
-            parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
-            parrafoProductos.Inlines.Add(new Run("Este recibo es un comprobante legal en el que se respalda que el asociado realizó la entrega de producto. Recomendamos conservarlo."));
-            txbFactura.Document.Blocks.Add(parrafoProductos);
+
+            ReporteFacturaEntrega.LocalReport.DataSources.Add(source);
+            ReporteFacturaEntrega.LocalReport.DataSources.Add(source2);
+            ReporteFacturaEntrega.LocalReport.ReportEmbeddedResource = "SIGEEA_App.Facturas.Re_Factura_Orden_Venta.rdlc";
+            ReporteFacturaEntrega.RefreshReport();
+
+            //Paragraph parrafoEncabezado = new Paragraph();
+            //parrafoEncabezado.TextAlignment = TextAlignment.Center;
+            //parrafoEncabezado.FontFamily = new FontFamily("Agency FB");
+            //parrafoEncabezado.FontSize = 18;
+
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.Nombre_Empresa));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.CedJuridica));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.Direccion_Empresa));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.Telefono));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.Correo));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.Fecha));
+            //parrafoEncabezado.Inlines.Add(new Run("  " + encabezado.Hora));
+            //parrafoEncabezado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoEncabezado.Inlines.Add(new Run(encabezado.NumFactura));
+
+            //txbFactura.Document.Blocks.Add(parrafoEncabezado);//FINAL
+
+            //Paragraph parrafoAsociado = new Paragraph();
+            //parrafoAsociado.TextAlignment = TextAlignment.Left;
+            //parrafoAsociado.FontFamily = new FontFamily("Agency FB");
+            //parrafoAsociado.FontSize = 16;
+
+            //parrafoAsociado.Inlines.Add(new Run(encabezado.NombreAsociado));
+            //parrafoAsociado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoAsociado.Inlines.Add(new Run(encabezado.CedPersona));
+            //parrafoAsociado.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoAsociado.Inlines.Add(new Run(encabezado.CodigoAsociado));
+            //txbFactura.Document.Blocks.Add(parrafoAsociado);
+
+
+            //Paragraph parrafoProductos = new Paragraph();
+            //parrafoProductos.TextAlignment = TextAlignment.Left;
+            //parrafoProductos.FontFamily = new FontFamily("Agency FB");
+            //parrafoProductos.FontSize = 16;
+            //parrafoProductos.Inlines.Add(new Run("Producto           Cantidad          Precio"));
+            //parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
+
+            //foreach (SIGEEA_spObtenerDetallesEntregaResult d in detalles)
+            //{
+
+            //    parrafoProductos.Inlines.Add(new Run(d.Nombre_TipProducto + "          "));
+            //    parrafoProductos.Inlines.Add(new Run(d.CanTotal_DetFacAsociado + "              "));
+            //    parrafoProductos.Inlines.Add(new Run(d.Precio));
+            //    parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
+            //}
+            //parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
+            //parrafoProductos.Inlines.Add(new Run("Este recibo es un comprobante legal en el que se respalda que el asociado realizó la entrega de producto. Recomendamos conservarlo."));
+            //txbFactura.Document.Blocks.Add(parrafoProductos);
+
+
+
+
+
+
+
+
+
 
         }
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == DialogResult.Equals(true))
-                {
-                    printDialog.PrintDocument((((IDocumentPaginatorSource)txbFactura.Document).DocumentPaginator), "Imprimiendo...");
-                }
-            }
-            catch
-            {
-
-            }
-            
+                        
         }
     }
 }

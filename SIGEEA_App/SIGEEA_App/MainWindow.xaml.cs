@@ -88,7 +88,7 @@ namespace SIGEEA_App
                 {
                     // aca realizas tu codigo de verificacion o obtener informacion
 
-                    line = r.ReadLine(); // para seguir leendo las otras lineas de la pagina
+                    line = r.ReadLine(); // para seguir leyendo las otras lineas de la pagina
                     if (para != 0)
                     {
                         try

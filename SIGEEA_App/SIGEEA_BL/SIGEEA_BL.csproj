@@ -55,6 +55,7 @@
     <Compile Include="Clientes\ClienteMantenimiento.cs" />
     <Compile Include="Clientes\FacturaClienteMantenimiento.cs" />
     <Compile Include="Empleados\EmpleadoMantenimiento.cs" />
+    <Compile Include="Facturas\FacturasMantenimiento.cs" />
     <Compile Include="Fincas\FincaMantenimiento.cs" />
     <Compile Include="Insumos\InsumoMantenimiento.cs" />
     <Compile Include="Monedas\MonedaMantenimiento.cs" />

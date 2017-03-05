@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Empleados"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="wnwCancelarPagoEmpleado" Height="514.285" Width="712.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
@@ -20,9 +21,9 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,56,177,22">
-                <RichTextBox Name="txbFactura" Margin="0,0,0,0" Background="#FFD8DFE2" IsEnabled="False"></RichTextBox>
-            </ScrollViewer>
+            <WindowsFormsHost Margin="26,25,324,36">
+                <rv:ReportViewer x:Name="ReporteFacturaEntrega" ZoomMode="FullPage" AutoSize="True" AutoSizeMode="GrowAndShrink" Dock="Fill" ShowBackButton="False" ShowExportButton="False" ShowFindControls="False" ShowPageNavigationControls="False" ShowPrintButton="False" ShowRefreshButton="False" ShowStopButton="False" ShowZoomControl="False"/>
+            </WindowsFormsHost>
         </Grid>
     </Border>
 </Controls:MetroWindow>
