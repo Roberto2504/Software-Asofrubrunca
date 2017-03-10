@@ -7,13 +7,13 @@
         xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="wnwCancelarPagoEmpleado" Height="514.285" Width="712.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Factura" Height="514.285" Width="712.782" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#83919F" BorderThickness="2">
         <Grid Background="#FFB0C1C0">
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnImprimir" Margin="550,197,10,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnImprimir_Click" ToolTip="Imprimir factura">
+            <Button x:Name="btnImprimir" Margin="533,197,27,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnImprimir_Click" ToolTip="Imprimir factura">
                 <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"
@@ -21,8 +21,8 @@
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>
-            <WindowsFormsHost Margin="26,25,324,36">
-                <rv:ReportViewer x:Name="ReporteFacturaEntrega" ZoomMode="FullPage" AutoSize="True" AutoSizeMode="GrowAndShrink" Dock="Fill" ShowBackButton="False" ShowExportButton="False" ShowFindControls="False" ShowPageNavigationControls="False" ShowPrintButton="False" ShowRefreshButton="False" ShowStopButton="False" ShowZoomControl="False"/>
+            <WindowsFormsHost Margin="26,9,262,26">
+                <rv:ReportViewer x:Name="ReporteFacturaEntrega" ZoomMode="FullPage" AutoSize="True" AutoSizeMode="GrowAndShrink" Dock="Fill" ShowBackButton="False" ShowExportButton="False" ShowFindControls="False" ShowPageNavigationControls="False" ShowPrintButton="True" ShowRefreshButton="False" ShowStopButton="False" ShowZoomControl="False"/>
             </WindowsFormsHost>
         </Grid>
     </Border>
