@@ -35,10 +35,26 @@
             </Border>
 
             <Button x:Name="btnRegistrar" Margin="491,301,517,10" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnRegistrar_Click" ToolTip="Guardar">
-                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle Width="48" Height="41" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>
                         <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button IsEnabled="False" x:Name="btnEditarCompra" Margin="441,105,651,250" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnEditarCompra_Click" ToolTip="Guardar">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_edit}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <Button IsEnabled="False" x:Name="btnEditarVenta" Margin="1053,105,39,250" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" Click="btnEditarVenta_Click" ToolTip="Guardar">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_edit}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Button>

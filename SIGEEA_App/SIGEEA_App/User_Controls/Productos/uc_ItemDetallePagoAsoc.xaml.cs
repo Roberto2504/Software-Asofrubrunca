@@ -42,7 +42,7 @@ namespace SIGEEA_App.User_Controls.Productos
         public float Monto;
         public bool Seleccionado()
         {
-            if (cbxSeleccionar.IsChecked == true) return true;
+            if (cbxCambioVista.IsChecked == true) return true;
             else return false;
         }
         #region Propiedades de dependencia

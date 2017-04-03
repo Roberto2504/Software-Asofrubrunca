@@ -36,7 +36,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             lblAsociado.Content += " " + informacion.NombreAsociado;
             lblCedula.Content += " " + informacion.CedParticular_Persona;
             lblCodigo.Content += " " + informacion.Codigo_Asociado;
-            lblFactura.Content += " " + pkFactura;
+            lblFactura.Content += " " + informacion.Numero_FacAsociado;
             lblFecEntrega.Content += " " + informacion.Fecha;
 
             PK_Factura = pkFactura;

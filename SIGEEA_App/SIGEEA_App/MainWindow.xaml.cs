@@ -386,8 +386,10 @@ namespace SIGEEA_App
                     wnwAgregarUsuario nuevoUsuario = new wnwAgregarUsuario(tipo: "Agregar", pUsuario:null);
                     nuevoUsuario.ShowDialog();
                     break;
-                
-
+                case "Consolidado de asociados":
+                    wnwOpcionesReporteEntrega nuevoReporte = new wnwOpcionesReporteEntrega();
+                    nuevoReporte.ShowDialog();
+                    break;
                 default:
                     break;
             }

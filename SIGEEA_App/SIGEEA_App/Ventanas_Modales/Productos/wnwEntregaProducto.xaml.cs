@@ -28,16 +28,32 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
     {
         SIGEEA_spObtenerAsociadoResult asociado;
         List<SIGEEA_UniMedida> listaMedida;
-        public wnwEntregaProducto(SIGEEA_spObtenerAsociadoResult pAsociado)
+        public wnwEntregaProducto(SIGEEA_spObtenerAsociadoResult pAsociado, List<SIGEEA_spObtenerDetallesEntregaResult> pDetalles = null)
         {
             InitializeComponent();
-            uc_IngresoProducto uProducto = new uc_IngresoProducto(pAsociado.Codigo_Asociado);
-            DataClasses1DataContext dc = new DataClasses1DataContext();
-            stpContenedor.Children.Add(uProducto);
             asociado = pAsociado;
             lblNombreAsociado.Content += " " + asociado.PriNombre_Persona + " " + asociado.PriApellido_Persona + " " + asociado.SegApellido_Persona;
             lblCedulaAsociado.Content += " " + asociado.CedParticular_Persona.ToString();
             lblCodigoAsociado.Content += " " + asociado.Codigo_Asociado.ToString();
+
+            if (pDetalles == null)
+            {
+                uc_IngresoProducto uProducto = new uc_IngresoProducto(pAsociado.Codigo_Asociado);
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                stpContenedor.Children.Add(uProducto);
+            }
+
+            else
+            {
+                foreach (SIGEEA_spObtenerDetallesEntregaResult det in pDetalles)
+                {
+                    uc_IngresoProducto uProducto = new uc_IngresoProducto(pAsociado.Codigo_Asociado);
+                    uProducto.txbCantidadTotal.Text = det.CanTotal_DetFacAsociado.ToString();
+                    uProducto.cmbMercado.SelectedValue = det.Mercado;
+                    uProducto.cmbProducto.SelectedValue = det.Nombre_TipProducto;
+                    stpContenedor.Children.Add(uProducto);
+                }
+            }
         }
 
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
@@ -58,29 +74,30 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
         {
             try
             {
-                    AsociadoMantenimiento asociadoM = new AsociadoMantenimiento();
-                    List<SIGEEA_DetFacAsociado> listaDetalles = new List<SIGEEA_DetFacAsociado>();
+                AsociadoMantenimiento asociadoM = new AsociadoMantenimiento();
+                List<SIGEEA_DetFacAsociado> listaDetalles = new List<SIGEEA_DetFacAsociado>();
 
-                    SIGEEA_FacAsociado factura = new SIGEEA_FacAsociado();
-                    factura.Estado_FacAsociado = true;
-                    factura.FecEntrega_FacAsociado = DateTime.Now;
-                    factura.FK_Id_Asociado = asociado.PK_Id_Asociado;
+                SIGEEA_FacAsociado factura = new SIGEEA_FacAsociado();
+                factura.Estado_FacAsociado = true;
+                factura.FecEntrega_FacAsociado = DateTime.Now;
+                factura.FK_Id_Asociado = asociado.PK_Id_Asociado;
+                factura.Numero_FacAsociado = asociadoM.ObtenerNumeroFacturaEntrega();
 
 
-                    foreach (uc_IngresoProducto ip in stpContenedor.Children)
-                    {
-                        SIGEEA_DetFacAsociado fac = new SIGEEA_DetFacAsociado();
-                        fac.CanTotal_DetFacAsociado = ip.getCantidad();
-                        fac.FK_Id_Lote = ip.getLote();
-                        fac.Mercado_DetFacAsociado = ip.getMercado();
-                        fac.FK_Id_PreProCompra = ip.getProducto();//Se le asigna la PK del producto, en la función de registrar de AsociadoMantenimiento se hace el cambio necesario.
-                        listaDetalles.Add(fac);
-                    }
-                    asociadoM.RegistraEntrega(factura, listaDetalles);
-                    MessageBox.Show("Entrega registrada con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    wnwFacturaEntrega ventana = new wnwFacturaEntrega(factura.PK_Id_FacAsociado);
-                    ventana.ShowDialog();
-                    this.Close();
+                foreach (uc_IngresoProducto ip in stpContenedor.Children)
+                {
+                    SIGEEA_DetFacAsociado fac = new SIGEEA_DetFacAsociado();
+                    fac.CanTotal_DetFacAsociado = ip.getCantidad();
+                    fac.FK_Id_Lote = ip.getLote();
+                    fac.Mercado_DetFacAsociado = ip.getMercado();
+                    fac.FK_Id_PreProCompra = ip.getProducto();//Se le asigna la PK del producto, en la función de registrar de AsociadoMantenimiento se hace el cambio necesario.
+                    listaDetalles.Add(fac);
+                }
+                asociadoM.RegistraEntrega(factura, listaDetalles);
+                MessageBox.Show("Entrega registrada con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                wnwFacturaEntrega ventana = new wnwFacturaEntrega(factura.PK_Id_FacAsociado, asociado.Codigo_Asociado);
+                ventana.ShowDialog();
+                this.Close();
             }
             catch (Exception ex)
             {

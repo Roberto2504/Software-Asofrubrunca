@@ -18,6 +18,20 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             dc.SIGEEA_TipProductos.InsertOnSubmit(producto);
             dc.SubmitChanges();
+            SIGEEA_PreProCompra compra = new SIGEEA_PreProCompra();
+            compra.FecRegistro_PreProCompra = DateTime.Now;
+            compra.FK_Id_TipProducto = producto.PK_Id_TipProducto;
+            compra.PreExtranjero_PreProCompra = 1;
+            compra.PreNacional_PreProCompra = 1;
+            dc.SIGEEA_PreProCompras.InsertOnSubmit(compra);
+            SIGEEA_PreProVenta venta = new SIGEEA_PreProVenta();
+            venta.FecRegistro_PreProVenta = DateTime.Now;
+            venta.FK_Id_Moneda = 1;
+            venta.FK_Id_TipProducto = producto.PK_Id_TipProducto;
+            venta.PreExtranjero_PreProVenta = 1;
+            venta.PreNacional_PreProVenta = 1;
+            dc.SIGEEA_PreProVentas.InsertOnSubmit(venta);
+            dc.SubmitChanges();
         }
 
         /// <summary>
@@ -27,8 +41,8 @@ namespace SIGEEA_BL
         public void ModificarTipoProducto(SIGEEA_TipProducto producto)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            SIGEEA_TipProducto nuevo = dc.SIGEEA_TipProductos.First(c => c.PK_Id_TipProducto == producto.PK_Id_TipProducto);
-            //nuevo.Nombre_TipProducto = producto.Nombre_TipProducto;
+            SIGEEA_TipProducto nuevo = dc.SIGEEA_TipProductos.First(c => c.Nombre_TipProducto == producto.Nombre_TipProducto);
+            nuevo.Nombre_TipProducto = producto.Nombre_TipProducto;
             nuevo.Calidad_TipProducto = producto.Calidad_TipProducto;
             nuevo.Descripcion_TipProducto = producto.Descripcion_TipProducto;
         }

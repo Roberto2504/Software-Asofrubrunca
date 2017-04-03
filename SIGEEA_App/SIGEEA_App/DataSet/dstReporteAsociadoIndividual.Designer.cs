@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SIGEEA_App {
+namespace SIGEEA_App.DataSet {
     
     
     /// <summary>
@@ -20,19 +20,19 @@ namespace SIGEEA_App {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("SIGEEA_BDDataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dstReporteAsociadoIndividual")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class SIGEEA_BDDataSet1 : global::System.Data.DataSet {
+    public partial class dstReporteAsociadoIndividual : global::System.Data.DataSet {
         
-        private SIGEEA_spGenerarFacturaEntregaDataTable tableSIGEEA_spGenerarFacturaEntrega;
+        private SIGEEA_spGeneraReporteAsociadosPorIdDataTable tableSIGEEA_spGeneraReporteAsociadosPorId;
         
-        private SIGEEA_spObtenerDetallesEntregaDataTable tableSIGEEA_spObtenerDetallesEntrega;
+        private SIGEEA_spObtenerDatosEmpresaDataTable tableSIGEEA_spObtenerDatosEmpresa;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SIGEEA_BDDataSet1() {
+        public dstReporteAsociadoIndividual() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -43,7 +43,7 @@ namespace SIGEEA_App {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected SIGEEA_BDDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dstReporteAsociadoIndividual(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -56,11 +56,11 @@ namespace SIGEEA_App {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["SIGEEA_spGenerarFacturaEntrega"] != null)) {
-                    base.Tables.Add(new SIGEEA_spGenerarFacturaEntregaDataTable(ds.Tables["SIGEEA_spGenerarFacturaEntrega"]));
+                if ((ds.Tables["SIGEEA_spGeneraReporteAsociadosPorId"] != null)) {
+                    base.Tables.Add(new SIGEEA_spGeneraReporteAsociadosPorIdDataTable(ds.Tables["SIGEEA_spGeneraReporteAsociadosPorId"]));
                 }
-                if ((ds.Tables["SIGEEA_spObtenerDetallesEntrega"] != null)) {
-                    base.Tables.Add(new SIGEEA_spObtenerDetallesEntregaDataTable(ds.Tables["SIGEEA_spObtenerDetallesEntrega"]));
+                if ((ds.Tables["SIGEEA_spObtenerDatosEmpresa"] != null)) {
+                    base.Tables.Add(new SIGEEA_spObtenerDatosEmpresaDataTable(ds.Tables["SIGEEA_spObtenerDatosEmpresa"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -84,9 +84,9 @@ namespace SIGEEA_App {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SIGEEA_spGenerarFacturaEntregaDataTable SIGEEA_spGenerarFacturaEntrega {
+        public SIGEEA_spGeneraReporteAsociadosPorIdDataTable SIGEEA_spGeneraReporteAsociadosPorId {
             get {
-                return this.tableSIGEEA_spGenerarFacturaEntrega;
+                return this.tableSIGEEA_spGeneraReporteAsociadosPorId;
             }
         }
         
@@ -94,9 +94,9 @@ namespace SIGEEA_App {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SIGEEA_spObtenerDetallesEntregaDataTable SIGEEA_spObtenerDetallesEntrega {
+        public SIGEEA_spObtenerDatosEmpresaDataTable SIGEEA_spObtenerDatosEmpresa {
             get {
-                return this.tableSIGEEA_spObtenerDetallesEntrega;
+                return this.tableSIGEEA_spObtenerDatosEmpresa;
             }
         }
         
@@ -142,7 +142,7 @@ namespace SIGEEA_App {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            SIGEEA_BDDataSet1 cln = ((SIGEEA_BDDataSet1)(base.Clone()));
+            dstReporteAsociadoIndividual cln = ((dstReporteAsociadoIndividual)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -167,11 +167,11 @@ namespace SIGEEA_App {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["SIGEEA_spGenerarFacturaEntrega"] != null)) {
-                    base.Tables.Add(new SIGEEA_spGenerarFacturaEntregaDataTable(ds.Tables["SIGEEA_spGenerarFacturaEntrega"]));
+                if ((ds.Tables["SIGEEA_spGeneraReporteAsociadosPorId"] != null)) {
+                    base.Tables.Add(new SIGEEA_spGeneraReporteAsociadosPorIdDataTable(ds.Tables["SIGEEA_spGeneraReporteAsociadosPorId"]));
                 }
-                if ((ds.Tables["SIGEEA_spObtenerDetallesEntrega"] != null)) {
-                    base.Tables.Add(new SIGEEA_spObtenerDetallesEntregaDataTable(ds.Tables["SIGEEA_spObtenerDetallesEntrega"]));
+                if ((ds.Tables["SIGEEA_spObtenerDatosEmpresa"] != null)) {
+                    base.Tables.Add(new SIGEEA_spObtenerDatosEmpresaDataTable(ds.Tables["SIGEEA_spObtenerDatosEmpresa"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -206,16 +206,16 @@ namespace SIGEEA_App {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableSIGEEA_spGenerarFacturaEntrega = ((SIGEEA_spGenerarFacturaEntregaDataTable)(base.Tables["SIGEEA_spGenerarFacturaEntrega"]));
+            this.tableSIGEEA_spGeneraReporteAsociadosPorId = ((SIGEEA_spGeneraReporteAsociadosPorIdDataTable)(base.Tables["SIGEEA_spGeneraReporteAsociadosPorId"]));
             if ((initTable == true)) {
-                if ((this.tableSIGEEA_spGenerarFacturaEntrega != null)) {
-                    this.tableSIGEEA_spGenerarFacturaEntrega.InitVars();
+                if ((this.tableSIGEEA_spGeneraReporteAsociadosPorId != null)) {
+                    this.tableSIGEEA_spGeneraReporteAsociadosPorId.InitVars();
                 }
             }
-            this.tableSIGEEA_spObtenerDetallesEntrega = ((SIGEEA_spObtenerDetallesEntregaDataTable)(base.Tables["SIGEEA_spObtenerDetallesEntrega"]));
+            this.tableSIGEEA_spObtenerDatosEmpresa = ((SIGEEA_spObtenerDatosEmpresaDataTable)(base.Tables["SIGEEA_spObtenerDatosEmpresa"]));
             if ((initTable == true)) {
-                if ((this.tableSIGEEA_spObtenerDetallesEntrega != null)) {
-                    this.tableSIGEEA_spObtenerDetallesEntrega.InitVars();
+                if ((this.tableSIGEEA_spObtenerDatosEmpresa != null)) {
+                    this.tableSIGEEA_spObtenerDatosEmpresa.InitVars();
                 }
             }
         }
@@ -223,26 +223,26 @@ namespace SIGEEA_App {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "SIGEEA_BDDataSet1";
+            this.DataSetName = "dstReporteAsociadoIndividual";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/SIGEEA_BDDataSet1.xsd";
+            this.Namespace = "http://tempuri.org/dstReporteAsociadoIndividual.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableSIGEEA_spGenerarFacturaEntrega = new SIGEEA_spGenerarFacturaEntregaDataTable();
-            base.Tables.Add(this.tableSIGEEA_spGenerarFacturaEntrega);
-            this.tableSIGEEA_spObtenerDetallesEntrega = new SIGEEA_spObtenerDetallesEntregaDataTable();
-            base.Tables.Add(this.tableSIGEEA_spObtenerDetallesEntrega);
+            this.tableSIGEEA_spGeneraReporteAsociadosPorId = new SIGEEA_spGeneraReporteAsociadosPorIdDataTable();
+            base.Tables.Add(this.tableSIGEEA_spGeneraReporteAsociadosPorId);
+            this.tableSIGEEA_spObtenerDatosEmpresa = new SIGEEA_spObtenerDatosEmpresaDataTable();
+            base.Tables.Add(this.tableSIGEEA_spObtenerDatosEmpresa);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSIGEEA_spGenerarFacturaEntrega() {
+        private bool ShouldSerializeSIGEEA_spGeneraReporteAsociadosPorId() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSIGEEA_spObtenerDetallesEntrega() {
+        private bool ShouldSerializeSIGEEA_spObtenerDatosEmpresa() {
             return false;
         }
         
@@ -257,7 +257,7 @@ namespace SIGEEA_App {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            SIGEEA_BDDataSet1 ds = new SIGEEA_BDDataSet1();
+            dstReporteAsociadoIndividual ds = new dstReporteAsociadoIndividual();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -302,44 +302,44 @@ namespace SIGEEA_App {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SIGEEA_spGenerarFacturaEntregaRowChangeEventHandler(object sender, SIGEEA_spGenerarFacturaEntregaRowChangeEvent e);
+        public delegate void SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEventHandler(object sender, SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SIGEEA_spObtenerDetallesEntregaRowChangeEventHandler(object sender, SIGEEA_spObtenerDetallesEntregaRowChangeEvent e);
+        public delegate void SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler(object sender, SIGEEA_spObtenerDatosEmpresaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SIGEEA_spGenerarFacturaEntregaDataTable : global::System.Data.TypedTableBase<SIGEEA_spGenerarFacturaEntregaRow> {
+        public partial class SIGEEA_spGeneraReporteAsociadosPorIdDataTable : global::System.Data.TypedTableBase<SIGEEA_spGeneraReporteAsociadosPorIdRow> {
             
-            private global::System.Data.DataColumn columnNombre_Empresa;
+            private global::System.Data.DataColumn columnNumero_FacAsociado;
             
-            private global::System.Data.DataColumn columnCedJuridica;
+            private global::System.Data.DataColumn columnFecPago_FacAsociado;
             
-            private global::System.Data.DataColumn columnDireccion_Empresa;
+            private global::System.Data.DataColumn columnFecEntrega_FacAsociado;
             
-            private global::System.Data.DataColumn columnTelefono;
+            private global::System.Data.DataColumn columnCanTotal_FacAsociado;
             
-            private global::System.Data.DataColumn columnCorreo;
+            private global::System.Data.DataColumn columnCanNeta_FacAsociado;
             
-            private global::System.Data.DataColumn columnNumFactura;
+            private global::System.Data.DataColumn columnCodigo_Asociado;
             
-            private global::System.Data.DataColumn columnFecha;
+            private global::System.Data.DataColumn columnCedParticular_Persona;
             
-            private global::System.Data.DataColumn columnHora;
+            private global::System.Data.DataColumn columnCedJuridica_Persona;
             
-            private global::System.Data.DataColumn columnNombreAsociado;
+            private global::System.Data.DataColumn columnNombre_Asociado;
             
-            private global::System.Data.DataColumn columnCedPersona;
+            private global::System.Data.DataColumn columnfecInicio;
             
-            private global::System.Data.DataColumn columnCodigoAsociado;
+            private global::System.Data.DataColumn columnfecFinal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaDataTable() {
-                this.TableName = "SIGEEA_spGenerarFacturaEntrega";
+            public SIGEEA_spGeneraReporteAsociadosPorIdDataTable() {
+                this.TableName = "SIGEEA_spGeneraReporteAsociadosPorId";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -347,7 +347,7 @@ namespace SIGEEA_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SIGEEA_spGenerarFacturaEntregaDataTable(global::System.Data.DataTable table) {
+            internal SIGEEA_spGeneraReporteAsociadosPorIdDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -364,9 +364,408 @@ namespace SIGEEA_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SIGEEA_spGenerarFacturaEntregaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SIGEEA_spGeneraReporteAsociadosPorIdDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Numero_FacAsociadoColumn {
+                get {
+                    return this.columnNumero_FacAsociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FecPago_FacAsociadoColumn {
+                get {
+                    return this.columnFecPago_FacAsociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FecEntrega_FacAsociadoColumn {
+                get {
+                    return this.columnFecEntrega_FacAsociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CanTotal_FacAsociadoColumn {
+                get {
+                    return this.columnCanTotal_FacAsociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CanNeta_FacAsociadoColumn {
+                get {
+                    return this.columnCanNeta_FacAsociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Codigo_AsociadoColumn {
+                get {
+                    return this.columnCodigo_Asociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CedParticular_PersonaColumn {
+                get {
+                    return this.columnCedParticular_Persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CedJuridica_PersonaColumn {
+                get {
+                    return this.columnCedJuridica_Persona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Nombre_AsociadoColumn {
+                get {
+                    return this.columnNombre_Asociado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecInicioColumn {
+                get {
+                    return this.columnfecInicio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecFinalColumn {
+                get {
+                    return this.columnfecFinal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SIGEEA_spGeneraReporteAsociadosPorIdRow this[int index] {
+                get {
+                    return ((SIGEEA_spGeneraReporteAsociadosPorIdRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEventHandler SIGEEA_spGeneraReporteAsociadosPorIdRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEventHandler SIGEEA_spGeneraReporteAsociadosPorIdRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEventHandler SIGEEA_spGeneraReporteAsociadosPorIdRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEventHandler SIGEEA_spGeneraReporteAsociadosPorIdRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddSIGEEA_spGeneraReporteAsociadosPorIdRow(SIGEEA_spGeneraReporteAsociadosPorIdRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SIGEEA_spGeneraReporteAsociadosPorIdRow AddSIGEEA_spGeneraReporteAsociadosPorIdRow(int Numero_FacAsociado, System.DateTime FecPago_FacAsociado, System.DateTime FecEntrega_FacAsociado, double CanTotal_FacAsociado, double CanNeta_FacAsociado, string Codigo_Asociado, string CedParticular_Persona, string CedJuridica_Persona, string Nombre_Asociado, string fecInicio, string fecFinal) {
+                SIGEEA_spGeneraReporteAsociadosPorIdRow rowSIGEEA_spGeneraReporteAsociadosPorIdRow = ((SIGEEA_spGeneraReporteAsociadosPorIdRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Numero_FacAsociado,
+                        FecPago_FacAsociado,
+                        FecEntrega_FacAsociado,
+                        CanTotal_FacAsociado,
+                        CanNeta_FacAsociado,
+                        Codigo_Asociado,
+                        CedParticular_Persona,
+                        CedJuridica_Persona,
+                        Nombre_Asociado,
+                        fecInicio,
+                        fecFinal};
+                rowSIGEEA_spGeneraReporteAsociadosPorIdRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSIGEEA_spGeneraReporteAsociadosPorIdRow);
+                return rowSIGEEA_spGeneraReporteAsociadosPorIdRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SIGEEA_spGeneraReporteAsociadosPorIdDataTable cln = ((SIGEEA_spGeneraReporteAsociadosPorIdDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SIGEEA_spGeneraReporteAsociadosPorIdDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnNumero_FacAsociado = base.Columns["Numero_FacAsociado"];
+                this.columnFecPago_FacAsociado = base.Columns["FecPago_FacAsociado"];
+                this.columnFecEntrega_FacAsociado = base.Columns["FecEntrega_FacAsociado"];
+                this.columnCanTotal_FacAsociado = base.Columns["CanTotal_FacAsociado"];
+                this.columnCanNeta_FacAsociado = base.Columns["CanNeta_FacAsociado"];
+                this.columnCodigo_Asociado = base.Columns["Codigo_Asociado"];
+                this.columnCedParticular_Persona = base.Columns["CedParticular_Persona"];
+                this.columnCedJuridica_Persona = base.Columns["CedJuridica_Persona"];
+                this.columnNombre_Asociado = base.Columns["Nombre_Asociado"];
+                this.columnfecInicio = base.Columns["fecInicio"];
+                this.columnfecFinal = base.Columns["fecFinal"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnNumero_FacAsociado = new global::System.Data.DataColumn("Numero_FacAsociado", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumero_FacAsociado);
+                this.columnFecPago_FacAsociado = new global::System.Data.DataColumn("FecPago_FacAsociado", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecPago_FacAsociado);
+                this.columnFecEntrega_FacAsociado = new global::System.Data.DataColumn("FecEntrega_FacAsociado", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecEntrega_FacAsociado);
+                this.columnCanTotal_FacAsociado = new global::System.Data.DataColumn("CanTotal_FacAsociado", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCanTotal_FacAsociado);
+                this.columnCanNeta_FacAsociado = new global::System.Data.DataColumn("CanNeta_FacAsociado", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCanNeta_FacAsociado);
+                this.columnCodigo_Asociado = new global::System.Data.DataColumn("Codigo_Asociado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigo_Asociado);
+                this.columnCedParticular_Persona = new global::System.Data.DataColumn("CedParticular_Persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCedParticular_Persona);
+                this.columnCedJuridica_Persona = new global::System.Data.DataColumn("CedJuridica_Persona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCedJuridica_Persona);
+                this.columnNombre_Asociado = new global::System.Data.DataColumn("Nombre_Asociado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombre_Asociado);
+                this.columnfecInicio = new global::System.Data.DataColumn("fecInicio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecInicio);
+                this.columnfecFinal = new global::System.Data.DataColumn("fecFinal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecFinal);
+                this.columnNumero_FacAsociado.AllowDBNull = false;
+                this.columnFecPago_FacAsociado.AllowDBNull = false;
+                this.columnFecEntrega_FacAsociado.AllowDBNull = false;
+                this.columnCanTotal_FacAsociado.AllowDBNull = false;
+                this.columnCodigo_Asociado.AllowDBNull = false;
+                this.columnCodigo_Asociado.MaxLength = 10;
+                this.columnCedParticular_Persona.MaxLength = 15;
+                this.columnCedJuridica_Persona.MaxLength = 30;
+                this.columnNombre_Asociado.ReadOnly = true;
+                this.columnNombre_Asociado.MaxLength = 92;
+                this.columnfecInicio.ReadOnly = true;
+                this.columnfecInicio.MaxLength = 10;
+                this.columnfecFinal.ReadOnly = true;
+                this.columnfecFinal.MaxLength = 10;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SIGEEA_spGeneraReporteAsociadosPorIdRow NewSIGEEA_spGeneraReporteAsociadosPorIdRow() {
+                return ((SIGEEA_spGeneraReporteAsociadosPorIdRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SIGEEA_spGeneraReporteAsociadosPorIdRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SIGEEA_spGeneraReporteAsociadosPorIdRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SIGEEA_spGeneraReporteAsociadosPorIdRowChanged != null)) {
+                    this.SIGEEA_spGeneraReporteAsociadosPorIdRowChanged(this, new SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent(((SIGEEA_spGeneraReporteAsociadosPorIdRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SIGEEA_spGeneraReporteAsociadosPorIdRowChanging != null)) {
+                    this.SIGEEA_spGeneraReporteAsociadosPorIdRowChanging(this, new SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent(((SIGEEA_spGeneraReporteAsociadosPorIdRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SIGEEA_spGeneraReporteAsociadosPorIdRowDeleted != null)) {
+                    this.SIGEEA_spGeneraReporteAsociadosPorIdRowDeleted(this, new SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent(((SIGEEA_spGeneraReporteAsociadosPorIdRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SIGEEA_spGeneraReporteAsociadosPorIdRowDeleting != null)) {
+                    this.SIGEEA_spGeneraReporteAsociadosPorIdRowDeleting(this, new SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent(((SIGEEA_spGeneraReporteAsociadosPorIdRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveSIGEEA_spGeneraReporteAsociadosPorIdRow(SIGEEA_spGeneraReporteAsociadosPorIdRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dstReporteAsociadoIndividual ds = new dstReporteAsociadoIndividual();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SIGEEA_spGeneraReporteAsociadosPorIdDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SIGEEA_spObtenerDatosEmpresaDataTable : global::System.Data.TypedTableBase<SIGEEA_spObtenerDatosEmpresaRow> {
+            
+            private global::System.Data.DataColumn columnPK_Id_Empresa;
+            
+            private global::System.Data.DataColumn columnNombre_Empresa;
+            
+            private global::System.Data.DataColumn columnCedJuridica_Empresa;
+            
+            private global::System.Data.DataColumn columnDireccion_Empresa;
+            
+            private global::System.Data.DataColumn columnTelefono_Empresa;
+            
+            private global::System.Data.DataColumn columnCorreo_Empresa;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public SIGEEA_spObtenerDatosEmpresaDataTable() {
+                this.TableName = "SIGEEA_spObtenerDatosEmpresa";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SIGEEA_spObtenerDatosEmpresaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected SIGEEA_spObtenerDatosEmpresaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PK_Id_EmpresaColumn {
+                get {
+                    return this.columnPK_Id_Empresa;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -379,9 +778,9 @@ namespace SIGEEA_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CedJuridicaColumn {
+            public global::System.Data.DataColumn CedJuridica_EmpresaColumn {
                 get {
-                    return this.columnCedJuridica;
+                    return this.columnCedJuridica_Empresa;
                 }
             }
             
@@ -395,65 +794,17 @@ namespace SIGEEA_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TelefonoColumn {
+            public global::System.Data.DataColumn Telefono_EmpresaColumn {
                 get {
-                    return this.columnTelefono;
+                    return this.columnTelefono_Empresa;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CorreoColumn {
+            public global::System.Data.DataColumn Correo_EmpresaColumn {
                 get {
-                    return this.columnCorreo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NumFacturaColumn {
-                get {
-                    return this.columnNumFactura;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaColumn {
-                get {
-                    return this.columnFecha;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HoraColumn {
-                get {
-                    return this.columnHora;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NombreAsociadoColumn {
-                get {
-                    return this.columnNombreAsociado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CedPersonaColumn {
-                get {
-                    return this.columnCedPersona;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CodigoAsociadoColumn {
-                get {
-                    return this.columnCodigoAsociado;
+                    return this.columnCorreo_Empresa;
                 }
             }
             
@@ -468,426 +819,57 @@ namespace SIGEEA_App {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaRow this[int index] {
+            public SIGEEA_spObtenerDatosEmpresaRow this[int index] {
                 get {
-                    return ((SIGEEA_spGenerarFacturaEntregaRow)(this.Rows[index]));
+                    return ((SIGEEA_spObtenerDatosEmpresaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spGenerarFacturaEntregaRowChangeEventHandler SIGEEA_spGenerarFacturaEntregaRowChanging;
+            public event SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler SIGEEA_spObtenerDatosEmpresaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spGenerarFacturaEntregaRowChangeEventHandler SIGEEA_spGenerarFacturaEntregaRowChanged;
+            public event SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler SIGEEA_spObtenerDatosEmpresaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spGenerarFacturaEntregaRowChangeEventHandler SIGEEA_spGenerarFacturaEntregaRowDeleting;
+            public event SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler SIGEEA_spObtenerDatosEmpresaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spGenerarFacturaEntregaRowChangeEventHandler SIGEEA_spGenerarFacturaEntregaRowDeleted;
+            public event SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler SIGEEA_spObtenerDatosEmpresaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSIGEEA_spGenerarFacturaEntregaRow(SIGEEA_spGenerarFacturaEntregaRow row) {
+            public void AddSIGEEA_spObtenerDatosEmpresaRow(SIGEEA_spObtenerDatosEmpresaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaRow AddSIGEEA_spGenerarFacturaEntregaRow(string Nombre_Empresa, string CedJuridica, string Direccion_Empresa, string Telefono, string Correo, string NumFactura, string Fecha, string Hora, string NombreAsociado, string CedPersona, string CodigoAsociado) {
-                SIGEEA_spGenerarFacturaEntregaRow rowSIGEEA_spGenerarFacturaEntregaRow = ((SIGEEA_spGenerarFacturaEntregaRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Nombre_Empresa,
-                        CedJuridica,
-                        Direccion_Empresa,
-                        Telefono,
-                        Correo,
-                        NumFactura,
-                        Fecha,
-                        Hora,
-                        NombreAsociado,
-                        CedPersona,
-                        CodigoAsociado};
-                rowSIGEEA_spGenerarFacturaEntregaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSIGEEA_spGenerarFacturaEntregaRow);
-                return rowSIGEEA_spGenerarFacturaEntregaRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                SIGEEA_spGenerarFacturaEntregaDataTable cln = ((SIGEEA_spGenerarFacturaEntregaDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new SIGEEA_spGenerarFacturaEntregaDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnNombre_Empresa = base.Columns["Nombre_Empresa"];
-                this.columnCedJuridica = base.Columns["CedJuridica"];
-                this.columnDireccion_Empresa = base.Columns["Direccion_Empresa"];
-                this.columnTelefono = base.Columns["Telefono"];
-                this.columnCorreo = base.Columns["Correo"];
-                this.columnNumFactura = base.Columns["NumFactura"];
-                this.columnFecha = base.Columns["Fecha"];
-                this.columnHora = base.Columns["Hora"];
-                this.columnNombreAsociado = base.Columns["NombreAsociado"];
-                this.columnCedPersona = base.Columns["CedPersona"];
-                this.columnCodigoAsociado = base.Columns["CodigoAsociado"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnNombre_Empresa = new global::System.Data.DataColumn("Nombre_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombre_Empresa);
-                this.columnCedJuridica = new global::System.Data.DataColumn("CedJuridica", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCedJuridica);
-                this.columnDireccion_Empresa = new global::System.Data.DataColumn("Direccion_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDireccion_Empresa);
-                this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTelefono);
-                this.columnCorreo = new global::System.Data.DataColumn("Correo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCorreo);
-                this.columnNumFactura = new global::System.Data.DataColumn("NumFactura", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumFactura);
-                this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFecha);
-                this.columnHora = new global::System.Data.DataColumn("Hora", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHora);
-                this.columnNombreAsociado = new global::System.Data.DataColumn("NombreAsociado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombreAsociado);
-                this.columnCedPersona = new global::System.Data.DataColumn("CedPersona", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCedPersona);
-                this.columnCodigoAsociado = new global::System.Data.DataColumn("CodigoAsociado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodigoAsociado);
-                this.columnNombre_Empresa.AllowDBNull = false;
-                this.columnNombre_Empresa.MaxLength = 50;
-                this.columnCedJuridica.ReadOnly = true;
-                this.columnCedJuridica.MaxLength = 45;
-                this.columnDireccion_Empresa.MaxLength = 200;
-                this.columnTelefono.ReadOnly = true;
-                this.columnTelefono.MaxLength = 30;
-                this.columnCorreo.ReadOnly = true;
-                this.columnCorreo.MaxLength = 37;
-                this.columnNumFactura.ReadOnly = true;
-                this.columnNumFactura.MaxLength = 28;
-                this.columnFecha.ReadOnly = true;
-                this.columnFecha.MaxLength = 30;
-                this.columnHora.ReadOnly = true;
-                this.columnHora.MaxLength = 8;
-                this.columnNombreAsociado.ReadOnly = true;
-                this.columnNombreAsociado.MaxLength = 113;
-                this.columnCedPersona.ReadOnly = true;
-                this.columnCedPersona.MaxLength = 33;
-                this.columnCodigoAsociado.ReadOnly = true;
-                this.columnCodigoAsociado.MaxLength = 18;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaRow NewSIGEEA_spGenerarFacturaEntregaRow() {
-                return ((SIGEEA_spGenerarFacturaEntregaRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SIGEEA_spGenerarFacturaEntregaRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(SIGEEA_spGenerarFacturaEntregaRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.SIGEEA_spGenerarFacturaEntregaRowChanged != null)) {
-                    this.SIGEEA_spGenerarFacturaEntregaRowChanged(this, new SIGEEA_spGenerarFacturaEntregaRowChangeEvent(((SIGEEA_spGenerarFacturaEntregaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.SIGEEA_spGenerarFacturaEntregaRowChanging != null)) {
-                    this.SIGEEA_spGenerarFacturaEntregaRowChanging(this, new SIGEEA_spGenerarFacturaEntregaRowChangeEvent(((SIGEEA_spGenerarFacturaEntregaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.SIGEEA_spGenerarFacturaEntregaRowDeleted != null)) {
-                    this.SIGEEA_spGenerarFacturaEntregaRowDeleted(this, new SIGEEA_spGenerarFacturaEntregaRowChangeEvent(((SIGEEA_spGenerarFacturaEntregaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.SIGEEA_spGenerarFacturaEntregaRowDeleting != null)) {
-                    this.SIGEEA_spGenerarFacturaEntregaRowDeleting(this, new SIGEEA_spGenerarFacturaEntregaRowChangeEvent(((SIGEEA_spGenerarFacturaEntregaRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSIGEEA_spGenerarFacturaEntregaRow(SIGEEA_spGenerarFacturaEntregaRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SIGEEA_BDDataSet1 ds = new SIGEEA_BDDataSet1();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SIGEEA_spGenerarFacturaEntregaDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SIGEEA_spObtenerDetallesEntregaDataTable : global::System.Data.TypedTableBase<SIGEEA_spObtenerDetallesEntregaRow> {
-            
-            private global::System.Data.DataColumn columnPK_Id_DetFacAsociado;
-            
-            private global::System.Data.DataColumn columnNombre_TipProducto;
-            
-            private global::System.Data.DataColumn columnCanTotal_DetFacAsociado;
-            
-            private global::System.Data.DataColumn columnPrecio;
-            
-            private global::System.Data.DataColumn columnMercado;
-            
-            private global::System.Data.DataColumn columnCanNeta_DetFacAsociado;
-            
-            private global::System.Data.DataColumn columnNombre_UniMedida;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaDataTable() {
-                this.TableName = "SIGEEA_spObtenerDetallesEntrega";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SIGEEA_spObtenerDetallesEntregaDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SIGEEA_spObtenerDetallesEntregaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PK_Id_DetFacAsociadoColumn {
-                get {
-                    return this.columnPK_Id_DetFacAsociado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Nombre_TipProductoColumn {
-                get {
-                    return this.columnNombre_TipProducto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CanTotal_DetFacAsociadoColumn {
-                get {
-                    return this.columnCanTotal_DetFacAsociado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrecioColumn {
-                get {
-                    return this.columnPrecio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MercadoColumn {
-                get {
-                    return this.columnMercado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CanNeta_DetFacAsociadoColumn {
-                get {
-                    return this.columnCanNeta_DetFacAsociado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Nombre_UniMedidaColumn {
-                get {
-                    return this.columnNombre_UniMedida;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRow this[int index] {
-                get {
-                    return ((SIGEEA_spObtenerDetallesEntregaRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spObtenerDetallesEntregaRowChangeEventHandler SIGEEA_spObtenerDetallesEntregaRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spObtenerDetallesEntregaRowChangeEventHandler SIGEEA_spObtenerDetallesEntregaRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spObtenerDetallesEntregaRowChangeEventHandler SIGEEA_spObtenerDetallesEntregaRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SIGEEA_spObtenerDetallesEntregaRowChangeEventHandler SIGEEA_spObtenerDetallesEntregaRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSIGEEA_spObtenerDetallesEntregaRow(SIGEEA_spObtenerDetallesEntregaRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRow AddSIGEEA_spObtenerDetallesEntregaRow(string Nombre_TipProducto, double CanTotal_DetFacAsociado, string Precio, string Mercado, double CanNeta_DetFacAsociado, string Nombre_UniMedida) {
-                SIGEEA_spObtenerDetallesEntregaRow rowSIGEEA_spObtenerDetallesEntregaRow = ((SIGEEA_spObtenerDetallesEntregaRow)(this.NewRow()));
+            public SIGEEA_spObtenerDatosEmpresaRow AddSIGEEA_spObtenerDatosEmpresaRow(string Nombre_Empresa, string CedJuridica_Empresa, string Direccion_Empresa, string Telefono_Empresa, string Correo_Empresa) {
+                SIGEEA_spObtenerDatosEmpresaRow rowSIGEEA_spObtenerDatosEmpresaRow = ((SIGEEA_spObtenerDatosEmpresaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        Nombre_TipProducto,
-                        CanTotal_DetFacAsociado,
-                        Precio,
-                        Mercado,
-                        CanNeta_DetFacAsociado,
-                        Nombre_UniMedida};
-                rowSIGEEA_spObtenerDetallesEntregaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSIGEEA_spObtenerDetallesEntregaRow);
-                return rowSIGEEA_spObtenerDetallesEntregaRow;
+                        Nombre_Empresa,
+                        CedJuridica_Empresa,
+                        Direccion_Empresa,
+                        Telefono_Empresa,
+                        Correo_Empresa};
+                rowSIGEEA_spObtenerDatosEmpresaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSIGEEA_spObtenerDatosEmpresaRow);
+                return rowSIGEEA_spObtenerDatosEmpresaRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRow FindByPK_Id_DetFacAsociado(int PK_Id_DetFacAsociado) {
-                return ((SIGEEA_spObtenerDetallesEntregaRow)(this.Rows.Find(new object[] {
-                            PK_Id_DetFacAsociado})));
+            public SIGEEA_spObtenerDatosEmpresaRow FindByPK_Id_Empresa(int PK_Id_Empresa) {
+                return ((SIGEEA_spObtenerDatosEmpresaRow)(this.Rows.Find(new object[] {
+                            PK_Id_Empresa})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SIGEEA_spObtenerDetallesEntregaDataTable cln = ((SIGEEA_spObtenerDetallesEntregaDataTable)(base.Clone()));
+                SIGEEA_spObtenerDatosEmpresaDataTable cln = ((SIGEEA_spObtenerDatosEmpresaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -895,79 +877,74 @@ namespace SIGEEA_App {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SIGEEA_spObtenerDetallesEntregaDataTable();
+                return new SIGEEA_spObtenerDatosEmpresaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnPK_Id_DetFacAsociado = base.Columns["PK_Id_DetFacAsociado"];
-                this.columnNombre_TipProducto = base.Columns["Nombre_TipProducto"];
-                this.columnCanTotal_DetFacAsociado = base.Columns["CanTotal_DetFacAsociado"];
-                this.columnPrecio = base.Columns["Precio"];
-                this.columnMercado = base.Columns["Mercado"];
-                this.columnCanNeta_DetFacAsociado = base.Columns["CanNeta_DetFacAsociado"];
-                this.columnNombre_UniMedida = base.Columns["Nombre_UniMedida"];
+                this.columnPK_Id_Empresa = base.Columns["PK_Id_Empresa"];
+                this.columnNombre_Empresa = base.Columns["Nombre_Empresa"];
+                this.columnCedJuridica_Empresa = base.Columns["CedJuridica_Empresa"];
+                this.columnDireccion_Empresa = base.Columns["Direccion_Empresa"];
+                this.columnTelefono_Empresa = base.Columns["Telefono_Empresa"];
+                this.columnCorreo_Empresa = base.Columns["Correo_Empresa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnPK_Id_DetFacAsociado = new global::System.Data.DataColumn("PK_Id_DetFacAsociado", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPK_Id_DetFacAsociado);
-                this.columnNombre_TipProducto = new global::System.Data.DataColumn("Nombre_TipProducto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombre_TipProducto);
-                this.columnCanTotal_DetFacAsociado = new global::System.Data.DataColumn("CanTotal_DetFacAsociado", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCanTotal_DetFacAsociado);
-                this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecio);
-                this.columnMercado = new global::System.Data.DataColumn("Mercado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMercado);
-                this.columnCanNeta_DetFacAsociado = new global::System.Data.DataColumn("CanNeta_DetFacAsociado", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCanNeta_DetFacAsociado);
-                this.columnNombre_UniMedida = new global::System.Data.DataColumn("Nombre_UniMedida", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombre_UniMedida);
+                this.columnPK_Id_Empresa = new global::System.Data.DataColumn("PK_Id_Empresa", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPK_Id_Empresa);
+                this.columnNombre_Empresa = new global::System.Data.DataColumn("Nombre_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombre_Empresa);
+                this.columnCedJuridica_Empresa = new global::System.Data.DataColumn("CedJuridica_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCedJuridica_Empresa);
+                this.columnDireccion_Empresa = new global::System.Data.DataColumn("Direccion_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDireccion_Empresa);
+                this.columnTelefono_Empresa = new global::System.Data.DataColumn("Telefono_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTelefono_Empresa);
+                this.columnCorreo_Empresa = new global::System.Data.DataColumn("Correo_Empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCorreo_Empresa);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnPK_Id_DetFacAsociado}, true));
-                this.columnPK_Id_DetFacAsociado.AutoIncrement = true;
-                this.columnPK_Id_DetFacAsociado.AllowDBNull = false;
-                this.columnPK_Id_DetFacAsociado.ReadOnly = true;
-                this.columnPK_Id_DetFacAsociado.Unique = true;
-                this.columnNombre_TipProducto.AllowDBNull = false;
-                this.columnNombre_TipProducto.MaxLength = 30;
-                this.columnCanTotal_DetFacAsociado.AllowDBNull = false;
-                this.columnPrecio.ReadOnly = true;
-                this.columnPrecio.MaxLength = 24;
-                this.columnMercado.ReadOnly = true;
-                this.columnMercado.MaxLength = 10;
-                this.columnNombre_UniMedida.AllowDBNull = false;
-                this.columnNombre_UniMedida.MaxLength = 25;
+                                this.columnPK_Id_Empresa}, true));
+                this.columnPK_Id_Empresa.AutoIncrement = true;
+                this.columnPK_Id_Empresa.AllowDBNull = false;
+                this.columnPK_Id_Empresa.ReadOnly = true;
+                this.columnPK_Id_Empresa.Unique = true;
+                this.columnNombre_Empresa.AllowDBNull = false;
+                this.columnNombre_Empresa.MaxLength = 50;
+                this.columnCedJuridica_Empresa.AllowDBNull = false;
+                this.columnCedJuridica_Empresa.MaxLength = 30;
+                this.columnDireccion_Empresa.MaxLength = 200;
+                this.columnTelefono_Empresa.MaxLength = 15;
+                this.columnCorreo_Empresa.MaxLength = 30;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRow NewSIGEEA_spObtenerDetallesEntregaRow() {
-                return ((SIGEEA_spObtenerDetallesEntregaRow)(this.NewRow()));
+            public SIGEEA_spObtenerDatosEmpresaRow NewSIGEEA_spObtenerDatosEmpresaRow() {
+                return ((SIGEEA_spObtenerDatosEmpresaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SIGEEA_spObtenerDetallesEntregaRow(builder);
+                return new SIGEEA_spObtenerDatosEmpresaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SIGEEA_spObtenerDetallesEntregaRow);
+                return typeof(SIGEEA_spObtenerDatosEmpresaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SIGEEA_spObtenerDetallesEntregaRowChanged != null)) {
-                    this.SIGEEA_spObtenerDetallesEntregaRowChanged(this, new SIGEEA_spObtenerDetallesEntregaRowChangeEvent(((SIGEEA_spObtenerDetallesEntregaRow)(e.Row)), e.Action));
+                if ((this.SIGEEA_spObtenerDatosEmpresaRowChanged != null)) {
+                    this.SIGEEA_spObtenerDatosEmpresaRowChanged(this, new SIGEEA_spObtenerDatosEmpresaRowChangeEvent(((SIGEEA_spObtenerDatosEmpresaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -975,8 +952,8 @@ namespace SIGEEA_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SIGEEA_spObtenerDetallesEntregaRowChanging != null)) {
-                    this.SIGEEA_spObtenerDetallesEntregaRowChanging(this, new SIGEEA_spObtenerDetallesEntregaRowChangeEvent(((SIGEEA_spObtenerDetallesEntregaRow)(e.Row)), e.Action));
+                if ((this.SIGEEA_spObtenerDatosEmpresaRowChanging != null)) {
+                    this.SIGEEA_spObtenerDatosEmpresaRowChanging(this, new SIGEEA_spObtenerDatosEmpresaRowChangeEvent(((SIGEEA_spObtenerDatosEmpresaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -984,8 +961,8 @@ namespace SIGEEA_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SIGEEA_spObtenerDetallesEntregaRowDeleted != null)) {
-                    this.SIGEEA_spObtenerDetallesEntregaRowDeleted(this, new SIGEEA_spObtenerDetallesEntregaRowChangeEvent(((SIGEEA_spObtenerDetallesEntregaRow)(e.Row)), e.Action));
+                if ((this.SIGEEA_spObtenerDatosEmpresaRowDeleted != null)) {
+                    this.SIGEEA_spObtenerDatosEmpresaRowDeleted(this, new SIGEEA_spObtenerDatosEmpresaRowChangeEvent(((SIGEEA_spObtenerDatosEmpresaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -993,14 +970,14 @@ namespace SIGEEA_App {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SIGEEA_spObtenerDetallesEntregaRowDeleting != null)) {
-                    this.SIGEEA_spObtenerDetallesEntregaRowDeleting(this, new SIGEEA_spObtenerDetallesEntregaRowChangeEvent(((SIGEEA_spObtenerDetallesEntregaRow)(e.Row)), e.Action));
+                if ((this.SIGEEA_spObtenerDatosEmpresaRowDeleting != null)) {
+                    this.SIGEEA_spObtenerDatosEmpresaRowDeleting(this, new SIGEEA_spObtenerDatosEmpresaRowChangeEvent(((SIGEEA_spObtenerDatosEmpresaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSIGEEA_spObtenerDetallesEntregaRow(SIGEEA_spObtenerDetallesEntregaRow row) {
+            public void RemoveSIGEEA_spObtenerDatosEmpresaRow(SIGEEA_spObtenerDatosEmpresaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1009,7 +986,7 @@ namespace SIGEEA_App {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                SIGEEA_BDDataSet1 ds = new SIGEEA_BDDataSet1();
+                dstReporteAsociadoIndividual ds = new dstReporteAsociadoIndividual();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1027,7 +1004,7 @@ namespace SIGEEA_App {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SIGEEA_spObtenerDetallesEntregaDataTable";
+                attribute2.FixedValue = "SIGEEA_spObtenerDatosEmpresaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1071,42 +1048,291 @@ namespace SIGEEA_App {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SIGEEA_spGenerarFacturaEntregaRow : global::System.Data.DataRow {
+        public partial class SIGEEA_spGeneraReporteAsociadosPorIdRow : global::System.Data.DataRow {
             
-            private SIGEEA_spGenerarFacturaEntregaDataTable tableSIGEEA_spGenerarFacturaEntrega;
+            private SIGEEA_spGeneraReporteAsociadosPorIdDataTable tableSIGEEA_spGeneraReporteAsociadosPorId;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SIGEEA_spGenerarFacturaEntregaRow(global::System.Data.DataRowBuilder rb) : 
+            internal SIGEEA_spGeneraReporteAsociadosPorIdRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSIGEEA_spGenerarFacturaEntrega = ((SIGEEA_spGenerarFacturaEntregaDataTable)(this.Table));
+                this.tableSIGEEA_spGeneraReporteAsociadosPorId = ((SIGEEA_spGeneraReporteAsociadosPorIdDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Numero_FacAsociado {
+                get {
+                    return ((int)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Numero_FacAsociadoColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Numero_FacAsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime FecPago_FacAsociado {
+                get {
+                    return ((global::System.DateTime)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.FecPago_FacAsociadoColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.FecPago_FacAsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime FecEntrega_FacAsociado {
+                get {
+                    return ((global::System.DateTime)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.FecEntrega_FacAsociadoColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.FecEntrega_FacAsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CanTotal_FacAsociado {
+                get {
+                    return ((double)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanTotal_FacAsociadoColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanTotal_FacAsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double CanNeta_FacAsociado {
+                get {
+                    try {
+                        return ((double)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanNeta_FacAsociadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CanNeta_FacAsociado\' in table \'SIGEEA_spGeneraReporteAsocia" +
+                                "dosPorId\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanNeta_FacAsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Codigo_Asociado {
+                get {
+                    return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Codigo_AsociadoColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Codigo_AsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CedParticular_Persona {
+                get {
+                    try {
+                        return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedParticular_PersonaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CedParticular_Persona\' in table \'SIGEEA_spGeneraReporteAsoc" +
+                                "iadosPorId\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedParticular_PersonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CedJuridica_Persona {
+                get {
+                    try {
+                        return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedJuridica_PersonaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CedJuridica_Persona\' in table \'SIGEEA_spGeneraReporteAsocia" +
+                                "dosPorId\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedJuridica_PersonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nombre_Asociado {
+                get {
+                    try {
+                        return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Nombre_AsociadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nombre_Asociado\' in table \'SIGEEA_spGeneraReporteAsociadosP" +
+                                "orId\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Nombre_AsociadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string fecInicio {
+                get {
+                    try {
+                        return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecInicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fecInicio\' in table \'SIGEEA_spGeneraReporteAsociadosPorId\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecInicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string fecFinal {
+                get {
+                    try {
+                        return ((string)(this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecFinalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fecFinal\' in table \'SIGEEA_spGeneraReporteAsociadosPorId\' i" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecFinalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCanNeta_FacAsociadoNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanNeta_FacAsociadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCanNeta_FacAsociadoNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CanNeta_FacAsociadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCedParticular_PersonaNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedParticular_PersonaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCedParticular_PersonaNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedParticular_PersonaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCedJuridica_PersonaNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedJuridica_PersonaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCedJuridica_PersonaNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.CedJuridica_PersonaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNombre_AsociadoNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.Nombre_AsociadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNombre_AsociadoNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.Nombre_AsociadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfecInicioNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecInicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfecInicioNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecInicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfecFinalNull() {
+                return this.IsNull(this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecFinalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfecFinalNull() {
+                this[this.tableSIGEEA_spGeneraReporteAsociadosPorId.fecFinalColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SIGEEA_spObtenerDatosEmpresaRow : global::System.Data.DataRow {
+            
+            private SIGEEA_spObtenerDatosEmpresaDataTable tableSIGEEA_spObtenerDatosEmpresa;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal SIGEEA_spObtenerDatosEmpresaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSIGEEA_spObtenerDatosEmpresa = ((SIGEEA_spObtenerDatosEmpresaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int PK_Id_Empresa {
+                get {
+                    return ((int)(this[this.tableSIGEEA_spObtenerDatosEmpresa.PK_Id_EmpresaColumn]));
+                }
+                set {
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.PK_Id_EmpresaColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Nombre_Empresa {
                 get {
-                    return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.Nombre_EmpresaColumn]));
+                    return ((string)(this[this.tableSIGEEA_spObtenerDatosEmpresa.Nombre_EmpresaColumn]));
                 }
                 set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.Nombre_EmpresaColumn] = value;
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.Nombre_EmpresaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CedJuridica {
+            public string CedJuridica_Empresa {
                 get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.CedJuridicaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CedJuridica\' in table \'SIGEEA_spGenerarFacturaEntrega\' is D" +
-                                "BNull.", e);
-                    }
+                    return ((string)(this[this.tableSIGEEA_spObtenerDatosEmpresa.CedJuridica_EmpresaColumn]));
                 }
                 set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.CedJuridicaColumn] = value;
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.CedJuridica_EmpresaColumn] = value;
                 }
             }
             
@@ -1115,417 +1341,86 @@ namespace SIGEEA_App {
             public string Direccion_Empresa {
                 get {
                     try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.Direccion_EmpresaColumn]));
+                        return ((string)(this[this.tableSIGEEA_spObtenerDatosEmpresa.Direccion_EmpresaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Direccion_Empresa\' in table \'SIGEEA_spGenerarFacturaEntrega" +
-                                "\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Direccion_Empresa\' in table \'SIGEEA_spObtenerDatosEmpresa\' " +
+                                "is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.Direccion_EmpresaColumn] = value;
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.Direccion_EmpresaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Telefono {
+            public string Telefono_Empresa {
                 get {
                     try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.TelefonoColumn]));
+                        return ((string)(this[this.tableSIGEEA_spObtenerDatosEmpresa.Telefono_EmpresaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Telefono\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.TelefonoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Correo {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.CorreoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Correo\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DBNull" +
-                                ".", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.CorreoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NumFactura {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.NumFacturaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NumFactura\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.NumFacturaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Fecha {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.FechaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Fecha\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.FechaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Hora {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.HoraColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Hora\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.HoraColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NombreAsociado {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.NombreAsociadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NombreAsociado\' in table \'SIGEEA_spGenerarFacturaEntrega\' i" +
+                        throw new global::System.Data.StrongTypingException("The value for column \'Telefono_Empresa\' in table \'SIGEEA_spObtenerDatosEmpresa\' i" +
                                 "s DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.NombreAsociadoColumn] = value;
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.Telefono_EmpresaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CedPersona {
+            public string Correo_Empresa {
                 get {
                     try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.CedPersonaColumn]));
+                        return ((string)(this[this.tableSIGEEA_spObtenerDatosEmpresa.Correo_EmpresaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CedPersona\' in table \'SIGEEA_spGenerarFacturaEntrega\' is DB" +
-                                "Null.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Correo_Empresa\' in table \'SIGEEA_spObtenerDatosEmpresa\' is " +
+                                "DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.CedPersonaColumn] = value;
+                    this[this.tableSIGEEA_spObtenerDatosEmpresa.Correo_EmpresaColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CodigoAsociado {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spGenerarFacturaEntrega.CodigoAsociadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CodigoAsociado\' in table \'SIGEEA_spGenerarFacturaEntrega\' i" +
-                                "s DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spGenerarFacturaEntrega.CodigoAsociadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCedJuridicaNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.CedJuridicaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCedJuridicaNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.CedJuridicaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDireccion_EmpresaNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.Direccion_EmpresaColumn);
+                return this.IsNull(this.tableSIGEEA_spObtenerDatosEmpresa.Direccion_EmpresaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDireccion_EmpresaNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.Direccion_EmpresaColumn] = global::System.Convert.DBNull;
+                this[this.tableSIGEEA_spObtenerDatosEmpresa.Direccion_EmpresaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTelefonoNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.TelefonoColumn);
+            public bool IsTelefono_EmpresaNull() {
+                return this.IsNull(this.tableSIGEEA_spObtenerDatosEmpresa.Telefono_EmpresaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTelefonoNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.TelefonoColumn] = global::System.Convert.DBNull;
+            public void SetTelefono_EmpresaNull() {
+                this[this.tableSIGEEA_spObtenerDatosEmpresa.Telefono_EmpresaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCorreoNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.CorreoColumn);
+            public bool IsCorreo_EmpresaNull() {
+                return this.IsNull(this.tableSIGEEA_spObtenerDatosEmpresa.Correo_EmpresaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCorreoNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.CorreoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNumFacturaNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.NumFacturaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNumFacturaNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.NumFacturaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.FechaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.FechaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHoraNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.HoraColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHoraNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.HoraColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNombreAsociadoNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.NombreAsociadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNombreAsociadoNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.NombreAsociadoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCedPersonaNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.CedPersonaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCedPersonaNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.CedPersonaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCodigoAsociadoNull() {
-                return this.IsNull(this.tableSIGEEA_spGenerarFacturaEntrega.CodigoAsociadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCodigoAsociadoNull() {
-                this[this.tableSIGEEA_spGenerarFacturaEntrega.CodigoAsociadoColumn] = global::System.Convert.DBNull;
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class SIGEEA_spObtenerDetallesEntregaRow : global::System.Data.DataRow {
-            
-            private SIGEEA_spObtenerDetallesEntregaDataTable tableSIGEEA_spObtenerDetallesEntrega;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SIGEEA_spObtenerDetallesEntregaRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSIGEEA_spObtenerDetallesEntrega = ((SIGEEA_spObtenerDetallesEntregaDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int PK_Id_DetFacAsociado {
-                get {
-                    return ((int)(this[this.tableSIGEEA_spObtenerDetallesEntrega.PK_Id_DetFacAsociadoColumn]));
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.PK_Id_DetFacAsociadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nombre_TipProducto {
-                get {
-                    return ((string)(this[this.tableSIGEEA_spObtenerDetallesEntrega.Nombre_TipProductoColumn]));
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.Nombre_TipProductoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double CanTotal_DetFacAsociado {
-                get {
-                    return ((double)(this[this.tableSIGEEA_spObtenerDetallesEntrega.CanTotal_DetFacAsociadoColumn]));
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.CanTotal_DetFacAsociadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Precio {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spObtenerDetallesEntrega.PrecioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Precio\' in table \'SIGEEA_spObtenerDetallesEntrega\' is DBNul" +
-                                "l.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.PrecioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Mercado {
-                get {
-                    try {
-                        return ((string)(this[this.tableSIGEEA_spObtenerDetallesEntrega.MercadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Mercado\' in table \'SIGEEA_spObtenerDetallesEntrega\' is DBNu" +
-                                "ll.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.MercadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public double CanNeta_DetFacAsociado {
-                get {
-                    try {
-                        return ((double)(this[this.tableSIGEEA_spObtenerDetallesEntrega.CanNeta_DetFacAsociadoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CanNeta_DetFacAsociado\' in table \'SIGEEA_spObtenerDetallesE" +
-                                "ntrega\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.CanNeta_DetFacAsociadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nombre_UniMedida {
-                get {
-                    return ((string)(this[this.tableSIGEEA_spObtenerDetallesEntrega.Nombre_UniMedidaColumn]));
-                }
-                set {
-                    this[this.tableSIGEEA_spObtenerDetallesEntrega.Nombre_UniMedidaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPrecioNull() {
-                return this.IsNull(this.tableSIGEEA_spObtenerDetallesEntrega.PrecioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPrecioNull() {
-                this[this.tableSIGEEA_spObtenerDetallesEntrega.PrecioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMercadoNull() {
-                return this.IsNull(this.tableSIGEEA_spObtenerDetallesEntrega.MercadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMercadoNull() {
-                this[this.tableSIGEEA_spObtenerDetallesEntrega.MercadoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCanNeta_DetFacAsociadoNull() {
-                return this.IsNull(this.tableSIGEEA_spObtenerDetallesEntrega.CanNeta_DetFacAsociadoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCanNeta_DetFacAsociadoNull() {
-                this[this.tableSIGEEA_spObtenerDetallesEntrega.CanNeta_DetFacAsociadoColumn] = global::System.Convert.DBNull;
+            public void SetCorreo_EmpresaNull() {
+                this[this.tableSIGEEA_spObtenerDatosEmpresa.Correo_EmpresaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1533,22 +1428,22 @@ namespace SIGEEA_App {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SIGEEA_spGenerarFacturaEntregaRowChangeEvent : global::System.EventArgs {
+        public class SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent : global::System.EventArgs {
             
-            private SIGEEA_spGenerarFacturaEntregaRow eventRow;
+            private SIGEEA_spGeneraReporteAsociadosPorIdRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaRowChangeEvent(SIGEEA_spGenerarFacturaEntregaRow row, global::System.Data.DataRowAction action) {
+            public SIGEEA_spGeneraReporteAsociadosPorIdRowChangeEvent(SIGEEA_spGeneraReporteAsociadosPorIdRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spGenerarFacturaEntregaRow Row {
+            public SIGEEA_spGeneraReporteAsociadosPorIdRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1567,22 +1462,22 @@ namespace SIGEEA_App {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SIGEEA_spObtenerDetallesEntregaRowChangeEvent : global::System.EventArgs {
+        public class SIGEEA_spObtenerDatosEmpresaRowChangeEvent : global::System.EventArgs {
             
-            private SIGEEA_spObtenerDetallesEntregaRow eventRow;
+            private SIGEEA_spObtenerDatosEmpresaRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRowChangeEvent(SIGEEA_spObtenerDetallesEntregaRow row, global::System.Data.DataRowAction action) {
+            public SIGEEA_spObtenerDatosEmpresaRowChangeEvent(SIGEEA_spObtenerDatosEmpresaRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spObtenerDetallesEntregaRow Row {
+            public SIGEEA_spObtenerDatosEmpresaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1598,7 +1493,7 @@ namespace SIGEEA_App {
         }
     }
 }
-namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
+namespace SIGEEA_App.DataSet.dstReporteAsociadoIndividualTableAdapters {
     
     
     /// <summary>
@@ -1610,7 +1505,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SIGEEA_spGenerarFacturaEntregaTableAdapter : global::System.ComponentModel.Component {
+    public partial class SIGEEA_spGeneraReporteAsociadosPorIdTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1624,7 +1519,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SIGEEA_spGenerarFacturaEntregaTableAdapter() {
+        public SIGEEA_spGeneraReporteAsociadosPorIdTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1721,18 +1616,18 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SIGEEA_spGenerarFacturaEntrega";
-            tableMapping.ColumnMappings.Add("Nombre_Empresa", "Nombre_Empresa");
-            tableMapping.ColumnMappings.Add("CedJuridica", "CedJuridica");
-            tableMapping.ColumnMappings.Add("Direccion_Empresa", "Direccion_Empresa");
-            tableMapping.ColumnMappings.Add("Telefono", "Telefono");
-            tableMapping.ColumnMappings.Add("Correo", "Correo");
-            tableMapping.ColumnMappings.Add("NumFactura", "NumFactura");
-            tableMapping.ColumnMappings.Add("Fecha", "Fecha");
-            tableMapping.ColumnMappings.Add("Hora", "Hora");
-            tableMapping.ColumnMappings.Add("NombreAsociado", "NombreAsociado");
-            tableMapping.ColumnMappings.Add("CedPersona", "CedPersona");
-            tableMapping.ColumnMappings.Add("CodigoAsociado", "CodigoAsociado");
+            tableMapping.DataSetTable = "SIGEEA_spGeneraReporteAsociadosPorId";
+            tableMapping.ColumnMappings.Add("Numero_FacAsociado", "Numero_FacAsociado");
+            tableMapping.ColumnMappings.Add("FecPago_FacAsociado", "FecPago_FacAsociado");
+            tableMapping.ColumnMappings.Add("FecEntrega_FacAsociado", "FecEntrega_FacAsociado");
+            tableMapping.ColumnMappings.Add("CanTotal_FacAsociado", "CanTotal_FacAsociado");
+            tableMapping.ColumnMappings.Add("CanNeta_FacAsociado", "CanNeta_FacAsociado");
+            tableMapping.ColumnMappings.Add("Codigo_Asociado", "Codigo_Asociado");
+            tableMapping.ColumnMappings.Add("CedParticular_Persona", "CedParticular_Persona");
+            tableMapping.ColumnMappings.Add("CedJuridica_Persona", "CedJuridica_Persona");
+            tableMapping.ColumnMappings.Add("Nombre_Asociado", "Nombre_Asociado");
+            tableMapping.ColumnMappings.Add("fecInicio", "fecInicio");
+            tableMapping.ColumnMappings.Add("fecFinal", "fecFinal");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1749,23 +1644,44 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.SIGEEA_spGenerarFacturaEntrega";
+            this._commandCollection[0].CommandText = "dbo.SIGEEA_spGeneraReporteAsociadosPorId";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Factura", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IND_FILTRO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FEC_INICIO", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FEC_FIN", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_ASOCIADO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SIGEEA_BDDataSet1.SIGEEA_spGenerarFacturaEntregaDataTable dataTable, global::System.Nullable<int> Factura) {
+        public virtual int Fill(dstReporteAsociadoIndividual.SIGEEA_spGeneraReporteAsociadosPorIdDataTable dataTable, global::System.Nullable<int> IND_FILTRO, string FEC_INICIO, string FEC_FIN, global::System.Nullable<int> ID_ASOCIADO) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Factura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Factura.Value));
+            if ((IND_FILTRO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IND_FILTRO.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((FEC_INICIO == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FEC_INICIO));
+            }
+            if ((FEC_FIN == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(FEC_FIN));
+            }
+            if ((ID_ASOCIADO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(ID_ASOCIADO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1778,15 +1694,33 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SIGEEA_BDDataSet1.SIGEEA_spGenerarFacturaEntregaDataTable GetData(global::System.Nullable<int> Factura) {
+        public virtual dstReporteAsociadoIndividual.SIGEEA_spGeneraReporteAsociadosPorIdDataTable GetData(global::System.Nullable<int> IND_FILTRO, string FEC_INICIO, string FEC_FIN, global::System.Nullable<int> ID_ASOCIADO) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Factura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Factura.Value));
+            if ((IND_FILTRO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IND_FILTRO.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            SIGEEA_BDDataSet1.SIGEEA_spGenerarFacturaEntregaDataTable dataTable = new SIGEEA_BDDataSet1.SIGEEA_spGenerarFacturaEntregaDataTable();
+            if ((FEC_INICIO == null)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(FEC_INICIO));
+            }
+            if ((FEC_FIN == null)) {
+                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(FEC_FIN));
+            }
+            if ((ID_ASOCIADO.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[4].Value = ((int)(ID_ASOCIADO.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            dstReporteAsociadoIndividual.SIGEEA_spGeneraReporteAsociadosPorIdDataTable dataTable = new dstReporteAsociadoIndividual.SIGEEA_spGeneraReporteAsociadosPorIdDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1801,7 +1735,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SIGEEA_spObtenerDetallesEntregaTableAdapter : global::System.ComponentModel.Component {
+    public partial class SIGEEA_spObtenerDatosEmpresaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1815,7 +1749,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public SIGEEA_spObtenerDetallesEntregaTableAdapter() {
+        public SIGEEA_spObtenerDatosEmpresaTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1912,14 +1846,13 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "SIGEEA_spObtenerDetallesEntrega";
-            tableMapping.ColumnMappings.Add("PK_Id_DetFacAsociado", "PK_Id_DetFacAsociado");
-            tableMapping.ColumnMappings.Add("Nombre_TipProducto", "Nombre_TipProducto");
-            tableMapping.ColumnMappings.Add("CanTotal_DetFacAsociado", "CanTotal_DetFacAsociado");
-            tableMapping.ColumnMappings.Add("Precio", "Precio");
-            tableMapping.ColumnMappings.Add("Mercado", "Mercado");
-            tableMapping.ColumnMappings.Add("CanNeta_DetFacAsociado", "CanNeta_DetFacAsociado");
-            tableMapping.ColumnMappings.Add("Nombre_UniMedida", "Nombre_UniMedida");
+            tableMapping.DataSetTable = "SIGEEA_spObtenerDatosEmpresa";
+            tableMapping.ColumnMappings.Add("PK_Id_Empresa", "PK_Id_Empresa");
+            tableMapping.ColumnMappings.Add("Nombre_Empresa", "Nombre_Empresa");
+            tableMapping.ColumnMappings.Add("CedJuridica_Empresa", "CedJuridica_Empresa");
+            tableMapping.ColumnMappings.Add("Direccion_Empresa", "Direccion_Empresa");
+            tableMapping.ColumnMappings.Add("Telefono_Empresa", "Telefono_Empresa");
+            tableMapping.ColumnMappings.Add("Correo_Empresa", "Correo_Empresa");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1936,24 +1869,17 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.SIGEEA_spObtenerDetallesEntrega";
+            this._commandCollection[0].CommandText = "dbo.SIGEEA_spObtenerDatosEmpresa";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Factura", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SIGEEA_BDDataSet1.SIGEEA_spObtenerDetallesEntregaDataTable dataTable, global::System.Nullable<int> Factura) {
+        public virtual int Fill(dstReporteAsociadoIndividual.SIGEEA_spObtenerDatosEmpresaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Factura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Factura.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1965,15 +1891,9 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SIGEEA_BDDataSet1.SIGEEA_spObtenerDetallesEntregaDataTable GetData(global::System.Nullable<int> Factura) {
+        public virtual dstReporteAsociadoIndividual.SIGEEA_spObtenerDatosEmpresaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Factura.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(Factura.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            SIGEEA_BDDataSet1.SIGEEA_spObtenerDetallesEntregaDataTable dataTable = new SIGEEA_BDDataSet1.SIGEEA_spObtenerDetallesEntregaDataTable();
+            dstReporteAsociadoIndividual.SIGEEA_spObtenerDatosEmpresaDataTable dataTable = new dstReporteAsociadoIndividual.SIGEEA_spObtenerDatosEmpresaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -2047,7 +1967,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(SIGEEA_BDDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(dstReporteAsociadoIndividual dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -2057,7 +1977,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(SIGEEA_BDDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(dstReporteAsociadoIndividual dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -2067,7 +1987,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(SIGEEA_BDDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(dstReporteAsociadoIndividual dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -2101,7 +2021,7 @@ namespace SIGEEA_App.SIGEEA_BDDataSet1TableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(SIGEEA_BDDataSet1 dataSet) {
+        public virtual int UpdateAll(dstReporteAsociadoIndividual dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }
