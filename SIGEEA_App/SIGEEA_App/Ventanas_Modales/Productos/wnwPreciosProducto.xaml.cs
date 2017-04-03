@@ -66,15 +66,29 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
             txbPreExtranjeroVenta.Text = precio.PreExtranjero_PreProVenta.ToString();
             txbPreNacionalVenta.Text = precio.PreNacional_PreProVenta.ToString();
+            btnEditarVenta.IsEnabled = true;
         }
 
         private void cmbProductoCompra_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
             SIGEEA_spObtenerPreciosCompraActualProdResult precio = dc.SIGEEA_spObtenerPreciosCompraActualProd(cmbProductoCompra.SelectedValue.ToString()).First();
+            btnEditarCompra.IsEnabled = true;
 
             txbPreExtranjeroCompra.Text = precio.PreExtranjero_PreProCompra.ToString();
             txbPreNacionalCompra.Text = precio.PreNacional_PreProCompra.ToString();
+        }
+
+        private void btnEditarCompra_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRegistrarProducto ventana = new wnwRegistrarProducto(cmbProductoCompra.SelectedValue.ToString());
+            ventana.ShowDialog();
+        }
+
+        private void btnEditarVenta_Click(object sender, RoutedEventArgs e)
+        {
+            wnwRegistrarProducto ventana = new wnwRegistrarProducto(cmbProductoVenta.SelectedValue.ToString());
+            ventana.ShowDialog();
         }
     }
 }

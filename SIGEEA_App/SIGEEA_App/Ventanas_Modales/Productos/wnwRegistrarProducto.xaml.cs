@@ -24,29 +24,64 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
     /// </summary>
     public partial class wnwRegistrarProducto : MetroWindow
     {
-        public wnwRegistrarProducto()
+        bool editar = false;
+        public wnwRegistrarProducto(string nomProducto = null)
         {
             InitializeComponent();
+
+            if (nomProducto != null)
+            {
+                editar = true;
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_TipProducto ProdEditar = dc.SIGEEA_TipProductos.First(c => c.Nombre_TipProducto == nomProducto);
+                txbNombre.Text = ProdEditar.Nombre_TipProducto;
+                txbDescripcion.Text = ProdEditar.Descripcion_TipProducto;
+                ucCalidad.NUDTextBox.Text = ProdEditar.Calidad_TipProducto.ToString();
+            }
         }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
             if (txbDescripcion.Text != "" && txbNombre.Text != "")
             {
-                SIGEEA_TipProducto nuevoTipo = new SIGEEA_TipProducto();
-                nuevoTipo.Nombre_TipProducto = txbNombre.Text;
-                nuevoTipo.Calidad_TipProducto = Convert.ToInt32(ucCalidad.NUDTextBox.Text);
-                nuevoTipo.Descripcion_TipProducto = txbDescripcion.Text;
-                ProductoMantenimiento prodMantenimiento = new ProductoMantenimiento();
-                prodMantenimiento.RegistrarTipoProducto(nuevoTipo);
-                MessageBox.Show("El producto se ha registrado correctamente");
-                this.Close();
+                try
+                {
+                    if (editar == false)
+                    {
+                        SIGEEA_TipProducto nuevoTipo = new SIGEEA_TipProducto();
+                        nuevoTipo.Nombre_TipProducto = txbNombre.Text;
+                        nuevoTipo.Calidad_TipProducto = Convert.ToInt32(ucCalidad.NUDTextBox.Text);
+                        nuevoTipo.Descripcion_TipProducto = txbDescripcion.Text;
+                        ProductoMantenimiento prodMantenimiento = new ProductoMantenimiento();
+                        prodMantenimiento.RegistrarTipoProducto(nuevoTipo);
+                        MessageBox.Show("El producto se ha registrado correctamente", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        SIGEEA_TipProducto editarTipo = new SIGEEA_TipProducto();
+                        editarTipo.Nombre_TipProducto = txbNombre.Text;
+                        editarTipo.Calidad_TipProducto = Convert.ToInt32(ucCalidad.NUDTextBox.Text);
+                        editarTipo.Descripcion_TipProducto = txbDescripcion.Text;
+                        ProductoMantenimiento prodMantenimiento = new ProductoMantenimiento();
+                        prodMantenimiento.ModificarTipoProducto(editarTipo);
+                        this.Close();
+                    }
+
+                    MessageBox.Show("El producto se ha modificado con éxito", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.Contains("Violation of UNIQUE KEY constraint 'UK_SIGEEA_TipProducto'"))
+                        MessageBox.Show("Error: el nombre que intenta guardar, ya se encuentra registrado en el sistema.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
+                    else
+                        MessageBox.Show("Error: " + ex.Message + ". Contacte al administrador del sistema.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
             else
             {
                 MessageBox.Show("Debe completar todos los campos");
             }
-           
         }
     }
 }

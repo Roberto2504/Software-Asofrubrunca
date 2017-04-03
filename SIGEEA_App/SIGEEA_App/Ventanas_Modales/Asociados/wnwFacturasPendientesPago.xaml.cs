@@ -26,6 +26,9 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
     /// </summary>
     public partial class wnwFacturasPendientesPago : MetroWindow
     {
+        int MetodoPago;
+        string numChequeTransferencia;
+        double total = 0;
         public wnwFacturasPendientesPago(int pFactura)
         {
             InitializeComponent();
@@ -37,7 +40,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 lblAsociado.Content += " " + informacion.NombreAsociado;
                 lblCedula.Content += " " + informacion.CedParticular_Persona;
                 lblCodigo.Content += " " + informacion.Codigo_Asociado;
-                lblFactura.Content += " " + pFactura;
+                lblFactura.Content += " " + informacion.Numero_FacAsociado;
                 lblFecEntrega.Content += " " + informacion.Fecha;
                 if (lista.Count <= 0) throw new Exception("No se encontraron registros");
                 bool color = true;
@@ -153,7 +156,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             parrafoProductos.Inlines.Add(run);
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
             parrafoProductos.Inlines.Add(new Run(Environment.NewLine));
-            double total = 0;
+
 
 
             foreach (Detalle i in detalles)
@@ -190,20 +193,31 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         string moneda;
         private void btnProcesar_Click(object sender, RoutedEventArgs e)
         {
-            Detalles = new List<Detalle>();
-            foreach (uc_ItemDetallePagoAsoc item in stpContenedor.Children)
+            try
             {
-                if (item.Seleccionado() == true)
+
+                Detalles = new List<Detalle>();
+                foreach (uc_ItemDetallePagoAsoc item in stpContenedor.Children)
                 {
-                    Detalles.Add(new Detalle(item.PkDetalleFactura, item.txbMonto.Text != String.Empty ? Convert.ToDouble(item.txbMonto.Text) : Convert.ToDouble(item.lblTotal.Text.Substring(1))));
+                    if (item.Seleccionado() == true)
+                    {
+                        if(Convert.ToDouble(item.TotalDet.Substring(1)) <= Convert.ToDouble(item.txbMonto.Text))
+                            throw new Exception("El abono a pagar no puede ser superior al monto adeudado.");
+                    }
+                    Detalles.Add(new Detalle(item.PkDetalleFactura, item.txbMonto.Text != String.Empty ? Convert.ToDouble(item.txbMonto.Text) : Convert.ToDouble(item.lblTotal.Text.Substring(1))));             
+                }
+                if (Detalles.Count > 0)
+                {
+                    grdPrimera.Visibility = Visibility.Collapsed;
+                    grdSegunda.Visibility = Visibility.Visible;
+                    llamarSegundaPantalla(Detalles);
                 }
             }
-            if (Detalles.Count > 0)
+            catch (Exception ex)
             {
-                grdPrimera.Visibility = Visibility.Collapsed;
-                grdSegunda.Visibility = Visibility.Visible;
-                llamarSegundaPantalla(Detalles);
+                MessageBox.Show("Error: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
 
         public class Detalle
@@ -222,11 +236,106 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            brdPopUp.Visibility = Visibility.Visible;
+            grdSegunda.IsEnabled = false;
+        }
+
+        private void btnAtras_Click(object sender, RoutedEventArgs e)
+        {
+            grdPrimera.Visibility = Visibility.Visible;
+            grdSegunda.Visibility = Visibility.Collapsed;
+            total = 0;
+        }
+
+
+        private void print(RichTextBox pFactura)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.Equals(true))
+            {
+                printDialog.PrintDocument((((IDocumentPaginatorSource)pFactura.Document).DocumentPaginator), "Imprimiendo");
+            }
+        }
+
+        private void btnTransaccionListo_Click(object sender, RoutedEventArgs e)
+        {
+            numChequeTransferencia = txbNumTransaccionPop.Text;
+            grdPrimeraPop.Visibility = Visibility.Visible;
+            grdTransaccionPop.Visibility = Visibility.Collapsed;
+            txbNumTransaccionPop.Text = "Digite el número de transacción";
+            rbtTransferencia.IsChecked = false;
+            brdPopUp.Visibility = Visibility.Collapsed;
+            grdSegunda.IsEnabled = true;
+        }
+
+        private void btnChequeListo_Click(object sender, RoutedEventArgs e)
+        {
+            numChequeTransferencia = txbNumChequePop.Text;
+            grdPrimeraPop.Visibility = Visibility.Visible;
+            txbNumChequePop.Text = "Digite el número de cheque";
+            grdChequePop.Visibility = Visibility.Collapsed;
+            rbtCheque.IsChecked = false;
+            brdPopUp.Visibility = Visibility.Collapsed;
+            grdSegunda.IsEnabled = true;
+        }
+
+        private void btnSiguientePop_Click(object sender, RoutedEventArgs e)
+        {
+            if (rbtEfectivo.IsChecked == true)
+            {
+                brdPopUp.Visibility = Visibility.Collapsed;
+                MetodoPago = 1; //Efectivo
+                grdSegunda.IsEnabled = true;
+                btnCancelar.Visibility = Visibility.Collapsed;
+                btnEfectuarPago.Visibility = Visibility.Visible;
+                grdPrimeraPop.Visibility = Visibility.Visible;
+                rbtEfectivo.IsChecked = false;
+            }
+            else if (rbtCheque.IsChecked == true)
+            {
+                grdPrimeraPop.Visibility = Visibility.Collapsed;
+                grdChequePop.Visibility = Visibility.Visible;
+                btnCancelar.Visibility = Visibility.Collapsed;
+                btnEfectuarPago.Visibility = Visibility.Visible;
+                MetodoPago = 2; //Cheque
+            }
+            else if (rbtTransferencia.IsChecked == true)
+            {
+                grdPrimeraPop.Visibility = Visibility.Collapsed;
+                grdTransaccionPop.Visibility = Visibility.Visible;
+                btnCancelar.Visibility = Visibility.Collapsed;
+                btnEfectuarPago.Visibility = Visibility.Visible;
+                MetodoPago = 3; //Transferencia
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una opción", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        private void btnCerrarPop_Click(object sender, RoutedEventArgs e)
+        {
+            grdSegunda.IsEnabled = true;
+            grdChequePop.Visibility = Visibility.Collapsed;
+            grdTransaccionPop.Visibility = Visibility.Collapsed;
+            txbNumChequePop.Text = "Digite el número de cheque";
+            txbNumTransaccionPop.Text = "Digite el número de transacción";
+            grdPrimeraPop.Visibility = Visibility.Visible;
+            grdChequePop.Visibility = Visibility.Collapsed;
+            rbtCheque.IsChecked = false;
+            rbtTransferencia.IsChecked = false;
+            rbtEfectivo.IsChecked = false;
+            brdPopUp.Visibility = Visibility.Collapsed;
+            grdSegunda.IsEnabled = true;
+        }
+
+        private void btnEfectuarPago_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
                 List<int> llaves = new List<int>();
                 List<double> montos = new List<double>();
-                foreach(Detalle d in Detalles)
+                foreach (Detalle d in Detalles)
                 {
                     llaves.Add(d.getLlave());
                     montos.Add(d.getMonto());
@@ -234,7 +343,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 if (Detalles.Count > 0 && MessageBox.Show("¿Realmente quiere realizar el pago?", "SIGEEA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     AsociadoMantenimiento asociado = new AsociadoMantenimiento();
-                    if (asociado.CancelaFacturaAsociado(llaves,montos) == true)
+                    if (asociado.CancelaFacturaAsociado(llaves, montos, MetodoPago, numChequeTransferencia, total) == true)
                     {
                         MessageBox.Show("Pago realizado con éxito", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                         print(txbFactura);
@@ -245,22 +354,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void btnAtras_Click(object sender, RoutedEventArgs e)
-        {
-            grdPrimera.Visibility = Visibility.Visible;
-            grdSegunda.Visibility = Visibility.Collapsed;
-        }
-
-
-        private void print(RichTextBox pFactura)
-        {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.Equals(true))
-            {
-                printDialog.PrintDocument((((IDocumentPaginatorSource)pFactura.Document).DocumentPaginator), "Imprimiendo");
             }
         }
     }

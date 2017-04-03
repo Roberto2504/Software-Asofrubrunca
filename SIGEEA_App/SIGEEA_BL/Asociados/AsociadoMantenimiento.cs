@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SIGEEA_BO;
+using SIGEEA_BL.Seguridad;
 
 
 namespace SIGEEA_BL
@@ -352,7 +353,7 @@ namespace SIGEEA_BL
                 detalle.Mercado_DetFacAsociado = detalle.Mercado_DetFacAsociado;
                 dc.SubmitChanges();
 
-                if(pEstado == true) producto.IncrementarInventario(unidadMedida, pProducto, CantidadNeta);
+                if (pEstado == true) producto.IncrementarInventario(unidadMedida, pProducto, CantidadNeta);
             }
             catch (Exception ex)
             {
@@ -447,7 +448,7 @@ namespace SIGEEA_BL
         /// </summary>
         /// <param name="pDetalles"></param>
         /// <returns></returns>
-        public bool CancelaFacturaAsociado(List<int> pDetalles, List<double> pMontos)
+        public bool CancelaFacturaAsociado(List<int> pDetalles, List<double> pMontos, int pMetodoPago = 0, string pNumChequeTransferencia = null, double pTotal = 0)
         {
             try
             {
@@ -455,10 +456,11 @@ namespace SIGEEA_BL
                 if (pDetalles.Count > 0)
                 {
                     int indice = 0;
+                    int pkFactura = 0;
                     foreach (int i in pDetalles)
-                    {                        
+                    {
                         SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == i);
-
+                        pkFactura = detalle.FK_Id_FacAsociado;
                         if (pMontos.ElementAt(indice) > detalle.Saldo_DetFacAsociado) return false;
                         else if (pMontos.ElementAt(indice) < detalle.Saldo_DetFacAsociado) detalle.Saldo_DetFacAsociado = detalle.Saldo_DetFacAsociado - pMontos.ElementAt(indice);
                         else detalle.Saldo_DetFacAsociado = 0;
@@ -474,13 +476,45 @@ namespace SIGEEA_BL
                         indice++;
                     }
                     RevisaFacurasCanceladas(dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == (dc.SIGEEA_DetFacAsociados.First(d => d.PK_Id_DetFacAsociado == pDetalles.First()).FK_Id_FacAsociado)).PK_Id_FacAsociado);
+                    CrearBitacoraPago(pDetalles, pMetodoPago, UsuarioGlobal.InfoUsuario.PK_Id_Usuario, DateTime.Now, pNumChequeTransferencia, pTotal);
                 }
                 return true;
             }
             catch (Exception ex)
             {
+                string mensaje = ex.Message;
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Crea la bitácora de pago
+        /// </summary>
+        /// <param name="pDetalles"></param>
+        /// <param name="pMetodoPago"></param>
+        /// <param name="pUsuario"></param>
+        /// <param name="pFecha"></param>
+        /// <param name="pChqRef"></param>
+        /// <param name="pTotal"></param>
+        private void CrearBitacoraPago(List<int> pDetalles, int pMetodoPago, int pUsuario, DateTime pFecha, string pChqRef, double pTotal)
+        {
+            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_BitPago bitacora = new SIGEEA_BitPago();
+            bitacora.Metodo_BitPagos = pMetodoPago;
+            bitacora.FK_Id_Usuario = pUsuario;
+            bitacora.Fecha_BitPagos = pFecha;
+            bitacora.ChqRef_BitPagos = pChqRef;
+            bitacora.Total_BitPagos = pTotal;
+            dc.SIGEEA_BitPagos.InsertOnSubmit(bitacora);
+            dc.SubmitChanges();
+            foreach (int i in pDetalles)
+            {
+                SIGEEA_BitDetPago detalle = new SIGEEA_BitDetPago();
+                detalle.FK_BitPagos = bitacora.PK_Id_BitPagos;
+                detalle.FK_DetFacAsociado = i;
+                dc.SIGEEA_BitDetPagos.InsertOnSubmit(detalle);
+            }
+            dc.SubmitChanges();
         }
 
         /// <summary>
@@ -492,7 +526,6 @@ namespace SIGEEA_BL
             DataClasses1DataContext dc = new DataClasses1DataContext();
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> lista = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pFactura).ToList();
             bool validador = true;
-
             foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult d in lista)
             {
                 if (d.Cancelado_DetFacAsociado == false)
@@ -501,7 +534,6 @@ namespace SIGEEA_BL
                     break;
                 }
             }
-
             if (validador == true)
             {
                 SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
@@ -597,6 +629,50 @@ namespace SIGEEA_BL
             dc.SubmitChanges();
         }
 
+        /// <summary>
+        /// Obtiene el siguiente número de factura de entrega de producto 
+        /// </summary>
+        /// <returns></returns>
+        public int ObtenerNumeroFacturaEntrega()
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                return Convert.ToInt32(dc.SIGEEA_spUltimaFacturaEntregaProducto().First().Numero_FacAsociado) + 1;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
 
+        public string AnularEntregaProducto(int pkFactura)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                dc.SIGEEA_spAnularEntregaProducto(pkFactura);
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                return "Error: " + ex.Message + " Comuníquese con el administrador del sistema.";
+            }
+        }
+
+        public SIGEEA_spObtenerAsociadoResult obtenerAsociadoPorID(string CedulaCodigo)
+        {
+            try
+            {
+                DataClasses1DataContext dc = new DataClasses1DataContext();
+                return dc.SIGEEA_spObtenerAsociado(CedulaCodigo).First();
+            }
+            catch (Exception ex)
+            {
+                SIGEEA_spObtenerAsociadoResult error = new SIGEEA_spObtenerAsociadoResult();
+                error.PriNombre_Persona = ex.Message;
+                return error;
+            }
+        }
     }
 }

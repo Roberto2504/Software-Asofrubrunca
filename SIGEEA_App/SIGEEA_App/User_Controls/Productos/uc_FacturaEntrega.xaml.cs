@@ -32,6 +32,9 @@ namespace SIGEEA_App.User_Controls.Productos
         public static DependencyProperty IdFactura = DependencyProperty.Register("IdFactura", typeof(int), typeof(uc_FacturaEntrega),
                                                                              new UIPropertyMetadata(IdFacturaAct));
 
+        public static DependencyProperty NumFactura = DependencyProperty.Register("NumFactura", typeof(int), typeof(uc_FacturaEntrega),
+                                                                             new UIPropertyMetadata(NumFacturaAct));
+
         public static DependencyProperty FechaFactura = DependencyProperty.Register("FechaFactura", typeof(string), typeof(uc_FacturaEntrega),
                                                                              new UIPropertyMetadata(FechaFacturaAct));
 
@@ -48,6 +51,12 @@ namespace SIGEEA_App.User_Controls.Productos
             set { SetValue(IdFactura, value); }
         }
 
+        public int FacturaNum
+        {
+            get { return (int)GetValue(NumFactura); }
+            set { SetValue(NumFactura, value); }
+        }
+
         public string FacturaFecha
         {
             get { return (string)GetValue(FechaFactura); }
@@ -59,7 +68,7 @@ namespace SIGEEA_App.User_Controls.Productos
             get { return (string)GetValue(CantidadFactura); }
             set { SetValue(CantidadFactura, value); }
         }
-        
+
         public string FacturaUnidad
         {
             get { return (string)GetValue(UnidadFactura); }
@@ -73,6 +82,12 @@ namespace SIGEEA_App.User_Controls.Productos
         {
             uc_FacturaEntrega nAsociado = (uc_FacturaEntrega)d;
             nAsociado.FacturaId = Convert.ToInt32(e.NewValue);
+        }
+
+        private static void NumFacturaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_FacturaEntrega nAsociado = (uc_FacturaEntrega)d;
+            nAsociado.FacturaNum = Convert.ToInt32(e.NewValue);
         }
         private static void FechaFacturaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

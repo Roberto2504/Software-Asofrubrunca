@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="46.241" d:DesignWidth="433.985">
     <Grid Name="grdContenedor">
-        <TextBlock x:Name="lblNumFactura" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding FacturaId, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_FacturaEntrega}}}" VerticalAlignment="Top" Height="26" Width="99" FontWeight="Bold" FontSize="14.667"/>
+        <TextBlock x:Name="lblNumFactura" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="99" FontWeight="Bold" FontSize="14.667" Text="{Binding FacturaNum, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_FacturaEntrega}}}"/>
         <TextBlock x:Name="lblFecha" HorizontalAlignment="Left" Margin="114,10,0,0" TextWrapping="Wrap" Text="{Binding FacturaFecha, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_FacturaEntrega}}}" VerticalAlignment="Top" Height="26" Width="117" FontWeight="Bold" FontSize="14.667"/>
         <TextBlock x:Name="lblCantidad" HorizontalAlignment="Left" Margin="286,10,0,0" TextWrapping="Wrap" Text="{Binding FacturaCantidad, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:uc_FacturaEntrega}}}" VerticalAlignment="Top" Height="26" Width="49" FontWeight="Bold" FontSize="14.667"/>
         <Button x:Name="btnDetalles" Content="Ver detalles" HorizontalAlignment="Left" Margin="343,11,0,0" VerticalAlignment="Top" Width="85" Background="#FF22C939" Foreground="White" Click="btnDetalles_Click"/>

@@ -90,6 +90,24 @@
     <Compile Include="Custom_Controls\ccPedidoCliente.cs" />
     <Compile Include="Custom_Controls\ccPedidoInsumo.cs" />
     <Compile Include="Custom_Controls\ccProducto.cs" />
+    <Compile Include="DataSet\dstFacturaEntregaProducto.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dstFacturaEntregaProducto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\dstReporteAsociadoConsolidado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dstReporteAsociadoConsolidado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\dstReporteAsociadoIndividual.cs">
+      <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\dstReporteAsociadoIndividual.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Pag_Clientes.xaml.cs">
       <DependentUpon>Pag_Clientes.xaml</DependentUpon>
     </Compile>
@@ -107,21 +125,6 @@
     </Compile>
     <Compile Include="Paginas\Pag_Productos.xaml.cs">
       <DependentUpon>Pag_Productos.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SIGEEA_BDDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SIGEEA_BDDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SIGEEA_BDDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="User_Controls\Asociados\uc_Asamblea.xaml.cs">
       <DependentUpon>uc_Asamblea.xaml</DependentUpon>
@@ -270,8 +273,14 @@
     <Compile Include="Ventanas_Modales\Asociados\wnwOpcionesFacturaProducto.xaml.cs">
       <DependentUpon>wnwOpcionesFacturaProducto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwOpcionesReporteEntrega.xaml.cs">
+      <DependentUpon>wnwOpcionesReporteEntrega.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwRegistrarCuota.xaml.cs">
       <DependentUpon>wnwRegistrarCuota.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Asociados\wnwReportesAsociado.xaml.cs">
+      <DependentUpon>wnwReportesAsociado.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwVistaAsociados.xaml.cs">
       <DependentUpon>wnwVistaAsociados.xaml</DependentUpon>
@@ -641,7 +650,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwOpcionesReporteEntrega.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Asociados\wnwRegistrarCuota.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Asociados\wnwReportesAsociado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -831,45 +848,47 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Asociados\rptAsociadoConsolidado.rdlc" />
+    <EmbeddedResource Include="Reportes\Asociados\rptAsociadoIndividual.rdlc" />
+    <None Include="DataSet\dstFacturaEntregaProducto.xsc">
+      <DependentUpon>dstFacturaEntregaProducto.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dstFacturaEntregaProducto.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dstFacturaEntregaProducto.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dstFacturaEntregaProducto.xss">
+      <DependentUpon>dstFacturaEntregaProducto.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoConsolidado.xsc">
+      <DependentUpon>dstReporteAsociadoConsolidado.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoConsolidado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dstReporteAsociadoConsolidado.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoConsolidado.xss">
+      <DependentUpon>dstReporteAsociadoConsolidado.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoIndividual.xsc">
+      <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoIndividual.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dstReporteAsociadoIndividual.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dstReporteAsociadoIndividual.xss">
+      <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="SIGEEA_BDDataSet.xsc">
-      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SIGEEA_BDDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SIGEEA_BDDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SIGEEA_BDDataSet.xss">
-      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SIGEEA_BDDataSet1.xsc">
-      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="SIGEEA_BDDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SIGEEA_BDDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SIGEEA_BDDataSet1.xss">
-      <DependentUpon>SIGEEA_BDDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="SIGEEA_BDDataSet2.xsc">
-      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="SIGEEA_BDDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SIGEEA_BDDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SIGEEA_BDDataSet2.xss">
-      <DependentUpon>SIGEEA_BDDataSet2.xsd</DependentUpon>
-    </None>
     <Resource Include="Recursos\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>

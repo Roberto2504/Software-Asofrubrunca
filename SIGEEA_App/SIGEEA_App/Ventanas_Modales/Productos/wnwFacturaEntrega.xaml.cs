@@ -25,17 +25,22 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
     /// </summary>
     public partial class wnwFacturaEntrega : MetroWindow
     {
-        public wnwFacturaEntrega(int factura)
+        List<SIGEEA_spGenerarFacturaEntregaResult> encabezado;
+        List<SIGEEA_spObtenerDetallesEntregaResult> detalles;
+        string CodigoAsociado;
+        public wnwFacturaEntrega(int factura, string pAsociado)
         {
             InitializeComponent();
+            CodigoAsociado = pAsociado;
             GeneraFactura(factura);
+
         }
 
         private void GeneraFactura(int factura)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-            List<SIGEEA_spGenerarFacturaEntregaResult> encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).ToList();
-            List<SIGEEA_spObtenerDetallesEntregaResult> detalles = dc.SIGEEA_spObtenerDetallesEntrega(factura).ToList();
+            encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).ToList();
+            detalles = dc.SIGEEA_spObtenerDetallesEntrega(factura).ToList();
 
             var source = new ReportDataSource("Detalle", SIGEEA.BL.Facturas.helper.ConvertToDatatable(detalles));
             var source2 = new ReportDataSource("Encabezado", SIGEEA.BL.Facturas.helper.ConvertToDatatable(encabezado));
@@ -114,7 +119,27 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void btnImprimir_Click(object sender, RoutedEventArgs e)
         {
-                        
+
+        }
+
+        private void btnAnular_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("¿Realmente quiere cancelar la entrega?", "SIGEEA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                AsociadoMantenimiento asoc = new AsociadoMantenimiento();
+
+                string mensaje = asoc.AnularEntregaProducto(encabezado.First().NumFactura);
+                if (mensaje.Equals("OK"))
+                {
+                    wnwEntregaProducto ventana = new wnwEntregaProducto(asoc.obtenerAsociadoPorID(CodigoAsociado), detalles);
+                    this.Close();
+                    ventana.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show(mensaje);
+                }
+            }
         }
     }
 }
