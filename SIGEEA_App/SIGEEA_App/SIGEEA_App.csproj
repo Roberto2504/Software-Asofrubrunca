@@ -45,6 +45,18 @@
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
@@ -90,6 +102,11 @@
     <Compile Include="Custom_Controls\ccPedidoCliente.cs" />
     <Compile Include="Custom_Controls\ccPedidoInsumo.cs" />
     <Compile Include="Custom_Controls\ccProducto.cs" />
+    <Compile Include="Facturas\Clientes\Cliente_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cliente_DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Paginas\Pag_Clientes.xaml.cs">
       <DependentUpon>Pag_Clientes.xaml</DependentUpon>
     </Compile>
@@ -278,6 +295,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Asociados\wnwVistaFamiliares.xaml.cs">
       <DependentUpon>wnwVistaFamiliares.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wmwReporteVentasCliente.xaml.cs">
+      <DependentUpon>wmwReporteVentasCliente.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwAbonoFactura.xaml.cs">
       <DependentUpon>wnwAbonoFactura.xaml</DependentUpon>
@@ -653,6 +673,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Clientes\wmwReporteVentasCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Clientes\wnwAbonoFactura.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -831,6 +855,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Facturas\Clientes\Cliente_DataSet.xsc">
+      <DependentUpon>Cliente_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Facturas\Clientes\Cliente_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Cliente_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Facturas\Clientes\Cliente_DataSet.xss">
+      <DependentUpon>Cliente_DataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -33,5 +33,16 @@ namespace SIGEEA_App.Properties {
                 return ((string)(this["SIGEEA_BDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UG5K51J\\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Secur" +
+            "ity=True")]
+        public string SIGEEA_BDConnectionString1 {
+            get {
+                return ((string)(this["SIGEEA_BDConnectionString1"]));
+            }
+        }
     }
 }
