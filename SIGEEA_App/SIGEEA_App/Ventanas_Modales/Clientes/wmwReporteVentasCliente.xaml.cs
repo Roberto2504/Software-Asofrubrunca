@@ -28,5 +28,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         {
             InitializeComponent();
         }
+
+        private void btnImprimir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

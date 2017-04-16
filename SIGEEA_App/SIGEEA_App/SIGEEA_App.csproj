@@ -850,6 +850,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Facturas\Clientes\Re_Ventas_Cliente.rdlc" />
     <EmbeddedResource Include="Facturas\Re_Factura_Orden_Venta.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

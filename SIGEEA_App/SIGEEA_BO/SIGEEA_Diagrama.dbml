@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SIGEEA_BD" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-UG5K51J\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString5" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-NJFF1DG\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Security=True" SettingsObjectName="SIGEEA_BO.Properties.Settings" SettingsPropertyName="SIGEEA_BDConnectionString6" Provider="System.Data.SqlClient" />
   <Table Name="dbo.SIGEEA_AboCliente" Member="SIGEEA_AboClientes">
     <Type Name="SIGEEA_AboCliente">
       <Column Name="PK_Id_AboCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -814,6 +814,20 @@
     <Parameter Name="Codigo" Parameter="codigo" Type="System.String" DbType="VarChar(30)" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.SIGEEA_spDetalleFacturasPorCliente" Method="SIGEEA_spDetalleFacturasPorCliente">
+    <Parameter Name="idCliente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="fecInicio" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="fecFin" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="SIGEEA_spDetalleFacturasPorClienteResult">
+      <Column Name="Nombre_Moneda" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="PreCompra_Moneda" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="PreVenta_Moneda" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MonNeto_FacCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="MonTotal_FacCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Estado_FacCliente" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="PK_Id_FacCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.SIGEEA_spDetalleReporteVentasPorCliente" Method="SIGEEA_spDetalleReporteVentasPorCliente">
     <Parameter Name="idFactura" Type="System.Int32" DbType="Int" />
     <Parameter Name="fecInicio" Type="System.DateTime" DbType="DateTime" />
@@ -824,6 +838,8 @@
       <Column Name="CanProduto" Type="System.String" DbType="VarChar(48) NOT NULL" CanBeNull="false" />
       <Column Name="Descuento" Type="System.String" DbType="VarChar(24) NOT NULL" CanBeNull="false" />
       <Column Name="PreUnidad" Type="System.String" DbType="VarChar(26) NOT NULL" CanBeNull="false" />
+      <Column Name="FecInicio" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FecFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Calidad_TipProducto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Nombre_TipProducto" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
     </ElementType>
@@ -1519,20 +1535,6 @@
       <Column Name="Nombre_Empresa" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Telefono_Empresa" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="nomEmpleado" Type="System.String" DbType="VarChar(123) NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.SIGEEA_spDetalleFacturasPorCliente" Method="SIGEEA_spDetalleFacturasPorCliente">
-    <Parameter Name="idCliente" Type="System.Int32" DbType="Int" />
-    <Parameter Name="fecInicio" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="fecFin" Type="System.DateTime" DbType="DateTime" />
-    <ElementType Name="SIGEEA_spDetalleFacturasPorClienteResult">
-      <Column Name="Nombre_Moneda" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="PreCompra_Moneda" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="PreVenta_Moneda" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="MonNeto_FacCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="MonTotal_FacCliente" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Estado_FacCliente" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
-      <Column Name="PK_Id_FacCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

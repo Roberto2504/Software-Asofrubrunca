@@ -781,6 +781,10 @@ namespace SIGEEA_App.Facturas.Clientes {
             
             private global::System.Data.DataColumn columnPreUnidad;
             
+            private global::System.Data.DataColumn columnFecInicio;
+            
+            private global::System.Data.DataColumn columnFecFin;
+            
             private global::System.Data.DataColumn columnCalidad_TipProducto;
             
             private global::System.Data.DataColumn columnNombre_TipProducto;
@@ -860,6 +864,22 @@ namespace SIGEEA_App.Facturas.Clientes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FecInicioColumn {
+                get {
+                    return this.columnFecInicio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FecFinColumn {
+                get {
+                    return this.columnFecFin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn Calidad_TipProductoColumn {
                 get {
                     return this.columnCalidad_TipProducto;
@@ -911,7 +931,7 @@ namespace SIGEEA_App.Facturas.Clientes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SIGEEA_spDetalleReporteVentasPorClienteRow AddSIGEEA_spDetalleReporteVentasPorClienteRow(string MonTotal, string MonNeto, string CanProduto, string Descuento, string PreUnidad, int Calidad_TipProducto, string Nombre_TipProducto) {
+            public SIGEEA_spDetalleReporteVentasPorClienteRow AddSIGEEA_spDetalleReporteVentasPorClienteRow(string MonTotal, string MonNeto, string CanProduto, string Descuento, string PreUnidad, System.DateTime FecInicio, System.DateTime FecFin, int Calidad_TipProducto, string Nombre_TipProducto) {
                 SIGEEA_spDetalleReporteVentasPorClienteRow rowSIGEEA_spDetalleReporteVentasPorClienteRow = ((SIGEEA_spDetalleReporteVentasPorClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MonTotal,
@@ -919,6 +939,8 @@ namespace SIGEEA_App.Facturas.Clientes {
                         CanProduto,
                         Descuento,
                         PreUnidad,
+                        FecInicio,
+                        FecFin,
                         Calidad_TipProducto,
                         Nombre_TipProducto};
                 rowSIGEEA_spDetalleReporteVentasPorClienteRow.ItemArray = columnValuesArray;
@@ -948,6 +970,8 @@ namespace SIGEEA_App.Facturas.Clientes {
                 this.columnCanProduto = base.Columns["CanProduto"];
                 this.columnDescuento = base.Columns["Descuento"];
                 this.columnPreUnidad = base.Columns["PreUnidad"];
+                this.columnFecInicio = base.Columns["FecInicio"];
+                this.columnFecFin = base.Columns["FecFin"];
                 this.columnCalidad_TipProducto = base.Columns["Calidad_TipProducto"];
                 this.columnNombre_TipProducto = base.Columns["Nombre_TipProducto"];
             }
@@ -965,6 +989,10 @@ namespace SIGEEA_App.Facturas.Clientes {
                 base.Columns.Add(this.columnDescuento);
                 this.columnPreUnidad = new global::System.Data.DataColumn("PreUnidad", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPreUnidad);
+                this.columnFecInicio = new global::System.Data.DataColumn("FecInicio", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecInicio);
+                this.columnFecFin = new global::System.Data.DataColumn("FecFin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFecFin);
                 this.columnCalidad_TipProducto = new global::System.Data.DataColumn("Calidad_TipProducto", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCalidad_TipProducto);
                 this.columnNombre_TipProducto = new global::System.Data.DataColumn("Nombre_TipProducto", typeof(string), null, global::System.Data.MappingType.Element);
@@ -979,6 +1007,8 @@ namespace SIGEEA_App.Facturas.Clientes {
                 this.columnDescuento.MaxLength = 24;
                 this.columnPreUnidad.ReadOnly = true;
                 this.columnPreUnidad.MaxLength = 26;
+                this.columnFecInicio.ReadOnly = true;
+                this.columnFecFin.ReadOnly = true;
                 this.columnCalidad_TipProducto.AllowDBNull = false;
                 this.columnNombre_TipProducto.AllowDBNull = false;
                 this.columnNombre_TipProducto.MaxLength = 30;
@@ -2511,6 +2541,40 @@ namespace SIGEEA_App.Facturas.Clientes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime FecInicio {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecInicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FecInicio\' in table \'SIGEEA_spDetalleReporteVentasPorClient" +
+                                "e\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecInicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime FecFin {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecFinColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FecFin\' in table \'SIGEEA_spDetalleReporteVentasPorCliente\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecFinColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Calidad_TipProducto {
                 get {
                     return ((int)(this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.Calidad_TipProductoColumn]));
@@ -2589,6 +2653,30 @@ namespace SIGEEA_App.Facturas.Clientes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPreUnidadNull() {
                 this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.PreUnidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFecInicioNull() {
+                return this.IsNull(this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecInicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFecInicioNull() {
+                this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecInicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFecFinNull() {
+                return this.IsNull(this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecFinColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFecFinNull() {
+                this[this.tableSIGEEA_spDetalleReporteVentasPorCliente.FecFinColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3503,7 +3591,7 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString1;
+            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3707,6 +3795,8 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("CanProduto", "CanProduto");
             tableMapping.ColumnMappings.Add("Descuento", "Descuento");
             tableMapping.ColumnMappings.Add("PreUnidad", "PreUnidad");
+            tableMapping.ColumnMappings.Add("FecInicio", "FecInicio");
+            tableMapping.ColumnMappings.Add("FecFin", "FecFin");
             tableMapping.ColumnMappings.Add("Calidad_TipProducto", "Calidad_TipProducto");
             tableMapping.ColumnMappings.Add("Nombre_TipProducto", "Nombre_TipProducto");
             this._adapter.TableMappings.Add(tableMapping);
@@ -3716,7 +3806,7 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString1;
+            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3928,7 +4018,7 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString1;
+            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4154,7 +4244,7 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString1;
+            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4339,7 +4429,7 @@ namespace SIGEEA_App.Facturas.Clientes.Cliente_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString1;
+            this._connection.ConnectionString = global::SIGEEA_App.Properties.Settings.Default.SIGEEA_BDConnectionString2;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

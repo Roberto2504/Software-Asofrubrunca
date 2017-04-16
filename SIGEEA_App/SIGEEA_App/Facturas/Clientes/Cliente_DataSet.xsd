@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SIGEEA_BDConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIGEEA_BDConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIGEEA_App.Properties.Settings.GlobalReference.Default.SIGEEA_BDConnectionString1" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SIGEEA_BDConnectionString2" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIGEEA_BDConnectionString2 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIGEEA_App.Properties.Settings.GlobalReference.Default.SIGEEA_BDConnectionString2" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGEEA_spDetalleFacturasPorClienteTableAdapter" GeneratorDataComponentClassName="SIGEEA_spDetalleFacturasPorClienteTableAdapter" Name="SIGEEA_spDetalleFacturasPorCliente" UserDataComponentName="SIGEEA_spDetalleFacturasPorClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spDetalleFacturasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString2 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spDetalleFacturasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGEEA_spDetalleFacturasPorCliente</CommandText>
@@ -36,7 +36,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGEEA_spDetalleReporteVentasPorClienteTableAdapter" GeneratorDataComponentClassName="SIGEEA_spDetalleReporteVentasPorClienteTableAdapter" Name="SIGEEA_spDetalleReporteVentasPorCliente" UserDataComponentName="SIGEEA_spDetalleReporteVentasPorClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spDetalleReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString2 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spDetalleReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGEEA_spDetalleReporteVentasPorCliente</CommandText>
@@ -56,6 +56,8 @@
               <Mapping SourceColumn="CanProduto" DataSetColumn="CanProduto" />
               <Mapping SourceColumn="Descuento" DataSetColumn="Descuento" />
               <Mapping SourceColumn="PreUnidad" DataSetColumn="PreUnidad" />
+              <Mapping SourceColumn="FecInicio" DataSetColumn="FecInicio" />
+              <Mapping SourceColumn="FecFin" DataSetColumn="FecFin" />
               <Mapping SourceColumn="Calidad_TipProducto" DataSetColumn="Calidad_TipProducto" />
               <Mapping SourceColumn="Nombre_TipProducto" DataSetColumn="Nombre_TipProducto" />
             </Mappings>
@@ -63,7 +65,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGEEA_spPieReporteVentasPorClienteTableAdapter" GeneratorDataComponentClassName="SIGEEA_spPieReporteVentasPorClienteTableAdapter" Name="SIGEEA_spPieReporteVentasPorCliente" UserDataComponentName="SIGEEA_spPieReporteVentasPorClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spPieReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString2 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spPieReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGEEA_spPieReporteVentasPorCliente</CommandText>
@@ -89,7 +91,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGGEA_spEncabezadoFacturaClienteTableAdapter" GeneratorDataComponentClassName="SIGGEA_spEncabezadoFacturaClienteTableAdapter" Name="SIGGEA_spEncabezadoFacturaCliente" UserDataComponentName="SIGGEA_spEncabezadoFacturaClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGGEA_spEncabezadoFacturaCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString2 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGGEA_spEncabezadoFacturaCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGGEA_spEncabezadoFacturaCliente</CommandText>
@@ -127,7 +129,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGGEA_spEncabezadoReporteVentasPorClienteTableAdapter" GeneratorDataComponentClassName="SIGGEA_spEncabezadoReporteVentasPorClienteTableAdapter" Name="SIGGEA_spEncabezadoReporteVentasPorCliente" UserDataComponentName="SIGGEA_spEncabezadoReporteVentasPorClienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGGEA_spEncabezadoReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString2 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGGEA_spEncabezadoReporteVentasPorCliente" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGGEA_spEncabezadoReporteVentasPorCliente</CommandText>
@@ -219,6 +221,8 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="FecInicio" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFecInicio" msprop:Generator_ColumnPropNameInRow="FecInicio" msprop:Generator_ColumnPropNameInTable="FecInicioColumn" msprop:Generator_UserColumnName="FecInicio" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FecFin" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFecFin" msprop:Generator_ColumnPropNameInRow="FecFin" msprop:Generator_ColumnPropNameInTable="FecFinColumn" msprop:Generator_UserColumnName="FecFin" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Calidad_TipProducto" msprop:Generator_ColumnVarNameInTable="columnCalidad_TipProducto" msprop:Generator_ColumnPropNameInRow="Calidad_TipProducto" msprop:Generator_ColumnPropNameInTable="Calidad_TipProductoColumn" msprop:Generator_UserColumnName="Calidad_TipProducto" type="xs:int" />
               <xs:element name="Nombre_TipProducto" msprop:Generator_ColumnVarNameInTable="columnNombre_TipProducto" msprop:Generator_ColumnPropNameInRow="Nombre_TipProducto" msprop:Generator_ColumnPropNameInTable="Nombre_TipProductoColumn" msprop:Generator_UserColumnName="Nombre_TipProducto">
                 <xs:simpleType>
