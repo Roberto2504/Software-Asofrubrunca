@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <Height>4.65833in</Height>
+    <Style />
+  </Body>
+  <Width>4.01667in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="Cliente_DataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>730d366a-910a-44f1-8c53-87a3d2b6f84a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Emcabezado">
+      <Query>
+        <DataSourceName>Cliente_DataSet</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="nomCliente">
+          <DataField>nomCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Nombre_Empresa">
+          <DataField>Nombre_Empresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefono_Empresa">
+          <DataField>Telefono_Empresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Correo_Empresa">
+          <DataField>Correo_Empresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CedJuridica_Empresa">
+          <DataField>CedJuridica_Empresa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Cliente_DataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\rober\Documents\Roberto\GitHub\SIGEEA\Software-Asofrubrunca\SIGEEA_App\SIGEEA_App\Facturas\Clientes\Cliente_DataSet.xsd</rd:SchemaPath>
+        <rd:TableName>SIGGEA_spEncabezadoReporteVentasPorCliente</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>SIGGEA_spEncabezadoReporteVentasPorClienteTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>aed5ad93-3e71-4f5e-be05-f88126760136</rd:ReportID>
+</Report>
