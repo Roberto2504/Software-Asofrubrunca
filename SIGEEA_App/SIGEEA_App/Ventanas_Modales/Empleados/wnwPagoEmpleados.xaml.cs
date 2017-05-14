@@ -51,6 +51,8 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                 Pago.Puestos = p.Nombre_Puesto;
                 Pago.Tarifas = p.Tarifa;
                 Pago.Totales = p.Total;
+                Pago.Totale = Convert.ToDouble(p.eTotal);
+                Pago.Tarifae = p.eTarifa;
                 Pago.Color(color);
                 color = !color;
                 stpPagos.Children.Add(Pago);
@@ -89,6 +91,8 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                     pago.Tarifa = uPago.Tarifas;
                     pago.Total = uPago.Totales;
                     pago.PK_Id_HorLaboradas = uPago.PagoId;
+                    pago.eTotal =  Math.Round(uPago.Totale,0);
+                    pago.eTarifa = uPago.Tarifae;
 
                     lista.Add(pago);
                 }

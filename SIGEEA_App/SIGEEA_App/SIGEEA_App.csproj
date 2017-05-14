@@ -45,7 +45,8 @@
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
@@ -108,6 +109,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSFacturacion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSFacturacion.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Facturas\helper.cs" />
     <Compile Include="Paginas\Pag_Clientes.xaml.cs">
       <DependentUpon>Pag_Clientes.xaml</DependentUpon>
     </Compile>
@@ -843,7 +850,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Facturas\Re_Cancelar_Pago_Empleado.rdlc" />
     <EmbeddedResource Include="Facturas\Re_Factura_Orden_Venta.rdlc" />
+    <EmbeddedResource Include="Facturas\Re_Factura_Pendiente_Pago.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -883,6 +892,17 @@
     <None Include="DataSet\dstReporteAsociadoIndividual.xss">
       <DependentUpon>dstReporteAsociadoIndividual.xsd</DependentUpon>
     </None>
+    <None Include="DSFacturacion.xsc">
+      <DependentUpon>DSFacturacion.xsd</DependentUpon>
+    </None>
+    <None Include="DSFacturacion.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSFacturacion.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSFacturacion.xss">
+      <DependentUpon>DSFacturacion.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -892,7 +912,9 @@
     <Resource Include="Recursos\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SIGEEA_BL\SIGEEA_BL.csproj">
