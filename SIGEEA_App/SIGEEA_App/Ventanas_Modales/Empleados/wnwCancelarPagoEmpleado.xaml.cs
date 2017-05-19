@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 
+using SIGEEA_App.Facturas;
+using Microsoft.Reporting.WinForms;
+
 using SIGEEA_BL;
 using SIGEEA_BO;
 
@@ -32,7 +35,25 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
         public wnwCancelarPagoEmpleado(List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> pLista, int pEmpleado)
         {
             InitializeComponent();
+
+
             DataClasses1DataContext dc = new DataClasses1DataContext();
+            ReporteFacturaVenta.Reset();
+            
+            
+            List<SIGEEA_spGenerarFacturaPagoEmpleadoResult> Orden = new List<SIGEEA_spGenerarFacturaPagoEmpleadoResult>();
+           
+            Orden = dc.SIGEEA_spGenerarFacturaPagoEmpleado(pEmpleado).ToList();
+            var source = new ReportDataSource("Detalle", helper.ConvertToDatatable(pLista));
+            var source2 = new ReportDataSource("Orden", helper.ConvertToDatatable(Orden));
+            ReporteFacturaVenta.LocalReport.DataSources.Add(source);
+            ReporteFacturaVenta.LocalReport.DataSources.Add(source2);
+            ReporteFacturaVenta.LocalReport.ReportEmbeddedResource = "SIGEEA_App.Facturas.Re_Cancelar_Pago_Empleado.rdlc";
+            ReporteFacturaVenta.RefreshReport();
+
+
+
+            /*DataClasses1DataContext dc = new DataClasses1DataContext();
 
             SIGEEA_spGenerarFacturaPagoEmpleadoResult encabezado = dc.SIGEEA_spGenerarFacturaPagoEmpleado(pEmpleado).First();
 
@@ -101,7 +122,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
             parrafoTotal.Inlines.Add("Horas laboradas: " + horas.ToString());
 
 
-            txbFactura.Document.Blocks.Add(parrafoTotal);
+            txbFactura.Document.Blocks.Add(parrafoTotal);*/
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -116,7 +137,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                     PrintDialog printDialog = new PrintDialog();
                     if (printDialog.ShowDialog() == DialogResult.Equals(true))
                     {
-                        printDialog.PrintDocument((((IDocumentPaginatorSource)txbFactura.Document).DocumentPaginator), "Imprimiendo...");
+                        //printDialog.PrintDocument((((IDocumentPaginatorSource)txbFactura.Document).DocumentPaginator), "Imprimiendo...");
                     }
                     this.Close();
                 }
@@ -125,6 +146,10 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
             {
                 MessageBox.Show("Error al realizar el pago solicitado: " + Ex.Message, "SIGEEA", MessageBoxButton.OK);
             }
+        }
+        private void WindowsFormsHost_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
         }
     }
 }

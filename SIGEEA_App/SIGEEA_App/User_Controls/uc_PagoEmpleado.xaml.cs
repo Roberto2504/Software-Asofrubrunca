@@ -44,6 +44,12 @@ namespace SIGEEA_App.User_Controls
 
         public static DependencyProperty Total = DependencyProperty.Register("Total", typeof(string), typeof(uc_PagoEmpleado),
                                                                              new UIPropertyMetadata(TotalAct));
+        public static DependencyProperty eTotal = DependencyProperty.Register("eTotal", typeof(double), typeof(uc_PagoEmpleado),
+                                                                              new UIPropertyMetadata(eTotalAct));
+
+        public static DependencyProperty eTarifa = DependencyProperty.Register("eTarifa", typeof(double), typeof(uc_PagoEmpleado),
+                                                                             new UIPropertyMetadata(eTarifaAct));
+
         #endregion
 
         #region Propiedades
@@ -52,6 +58,16 @@ namespace SIGEEA_App.User_Controls
         {
             get { return (int)GetValue(IdPago); }
             set { SetValue(IdPago, value); }
+        }
+        public double Totale
+        {
+            get { return (double)GetValue(eTotal); }
+            set { SetValue(eTotal, value); }
+        }
+        public double Tarifae
+        {
+            get { return (double)GetValue(eTarifa); }
+            set { SetValue(eTarifa, value); }
         }
 
         public string Fechas
@@ -105,7 +121,18 @@ namespace SIGEEA_App.User_Controls
             uc_PagoEmpleado nPago = (uc_PagoEmpleado)d;
             nPago.PagoId = Convert.ToInt32(e.NewValue);
         }
+        private static void eTotalAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_PagoEmpleado nPago = (uc_PagoEmpleado)d;
+            nPago.Totale = Convert.ToDouble(e.NewValue);
 
+        }
+        private static void eTarifaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            uc_PagoEmpleado nPago = (uc_PagoEmpleado)d;
+            nPago.Tarifae = Convert.ToDouble(e.NewValue);
+
+        }
         private static void FechaAct(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             uc_PagoEmpleado nPago = (uc_PagoEmpleado)d;
