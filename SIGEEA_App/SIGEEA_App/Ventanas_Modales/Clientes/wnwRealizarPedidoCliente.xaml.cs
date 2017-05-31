@@ -184,12 +184,10 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 // Inicia el evento de drag and drop
                 DragDrop.DoDragDrop(this, productoAnterior, DragDropEffects.Copy | DragDropEffects.Move);
             }
-
         }
 
         private void wpVeProducto_Drop(object sender, DragEventArgs e)
         {
-
             uc_Producto nuevo = new uc_Producto();
             base.OnDrop(e);
             nuevo.preExtProducto = SepararMiles(Math.Round(Convert.ToDouble(productoAnterior.preExtProducto), 2)); 
@@ -206,7 +204,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             wnwCantidadProductoPedido nueva = new wnwCantidadProductoPedido("Agregar", pProducto: nuevo, pDetProducto: null);
             nueva.Owner = this;
             nueva.ShowDialog();
-
             e.Handled = true;
         }
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -220,7 +217,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     {
                         yield return (T)child;
                     }
-
                     foreach (T childOfChild in FindVisualChildren<T>(child))
                     {
                         yield return childOfChild;
@@ -245,7 +241,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     Producto.canDisProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.preNetProducto), 2));
                     Producto.canInvProducto = SepararMiles(Math.Round(Convert.ToDouble(pdetProducto.canInvProducto), 2)); 
                     pdetProducto.Color(color);
-                    //wpVeProducto.Children.Add(pdetProducto);
                     RestarInventario(pdetProducto);
                     esta = true;
                     CalcularPrecioTotal();
@@ -262,16 +257,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 RestarInventario(pdetProducto);
                 CalcularPrecioTotal();
             }
-            //else {
-            //    pdetProducto.Color(color);
-            //    pdetProducto.btnAgregarEditar.Tag = Convert.ToInt32(pdetProducto.IdTipProducto);
-            //    pdetProducto.btnAgregarEditar.Click += BtnAgregarEditar_Click1;
-            //    wpVeProducto.Children.Add(pdetProducto);
-            //    RestarInventario(pdetProducto);
-
-            //    CalcularPrecioTotal();
-            //}
-
         }
 
         private void BtnAgregarEditar_Click1(object sender, RoutedEventArgs e)
@@ -305,9 +290,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 if (nuevo.IdTipProducto == Producto.IdTipProducto)
                 {
                     nuevo.canDisProducto = Producto.canInvProducto;
-
                 }
-
             }
             if (Convert.ToInt32(nuevo.canDisProducto) <= 0) { MessageBox.Show("Producto Agotado"); }
             wnwCantidadProductoPedido nueva = new wnwCantidadProductoPedido("Editar Cantidad", pProducto: null, pDetProducto: nuevo);
@@ -323,21 +306,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     Producto.canInvProducto = pProducto.canDisProducto;
                 }
             }
-
             clientMant.RestarInventario(Convert.ToInt32(pProducto.IdTipProducto), Convert.ToDouble(pProducto.canDisProducto));
         }
-
 
         private void cmbMoneda_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             nomMoneda = this.cmbMoneda.SelectedItem.ToString();
-
             if (conta != 0)
             {
                 CalcularPrecioTotal();
             }
             conta++;
-
         }
         public void CalcularPrecioTotal()
         {
@@ -367,8 +346,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     {
                         Total = Total * 1;
                     }
-
-
                 }
             }
 
@@ -408,14 +385,12 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     Producto.preNetProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto))),2));
                     Producto.preBruProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) - (((Convert.ToDouble(Producto.canInvProducto) * Convert.ToDouble(Producto.preNacProducto)) * Convert.ToDouble(Producto.desProducto)) / 100)),2));
                     Producto.Moneda = "¢";
-
                 }
                 foreach (uc_Producto Producto in FindVisualChildren<uc_Producto>(wpProducto))
                 {
                     Producto.preProducto = SepararMiles(Math.Round(Convert.ToDouble(Producto.preNacProducto),2));
                     Producto.Moneda = "¢";
                 }
-
             }
             else
             {
@@ -432,9 +407,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     Producto.preBruProducto = SepararMiles(Math.Round((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))), 2)); 
                     Producto.preNetProducto = SepararMiles(Math.Round(((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))) - (((Convert.ToDouble(Producto.canInvProducto) * (Convert.ToDouble(Producto.preExtProducto) / monMant.PrecioVenta("Dolar"))) * Convert.ToDouble(Producto.desProducto)) / 100)), 2));
                     Producto.Moneda = "$";
-
                 }
-
             }
             CalcularPrecioTotal();
 
@@ -448,7 +421,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             ObservableCollection<uc_DetProducto> listarDetProducto = new ObservableCollection<uc_DetProducto>();
             foreach (uc_DetProducto Producto in FindVisualChildren<uc_DetProducto>(wpVeProducto))
             {
-
                 listarDetProducto.Add(Producto);
             }
 

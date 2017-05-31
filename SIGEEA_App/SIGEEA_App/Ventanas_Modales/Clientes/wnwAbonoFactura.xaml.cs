@@ -35,7 +35,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         }
         string metodoPago, moneda;
-
         int idCliente;
         List<String> ListarMetodosDePago = new List<String>();
         SIGEEA_spListarFacturaPendientePorFacturaResult lista = new SIGEEA_spListarFacturaPendientePorFacturaResult();
@@ -50,7 +49,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void ListaMetodos()
         {
-
             ListarMetodosDePago.Add("1.Efectivo");
             ListarMetodosDePago.Add("2.Tarjeta");
             ListarMetodosDePago.Add("3.Cheque");
@@ -59,11 +57,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             txtNumero.Visibility = Visibility.Hidden;
             cmbMetodoPago.ItemsSource = ListarMetodosDePago;
             cmbMoneda.ItemsSource = mon.ListarMonedas();
-             
-           
             for(int i = 0; i< lista.Saldo.Length; i++)
             {
-                if (lista.Saldo[i] == '.') saldo += ','; else saldo += lista.Saldo[i];
+                if (lista.Saldo[i] == '.') saldo += '.'; else saldo += lista.Saldo[i];
             }
             txtMontoaCancelar.Text = saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0,1)));
             idCliente = lista.PK_Id_Cliente;
@@ -77,19 +73,16 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             metodoPago = this.cmbMetodoPago.SelectedItem.ToString();
             if (metodoPago[0].ToString() == "1")
             {
-
                 txtNumero0.Visibility = Visibility.Hidden;
                 txtNumero.Visibility = Visibility.Hidden;
             }
             else if (metodoPago[0].ToString() == "2")
             {
-
                 txtNumero0.Visibility = Visibility.Hidden;
                 txtNumero.Visibility = Visibility.Hidden;
             }
             else if (metodoPago[0].ToString() == "3")
             {
-
                 txtNumero0.Visibility = Visibility.Visible;
                 txtNumero.Visibility = Visibility.Visible;
                 txtNumero0.Text = "Numero de Cheque:";
@@ -105,9 +98,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         private void cmbMoneda_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             moneda = this.cmbMoneda.SelectedItem.ToString();
-
             CalculaNuevoSaldo();
-
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -143,10 +134,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     if (moneda == "Colón")
                     {
                         Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) / mon.PrecioVenta(moneda));
-
                     }
                     else Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - Convert.ToDouble(txtMontoAbono.Text);
-
                     txtNuevoSaldo.Text = string.Concat("$", Math.Round(Convert.ToDouble(SepararMiles(Total)), 2));
                 }
                 else {
@@ -158,7 +147,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     {
                         Total = Convert.ToDouble(saldo.Remove(0, 1).ToString()) - (Convert.ToDouble(txtMontoAbono.Text) * mon.PrecioVenta(moneda));
                     }
-
                     txtNuevoSaldo.Text = string.Concat("¢", Math.Round(Convert.ToDouble(SepararMiles(Total)),2));
                 }
             }

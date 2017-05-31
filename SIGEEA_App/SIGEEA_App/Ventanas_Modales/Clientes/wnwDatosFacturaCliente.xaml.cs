@@ -38,7 +38,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             tipoFactura = Tipo;
             IdEmpresa = pkIdEmpresa;
             tipoPedido = ptipoPedido;
-            montoTatal = pMontoTotal;
+            montoTotal = pMontoTotal;
             descuentoTotal = pDescuentoTotal;
             montoNetoTotal = pMontoNetoTotal;
             moneda = pMonedaTotal;
@@ -72,7 +72,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             ListaMetodos();
         }
         int IdEmpleado, IdCliente, IdEmpresa;
-        string tipoFactura, tipoPedido, montoTatal, descuentoTotal, montoNetoTotal, moneda, observaciones, MontoAbono, fechaProPago, fechaLimite, metodoPago, numero, montoAbono;
+        string tipoFactura, tipoPedido, montoTotal, descuentoTotal, montoNetoTotal, moneda, fechaProPago, fechaLimite, metodoPago, MontoAbono;
         DateTime proximoPago;
         DateTime proximoLimite;
         private void cmbMetodoPago_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -123,18 +123,19 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: montoNetoTotal, pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                    nueva.ShowDialog();
-                    this.Close();
+                    ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, montoNetoTotal, IdCliente);
+                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: montoNetoTotal, pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                   // nueva.ShowDialog();
+                   // this.Close();
                 }
             }
             else if (tipoFactura == "Crédito")
             {
                 if (txtObservaciones.Text != "")
                 {
-                    
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: MontoAbono, pfechaProPago: proximoPago, pfechaLimPago: proximoLimite, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                    nueva.ShowDialog();
+                    ProcesarFactura(txtObservaciones.Text, proximoPago, proximoLimite, txtNumero.Text, MontoAbono, IdCliente);
+                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: MontoAbono, pfechaProPago: proximoPago, pfechaLimPago: proximoLimite, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    //nueva.ShowDialog();
                     this.Close();
                 }
             }
@@ -142,13 +143,130 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTatal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: 0.ToString(), pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                    nueva.ShowDialog();
+                    ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, 0.ToString(), IdCliente);
+                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: 0.ToString(), pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
+                    //nueva.ShowDialog();
                     this.Close();
                 }
             }
 
 
+        }
+        MonedaMantenimiento monMant = new MonedaMantenimiento();
+        UnidadMedidaMantenimiento uniMedMant = new UnidadMedidaMantenimiento();
+        FacturaClienteMantenimiento facMant = new FacturaClienteMantenimiento();
+        SIGEEA_spListarFacturaPendientePorFacturaResult lista = new SIGEEA_spListarFacturaPendientePorFacturaResult();
+        double fin;
+        private int ProcesarFactura (string observaciones, DateTime fechaProPago, DateTime fechaLimite, string numero, string MontoAbono, int pkIdCliente)
+        {
+            lista = facMant.ObtenerFactura(pkIdCliente);
+            if (tipoFactura != "Abono")
+            {
+                if (tipoFactura != "Proforma")
+                {
+                    if (MontoAbono == null) MontoAbono = "0";
+                    fin = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                }
+            }
+            else
+            {
+                fin = Convert.ToDouble(montoTotal);
+            }
+            if (tipoFactura != "Abono")
+            {
+                ObservableCollection<SIGEEA_DetFacCliente> plistaDetProducto = new ObservableCollection<SIGEEA_DetFacCliente>();
+                SIGEEA_FacCliente nuevaFactura = new SIGEEA_FacCliente();
+                nuevaFactura.FecEntrega_FacCliente = DateTime.Now;
+                nuevaFactura.FecPago_FacCliente = DateTime.Now;
+                nuevaFactura.Observaciones_FacCliente = observaciones;
+                nuevaFactura.FK_Id_Cliente = IdCliente;
+                nuevaFactura.MonTotal_FacCliente = Convert.ToDouble(montoTotal.Remove(0, 1));
+                nuevaFactura.MonNeto_FacCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                nuevaFactura.Descuento_FacCliente = Convert.ToDouble(descuentoTotal);
+                nuevaFactura.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
+                nuevaFactura.FK_Id_Empresa = IdEmpresa;
+                nuevaFactura.FK_Id_Empleado = IdEmpleado;
+                foreach (uc_DetProducto detFacCliente in listaDetProducto)
+                {
+                    SIGEEA_DetFacCliente nuevoDetalle = new SIGEEA_DetFacCliente();
+                    nuevoDetalle.MonTotal_DetFacCliente = Convert.ToDouble(detFacCliente.preBruProducto);
+                    nuevoDetalle.MonNeto_DetFacCliente = Convert.ToDouble(detFacCliente.preNetProducto);
+                    nuevoDetalle.CanProducto_DetFacCliente = Convert.ToDouble(detFacCliente.canInvProducto);
+                    nuevoDetalle.Descuento_DetFacCliente = Convert.ToDouble(detFacCliente.desProducto);
+                    if (tipoPedido == "NACIONAL")
+                    {
+                        nuevoDetalle.PreUnidad_DetFacCliente = Convert.ToDouble(detFacCliente.preNacProducto);
+                        nuevoDetalle.Moneda_DetFacCliente = "¢";
+                    }
+                    else
+                    {
+                        nuevoDetalle.PreUnidad_DetFacCliente = Convert.ToDouble(detFacCliente.preExtProducto);
+                        nuevoDetalle.Moneda_DetFacCliente = "$";
+                    }
+                    nuevoDetalle.FK_Id_UniMedida = uniMedMant.PkUniMedida(detFacCliente.UniMedida)[0];
+                    nuevoDetalle.FK_Id_TipProducto = Convert.ToInt32(detFacCliente.IdTipProducto);
+                    plistaDetProducto.Add(nuevoDetalle);
+                }
+                if (tipoFactura == "Proforma")
+                {
+                    nuevaFactura.Estado_FacCliente = "PR";
+                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, null, null);
+                }
+                else if (tipoFactura == "Crédito")
+                {
+                    nuevaFactura.Estado_FacCliente = "CR";
+                    SIGEEA_CreCliente nuevoCredito = new SIGEEA_CreCliente();
+                    nuevoCredito.Estado_CreCliente = true;
+                    nuevoCredito.Fecha_CreCliente = DateTime.Now;
+                    nuevoCredito.Monto_CreCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                    nuevoCredito.Saldo_CreCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                    nuevoCredito.FecProPago_CreCliente = fechaProPago;
+                    nuevoCredito.FecLimPago_CreCliente = fechaLimite;
+                    nuevoCredito.FK_Id_Cliente = IdCliente;
+                    nuevoCredito.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
+                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, pAboCliente: null, pCreCliente: nuevoCredito);
+                }
+                else if (tipoFactura == "Contado")
+                {
+                    SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();
+                    nuevoAbono.Monto_AboCliente = Convert.ToDouble(montoNetoTotal.Remove(0, 1));
+                    nuevaFactura.Estado_FacCliente = "CO";
+                    nuevoAbono.Metodo_AboCliente = Convert.ToInt32(metodoPago[0].ToString());
+                    nuevoAbono.Numero_AboCliente = numero;
+                    nuevoAbono.Fecha_AboCliente = DateTime.Now;
+                    nuevoAbono.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
+                    nuevoAbono.FK_Id_Empleado = IdEmpleado;
+                    nuevoAbono.Estado_AboCliente = true;
+                    nuevoAbono.FK_Id_Cliente = IdCliente;
+                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, nuevoAbono, null);
+                }
+            }
+            else
+            {
+                SIGEEA_CreCliente nuevoCredito = new SIGEEA_CreCliente();
+                if (fin == 0)
+                {
+                    nuevoCredito.Estado_CreCliente = false;
+                }
+                else
+                {
+                    nuevoCredito.Estado_CreCliente = true;
+                }
+                nuevoCredito.PK_Id_CreCliente = lista.PK_Id_CreCliente;
+                nuevoCredito.Saldo_CreCliente = fin;
+                nuevoCredito.FecProPago_CreCliente = fechaProPago;
+                SIGEEA_AboCliente nuevoAbono = new SIGEEA_AboCliente();
+                nuevoAbono.Monto_AboCliente = Convert.ToDouble(MontoAbono);
+                nuevoAbono.Metodo_AboCliente = Convert.ToInt32(metodoPago[0].ToString());
+                nuevoAbono.Numero_AboCliente = numero;
+                nuevoAbono.Fecha_AboCliente = DateTime.Now;
+                nuevoAbono.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
+                nuevoAbono.FK_Id_Empleado = IdEmpleado;
+                nuevoAbono.Estado_AboCliente = true;
+                nuevoAbono.FK_Id_Cliente = lista.PK_Id_Cliente;
+                nuevoAbono.FK_Id_FacCliente = lista.PK_Id_FacCliente;
+                facMant.RegitrarAbono(nuevoAbono, nuevoCredito);
+            }
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

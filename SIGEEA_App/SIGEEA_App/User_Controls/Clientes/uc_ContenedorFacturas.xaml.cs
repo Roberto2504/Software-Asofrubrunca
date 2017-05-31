@@ -57,14 +57,9 @@ namespace SIGEEA_App.User_Controls.Clientes
                 uc_Factura nueva = new uc_Factura();
                 nueva.txtNumFacuta.Text = pendiente.PK_Id_FacCliente.ToString();
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
-
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                for (int i = 0; i < pendiente.Saldo.Length; i++)
-                {
-                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
-                }
-                nueva.txbMonto.Text = pendiente.Saldo[0]+SepararMiles(Convert.ToDouble(saldo.Remove(0,1)));
+                nueva.txbMonto.Text = pendiente.Saldo[0]+SepararMiles(Convert.ToDouble(pendiente.Saldo.Remove(0,1)));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
                 wprPrincipal.Children.Add(nueva);
@@ -80,11 +75,7 @@ namespace SIGEEA_App.User_Controls.Clientes
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                for (int i = 0; i < pendiente.Saldo.Length; i++)
-                {
-                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
-                }
-                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0, 1)));
+                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Math.Round(Convert.ToDouble(pendiente.Saldo.Remove(0, 1)), 2));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
                 wprPrincipal.Children.Add(nueva);
@@ -104,11 +95,7 @@ namespace SIGEEA_App.User_Controls.Clientes
                 nueva.txbNomCliente.Text = pendiente.NombreCompleto;
                 nueva.txbFecProPago.Text = pendiente.FecProPago_CreCliente.ToShortDateString();
                 nueva.txbFecLimPago.Text = pendiente.FecLimPago_CreCliente.ToShortDateString();
-                for (int i = 0; i < pendiente.Saldo.Length; i++)
-                {
-                    if (pendiente.Saldo[i] == '.') saldo += ','; else saldo += pendiente.Saldo[i];
-                }
-                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Convert.ToDouble(saldo.Remove(0, 1)));
+                nueva.txbMonto.Text = pendiente.Saldo[0] + SepararMiles(Convert.ToDouble(pendiente.Saldo.Remove(0, 1)));
                 nueva.btnAbono.Tag = pendiente.PK_Id_FacCliente;
                 nueva.btnAbono.Click += BtnAbono_Click;
                 wprPrincipal.Children.Add(nueva);

@@ -107,42 +107,21 @@ namespace SIGEEA_App
                                 if (leer == true)
                                 {
                                     if (leido == 0)
-                                    {
-                                        if (line[i] == '.')
-                                        {
-                                            compra += ",";
-                                        }
-                                        else
-                                        {
+                                    { 
                                             compra += line[i];
-                                        }
-
                                     }
                                     else
                                     {
-                                        if (line[i] == '.')
-                                        {
-                                            venta += ",";
-                                        }
-                                        else
-                                        {
-                                            venta += line[i];
-                                        }
-
+                                        venta += line[i];
                                     }
                                 }
-
                             }
                         }
                         catch { }
-
                     }
-
-
-
-
                     para++;
                 }
+
                 monMant.ActualizaPrecio(Convert.ToDouble(venta), Convert.ToDouble(compra));
                 txtVenta.Text = "₡ " + Math.Round(Convert.ToDouble(venta), 2).ToString();
                 txtCompra.Text = "₡ " + Math.Round(Convert.ToDouble(compra), 2).ToString();
@@ -286,6 +265,11 @@ namespace SIGEEA_App
                 case "Realizar abono a factura":
                     wnwMetodoBusquedaFactura venAbonoCredito = new wnwMetodoBusquedaFactura();
                     venAbonoCredito.Show();
+                    break;
+
+                case "Reporte de ventas cliente":
+                    wnwBuscadorCliente repVentasCliente = new wnwBuscadorCliente("ReporteVentas");
+                    repVentasCliente.Show();
                     break;
 
                 case "Entrega de producto":

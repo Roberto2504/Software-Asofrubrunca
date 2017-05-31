@@ -21,9 +21,6 @@
                                      ShowRefreshButton="False" ShowStopButton="False" ShowZoomControl="False"/>
                 </WindowsFormsHost>
             </ScrollViewer>
-            <!-- <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="20,56,177,22">
-                <RichTextBox Name="txbFactura" Margin="0,0,0,0" Background="#FFD8DFE2" IsEnabled="False"></RichTextBox>
-            </ScrollViewer>-->
             <Button x:Name="btnCancelar" Margin="530,197,30,152" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
                 <Rectangle Width="85" Height="82" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                     <Rectangle.OpacityMask>

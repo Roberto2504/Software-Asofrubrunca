@@ -73,27 +73,23 @@ namespace SIGEEA_App.User_Controls.Clientes
                     if (opcion == "Pedido")
                     {
                         nuevo.btnOpcion.Content = "Hacer Pedido";
-               
-
                     }
                     else if (opcion == "Editar")
                     {
 
                         nuevo.btnOpcion.Content = "Editar";
-                 
-
                     }
                     else if (opcion == "Ver")
                     {
                         nuevo.btnOpcion.Content = "Ver Facturas";
-                      
-
                     }
                     else if (opcion == "Abono")
                     {
                         nuevo.btnOpcion.Content = "Hacer Abono";
-                       
-
+                    }
+                    else if (opcion == "ReporteVentas")
+                    {
+                        nuevo.btnOpcion.Content = "Ver reporte";
                     }
                     //else if (opcion == "Eliminar o Activar")
                     //{
@@ -176,12 +172,14 @@ namespace SIGEEA_App.User_Controls.Clientes
             else if (opcion == "Abono")
             {
                 //nuevo.btnOpcion.Content = "Hacer Abono";
-
+            }
+            else if (opcion == "ReporteVentas")
+            {
+                // wnwFacturasCliente nuevaVentana = new wnwFacturasCliente(Tipo: "Por cliente", IdCliente: Convert.ToInt32(boton.Tag), IdFactura: 0);
+                // nueva.ShowDialog();
             }
             else if (opcion == "Eliminar o Activar")
             {
-
-
                 if (MessageBox.Show("¿Realmente eliminar este Cliente?", "SIGEEA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     ClienteMantenimiento mant = new ClienteMantenimiento();
