@@ -64,24 +64,30 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             }
             preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
             txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
-            preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
+            preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text == "" ? "0" : ucDescuento.NUDTextBox.Text)) / 100)).ToString();
             txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2))); 
         }
 
         private void NUDTextBox_TextChanged1(object sender, TextChangedEventArgs e)
         {
-            
-                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
-            txbCantidad.Text = string.Concat(cantidad, uniMedida);
-            preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
-            txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
-            preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString();
-            txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
+            try
+            {
+                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text))).ToString();
+                txbCantidad.Text = string.Concat(cantidad, uniMedida);
+                preBru = (((Convert.ToDouble(ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio)))).ToString();
+                txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
+                preNet = ((Convert.ToDouble(preBru)) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text == "" ? "0" : ucDescuento.NUDTextBox.Text)) / 100)).ToString();
+                txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "yes");
+            }
+          
         }
 
         private void NUDTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txbNuevoPrecio.Text =   string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble((((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100)).ToString()), 2)));
+            txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble((((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio))) - (((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio)) * Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text))) / 100)).ToString()), 2)));
         }
 
         uc_Producto proModifica = new uc_Producto();
@@ -147,7 +153,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
             ClienteMantenimiento clientMant = new ClienteMantenimiento();
-            clientMant.SumarInventario(Convert.ToInt32(txbId.Text), (Convert.ToDouble(cantidad) + Convert.ToDouble(ucPedido.NUDTextBox.Text)));
+            clientMant.SumarInventario(Convert.ToInt32(txbId.Text), (Convert.ToDouble(cantidad) + Convert.ToDouble((ucPedido.NUDTextBox.Text == "")  ? "0" : ucPedido.NUDTextBox.Text)));
             this.Close();
         }
 
@@ -156,24 +162,22 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
             if (txbCantidad.Text != "")
             {
-                if (Convert.ToDouble(ucPedido.NUDTextBox.Text) > Convert.ToDouble(canAnterior))
+                if (Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) > Convert.ToDouble(canAnterior))
                 { MessageBox.Show("El pedido exede la cantidad Disponible"); }
-                else if (Convert.ToDouble(ucPedido.NUDTextBox.Text) <= 0)
+                else if (Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) <= 0)
                 { MessageBox.Show("El pedido es menor o igual a 0"); }
                 else {
-                    MessageBoxResult m = MessageBox.Show("Es la cantidad correcta? " + ucPedido.NUDTextBox.Text, "Mensaje de Confirmación", MessageBoxButton.YesNo);
+                    MessageBoxResult m = MessageBox.Show("Es la cantidad correcta? " + (ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text), "Mensaje de Confirmación", MessageBoxButton.YesNo);
                     if (m == MessageBoxResult.Yes)
                     {
 
                         uc_DetProducto nuevoDet = new uc_DetProducto();
-
                         nuevoDet.preBruProducto = preBru;
                         nuevoDet.nomTipProducto = txbNombre.Text;
                         nuevoDet.IdTipProducto = txbId.Text;
                         nuevoDet.Moneda = moneda;
-                        nuevoDet.canInvProducto = ucPedido.NUDTextBox.Text;
-                        nuevoDet.desProducto = ucDescuento.NUDTextBox.Text;
-
+                        nuevoDet.canInvProducto = (ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text);
+                        nuevoDet.desProducto = ucDescuento.NUDTextBox.Text == "" ? "0" : ucDescuento.NUDTextBox.Text;
                         nuevoDet.preNetProducto = preNet;
                         nuevoDet.preNacProducto = preNac;
                         nuevoDet.preExtProducto = preExt;
@@ -195,22 +199,19 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
 
         private void uc_ControlNumericoGrande_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            
-                cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble(ucPedido.NUDTextBox.Text))).ToString();
-            
-            
+            cantidad = ((Convert.ToDouble(canAnterior)) - (Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)))).ToString();
             txbCantidad.Text = string.Concat(cantidad, uniMedida);
-            preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
+            preBru = (Math.Round(((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text))) * (Convert.ToDouble(precio))),2)).ToString();
             txbTotal.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preBru), 2)));
-            preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
+            preNet = (Math.Round(((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio))) - (((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text == "" ? "0" : ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
             txbNuevoPrecio.Text = string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
 
         }
 
         private void ucDescuento_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            preBru = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text)) * (Convert.ToDouble(precio))),2)).ToString();
-            preNet = (Math.Round(((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio))) - (((Convert.ToDouble(ucPedido.NUDTextBox.Text) * Convert.ToDouble(precio)) * Convert.ToDouble(ucDescuento.NUDTextBox.Text)) / 100),2)).ToString();
+            preBru = (Math.Round(((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text))) * (Convert.ToDouble(precio))),2)).ToString();
+            preNet = (Math.Round(((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio))) - (((Convert.ToDouble((ucPedido.NUDTextBox.Text == "" ? "0" : ucPedido.NUDTextBox.Text)) * Convert.ToDouble(precio)) * Convert.ToDouble((ucDescuento.NUDTextBox.Text == "" ? "0" : ucDescuento.NUDTextBox.Text))) / 100),2)).ToString();
             txbNuevoPrecio.Text =  string.Concat(moneda, SepararMiles(Math.Round(Convert.ToDouble(preNet), 2)));
         }
     }

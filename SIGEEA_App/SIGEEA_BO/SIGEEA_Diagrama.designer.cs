@@ -2619,8 +2619,6 @@ namespace SIGEEA_BO
 		
 		private EntitySet<SIGEEA_Cuota_Asociado> _SIGEEA_Cuota_Asociados;
 		
-		private EntitySet<SIGEEA_FacAsociado> _SIGEEA_FacAsociados;
-		
 		private EntitySet<SIGEEA_Familiar> _SIGEEA_Familiars;
 		
 		private EntitySet<SIGEEA_Finca> _SIGEEA_Fincas;
@@ -2660,7 +2658,6 @@ namespace SIGEEA_BO
 			this._SIGEEA_AsiAsambleas = new EntitySet<SIGEEA_AsiAsamblea>(new Action<SIGEEA_AsiAsamblea>(this.attach_SIGEEA_AsiAsambleas), new Action<SIGEEA_AsiAsamblea>(this.detach_SIGEEA_AsiAsambleas));
 			this._SIGEEA_AsociadoXPagAsociados = new EntitySet<SIGEEA_AsociadoXPagAsociado>(new Action<SIGEEA_AsociadoXPagAsociado>(this.attach_SIGEEA_AsociadoXPagAsociados), new Action<SIGEEA_AsociadoXPagAsociado>(this.detach_SIGEEA_AsociadoXPagAsociados));
 			this._SIGEEA_Cuota_Asociados = new EntitySet<SIGEEA_Cuota_Asociado>(new Action<SIGEEA_Cuota_Asociado>(this.attach_SIGEEA_Cuota_Asociados), new Action<SIGEEA_Cuota_Asociado>(this.detach_SIGEEA_Cuota_Asociados));
-			this._SIGEEA_FacAsociados = new EntitySet<SIGEEA_FacAsociado>(new Action<SIGEEA_FacAsociado>(this.attach_SIGEEA_FacAsociados), new Action<SIGEEA_FacAsociado>(this.detach_SIGEEA_FacAsociados));
 			this._SIGEEA_Familiars = new EntitySet<SIGEEA_Familiar>(new Action<SIGEEA_Familiar>(this.attach_SIGEEA_Familiars), new Action<SIGEEA_Familiar>(this.detach_SIGEEA_Familiars));
 			this._SIGEEA_Fincas = new EntitySet<SIGEEA_Finca>(new Action<SIGEEA_Finca>(this.attach_SIGEEA_Fincas), new Action<SIGEEA_Finca>(this.detach_SIGEEA_Fincas));
 			this._SIGEEA_CatAsociado = default(EntityRef<SIGEEA_CatAsociado>);
@@ -2885,19 +2882,6 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Asociado_SIGEEA_FacAsociado", Storage="_SIGEEA_FacAsociados", ThisKey="PK_Id_Asociado", OtherKey="FK_Id_Asociado")]
-		public EntitySet<SIGEEA_FacAsociado> SIGEEA_FacAsociados
-		{
-			get
-			{
-				return this._SIGEEA_FacAsociados;
-			}
-			set
-			{
-				this._SIGEEA_FacAsociados.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Asociado_SIGEEA_Familiar", Storage="_SIGEEA_Familiars", ThisKey="PK_Id_Asociado", OtherKey="FK_Id_Asociado")]
 		public EntitySet<SIGEEA_Familiar> SIGEEA_Familiars
 		{
@@ -3111,18 +3095,6 @@ namespace SIGEEA_BO
 		}
 		
 		private void detach_SIGEEA_Cuota_Asociados(SIGEEA_Cuota_Asociado entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Asociado = null;
-		}
-		
-		private void attach_SIGEEA_FacAsociados(SIGEEA_FacAsociado entity)
-		{
-			this.SendPropertyChanging();
-			entity.SIGEEA_Asociado = this;
-		}
-		
-		private void detach_SIGEEA_FacAsociados(SIGEEA_FacAsociado entity)
 		{
 			this.SendPropertyChanging();
 			entity.SIGEEA_Asociado = null;
@@ -10165,11 +10137,9 @@ namespace SIGEEA_BO
 		
 		private bool _Incompleta_FacAsociado;
 		
-		private System.Nullable<int> _Numero_FacAsociado;
+		private int _Numero_FacAsociado;
 		
 		private EntitySet<SIGEEA_DetFacAsociado> _SIGEEA_DetFacAsociados;
-		
-		private EntityRef<SIGEEA_Asociado> _SIGEEA_Asociado;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -10193,14 +10163,13 @@ namespace SIGEEA_BO
     partial void OnFK_Id_AsociadoChanged();
     partial void OnIncompleta_FacAsociadoChanging(bool value);
     partial void OnIncompleta_FacAsociadoChanged();
-    partial void OnNumero_FacAsociadoChanging(System.Nullable<int> value);
+    partial void OnNumero_FacAsociadoChanging(int value);
     partial void OnNumero_FacAsociadoChanged();
     #endregion
 		
 		public SIGEEA_FacAsociado()
 		{
 			this._SIGEEA_DetFacAsociados = new EntitySet<SIGEEA_DetFacAsociado>(new Action<SIGEEA_DetFacAsociado>(this.attach_SIGEEA_DetFacAsociados), new Action<SIGEEA_DetFacAsociado>(this.detach_SIGEEA_DetFacAsociados));
-			this._SIGEEA_Asociado = default(EntityRef<SIGEEA_Asociado>);
 			OnCreated();
 		}
 		
@@ -10355,10 +10324,6 @@ namespace SIGEEA_BO
 			{
 				if ((this._FK_Id_Asociado != value))
 				{
-					if (this._SIGEEA_Asociado.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnFK_Id_AsociadoChanging(value);
 					this.SendPropertyChanging();
 					this._FK_Id_Asociado = value;
@@ -10388,8 +10353,8 @@ namespace SIGEEA_BO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numero_FacAsociado", DbType="Int")]
-		public System.Nullable<int> Numero_FacAsociado
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Numero_FacAsociado", DbType="Int NOT NULL")]
+		public int Numero_FacAsociado
 		{
 			get
 			{
@@ -10418,40 +10383,6 @@ namespace SIGEEA_BO
 			set
 			{
 				this._SIGEEA_DetFacAsociados.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SIGEEA_Asociado_SIGEEA_FacAsociado", Storage="_SIGEEA_Asociado", ThisKey="FK_Id_Asociado", OtherKey="PK_Id_Asociado", IsForeignKey=true)]
-		public SIGEEA_Asociado SIGEEA_Asociado
-		{
-			get
-			{
-				return this._SIGEEA_Asociado.Entity;
-			}
-			set
-			{
-				SIGEEA_Asociado previousValue = this._SIGEEA_Asociado.Entity;
-				if (((previousValue != value) 
-							|| (this._SIGEEA_Asociado.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SIGEEA_Asociado.Entity = null;
-						previousValue.SIGEEA_FacAsociados.Remove(this);
-					}
-					this._SIGEEA_Asociado.Entity = value;
-					if ((value != null))
-					{
-						value.SIGEEA_FacAsociados.Add(this);
-						this._FK_Id_Asociado = value.PK_Id_Asociado;
-					}
-					else
-					{
-						this._FK_Id_Asociado = default(int);
-					}
-					this.SendPropertyChanged("SIGEEA_Asociado");
-				}
 			}
 		}
 		

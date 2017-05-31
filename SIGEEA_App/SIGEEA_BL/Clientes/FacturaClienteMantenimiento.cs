@@ -17,7 +17,7 @@ namespace SIGEEA_BL
         /// <param name="pFacCliente"></param>
         /// <param name="pListaDetalle"></param>
 
-        public void RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
+        public int RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
 
@@ -80,11 +80,11 @@ namespace SIGEEA_BL
                 dc.SIGEEA_CreClientes.InsertOnSubmit(nuevoCredito);
             }
             dc.SubmitChanges();
+            return nuevaFactura.PK_Id_FacCliente;
         }
         public void RegitrarAbono(SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
         {
             DataClasses1DataContext dc = new DataClasses1DataContext();
-
             SIGEEA_CreCliente creclient = dc.SIGEEA_CreClientes.First(c => c.PK_Id_CreCliente == pCreCliente.PK_Id_CreCliente);
             creclient.FecProPago_CreCliente = pCreCliente.FecProPago_CreCliente;
             creclient.Estado_CreCliente = pCreCliente.Estado_CreCliente;

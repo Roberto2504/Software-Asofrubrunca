@@ -72,7 +72,6 @@
       <Association Name="SIGEEA_Asociado_SIGEEA_AsiAsamblea" Member="SIGEEA_AsiAsambleas" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_AsiAsamblea" />
       <Association Name="SIGEEA_Asociado_SIGEEA_AsociadoXPagAsociado" Member="SIGEEA_AsociadoXPagAsociados" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_AsociadoXPagAsociado" />
       <Association Name="SIGEEA_Asociado_SIGEEA_Cuota_Asociado" Member="SIGEEA_Cuota_Asociados" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_Cuota_Asociado" />
-      <Association Name="SIGEEA_Asociado_SIGEEA_FacAsociado" Member="SIGEEA_FacAsociados" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_FacAsociado" />
       <Association Name="SIGEEA_Asociado_SIGEEA_Familiar" Member="SIGEEA_Familiars" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_Familiar" />
       <Association Name="SIGEEA_Asociado_SIGEEA_Finca" Member="SIGEEA_Fincas" ThisKey="PK_Id_Asociado" OtherKey="FK_Id_Asociado" Type="SIGEEA_Finca" />
       <Association Name="SIGEEA_CatAsociado_SIGEEA_Asociado" Member="SIGEEA_CatAsociado" ThisKey="FK_Id_CatAsociado" OtherKey="PK_Id_CatAsociado" Type="SIGEEA_CatAsociado" IsForeignKey="true" />
@@ -413,9 +412,8 @@
       <Column Name="Observaciones_FacAsociado" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
       <Column Name="FK_Id_Asociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Incompleta_FacAsociado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Numero_FacAsociado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Numero_FacAsociado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="SIGEEA_FacAsociado_SIGEEA_DetFacAsociado" Member="SIGEEA_DetFacAsociados" ThisKey="PK_Id_FacAsociado" OtherKey="FK_Id_FacAsociado" Type="SIGEEA_DetFacAsociado" />
-      <Association Name="SIGEEA_Asociado_SIGEEA_FacAsociado" Member="SIGEEA_Asociado" ThisKey="FK_Id_Asociado" OtherKey="PK_Id_Asociado" Type="SIGEEA_Asociado" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SIGEEA_FacCliente" Member="SIGEEA_FacClientes">
