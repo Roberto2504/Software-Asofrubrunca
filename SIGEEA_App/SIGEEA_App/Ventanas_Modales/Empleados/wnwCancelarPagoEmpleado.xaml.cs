@@ -37,7 +37,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
             InitializeComponent();
 
 
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ReporteFacturaVenta.Reset();
             
             
@@ -53,7 +53,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
 
 
 
-            /*DataClasses1DataContext dc = new DataClasses1DataContext();
+            /*SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             SIGEEA_spGenerarFacturaPagoEmpleadoResult encabezado = dc.SIGEEA_spGenerarFacturaPagoEmpleado(pEmpleado).First();
 

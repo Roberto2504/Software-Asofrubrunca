@@ -32,7 +32,7 @@ namespace SIGEEA_App.Ventanas_Modales.Nacionalidades
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_Nacionalidad nuevaNacionalidad = new SIGEEA_Nacionalidad();
                 nuevaNacionalidad.Nombre_Nacionalidad = txbNacionalidad.Text;
                 dc.SIGEEA_Nacionalidads.InsertOnSubmit(nuevaNacionalidad);

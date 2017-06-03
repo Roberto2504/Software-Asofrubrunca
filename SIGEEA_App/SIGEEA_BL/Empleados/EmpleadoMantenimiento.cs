@@ -16,7 +16,7 @@ namespace SIGEEA_BL
         /// <param name="empleado"></param>
         public void RegistrarEmpleado(SIGEEA_Persona persona, SIGEEA_Empleado empleado, SIGEEA_Escolaridad escolaridad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
             nuevaPersona.RegistrarPersona(persona);
             dc.SIGEEA_Escolaridads.InsertOnSubmit(escolaridad);
@@ -36,7 +36,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public SIGEEA_spObtenerEmpleadoResult AutenticaEmpleado(string pCedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerEmpleado(pCedula).FirstOrDefault();
         }
 
@@ -47,7 +47,7 @@ namespace SIGEEA_BL
         /// <param name="pEscolaridad"></param>
         public void EditarEmpleado(SIGEEA_Persona pPersona, SIGEEA_Escolaridad pEscolaridad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             PersonaMantenimiento mantPersona = new PersonaMantenimiento();
             mantPersona.ModificarPersona(pPersona);
 
@@ -71,7 +71,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public SIGEEA_spObtenerDireccionEmpleadoResult ObtenerDireccionEmpleado(string cedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerDireccionEmpleado(cedula).First();
         }
 
@@ -82,7 +82,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public bool DireccionRegistradaEmpleado(string cedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerDireccionEmpleadoResult direccion = new SIGEEA_spObtenerDireccionEmpleadoResult();
 
             if (cedula != null)
@@ -96,7 +96,7 @@ namespace SIGEEA_BL
         //Pendiente
         /*public void EliminarEmpleado(SIGEEA_Empleado empleado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Empleado emp = dc.SIGEEA_Empleados.First(c => c.PK_Id_Empleado == empleado.PK_Id_Empleado);
         }*/
 
@@ -108,7 +108,7 @@ namespace SIGEEA_BL
         /// <param name="pTarifa"></param>
         public void EditarPuesto(string pPuesto, double pTarifa)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_spEditarPuesto(pPuesto, pTarifa);
             dc.SubmitChanges();
         }
@@ -120,7 +120,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public bool DiaIncompleto(string pEmpleado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerDiaLaboralResult informacion = dc.SIGEEA_spObtenerDiaLaboral(pEmpleado).FirstOrDefault();
 
             if (informacion != null) return true; //Si tiene un día sin completar
@@ -134,7 +134,7 @@ namespace SIGEEA_BL
         /// <param name="pPuesto"></param>
         public void RegistrarHoras(string pEmpleado, string pPuesto)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_spRegistraHorasLaboradas(pEmpleado, pPuesto);
             dc.SubmitChanges();
         }
@@ -146,7 +146,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> ListarPagosEmpleados(string pCedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerPagosEmpleadosPendientes(pCedula).ToList();
         }
 
@@ -158,7 +158,7 @@ namespace SIGEEA_BL
 
         public void CancelarPago(List<SIGEEA_spObtenerPagosEmpleadosPendientesResult> pLista, int pEmpleado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             SIGEEA_PagEmpleado pagoEmpleado = new SIGEEA_PagEmpleado();
             pagoEmpleado.Fecha_PagEmpleados = DateTime.Now;

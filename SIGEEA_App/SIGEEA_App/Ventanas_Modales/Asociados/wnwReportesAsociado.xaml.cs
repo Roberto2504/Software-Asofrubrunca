@@ -36,7 +36,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 tmp_FecInicio = Convert.ToDateTime(fecInicio).ToString("yyyy-MM-dd");
                 tmp_FecFin = Convert.ToDateTime(fecFin).ToString("yyyy-MM-dd");
 
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 encabezado = dc.SIGEEA_spObtenerDatosEmpresa().ToList();
 
                 if (indAsociado == 0)//Todos los asociados

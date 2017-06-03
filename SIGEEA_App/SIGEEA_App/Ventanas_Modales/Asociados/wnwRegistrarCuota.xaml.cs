@@ -30,7 +30,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             InitializeComponent();
             if (pIdCuota != 0)
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_Cuota cuota = dc.SIGEEA_Cuotas.First(c => c.PK_Id_Cuota == pIdCuota);
                 txbNombre.Text = cuota.Nombre_Cuota;
                 txbMonto.Text = cuota.Monto_Cuota.ToString();

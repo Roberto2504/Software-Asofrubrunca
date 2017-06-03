@@ -42,7 +42,7 @@ namespace SIGEEA_App.Ventanas_Modales.Empleados
                    
                     if (empleado.DiaIncompleto(txbCedula.Text) == false)//Tiene sus días laborales completos
                     {
-                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                         MessageBox.Show("A continuación debe elegir la labor que desempeñará el empleado el dia de hoy.", "SIGEEA", MessageBoxButton.OK);
                         cnvPrincipal.Visibility = Visibility.Collapsed;
                         cnvSecundaria.Visibility = Visibility.Visible;

@@ -41,7 +41,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         {
             //pSolicitud = true : si se desean obtener facturas pendientes
             //pSolicitud = false : si se desean obtener facturas incompletas
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerFacturasPendientesAsocResult> listaFacturasPendientes = new List<SIGEEA_spObtenerFacturasPendientesAsocResult>();
             List<SIGEEA_spObtenerFacturasIncompletasAsocResult> listaFacturasIncompletas = new List<SIGEEA_spObtenerFacturasIncompletasAsocResult>();
 

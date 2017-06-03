@@ -26,7 +26,7 @@ namespace SIGEEA_App.User_Controls.Asociados
         public uc_FincaLote(string pAsociado)
         {
             InitializeComponent();
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             listaFincas = dc.SIGEEA_spObtenerFincas(pAsociado).ToList();
 
             foreach (SIGEEA_spObtenerFincasResult f in listaFincas)
@@ -76,7 +76,7 @@ namespace SIGEEA_App.User_Controls.Asociados
             {
                 cmbLote.IsEnabled = true;
                 btnInfoLote.IsEnabled = true;
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 foreach (SIGEEA_spObtenerFincasResult f in listaFincas)
                 {
                     if (f.Codigo_Finca == (string)cmbFinca.SelectedValue)

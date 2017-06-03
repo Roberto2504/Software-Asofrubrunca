@@ -32,7 +32,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
             if (nomProducto != null)
             {
                 editar = true;
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_TipProducto ProdEditar = dc.SIGEEA_TipProductos.First(c => c.Nombre_TipProducto == nomProducto);
                 txbNombre.Text = ProdEditar.Nombre_TipProducto;
                 txbDescripcion.Text = ProdEditar.Descripcion_TipProducto;

@@ -61,7 +61,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void cmbProductoVenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerPreciosVentaActualProdResult precio = dc.SIGEEA_spObtenerPreciosVentaActualProd(cmbProductoVenta.SelectedValue.ToString()).First();
 
             txbPreExtranjeroVenta.Text = precio.PreExtranjero_PreProVenta.ToString();
@@ -71,7 +71,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void cmbProductoCompra_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerPreciosCompraActualProdResult precio = dc.SIGEEA_spObtenerPreciosCompraActualProd(cmbProductoCompra.SelectedValue.ToString()).First();
             btnEditarCompra.IsEnabled = true;
 

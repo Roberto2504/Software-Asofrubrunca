@@ -18,6 +18,10 @@ using SIGEEA_BL;
 using SIGEEA_BO;
 using System.Collections.ObjectModel;
 
+
+using SIGEEA_App.Facturas; 
+using Microsoft.Reporting.WinForms;
+
 namespace SIGEEA_App.Ventanas_Modales.Clientes
 {
     /// <summary>
@@ -25,9 +29,12 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
     /// </summary>
     public partial class wnwCancelarFacturaCliente : MetroWindow
     {
+        int idFactura;
         public wnwCancelarFacturaCliente(int pkIdEmpleado, int pkIdCliente, string Tipo, int pkIdEmpresa, string ptipoPedido, ObservableCollection<uc_DetProducto> nueva, string pMontoTotal, string pDescuentoTotal, string pMontoNetoTotal, string pMonedaTotal, string pObservaciones, string pMontoAbono, DateTime pfechaProPago, DateTime pfechaLimPago, string pmetodoPago, string pnumero)
         {
+
             InitializeComponent();
+            idFactura = pkIdCliente;
             if (Tipo != "Abono")
             {
                 foreach (uc_DetProducto detProducto in nueva)
@@ -35,6 +42,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     listaDetProducto.Add(detProducto);
                 }
             }
+            idFactura=facMant.ObtenerFactura(pkIdCliente).PK_Id_FacCliente;//en realidad entra el iddelafactura
             lista = facMant.ObtenerFactura(pkIdCliente);//en realidad entra el iddelafactura
             IdEmpleado = pkIdEmpleado;
             IdCliente = pkIdCliente;
@@ -53,6 +61,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             numero = pnumero;
             CargarFinal();
         }
+       
         int IdEmpleado, IdCliente, IdEmpresa;
         string tipoFactura, tipoPedido, montoTotal, descuentoTotal, montoNetoTotal, moneda, observaciones, MontoAbono, metodoPago, numero, NombreEmpleado, NombreCliente;
         DateTime fechaProPago, fechaLimite;
@@ -90,7 +99,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void InfoEmpresa()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             Nombre = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Nombre_Empresa;
             Cedula = "Ced. Juridica N°:" + dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).CedJuridica_Empresa;
             Direccion = dc.SIGEEA_Empresas.First(c => c.PK_Id_Empresa == IdEmpresa).Direccion_Empresa;
@@ -106,7 +115,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void InfoEmpleado()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             NombreEmpleado = "Atendido por: " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == IdEmpleado).FK_Id_Persona)).PriNombre_Persona
                                    + " " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == IdEmpleado).FK_Id_Persona)).PriApellido_Persona
                                    + " " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Empleados.First(d => d.PK_Id_Empleado == IdEmpleado).FK_Id_Persona)).SegApellido_Persona;
@@ -114,7 +123,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void InfoCliente()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if (tipoFactura != "Abono")
             {
                 NombreCliente = "Nombre Cliente: " + dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == (dc.SIGEEA_Clientes.First(d => d.PK_Id_Cliente == IdCliente).FK_Id_Persona)).PriNombre_Persona
@@ -135,6 +144,12 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         }
         public void CargarFinal()
         {
+
+           
+
+
+
+
             InfoEmpresa();
             InfoEmpleado();
             InfoCliente();

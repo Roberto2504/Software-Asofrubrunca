@@ -19,7 +19,7 @@ namespace SIGEEA_BL
 
         public int RegistrarFactura(SIGEEA_FacCliente pFacCliente, ObservableCollection<SIGEEA_DetFacCliente> pListaDetalle, SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             SIGEEA_FacCliente nuevaFactura = new SIGEEA_FacCliente();
             nuevaFactura.FecEntrega_FacCliente = DateTime.Now;
@@ -84,7 +84,7 @@ namespace SIGEEA_BL
         }
         public void RegitrarAbono(SIGEEA_AboCliente pAboCliente, SIGEEA_CreCliente pCreCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_CreCliente creclient = dc.SIGEEA_CreClientes.First(c => c.PK_Id_CreCliente == pCreCliente.PK_Id_CreCliente);
             creclient.FecProPago_CreCliente = pCreCliente.FecProPago_CreCliente;
             creclient.Estado_CreCliente = pCreCliente.Estado_CreCliente;
@@ -104,27 +104,27 @@ namespace SIGEEA_BL
         }
         public SIGEEA_spObtenerIdUltimaFacturaResult ObtenerIdUltimaFactura()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerIdUltimaFactura().FirstOrDefault();
         }
         public List<SIGEEA_spListarFacturaPendienteClienteResult> ListarPendiente()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarFacturaPendienteCliente().ToList();
         }
         public List<SIGEEA_spListarFacturaPendientePorClienteResult> ListarPendientePorCliente(int pIdCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarFacturaPendientePorCliente(pIdCliente).ToList();
         }
         public List<SIGEEA_spListarFacturaPendientePorFacturaResult> ListarPendientePorFactura(int pIdFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarFacturaPendientePorFactura(pIdFactura).ToList();
         }
         public SIGEEA_spListarFacturaPendientePorFacturaResult ObtenerFactura(int pIdFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarFacturaPendientePorFactura(pIdFactura).FirstOrDefault();
         }
     }

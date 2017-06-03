@@ -68,7 +68,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             {
                 AsociadoMantenimiento Asociado = new AsociadoMantenimiento();
                 Asociado = new AsociadoMantenimiento();
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 if (Asociado.AutenticaAsociado(txbInformacion.Text) != null)
                 {
                     wnwEntregaProducto ventana = new wnwEntregaProducto(dc.SIGEEA_spObtenerAsociado(txbInformacion.Text).First());

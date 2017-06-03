@@ -38,7 +38,7 @@ namespace SIGEEA_App.Ventanas_Modales.Puestos
             }
             else if (cmbOpciones.SelectedIndex == 1)//Editar puesto
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 List<SIGEEA_spListarPuestosResult> lista = dc.SIGEEA_spListarPuestos().ToList();
                 foreach (SIGEEA_spListarPuestosResult p in lista)
                 {
@@ -53,7 +53,7 @@ namespace SIGEEA_App.Ventanas_Modales.Puestos
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_PueTemporal nuevoPuesto = new SIGEEA_PueTemporal();
                 nuevoPuesto.Nombre_Puesto = txbNombre.Text;
                 nuevoPuesto.Estado_Puesto = true;

@@ -31,7 +31,7 @@ namespace SIGEEA_App.User_Controls.Productos
             lblInformacion.Text = Informacion;
             PK_Detalle = pkDetalle;
             producto = pkProducto;
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
             cantidad = detalle.CanTotal_DetFacAsociado;
             if (detalle.CanNeta_DetFacAsociado > -1)

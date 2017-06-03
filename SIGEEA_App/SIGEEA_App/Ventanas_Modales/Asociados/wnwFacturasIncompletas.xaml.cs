@@ -29,7 +29,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         {
             InitializeComponent();
 
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerFacturasIncompletasAsocResult> listaFacturas = dc.SIGEEA_spObtenerFacturasIncompletasAsoc(pAsociado).ToList();
 
             if (listaFacturas.Count > 0)

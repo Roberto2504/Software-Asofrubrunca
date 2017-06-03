@@ -86,7 +86,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         /// <param name="e"></param>
         private void BtnPagar_Click(object sender, RoutedEventArgs e)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             Button boton = (Button)sender;
             id_cuota_asociado = Convert.ToInt32(boton.Tag);
             grdSecundaria.Visibility = Visibility.Collapsed;
@@ -117,7 +117,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     if (validacion.Validar(txbMonto.Text, Convert.ToInt32(txbMonto.Tag)) == true)
                     {
                         AsociadoMantenimiento asociado = new AsociadoMantenimiento();
-                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                         double SaldoAnterior = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == id_cuota_asociado).Saldo_Cuota_Asociado;
 
                         if (SaldoAnterior - Convert.ToDouble(txbMonto.Text) >= 0)

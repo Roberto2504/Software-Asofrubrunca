@@ -21,7 +21,7 @@ namespace SIGEEA_BL
         /// <param name="creCliente"></param>
         public void RegistrarCliente(SIGEEA_Persona persona, SIGEEA_Cliente cliente, int pkCategoria)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
             nuevaPersona.RegistrarPersona(persona);
           
@@ -40,7 +40,7 @@ namespace SIGEEA_BL
         /// <param name="creCliente"></param>
         public int RegistrarCategoria(SIGEEA_CatCliente catCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_CatClientes.InsertOnSubmit(catCliente);
             dc.SubmitChanges();
             return catCliente.PK_Id_CatCliente;
@@ -53,7 +53,7 @@ namespace SIGEEA_BL
         /// <param name="creCliente"></param>
         public int EditarCategoria(SIGEEA_CatCliente catCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_CatCliente Editar = dc.SIGEEA_CatClientes.First(c => c.PK_Id_CatCliente == catCliente.PK_Id_CatCliente);
             Editar.Limite_CatCliente = catCliente.Limite_CatCliente;
             Editar.RanPagos_CatCliente = catCliente.RanPagos_CatCliente;
@@ -68,7 +68,7 @@ namespace SIGEEA_BL
         /// <param name="cliente"></param>
         public void EliminarCliente(int pk_id_cliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Cliente nuevo = dc.SIGEEA_Clientes.First(c => c.PK_Id_Cliente == pk_id_cliente);
             nuevo.Estado_Cliente = false;
             dc.SubmitChanges();
@@ -79,7 +79,7 @@ namespace SIGEEA_BL
         /// <param name="cliente"></param>
         public void ActivarCliente(int pk_id_cliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Cliente nuevo = dc.SIGEEA_Clientes.First(c => c.PK_Id_Cliente == pk_id_cliente);
             nuevo.Estado_Cliente = true;
             dc.SubmitChanges();
@@ -92,7 +92,7 @@ namespace SIGEEA_BL
         /// <param name="persona"></param>
         public void ModificarCliente(int pkCategoria, SIGEEA_Persona pPersona)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             SIGEEA_Cliente client = dc.SIGEEA_Clientes.First(c => c.FK_Id_Persona == pPersona.PK_Id_Persona);
             client.FK_Id_CatCliente = pkCategoria;
@@ -106,7 +106,7 @@ namespace SIGEEA_BL
         /// <param name="Cedula O Nombre"></param>
         public List<SIGEEA_spListarClienteResult> ListarClientes(string CedNombre)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarCliente(CedNombre).ToList();
         }
         /// <summary>
@@ -115,7 +115,7 @@ namespace SIGEEA_BL
         /// <param name="PK_IdCliente"></param>
         public SIGEEA_spObtenerClienteResult ObtenerCliente(int pkIdCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerCliente(pkIdCliente).First();
         }
         /// <summary>
@@ -124,7 +124,7 @@ namespace SIGEEA_BL
         /// <param name="Nombre"></param>
         public SIGEEA_spObtenerCategoriaResult ObtenerCategorias(int pkIdCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerCategoria(pkIdCliente).FirstOrDefault();
         }
         /// <summary>
@@ -133,7 +133,7 @@ namespace SIGEEA_BL
         /// <param name="Nombre"></param>
         public SIGEEA_spObtenerCategoriaClienteResult ObtenerCategoriaCliente(int pkIdCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerCategoriaCliente(pkIdCliente).FirstOrDefault();
         }
         /// <summary>
@@ -143,7 +143,7 @@ namespace SIGEEA_BL
 
         public List<string> ListarCategorias()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<string> Categorias = new List<string>();
             Categorias = (from c in dc.SIGEEA_TipCatClientes select c.Nombre_TipCatCliente).ToList();
             return Categorias;
@@ -155,7 +155,7 @@ namespace SIGEEA_BL
 
         public SIGEEA_CatAsociado ObtenerCategoria(int pkCat)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return (from c in dc.SIGEEA_CatAsociados where pkCat == c.PK_Id_CatAsociado select c).FirstOrDefault(); ;
         }
         /// <summary>
@@ -165,7 +165,7 @@ namespace SIGEEA_BL
 
         public string ObtenerTipCategoria(int pkIdCatCliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_TipCatClientes.First(c => c.PK_Id_TipCatCliente == pkIdCatCliente).Nombre_TipCatCliente;
         }
         /// <summary>
@@ -175,7 +175,7 @@ namespace SIGEEA_BL
 
         public int ObtenerPkTipCategoria(string nombre)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_TipCatClientes.First(c => c.Nombre_TipCatCliente == nombre).PK_Id_TipCatCliente;
         }
         /// <summary>
@@ -184,7 +184,7 @@ namespace SIGEEA_BL
         /// <param name="PK_Id_TipProducto, Cantidad"></param>
         public void RestarInventario(int pIdTipProducto, double Cantidad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_DetInvProducto detInvPro = dc.SIGEEA_DetInvProductos.First(c => c.FK_Id_TipProducto == pIdTipProducto);
             detInvPro.Cantidad_DetInvProductos = Cantidad;
             dc.SubmitChanges();
@@ -195,7 +195,7 @@ namespace SIGEEA_BL
         /// <param name="PK_Id_TipProducto, Cantidad"></param>
         public void SumarInventario(int pIdTipProducto, double Cantidad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_DetInvProducto detInvPro = dc.SIGEEA_DetInvProductos.First(c => c.FK_Id_TipProducto == pIdTipProducto);
             detInvPro.Cantidad_DetInvProductos = Cantidad;
             dc.SubmitChanges();
@@ -208,7 +208,7 @@ namespace SIGEEA_BL
         /// <param name="PK_Id_Cliente"></param>
         public List<SIGEEA_spListarCreditoClienteResult> ListarCreditosCliente(int PK_Id_Cliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarCreditoCliente(PK_Id_Cliente).ToList(); ;
         }
 
@@ -218,7 +218,7 @@ namespace SIGEEA_BL
         /// <param name="PK_Id_Cliente"></param>
         public SIGEEA_spObtenerCategoriaClienteResult LimiteCreditoCliente(int PK_Id_Cliente)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerCategoriaCliente(PK_Id_Cliente).FirstOrDefault();
         }
 

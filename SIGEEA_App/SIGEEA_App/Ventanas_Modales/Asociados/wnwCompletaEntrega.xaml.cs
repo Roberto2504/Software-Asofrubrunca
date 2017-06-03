@@ -31,7 +31,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         public wnwCompletaEntrega(int pkFactura)
         {
             InitializeComponent();
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerAsociadoFacturaResult informacion = dc.SIGEEA_spObtenerAsociadoFactura(pkFactura).First();
             lblAsociado.Content += " " + informacion.NombreAsociado;
             lblCedula.Content += " " + informacion.CedParticular_Persona;
