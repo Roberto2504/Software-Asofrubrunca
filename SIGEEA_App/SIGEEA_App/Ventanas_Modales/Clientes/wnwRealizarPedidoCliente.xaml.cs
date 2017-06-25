@@ -58,6 +58,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         private uc_Producto productoAnterior = new uc_Producto();
         int primera = 0;
         bool color = true;
+        bool credito = true;
         int Contador = 0;
         int conta = 0;
         string nomMoneda;
@@ -436,13 +437,18 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             }
             else if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
             {
-                MessageBoxResult m = MessageBox.Show("Su tipo de factura es: " + cmbTipoFactura.SelectedItem.ToString(), "Mensaje de Confirmación", MessageBoxButton.YesNo);
-                if (m == MessageBoxResult.Yes)
+               
+                if(!credito) MessageBox.Show("El cliente actual no posee el suficiente de credito"); else
                 {
-                    wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
-                    nueva.Closed += Nueva_Closed;
-                    nueva.ShowDialog();
+                    MessageBoxResult m = MessageBox.Show("Su tipo de factura es: " + cmbTipoFactura.SelectedItem.ToString(), "Mensaje de Confirmación", MessageBoxButton.YesNo);
+                    if (m == MessageBoxResult.Yes)
+                    {
+                        wnwDatosFacturaCliente nueva = new wnwDatosFacturaCliente(pkIdEmpleado: UsuarioGlobal.InfoUsuario.PK_Id_Empleado, pkIdCliente: idCliente, Tipo: cmbTipoFactura.SelectedItem.ToString(), pkIdEmpresa: 1, ptipoPedido: tipoPepido, nueva: listarDetProducto, pMontoTotal: txbCanTotBruto.Text, pDescuentoTotal: ucDescuentoTotal.NUDTextBox.Text, pMontoNetoTotal: txbCanTotNeto.Text, pMonedaTotal: nomMoneda);
+                        nueva.Closed += Nueva_Closed;
+                        nueva.ShowDialog();
+                    }
                 }
+
             }
             else if (cmbTipoFactura.SelectedItem.ToString() == "Proforma")
             {
@@ -507,6 +513,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                         totalCredito += Convert.ToDouble(CanTotNeto.Remove(0, 1));
                         if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
                         {
+                            credito = false;
                             totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0,1));
                             totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                             MessageBox.Show("El cliente actual solo posee: ¢" + totalCredito + " de credito disponible");
@@ -515,12 +522,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                         {
                             if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
                             {
+                                credito = true;
                                 totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1));
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                                 txbCredito.Text = "¢" + SepararMiles(Math.Round(totalCredito,2));
                             }
-                            else grdCredito.Visibility = Visibility.Hidden;
+                            else
+                            {
+                                grdCredito.Visibility = Visibility.Hidden;
+                                credito = true;
+                            }
                         }
                     }
                     else if (nomMoneda == "Dolar")
@@ -528,6 +540,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                         totalCredito += Convert.ToDouble(CanTotNeto.Remove(0, 1)) * monMant.PrecioVenta("Dolar");
                         if (totalCredito > Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente))
                         {
+                            credito = false;
                             totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1)) * monMant.PrecioVenta("Dolar");
                             totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                             totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
@@ -538,14 +551,18 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                             if (cmbTipoFactura.SelectedItem.ToString() == "Crédito")
                             {
                                 grdCredito.Visibility = Visibility.Visible;
-
+                                credito = true;
                                 totalCredito -= Convert.ToDouble(CanTotNeto.Remove(0, 1));
                                 grdCredito.Visibility = Visibility.Visible;
                                 totalCredito = Convert.ToDouble(clientMant.LimiteCreditoCliente(idCliente).Limite_CatCliente) - totalCredito;
                                 totalCredito = totalCredito / monMant.PrecioVenta("Dolar");
                                 txbCredito.Text = "$" + SepararMiles(Math.Round(totalCredito, 2));
                             }
-                            else grdCredito.Visibility = Visibility.Hidden;
+                            else
+                            {
+                                grdCredito.Visibility = Visibility.Hidden;
+                                credito = true;
+                            }
                         }
                     }
                 }
