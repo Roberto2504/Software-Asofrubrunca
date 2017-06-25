@@ -50,7 +50,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             stpAsambleas.Children.Clear();
             grdPrincipal.Visibility = Visibility.Collapsed;
             grdListar.Visibility = Visibility.Visible;
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerAsambleasResult> lista = dc.SIGEEA_spObtenerAsambleas().ToList();
             bool color = true;
             foreach (SIGEEA_spObtenerAsambleasResult a in lista)

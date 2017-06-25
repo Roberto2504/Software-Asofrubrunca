@@ -38,7 +38,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
 
         private void GeneraFactura(int factura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             encabezado = dc.SIGEEA_spGenerarFacturaEntrega(factura).ToList();
             detalles = dc.SIGEEA_spObtenerDetallesEntrega(factura).ToList();
 

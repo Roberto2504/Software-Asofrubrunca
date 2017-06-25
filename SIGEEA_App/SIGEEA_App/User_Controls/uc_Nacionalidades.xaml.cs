@@ -32,7 +32,7 @@ namespace SIGEEA_App.User_Controls
 
         public int getNacionalidad()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_Nacionalidads.First(c => c.Nombre_Nacionalidad == cmbLista.SelectedItem.ToString()).PK_Id_Nacionalidad;
         }
 

@@ -35,7 +35,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 List<SIGEEA_spObtenerListadoAsistenciaResult> lista = dc.SIGEEA_spObtenerListadoAsistencia(pAsamblea).ToList();
                 bool color = true;
                 foreach (SIGEEA_spObtenerListadoAsistenciaResult a in lista)

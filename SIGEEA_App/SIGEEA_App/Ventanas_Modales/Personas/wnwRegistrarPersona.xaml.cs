@@ -161,7 +161,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegApellido.Text = pAsociado.SegApellido_Persona;
             dtpFecNacimiento.Text = pAsociado.FecNacimiento_Persona.ToString();
             if (pAsociado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pAsociado.FK_Id_Nacionalidad).Nombre_Nacionalidad);
            // ucEstrellas.cargaEstrellas((float)dc.SIGEEA_spObtenerCategoriaAsociado(pAsociado.PK_Id_Asociado).First().Categoria);
           //  ucEstrellas.Visibility = Visibility.Visible;
@@ -176,7 +176,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegApellido.Text = pEmpleado.SegApellido_Persona;
             dtpFecNacimiento.Text = pEmpleado.FecNacimiento_Persona.ToString();
             if (pEmpleado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(pEmpleado.Nombre_Nacionalidad);
             txbAdicional.Text = pEmpleado.Observaciones_Escolaridad;
             chkEscribir.IsChecked = pEmpleado.Escribir_Escolaridad;
@@ -229,7 +229,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             lbPkCatCliente.Content = pCliente.PK_Id_CatCliente;
             cmbTipCliente.Text = pCliente.Nombre_TipCatCliente;
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(pCliente.Nombre_Nacionalidad);
             
         }

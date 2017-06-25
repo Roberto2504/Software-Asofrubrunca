@@ -39,7 +39,7 @@ namespace SIGEEA_App.Ventanas_Modales.Productos
             if (pDetalles == null)
             {
                 uc_IngresoProducto uProducto = new uc_IngresoProducto(pAsociado.Codigo_Asociado);
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 stpContenedor.Children.Add(uProducto);
             }
 

@@ -56,7 +56,7 @@ namespace SIGEEA_App.User_Controls.Asociados
         {
             if (MessageBox.Show("¿Realmente eliminar este registro?", "SIGEEA", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_Familiar eliminar = dc.SIGEEA_Familiars.First(c => c.PK_Id_Familiar == Convert.ToInt32(lblIdFamiliar.Content));
                 dc.SIGEEA_Familiars.DeleteOnSubmit(eliminar);
                 dc.SubmitChanges();

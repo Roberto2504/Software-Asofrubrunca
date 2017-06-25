@@ -15,7 +15,7 @@ namespace SIGEEA_BL
         /// <param name="producto"></param>
         public void RegistrarTipoProducto(SIGEEA_TipProducto producto)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_TipProductos.InsertOnSubmit(producto);
             dc.SubmitChanges();
             SIGEEA_PreProCompra compra = new SIGEEA_PreProCompra();
@@ -40,7 +40,7 @@ namespace SIGEEA_BL
         /// <param name="producto"></param>
         public void ModificarTipoProducto(SIGEEA_TipProducto producto)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_TipProducto nuevo = dc.SIGEEA_TipProductos.First(c => c.Nombre_TipProducto == producto.Nombre_TipProducto);
             nuevo.Nombre_TipProducto = producto.Nombre_TipProducto;
             nuevo.Calidad_TipProducto = producto.Calidad_TipProducto;
@@ -54,7 +54,7 @@ namespace SIGEEA_BL
         /// <param name="precio"></param>
         public void ActualizarPrecioCompra(SIGEEA_PreProCompra precio)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_PreProCompras.InsertOnSubmit(precio);
             dc.SubmitChanges();
         }
@@ -65,7 +65,7 @@ namespace SIGEEA_BL
         /// <param name="precio"></param>
         public void ActualizarPrecioVenta(SIGEEA_PreProVenta precio)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_PreProVentas.InsertOnSubmit(precio);
             SIGEEA_TipProducto produc = new SIGEEA_TipProducto();
             dc.SubmitChanges();
@@ -73,14 +73,14 @@ namespace SIGEEA_BL
 
         public List<string> ListarTipoProducto()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<string> tipos = new List<string>();
             tipos = (from c in dc.SIGEEA_TipProductos select c.Nombre_TipProducto).ToList();
             return tipos;
         }
         public List<SIGEEA_spListarProductosResult> ListarProductos(string nombre)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarProductos(nombre).ToList();
         }
 
@@ -89,7 +89,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 List<SIGEEA_spObtenerInvProductoResult> inventario = dc.SIGEEA_spObtenerInvProducto().ToList();
                 bool indicador = false;
 
@@ -118,7 +118,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_DetInvProducto detalle = dc.SIGEEA_DetInvProductos.First(c => c.PK_Id_DetInvProductos == pkDetalle);
                 if (pCantidad <= 0) detalle.Cantidad_DetInvProductos += 0;
                 else detalle.Cantidad_DetInvProductos += pCantidad;
@@ -138,7 +138,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_DetInvProducto detalle = new SIGEEA_DetInvProducto();
                 detalle.FK_Id_InvProductos = 1;
                 detalle.FK_Id_TipProducto = pkProducto;

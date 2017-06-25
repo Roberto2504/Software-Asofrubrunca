@@ -31,7 +31,7 @@ namespace SIGEEA_App.User_Controls.Productos
             InitializeComponent();
             cmbMercado.Items.Add("Nacional");
             cmbMercado.Items.Add("Extranjero");
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             listaProductos = dc.SIGEEA_TipProductos.ToList();
             
 

@@ -20,7 +20,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 PersonaMantenimiento nuevaPersona = new PersonaMantenimiento();
                 nuevaPersona.RegistrarPersona(persona);
                 asociado.FK_Id_Persona = persona.PK_Id_Persona;
@@ -47,7 +47,7 @@ namespace SIGEEA_BL
 
         public void EliminarAsociado(SIGEEA_Asociado asociado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Asociado asoc = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == asociado.PK_Id_Asociado);
             asoc.Estado_Asociado = false;
             dc.SubmitChanges();
@@ -60,7 +60,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public SIGEEA_spObtenerAsociadoResult AutenticaAsociado(string codigo_cedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerAsociadoResult asociado = dc.SIGEEA_spObtenerAsociado(codigo_cedula).FirstOrDefault();
             return asociado;
         }
@@ -72,7 +72,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public bool DireccionRegistradaAsociado(string pCedula, string pCodigo)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             SIGEEA_spObtenerDireccionAsociadoResult direccion = new SIGEEA_spObtenerDireccionAsociadoResult();
 
@@ -98,7 +98,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public SIGEEA_spObtenerDireccionAsociadoResult ObtenerDireccionAsociado(string pCedula, string pCodigo)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             if (pCedula != null && pCodigo == null)
             {
@@ -117,7 +117,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public List<SIGEEA_spListarAsociadoResult> ListarAsociados(string pCedNombreCod)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spListarAsociadoResult> lista = dc.SIGEEA_spListarAsociado(pCedNombreCod).ToList();
             return lista;
         }
@@ -129,7 +129,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public List<SIGEEA_spListarFamiliaresResult> ListarFamiliares(string pCedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spListarFamiliaresResult> lista = dc.SIGEEA_spListarFamiliares(pCedula).ToList();
             return lista;
         }
@@ -143,7 +143,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 foreach (SIGEEA_Familiar f in pLista)
                 {
                     if (f.PK_Id_Familiar != -1) //Es edición
@@ -176,7 +176,7 @@ namespace SIGEEA_BL
         /// <param name="pCuota"></param>
         public void RegistrarCuota(SIGEEA_Cuota pCuota)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_Cuotas.InsertOnSubmit(pCuota);
             dc.SubmitChanges();
         }
@@ -187,7 +187,7 @@ namespace SIGEEA_BL
         /// <param name="pCuota"></param>
         public void EditarCuota(SIGEEA_Cuota pCuota)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Cuota cuota = dc.SIGEEA_Cuotas.First(c => c.PK_Id_Cuota == pCuota.PK_Id_Cuota);
             cuota.Monto_Cuota = pCuota.Monto_Cuota;
             cuota.FecFin_Cuota = pCuota.FecFin_Cuota;
@@ -203,7 +203,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public List<SIGEEA_spObtenerCuotasResult> ListarCuotasActivas()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerCuotas().ToList();
         }
 
@@ -214,7 +214,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public List<SIGEEA_spObtenerDeudoresCuotasResult> ListarDeudoresCuotas(int pCuota)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerDeudoresCuotas(pCuota).ToList();
         }
 
@@ -228,7 +228,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_Cuota_Asociado cuota = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado);
                 double saldo = dc.SIGEEA_Cuota_Asociados.First(c => c.PK_Id_Cuota_Asociado == pCuotaAsociado).Saldo_Cuota_Asociado;
                 cuota.Saldo_Cuota_Asociado = saldo - pMonto;
@@ -258,7 +258,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 int calificacion;
 
                 SIGEEA_Asociado asociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == pAsociado);
@@ -289,7 +289,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public SIGEEA_spGenerarFacturaCuotaResult GenerarFacturaCuota(int pCuotaAsociado, double pMonto, double pSaldoAnterior)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spGenerarFacturaCuota(pCuotaAsociado, pMonto, pSaldoAnterior).First();
         }
 
@@ -302,7 +302,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
                 pFactura.FecEntrega_FacAsociado = DateTime.Now;
                 pFactura.CanNeta_FacAsociado = -1;
@@ -340,7 +340,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_DetFacAsociado detalle = dc.SIGEEA_DetFacAsociados.First(c => c.PK_Id_DetFacAsociado == pkDetalle);
                 ProductoMantenimiento producto = new ProductoMantenimiento();
                 detalle.CanNeta_DetFacAsociado = CantidadNeta;
@@ -367,7 +367,7 @@ namespace SIGEEA_BL
         /// <param name="pFactura"></param>
         public void CantidadNetaFactura(int pFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(factura.PK_Id_FacAsociado).ToList();
             double cantidadNeta = 0;
@@ -395,7 +395,7 @@ namespace SIGEEA_BL
         /// <param name="pFactura"></param>
         public int SaldoFactura(int pFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == pFactura);
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(factura.PK_Id_FacAsociado).ToList();
             int cantidadNeta = 0;
@@ -414,7 +414,7 @@ namespace SIGEEA_BL
         /// <param name="pkFactura"></param>
         public void RevisaFactura(int pkFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> listaDetalles = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pkFactura).ToList();
             bool validador = true;
 
@@ -452,7 +452,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 if (pDetalles.Count > 0)
                 {
                     int indice = 0;
@@ -498,7 +498,7 @@ namespace SIGEEA_BL
         /// <param name="pTotal"></param>
         private void CrearBitacoraPago(List<int> pDetalles, int pMetodoPago, int pUsuario, DateTime pFecha, string pChqRef, double pTotal)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_BitPago bitacora = new SIGEEA_BitPago();
             bitacora.Metodo_BitPagos = pMetodoPago;
             bitacora.FK_Id_Usuario = pUsuario;
@@ -523,7 +523,7 @@ namespace SIGEEA_BL
         /// <param name="pFactura"></param>
         private void RevisaFacurasCanceladas(int pFactura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerDetalleFacturaAsociadoResult> lista = dc.SIGEEA_spObtenerDetalleFacturaAsociado(pFactura).ToList();
             bool validador = true;
             foreach (SIGEEA_spObtenerDetalleFacturaAsociadoResult d in lista)
@@ -558,7 +558,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_Asamblea nuevaAsamblea = new SIGEEA_Asamblea();
                 nuevaAsamblea.Fecha_Asamblea = pAsamblea.Fecha_Asamblea;
                 nuevaAsamblea.NumActa_Asamblea = pAsamblea.NumActa_Asamblea;
@@ -583,7 +583,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 foreach (SIGEEA_spObtenerListadoAsistenciaResult a in pLista)
                 {
                     SIGEEA_AsiAsamblea asamblea = dc.SIGEEA_AsiAsambleas.First(c => c.PK_Id_AsiAsamblea == a.PK_Id_AsiAsamblea);
@@ -609,7 +609,7 @@ namespace SIGEEA_BL
         /// <param name="pEstado"></param>
         private void ActualizarCategoriaAsociacion(int pAsociado, int pEstado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             int calificacion = 1;
 
             SIGEEA_Asociado asociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == pAsociado);
@@ -637,7 +637,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 return Convert.ToInt32(dc.SIGEEA_spUltimaFacturaEntregaProducto().First().Numero_FacAsociado) + 1;
             }
             catch
@@ -650,7 +650,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 dc.SIGEEA_spAnularEntregaProducto(pkFactura);
                 return "OK";
             }
@@ -664,7 +664,7 @@ namespace SIGEEA_BL
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 return dc.SIGEEA_spObtenerAsociado(CedulaCodigo).First();
             }
             catch (Exception ex)

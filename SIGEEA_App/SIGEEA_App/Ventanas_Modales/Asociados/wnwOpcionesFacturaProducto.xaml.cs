@@ -99,7 +99,7 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
         {
             try
             {
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_FacAsociado factura = dc.SIGEEA_FacAsociados.First(c => c.PK_Id_FacAsociado == Convert.ToInt32(txbFactura.Text));
 
                 if(solicitud == true && (factura == null || factura.Estado_FacAsociado == false || factura.Incompleta_FacAsociado == true))

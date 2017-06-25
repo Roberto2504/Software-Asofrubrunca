@@ -25,7 +25,7 @@ namespace SIGEEA_App.User_Controls
         public uc_Puestos()
         {
             InitializeComponent();
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spListarPuestosResult> lista = dc.SIGEEA_spListarPuestos().ToList();
             foreach(SIGEEA_spListarPuestosResult p in lista)
             {

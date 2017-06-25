@@ -15,7 +15,7 @@ namespace SIGEEA_BL
         /// <param name="insumo"></param>
         public void RegistrarInsumo(SIGEEA_Insumo insumo, string UnidadMedida, string Cantidad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             insumo.Estado_Insumo = true;
             dc.SIGEEA_Insumos.InsertOnSubmit(insumo);
             dc.SubmitChanges();
@@ -36,7 +36,7 @@ namespace SIGEEA_BL
         /// <param name="insumo"></param>
         public void ModificarInsumo(SIGEEA_Insumo insumo, SIGEEA_InvInsumo invInsumo, string UnidadMedida)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Nombre_Insumo = insumo.Nombre_Insumo;
             modInsumo.Descripcion_Insumo = modInsumo.Descripcion_Insumo;
@@ -54,7 +54,7 @@ namespace SIGEEA_BL
         /// <param name="insumo"></param>
         public void EliminarInsumo(SIGEEA_Insumo insumo)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Insumo modInsumo = dc.SIGEEA_Insumos.First(c => c.PK_Id_Insumo == insumo.PK_Id_Insumo);
             modInsumo.Estado_Insumo = false;
             dc.SubmitChanges();
@@ -66,7 +66,7 @@ namespace SIGEEA_BL
         /// <param name="NuevoPedido"></param>
         public void PedidoInsumo(SIGEEA_PedInsumo nuevoPedido)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_PedInsumos.InsertOnSubmit(nuevoPedido);
             dc.SubmitChanges();
 
@@ -77,7 +77,7 @@ namespace SIGEEA_BL
         /// <param name="nomInsumo"></param>
         public List<SIGEEA_spListarInsumosResult> ListarInsumos(string nomInsumo)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spListarInsumos(nomInsumo).ToList();
         }
         /// <summary>
@@ -86,7 +86,7 @@ namespace SIGEEA_BL
         /// <param name="pkInsumo"></param>
         public SIGEEA_spObtenerInsumoResult ObtenerInsumo(int pkInsumo)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerInsumo(pkInsumo).FirstOrDefault();
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace SIGEEA_BL
         /// <param name="pkInsumo"></param>
         public void SumarInventario(int invInsumo, double cantidad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_InvInsumo insumo = dc.SIGEEA_InvInsumos.FirstOrDefault(c => c.FK_Id_Insumo == invInsumo);
             insumo.Cantidad_InvInsumo += cantidad;
             dc.SubmitChanges();
@@ -107,7 +107,7 @@ namespace SIGEEA_BL
         /// <param name="pkInsumo"></param>
         public void RestarInventario(int invInsumo, double cantidad)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_InvInsumo insumo = dc.SIGEEA_InvInsumos.FirstOrDefault(c => c.FK_Id_Insumo == invInsumo);
             insumo.Cantidad_InvInsumo = insumo.Cantidad_InvInsumo - cantidad;
             dc.SubmitChanges();
@@ -115,14 +115,14 @@ namespace SIGEEA_BL
         }
         public SIGEEA_FacInsumo AgregarFactura(SIGEEA_FacInsumo Factura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_FacInsumos.InsertOnSubmit(Factura);
             dc.SubmitChanges();
             return Factura;
         }
         public void AgregarDetalleFactura(SIGEEA_DetFacInsumo Factura)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_DetFacInsumos.InsertOnSubmit(Factura);
             dc.SubmitChanges();
         }

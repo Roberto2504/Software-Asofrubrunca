@@ -18,7 +18,7 @@ namespace SIGEEA_BL
         /// <param name="direccion"></param>
         public int RegistrarFinca(SIGEEA_Finca finca, SIGEEA_Asociado asociado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             finca.FK_Id_Asociado = asociado.PK_Id_Asociado;
             finca.FecRegistro_Finca = DateTime.Now;
             finca.FK_Id_Direccion = null;
@@ -34,7 +34,7 @@ namespace SIGEEA_BL
         /// <param name="direccion"></param>
         public void ModificarFinca(SIGEEA_Finca finca)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Finca editarFinca = dc.SIGEEA_Fincas.First(c => c.PK_Id_Finca == finca.PK_Id_Finca);
             editarFinca.PriNomDuenno_Finca = finca.PriNomDuenno_Finca;
             editarFinca.SegNomDuenno_Finca = finca.SegNomDuenno_Finca;
@@ -54,7 +54,7 @@ namespace SIGEEA_BL
 
         public void CambiarEstadoLote(SIGEEA_Lote lote)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Lote cambioLote = dc.SIGEEA_Lotes.First(c => c.PK_Id_Lote == lote.PK_Id_Lote);
             cambioLote.Estado_Lote = lote.Estado_Lote;
             dc.SubmitChanges();
@@ -66,7 +66,7 @@ namespace SIGEEA_BL
         /// <param name="lote"></param>
         public void RegistrarLote(SIGEEA_Lote lote)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_Lotes.InsertOnSubmit(lote);
             dc.SubmitChanges();
         }
@@ -76,7 +76,7 @@ namespace SIGEEA_BL
         /// <param name="lote"></param>
         public void EditarLote(SIGEEA_Lote lote)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Lote editarLote = dc.SIGEEA_Lotes.FirstOrDefault(c => c.PK_Id_Lote == lote.PK_Id_Lote);
             editarLote.Tamanno_Lote = lote.Tamanno_Lote;
             editarLote.Estado_Lote = lote.Estado_Lote;
@@ -88,7 +88,7 @@ namespace SIGEEA_BL
         /// <param name="lote"></param>
         public bool ExisteLote(int pklote)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Lote Lote = dc.SIGEEA_Lotes.FirstOrDefault(c => c.PK_Id_Lote == pklote);
             if (Lote != null) return true; else return false;
            
@@ -99,7 +99,7 @@ namespace SIGEEA_BL
         /// <param name="pidFinca"></param>
         public void CambiarEstadoFinca(int pidFinca)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Finca editarFinca = dc.SIGEEA_Fincas.FirstOrDefault(c => c.PK_Id_Finca == pidFinca);
             if(editarFinca.Estado_Finca == "1")
             {
@@ -113,7 +113,7 @@ namespace SIGEEA_BL
         /// <param name="idFinca"></param>
         public SIGEEA_spObtenerDireccionFincaResult ObtenerDireccionFinca(int pkFinca)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerDireccionFinca(pkFinca).First();
         }
         /// <summary>
@@ -123,7 +123,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public bool DireccionRegistradaFinca(string pkId)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_spObtenerDireccionFincaResult direccion = new SIGEEA_spObtenerDireccionFincaResult();
             if (pkId != null)
             {
@@ -140,7 +140,7 @@ namespace SIGEEA_BL
         /// <returns></returns>
         public bool FincaRegistradaAsociado(int pkId)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Finca finca = dc.SIGEEA_Fincas.FirstOrDefault(c => c.FK_Id_Asociado == pkId);
             if (finca != null)
             {
@@ -150,21 +150,21 @@ namespace SIGEEA_BL
         }
         public void EditarDireccion(int pFinca, string pDetalles, string pDistrito)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Distrito distrito = dc.SIGEEA_Distritos.First(c => c.Nombre_Distrito == pDistrito);
             dc.SIGEEA_spEditarDireccionFinca(pFinca, pDetalles, distrito.PK_Id_Distrito);
             dc.SubmitChanges();
         }
         public SIGEEA_Persona ObtenerInfoAsociado(int fk_persona)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Persona asociado = new SIGEEA_Persona();
             asociado = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == fk_persona);
             return asociado;
         }
         public SIGEEA_Asociado ObtenerAsociado(int pkAsociado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Asociado asociado = new SIGEEA_Asociado();
             asociado = dc.SIGEEA_Asociados.First(c => c.PK_Id_Asociado == pkAsociado);
             return asociado;
@@ -174,7 +174,7 @@ namespace SIGEEA_BL
         {
 
             //Agrega una nueva tupla de dirección
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Direccion nuevaDireccion = new SIGEEA_Direccion();
             nuevaDireccion.Detalles_Direccion = pDetalles;
             nuevaDireccion.FK_Id_Distrito = dc.SIGEEA_Distritos.First(c => c.Nombre_Distrito == pDistrito).PK_Id_Distrito;
@@ -189,7 +189,7 @@ namespace SIGEEA_BL
         }
         public List<SIGEEA_spListarFincasResult> ListarInfoFinca(int pPkAsociado, string pCodigo, string pNombre)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if(pPkAsociado == 0)
             {
                 return dc.SIGEEA_spListarFincas(pCodigo, null, pNombre).ToList();
@@ -198,28 +198,28 @@ namespace SIGEEA_BL
         }
         public SIGEEA_Finca ObtenerFinca(int pkIdFinca)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_Fincas.FirstOrDefault(c => c.PK_Id_Finca == pkIdFinca);
         }
         public SIGEEA_Finca ObtenerFincaPorIdAsociado(int pkIdAsociado)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_Fincas.FirstOrDefault(c => c.FK_Id_Asociado == pkIdAsociado);
         }
         public int ObtenerIdUltimaFinca()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             return Convert.ToInt32(dc.SIGEEA_spObtenerIdUltimaFinca().FirstOrDefault().PKFinca);
         }
         public List<SIGEEA_Lote> ListarLote(int fkFinca)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return (from c in dc.SIGEEA_Lotes where c.FK_Id_Finca == fkFinca select c).ToList();
         }
         public SIGEEA_Lote ObtenerLote(int pkLote)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return (from c in dc.SIGEEA_Lotes where c.PK_Id_Lote == pkLote select c).FirstOrDefault();
         }
 

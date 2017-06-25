@@ -90,7 +90,7 @@ namespace SIGEEA_App.User_Controls.Asociados
                 stpContenedor.Children.Clear();
                 AsociadoMantenimiento asociado = new AsociadoMantenimiento();
                 List<SIGEEA_spListarFamiliaresResult> lista = asociado.ListarFamiliares(pCedula);
-                DataClasses1DataContext dc = new DataClasses1DataContext();
+                SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                 SIGEEA_spObtenerAsociadoResult autentica = asociado.AutenticaAsociado(pCedula);
                 pk_asociado = autentica.PK_Id_Asociado;
                 cedula = autentica.CedParticular_Persona;

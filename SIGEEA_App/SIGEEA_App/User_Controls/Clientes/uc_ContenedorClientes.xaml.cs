@@ -175,8 +175,8 @@ namespace SIGEEA_App.User_Controls.Clientes
             }
             else if (opcion == "ReporteVentas")
             {
-                // wnwFacturasCliente nuevaVentana = new wnwFacturasCliente(Tipo: "Por cliente", IdCliente: Convert.ToInt32(boton.Tag), IdFactura: 0);
-                // nueva.ShowDialog();
+                wnwReporteVentasCliente nuevaVentana = new wnwReporteVentasCliente(Convert.ToInt32(boton.Tag));
+                nuevaVentana.ShowDialog();
             }
             else if (opcion == "Eliminar o Activar")
             {

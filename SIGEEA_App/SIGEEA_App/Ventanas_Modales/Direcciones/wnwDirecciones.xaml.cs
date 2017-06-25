@@ -31,7 +31,7 @@ namespace SIGEEA_App.Ventanas_Modales.Direcciones
         {
             InitializeComponent();
             PersonaMantenimiento persona = new PersonaMantenimiento();
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             AsociadoMantenimiento asociado = new AsociadoMantenimiento();
             cmbProvincia.ItemsSource = persona.ListarProvinciasNacionales();//Se carga el ComboBox de provincias
             pk_finca = pkFinca;

@@ -122,20 +122,19 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             if (tipoFactura == "Contado")
             {
                 if (txtObservaciones.Text != "")
-                {
-                    ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, montoNetoTotal, IdCliente);
-                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: montoNetoTotal, pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                   // nueva.ShowDialog();
-                   // this.Close();
+                { 
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, montoNetoTotal, IdCliente));
+                    nueva.ShowDialog();
+                    this.Close();
                 }
             }
             else if (tipoFactura == "Crédito")
             {
                 if (txtObservaciones.Text != "")
                 {
-                    ProcesarFactura(txtObservaciones.Text, proximoPago, proximoLimite, txtNumero.Text, MontoAbono, IdCliente);
-                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: MontoAbono, pfechaProPago: proximoPago, pfechaLimPago: proximoLimite, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                    //nueva.ShowDialog();
+                    
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, proximoPago, proximoLimite, txtNumero.Text, MontoAbono, IdCliente));
+                    nueva.ShowDialog();
                     this.Close();
                 }
             }
@@ -143,9 +142,8 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, 0.ToString(), IdCliente);
-                    //wnwCancelarFacturaCliente nueva = new wnwCancelarFacturaCliente(pkIdEmpleado: IdEmpleado, pkIdCliente: IdCliente, Tipo: tipoFactura, pkIdEmpresa: 1, ptipoPedido: tipoPedido, nueva: listaDetProducto, pMontoTotal: montoTotal, pDescuentoTotal: descuentoTotal, pMontoNetoTotal: montoNetoTotal, pMonedaTotal: moneda, pObservaciones: txtObservaciones.Text, pMontoAbono: 0.ToString(), pfechaProPago: DateTime.Now, pfechaLimPago: DateTime.Now, pmetodoPago: metodoPago, pnumero: txtNumero.Text);
-                    //nueva.ShowDialog();
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, 0.ToString(), IdCliente));
+                    nueva.ShowDialog();
                     this.Close();
                 }
             }
@@ -157,8 +155,9 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         FacturaClienteMantenimiento facMant = new FacturaClienteMantenimiento();
         SIGEEA_spListarFacturaPendientePorFacturaResult lista = new SIGEEA_spListarFacturaPendientePorFacturaResult();
         double fin;
-        private int ProcesarFactura (string observaciones, DateTime fechaProPago, DateTime fechaLimite, string numero, string MontoAbono, int pkIdCliente)
+        private int  ProcesarFactura (string observaciones, DateTime fechaProPago, DateTime fechaLimite, string numero, string MontoAbono, int pkIdCliente)
         {
+            int idFactura = 0;
             lista = facMant.ObtenerFactura(pkIdCliente);
             if (tipoFactura != "Abono")
             {
@@ -210,7 +209,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 if (tipoFactura == "Proforma")
                 {
                     nuevaFactura.Estado_FacCliente = "PR";
-                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, null, null);
+                    idFactura =  facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, null, null);
                 }
                 else if (tipoFactura == "Crédito")
                 {
@@ -224,7 +223,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nuevoCredito.FecLimPago_CreCliente = fechaLimite;
                     nuevoCredito.FK_Id_Cliente = IdCliente;
                     nuevoCredito.FK_Id_Moneda = monMant.PkMonedas(moneda)[0];
-                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, pAboCliente: null, pCreCliente: nuevoCredito);
+                    idFactura = facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, pAboCliente: null, pCreCliente: nuevoCredito);
                 }
                 else if (tipoFactura == "Contado")
                 {
@@ -238,7 +237,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                     nuevoAbono.FK_Id_Empleado = IdEmpleado;
                     nuevoAbono.Estado_AboCliente = true;
                     nuevoAbono.FK_Id_Cliente = IdCliente;
-                    return facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, nuevoAbono, null);
+                    idFactura = facMant.RegistrarFactura(nuevaFactura, plistaDetProducto, nuevoAbono, null);
                 }
             }
             else
@@ -267,6 +266,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 nuevoAbono.FK_Id_FacCliente = lista.PK_Id_FacCliente;
                 facMant.RegitrarAbono(nuevoAbono, nuevoCredito);
             }
+            return idFactura;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

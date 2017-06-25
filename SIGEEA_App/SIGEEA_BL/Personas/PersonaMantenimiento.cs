@@ -15,14 +15,14 @@ namespace SIGEEA_BL
         /// <param name="persona"></param>
         public SIGEEA_Persona RegistrarPersona(SIGEEA_Persona persona)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             dc.SIGEEA_Personas.InsertOnSubmit(persona);
             dc.SubmitChanges();
             return persona;
         }
         public bool ValidaCedJuridica(string ced)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if (dc.SIGEEA_Personas.FirstOrDefault(c => c.CedJuridica_Persona == ced) != null)
                 return true;
             else
@@ -30,7 +30,7 @@ namespace SIGEEA_BL
         }
         public bool ValidaCedParticar(string ced)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if (dc.SIGEEA_Personas.FirstOrDefault(c => c.CedParticular_Persona == ced) != null)
                 return true;
             else
@@ -42,7 +42,7 @@ namespace SIGEEA_BL
         /// <param name="persona"></param>
         public void ModificarPersona(SIGEEA_Persona persona)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Persona pers = dc.SIGEEA_Personas.First(c => c.PK_Id_Persona == persona.PK_Id_Persona);
             pers.CedParticular_Persona = persona.CedParticular_Persona;
             pers.FecNacimiento_Persona = persona.FecNacimiento_Persona;
@@ -58,21 +58,21 @@ namespace SIGEEA_BL
 
         public List<string> ListarNacionalidades()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<string> nacionalidades = (from c in dc.SIGEEA_Nacionalidads select c.Nombre_Nacionalidad).ToList();
             return nacionalidades;
         }
 
         public List<string> ListarProvinciasNacionales()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<string> provincias = (from c in dc.SIGEEA_Provincias select c.Nombre_Provincia).ToList();
             return provincias;
         }
 
         public List<SIGEEA_spObtenerCantonesResult> ListarCantones(string Provincia)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_spObtenerCantonesResult> listaCantones = new List<SIGEEA_spObtenerCantonesResult>();
             listaCantones = dc.SIGEEA_spObtenerCantones(Provincia).ToList();
             return listaCantones;
@@ -80,13 +80,13 @@ namespace SIGEEA_BL
 
         public List<SIGEEA_spObtenerDistritosResult> ListarDistritos(string Canton)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_spObtenerDistritos(Canton).ToList();
         }
 
         public void EditarDireccion(int pPersona, string pDetalles, string pDistrito)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Distrito distrito = dc.SIGEEA_Distritos.First(c => c.Nombre_Distrito == pDistrito);
             dc.SIGEEA_spEditarDireccion(pPersona, pDetalles, distrito.PK_Id_Distrito);
             dc.SubmitChanges();
@@ -96,7 +96,7 @@ namespace SIGEEA_BL
         {
 
             //Agrega una nueva tupla de dirección
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Direccion nuevaDireccion = new SIGEEA_Direccion();
             nuevaDireccion.Detalles_Direccion = pDetalles;
             nuevaDireccion.FK_Id_Distrito = dc.SIGEEA_Distritos.First(c => c.Nombre_Distrito == pDistrito).PK_Id_Distrito;
@@ -112,7 +112,7 @@ namespace SIGEEA_BL
 
         public int AutenticaPersona(string pCedula)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if (pCedula != null)
             {
                 if (dc.SIGEEA_spAutenticaPersona(pCedula).FirstOrDefault() != null)
@@ -126,14 +126,14 @@ namespace SIGEEA_BL
 
         public List<SIGEEA_spObtenerContactoResult> ListarContactos(int pPersona)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
 
             return dc.SIGEEA_spObtenerContacto(pPersona).ToList();
         }
 
         public void AgregarContacto(int pPersona, string pDato, string pTipoContacto)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             int fk_tipoContacto = dc.SIGEEA_TipContactos.FirstOrDefault(c => c.Nombre_TipContacto == pTipoContacto).PK_Id_TipContacto;
 
             SIGEEA_Contacto nuevoContacto = new SIGEEA_Contacto();
@@ -147,7 +147,7 @@ namespace SIGEEA_BL
 
         public void EditarContacto(SIGEEA_Contacto pContacto)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             SIGEEA_Contacto contacto = dc.SIGEEA_Contactos.First(c => c.PK_Id_Contacto == pContacto.PK_Id_Contacto);
             contacto.Dato_Contacto = pContacto.Dato_Contacto;
             contacto.FK_Id_Persona = pContacto.FK_Id_Persona;

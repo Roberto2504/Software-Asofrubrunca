@@ -57,7 +57,7 @@ namespace SIGEEA_App.Paginas
 
         private void btnAdministrarCuotas_Click(object sender, RoutedEventArgs e)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             if (dc.SIGEEA_spObtenerCuotas().ToList().Count > 0)
             {
                 wnwCuotas ventana = new wnwCuotas();

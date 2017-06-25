@@ -32,7 +32,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
         public wnwAgregarContacto(int pPersona, string pAccion, int pIdContacto)
         {
             InitializeComponent();
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             List<SIGEEA_TipContacto> lista = new List<SIGEEA_TipContacto>();
             lista = dc.SIGEEA_TipContactos.ToList();
             pk_persona = pPersona;
@@ -73,7 +73,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                         editarContacto.PK_Id_Contacto = pk_contacto;
                         editarContacto.Dato_Contacto = txbContacto.Text;
                         editarContacto.FK_Id_Persona = pk_persona;
-                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                         editarContacto.FK_Id_TipContacto = dc.SIGEEA_TipContactos.First(c => c.Nombre_TipContacto == (String)cmbTipoContacto.SelectedValue).PK_Id_TipContacto;
                         persona.EditarContacto(editarContacto);
                         MessageBox.Show("Los cambios se realizaron con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -99,7 +99,7 @@ namespace SIGEEA_App.Ventanas_Modales.Contactos
                         editarContacto.PK_Id_Contacto = pk_contacto;
                         editarContacto.Dato_Contacto = txbContacto.Text;
                         editarContacto.FK_Id_Persona = pk_persona;
-                        DataClasses1DataContext dc = new DataClasses1DataContext();
+                        SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
                         editarContacto.FK_Id_TipContacto = dc.SIGEEA_TipContactos.First(c => c.Nombre_TipContacto == cmbTipoContacto.SelectedItem.ToString()).PK_Id_TipContacto;
                         persona.EditarContacto(editarContacto);
                         MessageBox.Show("Los cambios se realizaron con éxito.", "SIGEEA", MessageBoxButton.OK, MessageBoxImage.Exclamation);

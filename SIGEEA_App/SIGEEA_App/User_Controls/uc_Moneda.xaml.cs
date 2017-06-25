@@ -36,13 +36,13 @@ namespace SIGEEA_App.User_Controls
 
         public int getMoneda()
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             return dc.SIGEEA_Monedas.First(c => c.Simbolo_Moneda == cmbLista.SelectedItem.ToString()).PK_Id_Moneda;
         }
 
         public void setMoneda(int pMoneda)
         {
-            DataClasses1DataContext dc = new DataClasses1DataContext();
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             cmbLista.SelectedItem = dc.SIGEEA_Monedas.First(c => c.PK_Id_Moneda == pMoneda).Simbolo_Moneda;
         }
     }
