@@ -7,14 +7,14 @@
                            xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="Datos Factura Cliente" Height="489.251" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,-3">
-        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="463" VerticalAlignment="Top" Width="394" Margin="0,0,-0.4,0"/>
+    <Grid Margin="0,0,0,0">
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="463" VerticalAlignment="Top" Width="394" Margin="0,-3,0,0"/>
 
         <Grid x:Name="grdObservaciones" HorizontalAlignment="Left" Height="95" Margin="10,30,0,0" VerticalAlignment="Top" Width="372">
             <TextBlock x:Name="txt1" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Observaciones: " VerticalAlignment="Top"/>
             <TextBox x:Name="txtObservaciones" HorizontalAlignment="Left" Height="61" Margin="10,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="352"/>
         </Grid>
-        <TextBlock x:Name="txtbFactura" HorizontalAlignment="Left" Margin="30,5,0,0" TextWrapping="Wrap" Text="Tipo:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtbFactura" HorizontalAlignment="Left" Margin="22,5,0,0" TextWrapping="Wrap" Text="Tipo:" VerticalAlignment="Top"/>
         <TextBlock x:Name="txtbTipoFactura" HorizontalAlignment="Left" Margin="72,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210" Height="20"/>
         <Grid x:Name="grdPago" HorizontalAlignment="Left" Height="127" Margin="10,114,0,0" VerticalAlignment="Top" Width="372" Visibility="Hidden">
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="22,9,0,0" TextWrapping="Wrap" Text="Metodo de Pago" VerticalAlignment="Top" Width="93"/>
@@ -33,16 +33,16 @@
 
 
         </Grid>
-        <Button x:Name="btnPagar" Margin="334,402,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">
-            <Rectangle Width="43" Height="53" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+        <Button x:Name="btnPagar" Margin="307,379,10,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnPagar_Click">
+            <Rectangle Width="33" Height="43" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_clipboard_paper_check}" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button x:Name="btnCancelar" Margin="10,402,334,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
-            <Rectangle Width="43" Height="53" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+        <Button x:Name="btnCancelar" Margin="12,379,310,0" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click">
+            <Rectangle Width="39" Height="43" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_cancel}" />

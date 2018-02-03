@@ -7,7 +7,7 @@
     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Custom_Controls="clr-namespace:SIGEEA_App.Custom_Controls" x:Class="SIGEEA_App.Ventanas_Modales.Asociados.wnwOpcionesReporteEntrega"
         mc:Ignorable="d"
-        Title="wnwOpcionesReporteEntrega" Height="258.27" Width="556.015" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTabStop="True" ShowInTaskbar="False" WindowStyle="None">
+        Title="wnwOpcionesReporteEntrega" Height="258.27" Width="556.015" WindowStartupLocation="CenterScreen" IsTabStop="True" WindowStyle="None" ResizeMode="NoResize">
     <Grid Background="#FFEAE3E3" Opacity="0.7">
         <DatePicker HorizontalAlignment="Left" Margin="192,206,0,0" VerticalAlignment="Top" Width="33" Name="dpFecFin" SelectedDateChanged="dpFecFin_SelectedDateChanged"/>
         <DatePicker HorizontalAlignment="Left" Margin="192,164,0,0" VerticalAlignment="Top" Width="33" Foreground="Black" Name="dpFecInicio" SelectedDateChanged="dpFecInicio_SelectedDateChanged"/>
@@ -35,7 +35,7 @@
             </Grid>
         </Border>
 
-        <Button x:Name="btnGenerar" Margin="407,164,72,26" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerar_Click" ToolTip="Generar reporte">
+        <Button x:Name="btnGenerar" Margin="439,164,40,26" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnGenerar_Click" ToolTip="Generar reporte">
             <Rectangle Width="36" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" RenderTransformOrigin="0.5,0.5">
                 <Rectangle.RenderTransform>
                     <TransformGroup>
@@ -48,6 +48,22 @@
                 <Rectangle.OpacityMask>
                     <VisualBrush Stretch="Fill"
             				Visual="{DynamicResource appbar_check}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button x:Name="btnCerrar" Margin="329,164,150,26" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCerrar_Click" ToolTip="Cerrar">
+            <Rectangle Width="36" Height="30" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-2.427"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+        				Visual="{DynamicResource appbar_close}" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>

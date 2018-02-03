@@ -9,7 +9,7 @@
         Title="Metodo Busqueda Factura" Height="300" Width="369.549" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid>
-        <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged"  FontWeight="Bold" FontSize="14.667"/>
+        <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341" SelectionChanged="cmbOpciones_SelectionChanged"  FontWeight="Bold" FontSize="14.667" SelectedIndex="0"/>
 
         <Grid Name="grdOpciones" Margin="10,51,0,0" Visibility="Visible">
 

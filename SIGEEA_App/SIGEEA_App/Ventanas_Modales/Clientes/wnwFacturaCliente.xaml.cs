@@ -24,10 +24,25 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
     /// </summary>
     public partial class wnwFacturaCliente : MetroWindow
     {
-        public wnwFacturaCliente(int idFactura)
+        public wnwFacturaCliente(int pidFactura, string pTipo)
         {
             InitializeComponent();
 
+
+            SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
+            if(pTipo == "Reporte")
+            {
+                inputGroup.Visibility = Visibility.Visible;
+            } else
+            {
+                inputGroup.Visibility = Visibility.Hidden;
+                cargarFactura(pidFactura);
+            }
+        }
+
+        public void cargarFactura(int idFactura)
+        {
+            ReporteFacturaVenta.Reset();
             SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ReporteFacturaVenta.Reset();
             List<SIGEEA_spDetalleFacturaClienteResult> Detalle = new List<SIGEEA_spDetalleFacturaClienteResult>();
@@ -48,6 +63,17 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
         private void WindowsFormsHost_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
         {
 
+        }
+
+        private void btnFiltrar_Click(object sender, RoutedEventArgs e)
+        {   
+            try
+            {
+                cargarFactura(Convert.ToInt32(searchIn.Text));
+            } catch (Exception ex)
+            {
+
+            }
         }
     }
 }

@@ -123,7 +123,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 { 
-                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, montoNetoTotal, IdCliente));
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(pidFactura:ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, montoNetoTotal, IdCliente), pTipo:"Venta");
                     nueva.ShowDialog();
                     this.Close();
                 }
@@ -133,7 +133,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 if (txtObservaciones.Text != "")
                 {
                     
-                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, proximoPago, proximoLimite, txtNumero.Text, MontoAbono, IdCliente));
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(pidFactura: ProcesarFactura(txtObservaciones.Text, proximoPago, proximoLimite, txtNumero.Text, MontoAbono, IdCliente), pTipo: "Venta");
                     nueva.ShowDialog();
                     this.Close();
                 }
@@ -142,7 +142,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 if (txtObservaciones.Text != "")
                 {
-                    wnwFacturaCliente nueva = new wnwFacturaCliente(ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, 0.ToString(), IdCliente));
+                    wnwFacturaCliente nueva = new wnwFacturaCliente(pidFactura: ProcesarFactura(txtObservaciones.Text, DateTime.Now, DateTime.Now, txtNumero.Text, 0.ToString(), IdCliente), pTipo: "Venta");
                     nueva.ShowDialog();
                     this.Close();
                 }

@@ -7,7 +7,7 @@
              xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" Height="30.602" Width="175.189">
     <Grid Height="29.974" VerticalAlignment="Top">
-        <ComboBox x:Name="cmbLista" Margin="0,0,42.651,0" Height="13.442" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment"/>
+        <ComboBox x:Name="cmbLista" Margin="0,0,42.651,0" Height="13.442" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" SelectedIndex="1"/>
         <Button x:Name="btnAgregar" Margin="135.762,-0.166,3.636,1.255" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="VerticalAlignment" Click="btnAgregar_Click">
             <Button.RenderTransform>
                 <TransformGroup>

@@ -46,7 +46,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="PresentationFramework.Classic" />
     <Reference Include="System" />
@@ -127,6 +127,9 @@
     </Compile>
     <Compile Include="Paginas\Pag_Productos.xaml.cs">
       <DependentUpon>Pag_Productos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SIGEEA_BDDataSet.cs">
+      <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SIGEEA_BDDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -319,6 +322,9 @@
     <Compile Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaFactura.xaml.cs">
       <DependentUpon>wnwMetodoBusquedaFactura.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaReporte.xaml.cs">
+      <DependentUpon>wnwMetodoBusquedaReporte.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas_Modales\Clientes\wnwRealizarPedidoCliente.xaml.cs">
       <DependentUpon>wnwRealizarPedidoCliente.xaml</DependentUpon>
     </Compile>
@@ -345,6 +351,9 @@
     </Compile>
     <Compile Include="Ventanas_Modales\Empleados\wnwRegistrarHorasLaboradas.xaml.cs">
       <DependentUpon>wnwRegistrarHorasLaboradas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas_Modales\Empleados\wnwReporteEmpleados.xaml.cs">
+      <DependentUpon>wnwReporteEmpleados.xaml</DependentUpon>
     </Compile>
     <Compile Include="Ventanas_Modales\Fincas\wnwBuscadorAsociados.xaml.cs">
       <DependentUpon>wnwBuscadorAsociados.xaml</DependentUpon>
@@ -715,6 +724,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ventanas_Modales\Clientes\wnwMetodoBusquedaReporte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas_Modales\Clientes\wnwRealizarPedidoCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -748,6 +761,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas_Modales\Empleados\wnwRegistrarHorasLaboradas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas_Modales\Empleados\wnwReporteEmpleados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -875,6 +892,7 @@
     <EmbeddedResource Include="Reportes\Asociados\rptAsociadoConsolidado.rdlc" />
     <EmbeddedResource Include="Reportes\Asociados\rptAsociadoIndividual.rdlc" />
     <EmbeddedResource Include="Reportes\Clientes\Re_Reporte_Ventas_Cliente.rdlc" />
+    <EmbeddedResource Include="Reportes\Empleados\Re_Reporte_Empleados.rdlc" />
     <None Include="DataSet\dstFacturaEntregaProducto.xsc">
       <DependentUpon>dstFacturaEntregaProducto.xsd</DependentUpon>
     </None>
@@ -919,8 +937,8 @@
     </None>
     <None Include="SIGEEA_BDDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SIGEEA_BDDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>SIGEEA_BDDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="SIGEEA_BDDataSet.xss">
       <DependentUpon>SIGEEA_BDDataSet.xsd</DependentUpon>
@@ -991,6 +1009,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagenes\LOGIN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\documentacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Logo_Facturas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -24,7 +24,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
     {
         List<SIGEEA_spGeneraReporteAsociadosConsolidadoResult> detallesConsolidado;
         List<SIGEEA_spGeneraReporteAsociadosPorIdResult> detallesIndividual;
-        List<SIGEEA_spObtenerDatosEmpresaResult> encabezado;
         public wnwReportesAsociado(int indFactura = -1, int indAsociado = -1, string fecInicio = null, string fecFin = null, int idAsociado = -1)
         {
             InitializeComponent();
@@ -37,7 +36,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                 tmp_FecFin = Convert.ToDateTime(fecFin).ToString("yyyy-MM-dd");
 
                 SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
-                encabezado = dc.SIGEEA_spObtenerDatosEmpresa().ToList();
 
                 if (indAsociado == 0)//Todos los asociados
                 {
@@ -45,8 +43,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     detallesConsolidado = dc.SIGEEA_spGeneraReporteAsociadosConsolidado(indFactura, tmp_FecInicio.ToString(), tmp_FecFin.ToString()).ToList();
                     var source = new ReportDataSource("Detalle", SIGEEA.BL.Facturas.helper.ConvertToDatatable(detallesConsolidado));
                     rpwConsolidado.LocalReport.DataSources.Add(source);
-                    var source2 = new ReportDataSource("Encabezado", SIGEEA.BL.Facturas.helper.ConvertToDatatable(encabezado));
-                    rpwConsolidado.LocalReport.DataSources.Add(source2);
                     rpwConsolidado.LocalReport.ReportEmbeddedResource = "SIGEEA_App.Reportes.Asociados.rptAsociadoConsolidado.rdlc";
                     rpwConsolidado.RefreshReport();
                 }
@@ -57,8 +53,6 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
                     detallesIndividual = dc.SIGEEA_spGeneraReporteAsociadosPorId(indFactura, tmp_FecInicio.ToString(), tmp_FecFin.ToString(), idAsociado).ToList();
                     var source = new ReportDataSource("Detalle", SIGEEA.BL.Facturas.helper.ConvertToDatatable(detallesIndividual));
                     rpwIndividual.LocalReport.DataSources.Add(source);
-                    var source2 = new ReportDataSource("Encabezado", SIGEEA.BL.Facturas.helper.ConvertToDatatable(encabezado));
-                    rpwIndividual.LocalReport.DataSources.Add(source2);
                     rpwIndividual.LocalReport.ReportEmbeddedResource = "SIGEEA_App.Reportes.Asociados.rptAsociadoIndividual.rdlc";
                     rpwIndividual.RefreshReport();
                 }         

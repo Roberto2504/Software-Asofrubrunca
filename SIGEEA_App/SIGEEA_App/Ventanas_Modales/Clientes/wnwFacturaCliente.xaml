@@ -7,12 +7,39 @@
                       xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
                            xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="Factura Cliente" Height="489.251" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,-3">
-        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="463" VerticalAlignment="Top" Width="394" Margin="0,0,-0.4,0"/>
+        Title="Factura Cliente" Height="641.419" Width="492.457" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,0,0">
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="615" VerticalAlignment="Bottom" Width="486" Margin="0,-3,0,0"/>
+        <Grid HorizontalAlignment="Left" Name="inputGroup" Height="67" Margin="65,10,0,0" VerticalAlignment="Top" Width="340" Visibility="Hidden">
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" >
-            <WindowsFormsHost ChildChanged="WindowsFormsHost_ChildChanged" Width="321">
+            <StackPanel Name="stack_search_text" VerticalAlignment="Center" Margin="10,19,0,10" Height="38" >
+                <StackPanel x:Name="SearchSubPanel" Orientation="Horizontal">
+                    <TextBox x:Name="searchIn"  MaxLength="200" 
+                                        HorizontalAlignment="Left" BorderThickness="2" BorderBrush="#5C5C5C" Width="216" Margin="0,10,0,9" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+                    <Image  Source="/Imagenes/buscar.png" Margin="-30,0,0,0"  Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.25"  />
+
+                </StackPanel>
+            </StackPanel>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Número de Facruta" VerticalAlignment="Top" Width="177"/>
+            <Button x:Name="btnFiltrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFiltrar_Click"  Margin="254,5,37,10" IsDefault="True" RenderTransformOrigin="0.5,0.5"  >
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_list}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+        </Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="65,79,56,110" >
+            <WindowsFormsHost ChildChanged="WindowsFormsHost_ChildChanged" Width="351">
                 <rv:ReportViewer x:Name="ReporteFacturaVenta"  AutoSize="True" 
                                      AutoSizeMode="GrowAndShrink"  ShowBackButton="False" ShowExportButton="False" 
                                      ShowFindControls="False" ShowPageNavigationControls="False" ShowPrintButton="True" 
@@ -20,4 +47,4 @@
             </WindowsFormsHost>
         </ScrollViewer>
     </Grid>
-    </Controls:MetroWindow>
+</Controls:MetroWindow>

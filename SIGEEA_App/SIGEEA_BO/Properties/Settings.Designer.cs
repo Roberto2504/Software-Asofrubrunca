@@ -138,5 +138,37 @@ namespace SIGEEA_BO.Properties {
                 return ((string)(this["SIGEEA_BDConnectionString10"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-B08M2J3\\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Secur" +
+            "ity=True")]
+        public string SIGEEA_BDConnectionString11 {
+            get {
+                return ((string)(this["SIGEEA_BDConnectionString11"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UNGN8I1\\SQLEXPRESS;Initial Catalog=SIGEEA_BD;Integrated Secur" +
+            "ity=True")]
+        public string SIGEEA_BDConnectionString12 {
+            get {
+                return ((string)(this["SIGEEA_BDConnectionString12"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A5H5HL0;Initial Catalog=SIGEEA_BD;Integrated Security=True")]
+        public string SIGEEA_BDConnectionString13 {
+            get {
+                return ((string)(this["SIGEEA_BDConnectionString13"]));
+            }
+        }
     }
 }

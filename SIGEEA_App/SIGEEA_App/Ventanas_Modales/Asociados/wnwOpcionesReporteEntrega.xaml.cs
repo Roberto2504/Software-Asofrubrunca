@@ -80,5 +80,10 @@ namespace SIGEEA_App.Ventanas_Modales.Asociados
             if(txbCedulaCodigo.Visibility == Visibility.Visible)
                 txbCedulaCodigo.Visibility = Visibility.Collapsed;
         }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,0 +1,124 @@
+ALTER PROCEDURE [dbo].[SIGEEA_spGeneraReporteAsociadosPorId]
+	@IND_FILTRO int = null, -- 0 = todos; 1 = incompletas; 2 = canceladas
+	@FEC_INICIO varchar(20) = null,
+	@FEC_FIN varchar(20) = null,
+	@ID_ASOCIADO int = null
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	IF @IND_FILTRO = 0
+		BEGIN
+			SELECT F.Numero_FacAsociado, 
+			CASE F.FecPago_FacAsociado
+						WHEN N'0001-01-01' THEN NULL
+						ELSE F.FecPago_FacAsociado
+					END AS FecPago_FacAsociado, F.FecEntrega_FacAsociado, F.CanTotal_FacAsociado, 
+			CASE F.CanNeta_FacAsociado
+						WHEN -1 THEN 0
+						ELSE F.CanNeta_FacAsociado
+						END AS CanNeta_FacAsociado, A.Codigo_Asociado, 
+				   P.CedParticular_Persona, P.CedJuridica_Persona, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado, 
+				   CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126) AND FK_Id_Asociado = @ID_ASOCIADO
+		END
+	IF @IND_FILTRO = 1
+		BEGIN
+			SELECT F.Numero_FacAsociado, F.FecPago_FacAsociado, F.FecEntrega_FacAsociado, F.CanTotal_FacAsociado, F.CanNeta_FacAsociado, A.Codigo_Asociado, 
+				   P.CedParticular_Persona, P.CedJuridica_Persona, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado, 
+				   CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126) AND (F.Incompleta_FacAsociado = 1 OR F.Estado_FacAsociado = 1) AND FK_Id_Asociado = @ID_ASOCIADO
+		END
+	IF @IND_FILTRO = 2
+		BEGIN
+			SELECT F.Numero_FacAsociado, F.FecPago_FacAsociado, F.FecEntrega_FacAsociado, F.CanTotal_FacAsociado, F.CanNeta_FacAsociado, A.Codigo_Asociado, 
+				   P.CedParticular_Persona, P.CedJuridica_Persona, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado, 
+				   CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126) AND F.Incompleta_FacAsociado = 0 AND F.Estado_FacAsociado = 0 AND FK_Id_Asociado = @ID_ASOCIADO
+		END
+END
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+
+
+ALTER PROCEDURE [dbo].[SIGEEA_spGeneraReporteAsociadosConsolidado]
+	@IND_FILTRO int = null, -- 0 = todos; 1 = incompletas; 2 = canceladas
+	@FEC_INICIO varchar(20) = null,
+	@FEC_FIN varchar(20) = null
+
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	
+	IF @IND_FILTRO = 0
+		BEGIN
+			SELECT F.Numero_FacAsociado, F.CanTotal_FacAsociado, 
+				   CASE F.CanNeta_FacAsociado
+						WHEN -1 THEN 0
+						ELSE F.CanNeta_FacAsociado
+						END AS CanNeta_FacAsociado, F.FecEntrega_FacAsociado, 
+					CASE F.FecPago_FacAsociado
+						WHEN N'0001-01-01' THEN NULL
+						ELSE F.FecPago_FacAsociado
+					END AS FecPago_FacAsociado, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado,
+				   P.CedJuridica_Persona as CedJurPersona, P.CedParticular_Persona, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO,126),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN,126),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126)
+		END
+	IF @IND_FILTRO = 1
+		BEGIN
+			SELECT F.Numero_FacAsociado, F.CanNeta_FacAsociado, F.CanTotal_FacAsociado, F.FecEntrega_FacAsociado, F.FecPago_FacAsociado, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado,
+				   P.CedJuridica_Persona as CedJurPersona, P.CedParticular_Persona, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO,126),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN,126),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126) AND (F.Incompleta_FacAsociado = 1 OR F.Estado_FacAsociado = 1)
+		END
+	IF @IND_FILTRO = 2
+		BEGIN
+			SELECT F.Numero_FacAsociado, F.CanNeta_FacAsociado, F.CanTotal_FacAsociado, F.FecEntrega_FacAsociado, F.FecPago_FacAsociado, P.PriNombre_Persona + ' ' + P.PriApellido_Persona + ' ' + P.SegApellido_Persona AS Nombre_Asociado,
+				   P.CedJuridica_Persona as CedJurPersona, P.CedParticular_Persona, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_INICIO,126),101) AS fecInicio, CONVERT(VARCHAR(10), CONVERT(DATE,@FEC_FIN,126),101) AS fecFinal
+			FROM SIGEEA_FacAsociado F
+			JOIN SIGEEA_Asociado A
+			ON A.PK_Id_Asociado = F.FK_Id_Asociado
+			JOIN SIGEEA_Persona P
+			ON P.PK_Id_Persona = A.FK_Id_Persona
+			WHERE CONVERT(date,FecEntrega_FacAsociado,126) BETWEEN CONVERT(date, @FEC_INICIO,126) AND CONVERT(date, @FEC_FIN,126) AND F.Incompleta_FacAsociado = 0 AND F.Estado_FacAsociado = 0
+		END
+END

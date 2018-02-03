@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow  x:Class="SIGEEA_App.Ventanas_Modales.Clientes.wnwMetodoBusquedaReporte"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIGEEA_App.Ventanas_Modales.Clientes"
+                         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="Metodo Busqueda Factura" Height="155.639" Width="369.549" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <ComboBox x:Name="cmbOpciones" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="341"  FontWeight="Bold" FontSize="14.667" SelectedIndex="0"/>
+        <Button x:Name="btnFiltrar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnFiltrar_Click"  Margin="286,46,16,12"  >
+            <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_list}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+        <Button x:Name="btnCancelar" Style="{DynamicResource MetroCircleButtonStyle}" Cursor="Hand" Click="btnCancelar_Click"  Margin="16,46,277,12"  >
+            <Rectangle Width="22" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill"
+            				Visual="{DynamicResource appbar_close}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Button>
+    </Grid>
+    </Controls:MetroWindow>

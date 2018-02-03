@@ -45,7 +45,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             {
                 cbxEmpresa.Visibility = Visibility.Visible;
             }
-           
+
             //cbxNacionalidad.ItemsSource = persona.ListarNacionalidades();
             if (pAsociado != null)//Si se desea editar un asociado
             {
@@ -68,10 +68,11 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 if (pCliente.CedJuridica_Persona != null)
                 {
                     cedula = pCliente.CedJuridica_Persona;
-                }else
+                }
+                else
                 {
                     cedula = pCliente.CedParticular_Persona;
-                } 
+                }
             }
         }
 
@@ -94,12 +95,13 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 if (valido == true)
                 {
                     nuevaPersona = new SIGEEA_Persona();
-                    if(tipoPersona == "Cliente")
+                    if (tipoPersona == "Cliente")
                     {
                         if (cbxEmpresa.IsChecked == false)
                         {
                             nuevaPersona.CedParticular_Persona = txbCedula.Text;
-                            nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
+                            if (dtpFecNacimiento.SelectedDate != null)
+                                nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
                             nuevaPersona.FK_Id_Direccion = null;
                             nuevaPersona.Tipo_Persona = true;
                             nuevaPersona.CedJuridica_Persona = null;
@@ -115,11 +117,12 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                         {
                             nuevaPersona.CedParticular_Persona = null;
                             nuevaPersona.CedJuridica_Persona = txbCedula.Text;
-                            nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
+                            if (dtpFecNacimiento.SelectedDate != null)
+                                nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
                             nuevaPersona.FK_Id_Direccion = null;
                             nuevaPersona.Tipo_Persona = false;
                             nuevaPersona.FK_Id_Nacionalidad = ucNacionalidad.getNacionalidad();
-                       
+
                             nuevaPersona.Genero_Persona = null;
                             nuevaPersona.PriApellido_Persona = null;
                             nuevaPersona.PriNombre_Persona = txbPriNombre.Text;
@@ -127,10 +130,12 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                             nuevaPersona.SegNombre_Persona = null;
                         }
                         cbxEmpresa.Visibility = Visibility.Hidden;
-                    }else
+                    }
+                    else
                     {
                         nuevaPersona.CedParticular_Persona = txbCedula.Text;
-                        nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
+                        if (dtpFecNacimiento.SelectedDate != null)
+                            nuevaPersona.FecNacimiento_Persona = dtpFecNacimiento.SelectedDate.Value;
                         nuevaPersona.FK_Id_Direccion = null;
                         nuevaPersona.Tipo_Persona = true;
                         nuevaPersona.CedJuridica_Persona = null;
@@ -142,8 +147,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                         nuevaPersona.SegApellido_Persona = txbSegApellido.Text;
                         nuevaPersona.SegNombre_Persona = txbSegNombre.Text;
                     }
-                   
-                    
+
+
                 }
             }
             catch (Exception ex)
@@ -159,12 +164,13 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegNombre.Text = pAsociado.SegNombre_Persona;
             txbPriApellido.Text = pAsociado.PriApellido_Persona;
             txbSegApellido.Text = pAsociado.SegApellido_Persona;
-            dtpFecNacimiento.Text = pAsociado.FecNacimiento_Persona.ToString();
+            if (pAsociado.FecNacimiento_Persona != null)
+                dtpFecNacimiento.Text = pAsociado.FecNacimiento_Persona.ToString();
             if (pAsociado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(dc.SIGEEA_Nacionalidads.First(c => c.PK_Id_Nacionalidad == pAsociado.FK_Id_Nacionalidad).Nombre_Nacionalidad);
-           // ucEstrellas.cargaEstrellas((float)dc.SIGEEA_spObtenerCategoriaAsociado(pAsociado.PK_Id_Asociado).First().Categoria);
-          //  ucEstrellas.Visibility = Visibility.Visible;
+            // ucEstrellas.cargaEstrellas((float)dc.SIGEEA_spObtenerCategoriaAsociado(pAsociado.PK_Id_Asociado).First().Categoria);
+            //  ucEstrellas.Visibility = Visibility.Visible;
         }
 
         public void CargarInformacionEmpleado(SIGEEA_spObtenerEmpleadoResult pEmpleado)
@@ -174,7 +180,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             txbSegNombre.Text = pEmpleado.SegNombre_Persona;
             txbPriApellido.Text = pEmpleado.PriApellido_Persona;
             txbSegApellido.Text = pEmpleado.SegApellido_Persona;
-            dtpFecNacimiento.Text = pEmpleado.FecNacimiento_Persona.ToString();
+            if (pEmpleado.FecNacimiento_Persona != null)
+                dtpFecNacimiento.Text = pEmpleado.FecNacimiento_Persona.ToString();
             if (pEmpleado.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(pEmpleado.Nombre_Nacionalidad);
@@ -185,7 +192,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         }
         public void CargarInformacionCliente(SIGEEA_spObtenerClienteResult pCliente)
         {
-            if(pCliente.CedJuridica_Persona != null)
+            if (pCliente.CedJuridica_Persona != null)
             {
                 txbCedula.Text = pCliente.CedJuridica_Persona;
                 cbxEmpresa.IsChecked = true;
@@ -215,7 +222,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                 txbSegNombre.Visibility = Visibility.Visible;
                 cbxGenero.Visibility = Visibility.Visible;
             }
-         
+
             txbPriNombre.Text = pCliente.PriNombre_Persona;
             txbSegNombre.Text = pCliente.SegNombre_Persona;
             txbPriApellido.Text = pCliente.PriApellido_Persona;
@@ -231,22 +238,24 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             if (pCliente.Genero_Persona == "M") cbxGenero.SelectedIndex = 0; else cbxGenero.SelectedIndex = 1;
             SIGEEA_DiagramaDataContext dc = new SIGEEA_DiagramaDataContext();
             ucNacionalidad.setNacionalidad(pCliente.Nombre_Nacionalidad);
-            
+
         }
         public bool ValidaCedula()
         {
-            if(tipoPersona== "Cliente")
+            if (tipoPersona == "Cliente")
             {
                 if (cbxEmpresa.IsChecked == false)
                 {
                     if (mantPersona.ValidaCedParticar(txbCedula.Text) == true)
                     {
-                        cedValida =  true;
-                    }else
+                        cedValida = true;
+                    }
+                    else
                     {
                         cedValida = false;
                     }
-                }else
+                }
+                else
                 {
                     if (mantPersona.ValidaCedJuridica(txbCedula.Text) == true)
                     {
@@ -257,7 +266,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                         cedValida = false;
                     }
                 }
-            }else
+            }
+            else
             {
                 if (mantPersona.ValidaCedJuridica(txbCedula.Text) == true)
                 {
@@ -275,7 +285,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             try
             {
                 ValidaCedula();
-                if(cedValida == false || (cedValida == true && cedula == txbCedula.Text))
+                if (cedValida == false || (cedValida == true && cedula == txbCedula.Text))
                 {
                     if (tipoPersona == "Asociado")
                     {
@@ -316,12 +326,13 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
                         grdCliente.Visibility = Visibility.Visible;
                         listarCategorias();
                     }
-                }else
+                }
+                else
                 {
                     MessageBox.Show("Ya existe una persona registrada con es cédula");
                     txbCedula.Text = "";
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -333,30 +344,30 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
         {
             try
             {
-                
+
                 ValidaCedula();
                 if (cedValida == false)
                 {
                     nuevaPersona.PK_Id_Persona = pk_Persona;
-                SIGEEA_Escolaridad nuevaEscolaridad = new SIGEEA_Escolaridad();
-                nuevaEscolaridad.Leer_Escolaridad = chkLeer.IsChecked.GetValueOrDefault();
-                nuevaEscolaridad.Escribir_Escolaridad = chkEscribir.IsChecked.GetValueOrDefault();
-                nuevaEscolaridad.GradoAcad_Escolaridad = cmbGradoAcad.SelectedIndex + 1;
-                nuevaEscolaridad.Observaciones_Escolaridad = txbAdicional.Text;
-                EmpleadoMantenimiento empleadoMant = new EmpleadoMantenimiento();
+                    SIGEEA_Escolaridad nuevaEscolaridad = new SIGEEA_Escolaridad();
+                    nuevaEscolaridad.Leer_Escolaridad = chkLeer.IsChecked.GetValueOrDefault();
+                    nuevaEscolaridad.Escribir_Escolaridad = chkEscribir.IsChecked.GetValueOrDefault();
+                    nuevaEscolaridad.GradoAcad_Escolaridad = cmbGradoAcad.SelectedIndex + 1;
+                    nuevaEscolaridad.Observaciones_Escolaridad = txbAdicional.Text;
+                    EmpleadoMantenimiento empleadoMant = new EmpleadoMantenimiento();
 
-                if (editar == false)
-                {
-                    SIGEEA_Empleado nuevoEmpleado = new SIGEEA_Empleado();
-                    empleadoMant.RegistrarEmpleado(nuevaPersona, nuevoEmpleado, nuevaEscolaridad);
-                }
-                else
-                {
-                    empleadoMant.EditarEmpleado(nuevaPersona, nuevaEscolaridad);
-                }
+                    if (editar == false)
+                    {
+                        SIGEEA_Empleado nuevoEmpleado = new SIGEEA_Empleado();
+                        empleadoMant.RegistrarEmpleado(nuevaPersona, nuevoEmpleado, nuevaEscolaridad);
+                    }
+                    else
+                    {
+                        empleadoMant.EditarEmpleado(nuevaPersona, nuevaEscolaridad);
+                    }
 
-                MessageBox.Show("La solicitud realizada se finalizó con éxito.");
-                this.Close();
+                    MessageBox.Show("La solicitud realizada se finalizó con éxito.");
+                    this.Close();
                 }
                 else
                 {
@@ -376,36 +387,36 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             try
             {
                 ValidaCedula();
-                if (cedValida == false ||(cedValida == true && cedula == txbCedula.Text))
+                if (cedValida == false || (cedValida == true && cedula == txbCedula.Text))
                 {
                     RegistrarPersona();
-                ClienteMantenimiento clienteMant = new ClienteMantenimiento();
+                    ClienteMantenimiento clienteMant = new ClienteMantenimiento();
 
-                if (editar == false)
-                {
-                    SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
-                    SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
-                    nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
-                    nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
-                    nuevaCat.RanPagos_CatCliente = txbRango.Text;
-                    nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
-                    clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, clienteMant.RegistrarCategoria(nuevaCat));
-                }
-                else
-                {
+                    if (editar == false)
+                    {
+                        SIGEEA_Cliente nuevoCliente = new SIGEEA_Cliente();
+                        SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
+                        nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
+                        nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
+                        nuevaCat.RanPagos_CatCliente = txbRango.Text;
+                        nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
+                        clienteMant.RegistrarCliente(nuevaPersona, nuevoCliente, clienteMant.RegistrarCategoria(nuevaCat));
+                    }
+                    else
+                    {
 
-                    SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
-                    nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
-                    nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
-                    nuevaCat.RanPagos_CatCliente = txbRango.Text;
-                    nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
+                        SIGEEA_CatCliente nuevaCat = new SIGEEA_CatCliente();
+                        nuevaCat.FK_Id_TipCatCliente = Convert.ToInt32(lbPkCatCliente.Content);
+                        nuevaCat.Limite_CatCliente = Convert.ToDouble(txbCreMaximo.Text);
+                        nuevaCat.RanPagos_CatCliente = txbRango.Text;
+                        nuevaCat.TieMaximo_CatCliente = txbTiempoMaximo.Text;
                         nuevaCat.PK_Id_CatCliente = Cliente.PK_Id_CatCliente;
                         nuevaPersona.PK_Id_Persona = Cliente.PK_Id_Persona;
-                    clienteMant.ModificarCliente(mantCliente.EditarCategoria(nuevaCat), nuevaPersona);
-                }
+                        clienteMant.ModificarCliente(mantCliente.EditarCategoria(nuevaCat), nuevaPersona);
+                    }
 
-                MessageBox.Show("La solicitud realizada se finalizó con éxito.");
-                this.Close();
+                    MessageBox.Show("La solicitud realizada se finalizó con éxito.");
+                    this.Close();
                 }
                 else
                 {
@@ -415,7 +426,7 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al realizar la solicitud."+ex.Message);
+                MessageBox.Show("Error al realizar la solicitud." + ex.Message);
             }
         }
         public void listarCategorias()
@@ -433,8 +444,8 @@ namespace SIGEEA_App.Ventanas_Modales.Personas
             lbPkCatCliente.Content = mantCliente.ObtenerPkTipCategoria(Convert.ToString(this.cmbTipCliente.SelectedItem));
         }
 
-      
-       
+
+
 
         private void cbxEmpresa_Click(object sender, RoutedEventArgs e)
         {

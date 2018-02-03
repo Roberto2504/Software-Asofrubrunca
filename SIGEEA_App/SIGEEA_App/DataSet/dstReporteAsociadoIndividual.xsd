@@ -2,14 +2,15 @@
 <xs:schema id="dstReporteAsociadoIndividual" targetNamespace="http://tempuri.org/dstReporteAsociadoIndividual.xsd" xmlns:mstns="http://tempuri.org/dstReporteAsociadoIndividual.xsd" xmlns="http://tempuri.org/dstReporteAsociadoIndividual.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SIGEEA_BDConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIGEEA_BDConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIGEEA_App.Properties.Settings.GlobalReference.Default.SIGEEA_BDConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SIGEEA_BDConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIGEEA_BDConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIGEEA_App.Properties.Settings.GlobalReference.Default.SIGEEA_BDConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SIGEEA_BDConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SIGEEA_BDConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SIGEEA_App.Properties.Settings.GlobalReference.Default.SIGEEA_BDConnectionString1" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGEEA_spGeneraReporteAsociadosPorIdTableAdapter" GeneratorDataComponentClassName="SIGEEA_spGeneraReporteAsociadosPorIdTableAdapter" Name="SIGEEA_spGeneraReporteAsociadosPorId" UserDataComponentName="SIGEEA_spGeneraReporteAsociadosPorIdTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spGeneraReporteAsociadosPorId" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SIGEEA_BDConnectionString1 (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spGeneraReporteAsociadosPorId" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SIGEEA_spGeneraReporteAsociadosPorId</CommandText>
@@ -26,6 +27,7 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Numero_FacAsociado" DataSetColumn="Numero_FacAsociado" />
+              <Mapping SourceColumn="Merma" DataSetColumn="Merma" />
               <Mapping SourceColumn="FecPago_FacAsociado" DataSetColumn="FecPago_FacAsociado" />
               <Mapping SourceColumn="FecEntrega_FacAsociado" DataSetColumn="FecEntrega_FacAsociado" />
               <Mapping SourceColumn="CanTotal_FacAsociado" DataSetColumn="CanTotal_FacAsociado" />
@@ -36,29 +38,7 @@
               <Mapping SourceColumn="Nombre_Asociado" DataSetColumn="Nombre_Asociado" />
               <Mapping SourceColumn="fecInicio" DataSetColumn="fecInicio" />
               <Mapping SourceColumn="fecFinal" DataSetColumn="fecFinal" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SIGEEA_spObtenerDatosEmpresaTableAdapter" GeneratorDataComponentClassName="SIGEEA_spObtenerDatosEmpresaTableAdapter" Name="SIGEEA_spObtenerDatosEmpresa" UserDataComponentName="SIGEEA_spObtenerDatosEmpresaTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="SIGEEA_BDConnectionString (Settings)" DbObjectName="SIGEEA_BD.dbo.SIGEEA_spObtenerDatosEmpresa" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                    <CommandText>dbo.SIGEEA_spObtenerDatosEmpresa</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="PK_Id_Empresa" DataSetColumn="PK_Id_Empresa" />
-              <Mapping SourceColumn="Nombre_Empresa" DataSetColumn="Nombre_Empresa" />
-              <Mapping SourceColumn="CedJuridica_Empresa" DataSetColumn="CedJuridica_Empresa" />
-              <Mapping SourceColumn="Direccion_Empresa" DataSetColumn="Direccion_Empresa" />
-              <Mapping SourceColumn="Telefono_Empresa" DataSetColumn="Telefono_Empresa" />
-              <Mapping SourceColumn="Correo_Empresa" DataSetColumn="Correo_Empresa" />
+              <Mapping SourceColumn="Monto_Total" DataSetColumn="Monto_Total" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -74,10 +54,17 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Numero_FacAsociado" msprop:Generator_ColumnVarNameInTable="columnNumero_FacAsociado" msprop:Generator_ColumnPropNameInRow="Numero_FacAsociado" msprop:Generator_ColumnPropNameInTable="Numero_FacAsociadoColumn" msprop:Generator_UserColumnName="Numero_FacAsociado" type="xs:int" />
-              <xs:element name="FecPago_FacAsociado" msprop:Generator_ColumnVarNameInTable="columnFecPago_FacAsociado" msprop:Generator_ColumnPropNameInRow="FecPago_FacAsociado" msprop:Generator_ColumnPropNameInTable="FecPago_FacAsociadoColumn" msprop:Generator_UserColumnName="FecPago_FacAsociado" type="xs:dateTime" />
+              <xs:element name="Merma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMerma" msprop:Generator_ColumnPropNameInRow="Merma" msprop:Generator_ColumnPropNameInTable="MermaColumn" msprop:Generator_UserColumnName="Merma" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FecPago_FacAsociado" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFecPago_FacAsociado" msprop:Generator_ColumnPropNameInRow="FecPago_FacAsociado" msprop:Generator_ColumnPropNameInTable="FecPago_FacAsociadoColumn" msprop:Generator_UserColumnName="FecPago_FacAsociado" type="xs:dateTime" minOccurs="0" />
               <xs:element name="FecEntrega_FacAsociado" msprop:Generator_ColumnVarNameInTable="columnFecEntrega_FacAsociado" msprop:Generator_ColumnPropNameInRow="FecEntrega_FacAsociado" msprop:Generator_ColumnPropNameInTable="FecEntrega_FacAsociadoColumn" msprop:Generator_UserColumnName="FecEntrega_FacAsociado" type="xs:dateTime" />
               <xs:element name="CanTotal_FacAsociado" msprop:Generator_ColumnVarNameInTable="columnCanTotal_FacAsociado" msprop:Generator_ColumnPropNameInRow="CanTotal_FacAsociado" msprop:Generator_ColumnPropNameInTable="CanTotal_FacAsociadoColumn" msprop:Generator_UserColumnName="CanTotal_FacAsociado" type="xs:double" />
-              <xs:element name="CanNeta_FacAsociado" msprop:Generator_ColumnVarNameInTable="columnCanNeta_FacAsociado" msprop:Generator_ColumnPropNameInRow="CanNeta_FacAsociado" msprop:Generator_ColumnPropNameInTable="CanNeta_FacAsociadoColumn" msprop:Generator_UserColumnName="CanNeta_FacAsociado" type="xs:double" minOccurs="0" />
+              <xs:element name="CanNeta_FacAsociado" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCanNeta_FacAsociado" msprop:Generator_ColumnPropNameInRow="CanNeta_FacAsociado" msprop:Generator_ColumnPropNameInTable="CanNeta_FacAsociadoColumn" msprop:Generator_UserColumnName="CanNeta_FacAsociado" type="xs:double" minOccurs="0" />
               <xs:element name="Codigo_Asociado" msprop:Generator_ColumnVarNameInTable="columnCodigo_Asociado" msprop:Generator_ColumnPropNameInRow="Codigo_Asociado" msprop:Generator_ColumnPropNameInTable="Codigo_AsociadoColumn" msprop:Generator_UserColumnName="Codigo_Asociado">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -120,56 +107,11 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="SIGEEA_spObtenerDatosEmpresa" msprop:Generator_TableClassName="SIGEEA_spObtenerDatosEmpresaDataTable" msprop:Generator_TableVarName="tableSIGEEA_spObtenerDatosEmpresa" msprop:Generator_TablePropName="SIGEEA_spObtenerDatosEmpresa" msprop:Generator_RowDeletingName="SIGEEA_spObtenerDatosEmpresaRowDeleting" msprop:Generator_RowChangingName="SIGEEA_spObtenerDatosEmpresaRowChanging" msprop:Generator_RowEvHandlerName="SIGEEA_spObtenerDatosEmpresaRowChangeEventHandler" msprop:Generator_RowDeletedName="SIGEEA_spObtenerDatosEmpresaRowDeleted" msprop:Generator_UserTableName="SIGEEA_spObtenerDatosEmpresa" msprop:Generator_RowChangedName="SIGEEA_spObtenerDatosEmpresaRowChanged" msprop:Generator_RowEvArgName="SIGEEA_spObtenerDatosEmpresaRowChangeEvent" msprop:Generator_RowClassName="SIGEEA_spObtenerDatosEmpresaRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="PK_Id_Empresa" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnPK_Id_Empresa" msprop:Generator_ColumnPropNameInRow="PK_Id_Empresa" msprop:Generator_ColumnPropNameInTable="PK_Id_EmpresaColumn" msprop:Generator_UserColumnName="PK_Id_Empresa" type="xs:int" />
-              <xs:element name="Nombre_Empresa" msprop:Generator_ColumnVarNameInTable="columnNombre_Empresa" msprop:Generator_ColumnPropNameInRow="Nombre_Empresa" msprop:Generator_ColumnPropNameInTable="Nombre_EmpresaColumn" msprop:Generator_UserColumnName="Nombre_Empresa">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CedJuridica_Empresa" msprop:Generator_ColumnVarNameInTable="columnCedJuridica_Empresa" msprop:Generator_ColumnPropNameInRow="CedJuridica_Empresa" msprop:Generator_ColumnPropNameInTable="CedJuridica_EmpresaColumn" msprop:Generator_UserColumnName="CedJuridica_Empresa">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Direccion_Empresa" msprop:Generator_ColumnVarNameInTable="columnDireccion_Empresa" msprop:Generator_ColumnPropNameInRow="Direccion_Empresa" msprop:Generator_ColumnPropNameInTable="Direccion_EmpresaColumn" msprop:Generator_UserColumnName="Direccion_Empresa" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="200" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Telefono_Empresa" msprop:Generator_ColumnVarNameInTable="columnTelefono_Empresa" msprop:Generator_ColumnPropNameInRow="Telefono_Empresa" msprop:Generator_ColumnPropNameInTable="Telefono_EmpresaColumn" msprop:Generator_UserColumnName="Telefono_Empresa" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Correo_Empresa" msprop:Generator_ColumnVarNameInTable="columnCorreo_Empresa" msprop:Generator_ColumnPropNameInRow="Correo_Empresa" msprop:Generator_ColumnPropNameInTable="Correo_EmpresaColumn" msprop:Generator_UserColumnName="Correo_Empresa" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="30" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+              <xs:element name="Monto_Total" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnMonto_Total" msprop:Generator_ColumnPropNameInRow="Monto_Total" msprop:Generator_ColumnPropNameInTable="Monto_TotalColumn" msprop:Generator_UserColumnName="Monto_Total" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:SIGEEA_spObtenerDatosEmpresa" />
-      <xs:field xpath="mstns:PK_Id_Empresa" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

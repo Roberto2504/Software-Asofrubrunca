@@ -59,7 +59,6 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
             {
                 wnwBuscadorCliente venPedidoCliente = new wnwBuscadorCliente("Ver");
                 venPedidoCliente.Show();
-
             }
             if (cmbOpciones.SelectedIndex == 2)//Listar A partir del número de factura
             {
@@ -67,6 +66,7 @@ namespace SIGEEA_App.Ventanas_Modales.Clientes
                 wnwFacturasCliente nueva = new wnwFacturasCliente(Tipo: "Por factura", IdCliente: 0, IdFactura: Convert.ToInt32(txtNumeroFactura.Text));
                 nueva.ShowDialog();
             }
+            this.Close();
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
